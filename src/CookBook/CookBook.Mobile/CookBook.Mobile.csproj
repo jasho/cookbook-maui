@@ -59,6 +59,11 @@
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre7" />
         <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-pre5" />
+        <PackageReference Include="Fody" Version="6.6.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>

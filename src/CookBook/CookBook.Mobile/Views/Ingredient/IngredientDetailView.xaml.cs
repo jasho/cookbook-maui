@@ -5,9 +5,8 @@ namespace CookBook.Mobile.Views;
 public partial class IngredientDetailView
 {
     public IngredientDetailView(IngredientDetailViewModel viewModel)
+        : base(viewModel)
 	{
 		InitializeComponent();
-
-        BindingContext = viewModel;
     }
 }
