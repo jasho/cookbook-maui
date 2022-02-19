@@ -6,7 +6,7 @@
              Title="AppShell"
              BackgroundColor="White">
     <FlyoutItem Title="Ingredients">
-        <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Recipes">

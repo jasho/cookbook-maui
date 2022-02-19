@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using CookBook.Mobile.Factories;
 using CookBook.Mobile.ViewModels;
+using CookBook.Mobile.Views;
 
 namespace CookBook.Mobile
 {
@@ -15,8 +17,12 @@ namespace CookBook.Mobile
                        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                    });
 
-            builder.Services.AddTransient<IngredientListViewModel>();
+            builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
 
+            builder.Services.AddTransient<IngredientListViewModel>();
+            builder.Services.AddTransient<IngredientDetailViewModel>();
+
+            Routing.RegisterRoute("ingredients/detail", typeof(IngredientDetailView));
 
             return builder.Build();
         }

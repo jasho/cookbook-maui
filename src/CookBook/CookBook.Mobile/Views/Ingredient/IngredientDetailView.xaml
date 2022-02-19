@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CookBook.Mobile.Models"
+             xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels"
+             x:Class="CookBook.Mobile.Views.IngredientDetailView"
+             Title="{Binding Ingredient.Name}"
+             BackgroundColor="White"
+             x:DataType="viewModels:IngredientDetailViewModel">
+    <Label Text="{Binding Ingredient.Name}"/>
+</ContentPage>

@@ -62,10 +62,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
+        <DependentUpon>IngredientDetailView.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Views\Recipe\RecipeListView.xaml.cs">
         <DependentUpon>RecipeListView.xaml</DependentUpon>
       </Compile>
@@ -73,6 +72,10 @@
 
     <ItemGroup>
       <MauiXaml Update="AppShell.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Ingredient\IngredientDetailView.xaml">
+        <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientListView.xaml">

@@ -6,11 +6,17 @@
              x:Class="CookBook.Mobile.Views.IngredientListView"
              Title="Ingredients"
              BackgroundColor="White"
-             x:DataType="viewModels:IngredientListViewModel">
+             x:DataType="viewModels:IngredientListViewModel"
+             x:Name="Root">
     <CollectionView ItemsSource="{Binding Ingredients}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:IngredientListModel">
-                <Label Text="{Binding Name}"/>
+                <Label Text="{Binding Name}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                              CommandParameter="{Binding Id}"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
