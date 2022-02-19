@@ -28,7 +28,7 @@
                                                   CommandParameter="{Binding Id}"/>
                         </Grid.GestureRecognizers>
 
-                        <Image Source="{Binding ImageUrl}"
+                        <Image Source="{Binding ImageUrl, TargetNullValue='/Images/placeholder.png'}"
                                 HorizontalOptions="Center"
                                 Aspect="AspectFill" />
 

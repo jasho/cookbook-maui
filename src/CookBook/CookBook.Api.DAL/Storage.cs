@@ -8,7 +8,8 @@ namespace CookBook.Api
         private readonly IList<Guid> ingredientGuids = new List<Guid>
         {
             new ("df935095-8709-4040-a2bb-b6f97cb416dc"),
-            new ("23b3902d-7d4f-4213-9cf0-112348f56238")
+            new ("23b3902d-7d4f-4213-9cf0-112348f56238"),
+            new ("7f251cd6-3ac4-49be-b3e7-d1f9f7cfdd3a")
         };
 
         private readonly IList<Guid> ingredientAmountGuids = new List<Guid>
@@ -52,6 +53,13 @@ namespace CookBook.Api
                 Name = "Cibule",
                 Description = "Popis cibule",
                 ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"
+            });
+
+            Ingredients.Add(new IngredientEntity
+            {
+                Id = ingredientGuids[2],
+                Name = "Slanina",
+                Description = "Popis slaniny"
             });
         }
 
