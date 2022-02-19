@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Factories;
+using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
-using CookBook.Mobile.Views;
 
 namespace CookBook.Mobile
 {
@@ -18,13 +18,29 @@ namespace CookBook.Mobile
                    });
 
             builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
+            builder.Services.AddSingleton<IRoutingService, RoutingService>();
 
-            builder.Services.AddTransient<IngredientListViewModel>();
-            builder.Services.AddTransient<IngredientDetailViewModel>();
+            builder.Services.Scan(selector => selector
+                .FromAssemblyOf<App>()
+                .AddClasses(filter => filter.AssignableTo<IViewModel>())
+                    .AsSelfWithInterfaces()
+                    .WithTransientLifetime());
 
-            Routing.RegisterRoute("ingredients/detail", typeof(IngredientDetailView));
+            var app = builder.Build();
 
-            return builder.Build();
+            RegisterRoutes(app);
+
+            return app;
+        }
+
+        private static void RegisterRoutes(MauiApp app)
+        {
+            var routingService = app.Services.GetRequiredService<IRoutingService>();
+
+            foreach (var routeModel in routingService.Routes)
+            {
+                Routing.RegisterRoute(routeModel.Route, routeModel.ViewType);
+            }
         }
     }
 }

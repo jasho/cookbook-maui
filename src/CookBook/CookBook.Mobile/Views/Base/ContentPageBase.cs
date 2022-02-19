@@ -2,7 +2,7 @@
 
 namespace CookBook.Mobile.Views;
 
-public class ContentPageBase : ContentPage
+public abstract class ContentPageBase : ContentPage
 {
     protected IViewModel viewModel { get; }
 
