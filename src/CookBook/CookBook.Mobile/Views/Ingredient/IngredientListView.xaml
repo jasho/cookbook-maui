@@ -1,24 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                 xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
-                 xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                 x:Class="CookBook.Mobile.Views.IngredientListView"
-                 Title="Ingredients"
-                 BackgroundColor="White"
-                 x:DataType="viewModels:IngredientListViewModel"
-                 x:Name="Root">
-    <CollectionView ItemsSource="{Binding Ingredients}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:IngredientListModel">
-                <Label Text="{Binding Name}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                              CommandParameter="{Binding Id}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
+                       xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       x:Class="CookBook.Mobile.Views.IngredientListView"
+                       BackgroundColor="White"
+                       x:DataType="viewModels:IngredientListViewModel"
+                       x:Name="Root"
+                       Title="{x:Static texts:IngredientListViewTexts.Page_Title}">
+    <Grid RowDefinitions="*, 80">
+        <CollectionView Grid.Row="0"
+                        ItemsSource="{Binding Items}"
+                        Margin="10">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                    Span="2"
+                                    VerticalItemSpacing="20" HorizontalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:IngredientListModel">
+                    <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+                            HeightRequest="200">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                                  CommandParameter="{Binding Id}"/>
+                        </Grid.GestureRecognizers>
+
+                        <Image Source="{Binding ImageUrl}"
+                                HorizontalOptions="Center"
+                                Aspect="AspectFill" />
+
+                        <BoxView Grid.Row="0"
+                                    BackgroundColor="Black"
+                                    Opacity="0.5" />
+
+                        <Label HorizontalOptions="Center" VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                FontSize="Title"
+                                Text="{Binding Name}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Text="{x:Static texts:IngredientListViewTexts.AddNew_Button_Text}"
+                Margin="10"
+                Command="{Binding GoToCreateCommand}"
+                Style="{StaticResource PrimaryButtonStyle}" />
+    </Grid>
 </views:ContentPageBase>

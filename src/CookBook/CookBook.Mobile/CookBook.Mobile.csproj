@@ -65,7 +65,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+        <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
         <PackageReference Include="Scrutor" Version="4.0.0" />
     </ItemGroup>
 
@@ -74,6 +74,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Styles\ButtonStyle.xaml.cs">
+        <DependentUpon>ButtonStyle.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>IngredientListViewTexts.resx</DependentUpon>
+      </Compile>
       <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
         <DependentUpon>IngredientDetailView.xaml</DependentUpon>
       </Compile>
@@ -83,7 +91,21 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
       <MauiXaml Update="AppShell.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\ButtonStyle.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\Colors.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientDetailView.xaml">
