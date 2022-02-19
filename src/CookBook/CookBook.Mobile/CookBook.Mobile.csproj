@@ -68,6 +68,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
         <DependentUpon>IngredientDetailView.xaml</DependentUpon>
       </Compile>

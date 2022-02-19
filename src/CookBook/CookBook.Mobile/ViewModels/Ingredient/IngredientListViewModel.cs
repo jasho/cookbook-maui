@@ -1,5 +1,5 @@
-﻿using CookBook.Mobile.Factories;
-using CookBook.Mobile.Models;
+﻿using CookBook.Common.Models;
+using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;

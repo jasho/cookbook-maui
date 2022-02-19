@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace CookBook.Mobile.Models;
+namespace CookBook.Common.Models;
 
 public record ModelBase() : INotifyPropertyChanged
 {

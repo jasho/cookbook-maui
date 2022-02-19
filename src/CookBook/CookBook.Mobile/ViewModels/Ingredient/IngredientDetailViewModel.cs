@@ -1,4 +1,4 @@
-﻿using CookBook.Mobile.Models;
+﻿using CookBook.Common.Models;
 
 namespace CookBook.Mobile.ViewModels.Ingredient;
 
@@ -7,7 +7,7 @@ public class IngredientDetailViewModel : ViewModelBase
 {
     public string? Id { private get; set; }
 
-    public IngredientDetailModel? Ingredient { get; set; } = new();
+    public IngredientDetailModel? Ingredient { get; set; }
 
     public override async Task OnAppearingAsync()
     {
