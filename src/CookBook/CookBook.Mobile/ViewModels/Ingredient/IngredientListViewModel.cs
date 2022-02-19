@@ -1,4 +1,5 @@
 ﻿using CookBook.Common.Models;
+using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using System.Collections.ObjectModel;
@@ -9,28 +10,27 @@ namespace CookBook.Mobile.ViewModels.Ingredient;
 public class IngredientListViewModel : ViewModelBase
 {
     private readonly IRoutingService routingService;
+    private readonly IIngredientsClient ingredientsClient;
 
-    public ObservableCollection<IngredientListModel> Ingredients { get; set; } = new ObservableCollection<IngredientListModel>();
+    public ICollection<IngredientListModel> Ingredients { get; set; }
 
     public ICommand GoToDetailCommand { get; set; }
 
     public IngredientListViewModel(
         ICommandFactory commandFactory,
-        IRoutingService routingService)
+        IRoutingService routingService,
+        IIngredientsClient ingredientsClient)
     {
         GoToDetailCommand = commandFactory.CreateCommand<Guid>(GoToDetailAsync);
         this.routingService = routingService;
+        this.ingredientsClient = ingredientsClient;
     }
 
     public override async Task OnAppearingAsync()
     {
         await base.OnAppearingAsync();
 
-        Ingredients.Clear();
-        Ingredients.Add(new IngredientListModel(
-            Guid.NewGuid(),
-            "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"));
+        Ingredients = await ingredientsClient.GetIngredientsAllAsync();
     }
 
     private async Task GoToDetailAsync(Guid id)

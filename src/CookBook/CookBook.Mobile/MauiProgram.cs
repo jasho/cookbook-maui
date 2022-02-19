@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
@@ -20,17 +21,38 @@ namespace CookBook.Mobile
             builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
             builder.Services.AddSingleton<IRoutingService, RoutingService>();
 
-            builder.Services.Scan(selector => selector
-                .FromAssemblyOf<App>()
-                .AddClasses(filter => filter.AssignableTo<IViewModel>())
-                    .AsSelfWithInterfaces()
-                    .WithTransientLifetime());
+            ConfigureViewModels(builder.Services);
+            ConfigureApiClients(builder.Services);
 
             var app = builder.Build();
 
             RegisterRoutes(app);
 
             return app;
+        }
+
+        private static void ConfigureViewModels(IServiceCollection services)
+        {
+            services.Scan(selector => selector
+                .FromAssemblyOf<App>()
+                .AddClasses(filter => filter.AssignableTo<IViewModel>())
+                    .AsSelfWithInterfaces()
+                    .WithTransientLifetime());
+        }
+
+        private static void ConfigureApiClients(IServiceCollection services)
+        {
+            var baseUri = new Uri("https://app-cookbook-maui-api.azurewebsites.net/");
+
+            services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) =>
+            {
+                client.BaseAddress = baseUri;
+            });
+
+            services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) =>
+            {
+                client.BaseAddress = baseUri;
+            });
         }
 
         private static void RegisterRoutes(MauiApp app)
