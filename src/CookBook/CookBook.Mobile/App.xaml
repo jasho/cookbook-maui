@@ -5,8 +5,11 @@
              x:Class="CookBook.Mobile.App">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:Colors/>
+                <local:ButtonStyle/>
+            </ResourceDictionary.MergedDictionaries>
 
-            <Color x:Key="PrimaryColor">#512BDF</Color>
             <Color x:Key="PrimaryTextColor">Black</Color>
             <Color x:Key="SecondaryColor">White</Color>
 

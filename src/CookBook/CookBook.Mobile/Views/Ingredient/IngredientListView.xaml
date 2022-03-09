@@ -30,11 +30,11 @@
 
                         <Image Source="{Binding ImageUrl, TargetNullValue='/Images/placeholder.png'}"
                                 HorizontalOptions="Center"
-                                Aspect="AspectFill" />
+                                Aspect="AspectFit" />
 
                         <BoxView Grid.Row="0"
-                                    BackgroundColor="Black"
-                                    Opacity="0.5" />
+                                 BackgroundColor="Black"
+                                 Opacity="0.5" />
 
                         <Label HorizontalOptions="Center" VerticalOptions="Center"
                                 HorizontalTextAlignment="Center"
