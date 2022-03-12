@@ -5,11 +5,11 @@
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.AppShell"
-       BackgroundColor="{DynamicResource NavigationBarBackgroudColor}">
-    <FlyoutItem Title="{x:Static texts:AppShellTexts.Home_FlyoutItem_Title}"
-                Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
-                Shell.UnselectedColor="{DynamicResource UnselectedColor}"
-                Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}">
+       BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
+       Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
+       Shell.UnselectedColor="{DynamicResource UnselectedColor}"
+       Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}">
+    <FlyoutItem Title="{x:Static texts:AppShellTexts.Home_FlyoutItem_Title}">
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
