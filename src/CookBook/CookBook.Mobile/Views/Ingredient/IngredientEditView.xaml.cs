@@ -2,9 +2,9 @@ using CookBook.Mobile.ViewModels.Ingredient;
 
 namespace CookBook.Mobile.Views;
 
-public partial class IngredientCreateView
+public partial class IngredientEditView
 {
-    public IngredientCreateView(IngredientCreateViewModel viewModel)
+    public IngredientEditView(IngredientEditViewModel viewModel)
         : base(viewModel)
 	{
 		InitializeComponent();

@@ -1,53 +1,55 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
-using CookBook.Mobile.Services;
-using System.Net.Sockets;
 using System.Windows.Input;
 
 namespace CookBook.Mobile.ViewModels.Ingredient;
 
-public class IngredientCreateViewModel : ViewModelBase
+[QueryProperty(nameof(Id), "id")]
+public class IngredientEditViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
-    private readonly IDeviceOrientationService deviceOrientationService;
 
     public FileResult? ImageFileResult { get; set; }
+    public string? Id { private get; set; }
 
     public ICommand PickImageCommand { get; set; }
     public ICommand SaveCommand { get; set; }
 
-    public IngredientDetailModel? Ingredient { get; set; } = new(Guid.NewGuid(), string.Empty, string.Empty, null);
+    public IngredientDetailModel? Ingredient { get; set; }
 
-    public IngredientCreateViewModel(
+    public IngredientEditViewModel(
         IIngredientsClient ingredientsClient,
-        ICommandFactory commandFactory,
-        IDeviceOrientationService deviceOrientationService)
+        ICommandFactory commandFactory)
     {
         this.ingredientsClient = ingredientsClient;
-        this.deviceOrientationService = deviceOrientationService;
 
         PickImageCommand = commandFactory.CreateCommand(PickImageAsync);
         SaveCommand = commandFactory.CreateCommand(SaveAsync);
     }
 
+    public override async Task OnAppearingAsync()
+    {
+        await base.OnAppearingAsync();
+
+        if (Id is not null && Guid.TryParse(Id, out var id))
+        {
+            Ingredient = await ingredientsClient.GetIngredientByIdAsync(id);
+        }
+        else
+        {
+            Ingredient = new(Guid.NewGuid(), string.Empty, string.Empty, null);
+        }
+    }
+
     public async Task SaveAsync()
     {
-        var orientation = deviceOrientationService.GetOrientation();
         await ingredientsClient.CreateIngredientAsync(Ingredient);
         Shell.Current.SendBackButtonPressed();
     }
 
     private async Task PickImageAsync()
     {
-        //#if WINDOWS
-        //        var listener = new TcpListener(8080);
-        //        listener.Start();
-
-        //        //var socketListener = new Windows.Networking.Sockets.StreamSocketListener();
-        //        //socketListener.BindServiceNameAsync("8080");
-        //#endif
-
         ImageFileResult = await FilePicker.PickAsync(new PickOptions
         {
             PickerTitle = "Pick an image",

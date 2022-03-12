@@ -60,6 +60,8 @@
                             <ImageButton Grid.Column="2"
                                          HeightRequest="20"
                                          HorizontalOptions="End" VerticalOptions="Center"
+                                         Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
+                                         CommandParameter="{Binding Id}"
                                          Margin="0, 0, 12, 0">
                                 <ImageButton.Source>
                                     <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.Pen}"

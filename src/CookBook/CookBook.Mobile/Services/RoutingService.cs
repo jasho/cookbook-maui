@@ -10,7 +10,7 @@ public class RoutingService : IRoutingService
     public ICollection<RouteModel> Routes => new List<RouteModel>
     {
         new RouteModel("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
-        new RouteModel("//ingredients/create", typeof(IngredientCreateView), typeof(IngredientCreateViewModel)),
+        new RouteModel("//ingredients/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
     };
 
     public string GetRouteByViewModel<TViewModel>()

@@ -117,8 +117,8 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>SettingsViewTexts.resx</DependentUpon>
       </Compile>
-      <Compile Update="Views\Ingredient\IngredientCreateView.xaml.cs">
-        <DependentUpon>IngredientCreateView.xaml</DependentUpon>
+      <Compile Update="Views\Ingredient\IngredientEditView.xaml.cs">
+        <DependentUpon>IngredientEditView.xaml</DependentUpon>
       </Compile>
       <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
         <DependentUpon>IngredientDetailView.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <MauiXaml Update="Resources\Styles\LightTheme.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Ingredient\IngredientCreateView.xaml">
+      <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

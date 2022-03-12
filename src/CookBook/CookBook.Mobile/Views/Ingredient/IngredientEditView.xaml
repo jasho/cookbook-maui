@@ -5,9 +5,9 @@
                        xmlns:models="clr-namespace:CookBook.Mobile.Models"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                       x:Class="CookBook.Mobile.Views.IngredientCreateView"
+                       x:Class="CookBook.Mobile.Views.IngredientEditView"
                        Title="{Binding Ingredient.Name}"
-                       x:DataType="viewModels:IngredientCreateViewModel">
+                       x:DataType="viewModels:IngredientEditViewModel">
     <Grid RowDefinitions="Auto, Auto, *, Auto"
           ColumnDefinitions="Auto, *"
           RowSpacing="5">

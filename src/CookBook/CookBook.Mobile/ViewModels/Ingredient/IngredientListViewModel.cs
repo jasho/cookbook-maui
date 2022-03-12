@@ -15,6 +15,7 @@ public class IngredientListViewModel : ViewModelBase
 
     public ICommand GoToDetailCommand { get; set; }
     public ICommand GoToCreateCommand { get; set; }
+    public ICommand GoToEditCommand { get; set; }
 
     public IngredientListViewModel(
         ICommandFactory commandFactory,
@@ -26,6 +27,7 @@ public class IngredientListViewModel : ViewModelBase
 
         GoToDetailCommand = commandFactory.CreateCommand<Guid>(GoToDetailAsync);
         GoToCreateCommand = commandFactory.CreateCommand(GoToCreateAsync);
+        GoToEditCommand = commandFactory.CreateCommand<Guid>(GoToEditAsync);
     }
 
     public override async Task OnAppearingAsync()
@@ -38,12 +40,18 @@ public class IngredientListViewModel : ViewModelBase
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync($"//ingredients/detail?id={id}");
+        await Shell.Current.GoToAsync($"{route}?id={id}");
     }
 
     private async Task GoToCreateAsync()
     {
-        var route = routingService.GetRouteByViewModel<IngredientCreateViewModel>();
-        await Shell.Current.GoToAsync("//ingredients/create");
+        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
+        await Shell.Current.GoToAsync(route);
+    }
+
+    private async Task GoToEditAsync(Guid id)
+    {
+        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
+        await Shell.Current.GoToAsync($"{route}?id={id}");
     }
 }
