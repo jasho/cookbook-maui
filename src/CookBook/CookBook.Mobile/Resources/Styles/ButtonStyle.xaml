@@ -3,7 +3,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="CookBook.Mobile.ButtonStyle">
     <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryButtonTextColor}"/>
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="FontFamily" Value="MontserratRegular"/>
     </Style>
 
     <Style x:Key="ErrorButtonStyle" TargetType="Button">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="using:CookBook.Mobile"
-       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
+       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
+       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.AppShell"
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}">
@@ -12,16 +12,16 @@
                 Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}">
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
             <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:FontAwesomeIcons.Book}"/>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
         </Tab>
         
         <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
             <Tab.Icon>
-                <FontImageSource FontFamily="FontAwesome"
-                                 Glyph="{x:Static local:FontAwesomeIcons.Seedling}"/>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
         </Tab>

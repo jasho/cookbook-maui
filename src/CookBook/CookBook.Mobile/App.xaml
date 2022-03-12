@@ -1,6 +1,7 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:CookBook.Mobile.Converters"
+             xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
              xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:CookBook.Mobile"
              x:Class="CookBook.Mobile.App">
@@ -40,7 +41,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource PrimaryColor}" />
                 <Setter Property="FontFamily"
-                        Value="OpenSansRegular" />
+                        Value="{x:Static fonts:Fonts.Regular}" />
             </Style>
 
             <Style x:Key="Action"
@@ -48,7 +49,7 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource PrimaryTextColor}" />
                 <Setter Property="FontFamily"
-                        Value="OpenSansRegular" />
+                        Value="{x:Static fonts:Fonts.Regular}" />
                 <Setter Property="Padding"
                         Value="14,10" />
             </Style>

@@ -101,6 +101,6 @@
     <value>Ingredients</value>
   </data>
   <data name="AddNew_Button_Text" xml:space="preserve">
-    <value>Add New</value>
+    <value>+</value>
   </data>
 </root>

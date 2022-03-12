@@ -2,16 +2,15 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientListView"
                        x:DataType="viewModels:IngredientListViewModel"
                        x:Name="Root"
                        BackgroundColor="{StaticResource BackgroundColor}">
-    <Grid RowDefinitions="*, 80">
-        <CollectionView Grid.Row="0"
-                        ItemsSource="{Binding Items}"
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items}"
                         Margin="10">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
@@ -44,9 +43,12 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Grid.Row="1"
-                Text="{x:Static texts:IngredientListViewTexts.AddNew_Button_Text}"
-                Margin="10"
+        <Button Text="{x:Static texts:IngredientListViewTexts.AddNew_Button_Text}"
+                FontFamily="MontserratRegular"
+                HorizontalOptions="End" VerticalOptions="End"
+                WidthRequest="80"
+                FontSize="50"
+                CornerRadius="50"
                 Command="{Binding GoToCreateCommand}"
                 Style="{StaticResource PrimaryButtonStyle}" />
     </Grid>

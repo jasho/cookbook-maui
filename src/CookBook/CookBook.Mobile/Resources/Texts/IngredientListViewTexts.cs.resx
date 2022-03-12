@@ -101,6 +101,6 @@
     <value>Ingredience</value>
   </data>
   <data name="AddNew_Button_Text" xml:space="preserve">
-    <value>Přidat</value>
+    <value>+</value>
   </data>
 </root>

@@ -7,5 +7,7 @@
     <Color x:Key="BackgroundColor">#FFFFFF</Color>
     <Color x:Key="NavigationBarBackgroudColor">#3A3A3A</Color>
 
+    <Color x:Key="PrimaryButtonTextColor">#FFFFFF</Color>
+
     <Color x:Key="ErrorColor">#FF0000</Color>
 </ResourceDictionary>

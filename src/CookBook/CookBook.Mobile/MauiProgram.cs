@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
+using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
 
@@ -15,8 +16,9 @@ namespace CookBook.Mobile
                    .UseMauiCommunityToolkit()
                    .ConfigureFonts(fonts =>
                    {
-                       fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                       fonts.AddFont("FontAwesome-Solid.ttf", "FontAwesome");
+                       fonts.AddFont("FontAwesome-Solid.ttf", Fonts.FontAwesome);
+                       fonts.AddFont("Montserrat-Bold.ttf", Fonts.Bold);
+                       fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
                    });
 
             builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
