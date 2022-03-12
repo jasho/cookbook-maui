@@ -8,8 +8,37 @@
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
        Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
        Shell.UnselectedColor="{DynamicResource UnselectedColor}"
-       Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}">
+       Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}"
+       FlyoutBackgroundColor="{DynamicResource NavigationBarBackgroudColor}">
+    <Shell.FlyoutHeader>
+        <Grid HorizontalOptions="Start">
+            <Image HeightRequest="50"
+                   HorizontalOptions="Start"
+                   Source="/Images/logo_text.png"
+                   Margin="0, 10, 0, 0"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="20, *"
+                  ColumnSpacing="10"
+                  Padding="10">
+                <Image Grid.Column="0"
+                       Source="{Binding FlyoutIcon}"/>
+
+                <Label Grid.Column="1" Text="{Binding Title}"
+                       VerticalOptions="Center"
+                       TextColor="{DynamicResource BackgroundColor}"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Home_FlyoutItem_Title}">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.House}"
+                             FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+        </FlyoutItem.Icon>
+        
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
@@ -28,6 +57,11 @@
     </FlyoutItem>
     
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Settings_FlyoutItem_Title}">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.Cog}"
+                             FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+        </FlyoutItem.Icon>
+        
         <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" Route="settings" />
     </FlyoutItem>
 </Shell>

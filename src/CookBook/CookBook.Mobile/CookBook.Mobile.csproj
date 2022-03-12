@@ -66,6 +66,7 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+      <None Remove="Resources\Images\logo_text.png" />
       <None Remove="Resources\Images\placeholder.png" />
     </ItemGroup>
 

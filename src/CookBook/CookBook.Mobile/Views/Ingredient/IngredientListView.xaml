@@ -8,8 +8,9 @@
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientListView"
                        x:DataType="viewModels:IngredientListViewModel"
-                       x:Name="Root"
-                       BackgroundColor="{StaticResource BackgroundColor}">
+                       Title="{x:Static texts:IngredientListViewTexts.Page_Title}"
+                       BackgroundColor="{StaticResource BackgroundColor}"
+                       x:Name="Root">
     <Grid>
         <Grid RowDefinitions="Auto, *"
               RowSpacing="20"
