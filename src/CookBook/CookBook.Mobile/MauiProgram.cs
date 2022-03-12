@@ -16,6 +16,7 @@ namespace CookBook.Mobile
                    .ConfigureFonts(fonts =>
                    {
                        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                       fonts.AddFont("FontAwesome-Solid.ttf", "FontAwesome");
                    });
 
             builder.Services.AddSingleton<ICommandFactory, CommandFactory>();

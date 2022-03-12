@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:DarkTheme/>
+                <local:LightTheme/>
                 <local:ButtonStyle/>
 
             </ResourceDictionary.MergedDictionaries>
