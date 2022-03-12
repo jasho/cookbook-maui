@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
@@ -10,46 +11,77 @@
                        x:Name="Root"
                        BackgroundColor="{StaticResource BackgroundColor}">
     <Grid>
-        <CollectionView ItemsSource="{Binding Items}"
-                        Margin="10">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical"
-                                    Span="2"
-                                    VerticalItemSpacing="20" HorizontalItemSpacing="20" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:IngredientListModel">
-                    <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-                            HeightRequest="200">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Grid.GestureRecognizers>
+        <Grid RowDefinitions="Auto, *"
+              RowSpacing="20"
+              Margin="30">
+            <Label Grid.Row="0"
+                   Text="Ingredients"
+                   FontSize="24"
+                   Style="{StaticResource BoldLabelStyle}"/>
+            
+            <CollectionView Grid.Row="1"
+                            ItemsSource="{Binding Items}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:IngredientListModel">
+                        <Grid ColumnDefinitions="34, *, Auto"
+                              HeightRequest="40"
+                              BackgroundColor="Transparent"
+                              ColumnSpacing="20">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Grid.GestureRecognizers>
+                            <BoxView Grid.Column="0" Grid.ColumnSpan='3'
+                                     HorizontalOptions="Fill" VerticalOptions="Fill"
+                                     Color="{DynamicResource ListItemBackgroundColor}"
+                                     CornerRadius="5"/>
 
-                        <Image Source="{Binding ImageUrl, TargetNullValue='/Images/placeholder.png'}"
-                                HorizontalOptions="Center"
-                                Aspect="AspectFit" />
+                            <Frame Grid.Column="0"
+                                   WidthRequest="34" HeightRequest="34" 
+                                   VerticalOptions="Center"
+                                   IsClippedToBounds="True"
+                                   CornerRadius="5"
+                                   Padding="0"
+                                   Margin="4, 0, 0, 0">
+                                <Image Source="{Binding ImageUrl, TargetNullValue='/Images/placeholder.png'}"
+                                       WidthRequest="34" HeightRequest="34"
+                                       Aspect="AspectFit"/>
+                            </Frame>
 
-                        <BoxView Grid.Row="0"
-                                 BackgroundColor="Black"
-                                 Opacity="0.5" />
+                            <Label Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   HorizontalOptions="Start" VerticalOptions="Center"
+                                   Style="{StaticResource MediumLabelStyle}"/>
 
-                        <Label HorizontalOptions="Center" VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                FontSize="Title"
-                                Text="{Binding Name}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            <ImageButton Grid.Column="2"
+                                         HeightRequest="20"
+                                         HorizontalOptions="End" VerticalOptions="Center"
+                                         Margin="0, 0, 12, 0">
+                                <ImageButton.Source>
+                                    <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.Pen}"
+                                                     Color="{DynamicResource PrimaryColor}"
+                                                     FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
 
         <Button Text="{x:Static texts:IngredientListViewTexts.AddNew_Button_Text}"
                 FontFamily="MontserratRegular"
                 HorizontalOptions="End" VerticalOptions="End"
-                WidthRequest="80"
+                WidthRequest="65"
                 FontSize="50"
-                CornerRadius="50"
+                CornerRadius="60"
                 Command="{Binding GoToCreateCommand}"
-                Style="{StaticResource PrimaryButtonStyle}" />
+                Style="{StaticResource PrimaryButtonStyle}"
+                Padding="0"
+                Margin="0, 0, 14, 9" />
     </Grid>
 </views:ContentPageBase>

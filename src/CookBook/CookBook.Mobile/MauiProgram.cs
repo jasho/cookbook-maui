@@ -18,6 +18,7 @@ namespace CookBook.Mobile
                    {
                        fonts.AddFont("FontAwesome-Solid.ttf", Fonts.FontAwesome);
                        fonts.AddFont("Montserrat-Bold.ttf", Fonts.Bold);
+                       fonts.AddFont("Montserrat-Medium.ttf", Fonts.Medium);
                        fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
                    });
 

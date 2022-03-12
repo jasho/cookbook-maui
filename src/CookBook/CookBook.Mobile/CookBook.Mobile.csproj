@@ -64,6 +64,7 @@
     <ItemGroup>
       <None Remove="Resources\Fonts\FontAwesome-Solid.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
+      <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
       <None Remove="Resources\Images\placeholder.png" />
     </ItemGroup>
@@ -87,6 +88,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Styles\LabelStyle.xaml.cs">
+        <DependentUpon>LabelStyle.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Styles\ButtonStyle.xaml.cs">
         <DependentUpon>ButtonStyle.xaml</DependentUpon>
       </Compile>
@@ -148,6 +152,10 @@
 
     <ItemGroup>
       <MauiXaml Update="AppShell.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\LabelStyle.xaml">
+        <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Resources\Styles\ButtonStyle.xaml">
