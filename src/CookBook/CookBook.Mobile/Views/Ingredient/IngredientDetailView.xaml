@@ -6,7 +6,6 @@
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientDetailView"
                        Title="{Binding Ingredient.Name}"
-                       BackgroundColor="White"
                        x:DataType="viewModels:IngredientDetailViewModel">
     <Label Text="{Binding Ingredient.Name}"
            HorizontalOptions="Center" VerticalOptions="Center"

@@ -68,6 +68,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+        <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
         <PackageReference Include="Scrutor" Version="4.1.0" />
@@ -81,6 +82,9 @@
       <Compile Update="Resources\Styles\ButtonStyle.xaml.cs">
         <DependentUpon>ButtonStyle.xaml</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Styles\DarkTheme.xaml.cs">
+        <DependentUpon>DarkTheme.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -90,6 +94,9 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>RecipeListViewTexts.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Views\Ingredient\IngredientCreateView.xaml.cs">
+        <DependentUpon>IngredientCreateView.xaml</DependentUpon>
       </Compile>
       <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
         <DependentUpon>IngredientDetailView.xaml</DependentUpon>
@@ -118,7 +125,11 @@
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Resources\Styles\Colors.xaml">
+      <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Ingredient\IngredientCreateView.xaml">
+        <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientDetailView.xaml">

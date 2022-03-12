@@ -1,5 +1,6 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
+using CookBook.Mobile.Factories;
 
 namespace CookBook.Mobile.ViewModels.Ingredient;
 
@@ -12,7 +13,9 @@ public class IngredientDetailViewModel : ViewModelBase
 
     public IngredientDetailModel? Ingredient { get; set; }
 
-    public IngredientDetailViewModel(IIngredientsClient ingredientsClient)
+    public IngredientDetailViewModel(
+        IIngredientsClient ingredientsClient,
+        ICommandFactory commandFactory)
     {
         this.ingredientsClient = ingredientsClient;
     }

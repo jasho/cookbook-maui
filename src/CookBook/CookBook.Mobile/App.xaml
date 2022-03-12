@@ -1,15 +1,17 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:CookBook.Mobile.Converters"
              xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:local="clr-namespace:CookBook.Mobile"
              x:Class="CookBook.Mobile.App">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:Colors/>
+                <local:DarkTheme/>
                 <local:ButtonStyle/>
-            </ResourceDictionary.MergedDictionaries>
 
+            </ResourceDictionary.MergedDictionaries>
+            
             <Color x:Key="PrimaryTextColor">Black</Color>
             <Color x:Key="SecondaryColor">White</Color>
 
@@ -69,6 +71,9 @@
                 <Setter Property="TextColor"
                         Value="{DynamicResource PrimaryTextColor}" />
             </Style>
+
+            <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter"/>
+            <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

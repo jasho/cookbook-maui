@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:CookBook.Mobile.Views"
-             x:Class="CookBook.Mobile.AppShell"
-             Title="AppShell"
-             BackgroundColor="White">
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+       x:Class="CookBook.Mobile.AppShell"
+       Title="AppShell"
+       BackgroundColor="{StaticResource PrimaryColor}"
+       FlyoutBackgroundColor="{StaticResource PrimaryColor}">
     <FlyoutItem Title="Ingredients">
         <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
     </FlyoutItem>

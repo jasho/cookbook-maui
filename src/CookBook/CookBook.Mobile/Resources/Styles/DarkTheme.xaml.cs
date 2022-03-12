@@ -1,8 +1,8 @@
 namespace CookBook.Mobile;
 
-public partial class Colors
+public partial class DarkTheme
 {
-	public Colors()
+	public DarkTheme()
 	{
 		InitializeComponent();
 	}

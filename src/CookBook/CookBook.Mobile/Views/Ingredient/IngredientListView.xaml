@@ -6,7 +6,6 @@
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientListView"
-                       BackgroundColor="White"
                        x:DataType="viewModels:IngredientListViewModel"
                        x:Name="Root"
                        Title="{x:Static texts:IngredientListViewTexts.Page_Title}">

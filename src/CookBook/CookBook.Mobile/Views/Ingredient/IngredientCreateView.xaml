@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:controls="using:CookBook.Mobile.Controls"
+                       xmlns:models="clr-namespace:CookBook.Mobile.Models"
+                       xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       x:Class="CookBook.Mobile.Views.IngredientCreateView"
+                       Title="{Binding Ingredient.Name}"
+                       x:DataType="viewModels:IngredientCreateViewModel">
+    <Grid RowDefinitions="Auto, Auto, *, Auto"
+          ColumnDefinitions="Auto, *"
+          RowSpacing="5">
+        <Label Grid.Row="0" Grid.Column="0"
+               VerticalOptions="Center"
+               Text="Name:"/>
+        <controls:MyEntry Grid.Row="0" Grid.Column="1"
+                          VerticalOptions="Center"
+                          Text="{Binding Ingredient.Name}"/>
+
+        <Label Grid.Row="1" Grid.Column="0"
+               VerticalOptions="Center"
+               Text="Image:"/>
+        <HorizontalStackLayout  Grid.Row="1" Grid.Column="1"
+                                Spacing="10">
+            <Button Text="Pick Image"
+                    Command="{Binding PickImageCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+            
+            <Label Text="{Binding ImageFileResult.FileName}"/>
+        </HorizontalStackLayout>
+        
+        
+        <Label Grid.Row="2" Grid.Column="0"
+               VerticalOptions="Start"
+               Text="Description:"/>
+        <Editor Grid.Row="2" Grid.Column="1"
+                VerticalOptions="Fill"
+                VerticalTextAlignment="Start"
+                Text="{Binding Ingredient.Description}"/>
+
+        <Button Grid.Row="3"
+                Grid.Column="0" Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                Text="Save"
+                Command="{Binding SaveCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"/>
+    </Grid>
+</views:ContentPageBase>

@@ -20,6 +20,7 @@ namespace CookBook.Mobile
 
             builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
             builder.Services.AddSingleton<IRoutingService, RoutingService>();
+            builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
 
             ConfigureViewModels(builder.Services);
             ConfigureApiClients(builder.Services);

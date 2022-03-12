@@ -38,10 +38,12 @@ public class IngredientListViewModel : ViewModelBase
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync($"//{route}?id={id}");
+        await Shell.Current.GoToAsync($"//ingredients/detail?id={id}");
     }
 
     private async Task GoToCreateAsync()
     {
+        var route = routingService.GetRouteByViewModel<IngredientCreateViewModel>();
+        await Shell.Current.GoToAsync("//ingredients/create");
     }
 }
