@@ -82,7 +82,7 @@
             </CollectionView>
         </Grid>
 
-        <Button Text="{x:Static texts:RecipeListViewTexts.AddNew_Button_Text}"
+        <Button Text="+"
                 FontFamily="MontserratRegular"
                 HorizontalOptions="End" VerticalOptions="End"
                 WidthRequest="65"

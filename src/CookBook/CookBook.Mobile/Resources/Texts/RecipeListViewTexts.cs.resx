@@ -97,9 +97,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNew_Button_Text" xml:space="preserve">
-    <value>+</value>
-  </data>
   <data name="Page_Title" xml:space="preserve">
     <value>COOKBOOK</value>
   </data>

@@ -7,7 +7,7 @@
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientDetailView"
-                       Title="{x:Static texts:IngredientDetailTexts.Page_Title}"
+                       Title="{x:Static texts:IngredientDetailViewTexts.Page_Title}"
                        x:DataType="viewModels:IngredientDetailViewModel">
     <views:ContentPageBase.ToolbarItems>
         <ToolbarItem Command="{Binding DeleteCommand}">
