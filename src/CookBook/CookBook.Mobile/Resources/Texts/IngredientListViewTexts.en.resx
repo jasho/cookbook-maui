@@ -103,4 +103,7 @@
   <data name="AddNew_Button_Text" xml:space="preserve">
     <value>+</value>
   </data>
+  <data name="Title_Label" xml:space="preserve">
+    <value>Ingredients</value>
+  </data>
 </root>

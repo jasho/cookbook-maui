@@ -25,7 +25,7 @@ public class RecipeListViewModel : ViewModelBase
         this.recipesClient = recipesClient;
 
         GoToDetailCommand = commandFactory.CreateCommand<Guid>(GoToDetailAsync);
-        GoToCreateCommand = commandFactory.CreateCommand<Guid>(GoToCreateAsync);
+        GoToCreateCommand = commandFactory.CreateCommand(GoToCreateAsync);
     }
 
     public override async Task OnAppearingAsync()
@@ -37,9 +37,11 @@ public class RecipeListViewModel : ViewModelBase
 
     private async Task GoToDetailAsync(Guid id)
     {
+        var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
+        await Shell.Current.GoToAsync($"{route}?id={id}");
     }
 
-    private async Task GoToCreateAsync(Guid id)
+    private async Task GoToCreateAsync()
     {
     }
 }

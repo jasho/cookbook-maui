@@ -12,5 +12,10 @@
 
     <Color x:Key="PrimaryButtonTextColor">#FFFFFF</Color>
 
+    <Color x:Key="DessertFoodTypeColor">#F868AB</Color>
+    <Color x:Key="MainDishFoodTypeColor">#00AE4B</Color>
+    <Color x:Key="SoupFoodTypeColor">#ED7500</Color>
+    <Color x:Key="UnknownFoodTypeColor">#F8F8F8</Color>
+
     <Color x:Key="ErrorColor">#FF0000</Color>
 </ResourceDictionary>

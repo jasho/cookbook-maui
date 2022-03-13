@@ -38,21 +38,21 @@
             <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.House}"
                              FontFamily="{Static fonts:Fonts.FontAwesome}"/>
         </FlyoutItem.Icon>
-        
-        <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
-            <Tab.Icon>
-                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
-        </Tab>
-        
+
         <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
+        </Tab>
+
+        <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
+            <Tab.Icon>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
         </Tab>
     </FlyoutItem>
     

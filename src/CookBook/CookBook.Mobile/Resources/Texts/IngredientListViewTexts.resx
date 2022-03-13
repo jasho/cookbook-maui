@@ -101,6 +101,9 @@
     <value>COOKBOOK</value>
   </data>
   <data name="AddNew_Button_Text" xml:space="preserve">
-    <value>Add New</value>
+    <value>+</value>
+  </data>
+  <data name="Title_Label" xml:space="preserve">
+    <value>Ingredients</value>
   </data>
 </root>

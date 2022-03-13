@@ -16,7 +16,7 @@
               RowSpacing="20"
               Margin="30">
             <Label Grid.Row="0"
-                   Text="Ingredients"
+                   Text="{x:Static texts:IngredientListViewTexts.Title_Label}"
                    FontSize="24"
                    Style="{StaticResource BoldLabelStyle}"/>
             

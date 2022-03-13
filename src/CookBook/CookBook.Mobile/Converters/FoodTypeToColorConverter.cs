@@ -1,18 +1,19 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
 
-namespace CookBook.Mobile.Converters
+namespace CookBook.Mobile.Converters;
+
+public class FoodTypeToColorConverter : BaseConverterOneWay<FoodType, Color>
 {
-    public class FoodTypeToColorConverter : BaseConverterOneWay<FoodType, Color>
+    public override Color? ConvertFrom(FoodType value)
     {
-        public override Color? ConvertFrom(FoodType value)
-            => value switch
-            {
-                FoodType.Unknown => Colors.Grey,
-                FoodType.MainDish => Colors.Blue,
-                FoodType.Soup => Colors.Yellow,
-                FoodType.Dessert => Colors.Red,
-                _ => throw new NotImplementedException(),
-            };
+        var color = Grey;
+
+        if (Application.Current.Resources.TryGetValue($"{value}FoodTypeColor", out var resourceColor))
+        {
+            color = resourceColor as Color;
+        }
+
+        return color;
     }
 }

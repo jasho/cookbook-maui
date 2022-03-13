@@ -98,9 +98,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddNew_Button_Text" xml:space="preserve">
-    <value>Add New</value>
+    <value>+</value>
   </data>
   <data name="Page_Title" xml:space="preserve">
     <value>COOKBOOK</value>
+  </data>
+  <data name="Title_Label" xml:space="preserve">
+    <value>Recipes</value>
   </data>
 </root>
