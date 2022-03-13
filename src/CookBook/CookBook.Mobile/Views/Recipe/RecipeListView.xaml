@@ -28,30 +28,30 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
                         <Frame Grid.Row="0" Grid.RowSpan="2"
-                                HeightRequest="200"
-                                IsClippedToBounds="True"
-                                CornerRadius="10"
-                                Padding="0">
+                               HeightRequest="200"
+                               IsClippedToBounds="True"
+                               CornerRadius="10"
+                               Padding="0">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                                       CommandParameter="{Binding Id}"/>
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*, *">
                                 <Image Grid.Row="0" Grid.RowSpan="2"
-                                        Source="{Binding ImageUrl}"
-                                        HeightRequest="200"
-                                        Aspect="AspectFill"/>
+                                       Source="{Binding ImageUrl, TargetNullValue='/Images/recipe_list_placeholder.jpg'}"
+                                       HeightRequest="200"
+                                       Aspect="AspectFill"/>
                                     
                                 <BoxView Grid.Row="0" Grid.RowSpan="2"
-                                            Color="Black"
-                                            Opacity="0.25"/>
+                                         Color="Black"
+                                         Opacity="0.25"/>
 
                                 <Frame Grid.Row="0"
-                                        HorizontalOptions="Start" VerticalOptions="Start"
-                                        CornerRadius="5"
-                                        Padding="6, 3"
-                                        Margin="22"
-                                        BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
+                                       HorizontalOptions="Start" VerticalOptions="Start"
+                                       CornerRadius="5"
+                                       Padding="6, 3"
+                                       Margin="22"
+                                       BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
                                     <HorizontalStackLayout HorizontalOptions="Start"
                                                            Spacing="8"
                                                            Padding="0">
@@ -68,13 +68,13 @@
                                 </Frame>
 
                                 <Label Grid.Row="1"
-                                        Text="{Binding Name}"
-                                        VerticalOptions="End"
-                                        LineBreakMode="WordWrap"
-                                        FontSize="20"
-                                        TextColor="White"
-                                        Style="{StaticResource BoldLabelStyle}"
-                                        Margin="22, 12"/>
+                                       Text="{Binding Name}"
+                                       VerticalOptions="End"
+                                       LineBreakMode="WordWrap"
+                                       FontSize="20"
+                                       TextColor="White"
+                                       Style="{StaticResource BoldLabelStyle}"
+                                       Margin="22, 12"/>
                             </Grid>
                         </Frame>
                     </DataTemplate>
