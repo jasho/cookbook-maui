@@ -21,5 +21,7 @@
 
     <Color x:Key="ImageBorderColor">#707070</Color>
 
+    <Color x:Key="FormEntryBackgroundColor">#F8F8F8</Color>
+
     <Color x:Key="ErrorColor">#FF0000</Color>
 </ResourceDictionary>

@@ -3,47 +3,65 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:controls="using:CookBook.Mobile.Controls"
                        xmlns:models="clr-namespace:CookBook.Mobile.Models"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientEditView"
-                       Title="{Binding Ingredient.Name}"
-                       x:DataType="viewModels:IngredientEditViewModel">
-    <Grid RowDefinitions="Auto, Auto, *, Auto"
-          ColumnDefinitions="Auto, *"
-          RowSpacing="5">
-        <Label Grid.Row="0" Grid.Column="0"
-               VerticalOptions="Center"
-               Text="Name:"/>
-        <controls:MyEntry Grid.Row="0" Grid.Column="1"
-                          VerticalOptions="Center"
-                          Text="{Binding Ingredient.Name}"/>
+                       Title="{x:Static texts:IngredientEditViewTexts.Page_Title}"
+                       x:DataType="viewModels:IngredientEditViewModel"
+                       Style="{StaticResource ContentPageStyle}">
+    <Grid RowDefinitions="Auto, Auto, *"
+          RowSpacing="20">
+        <VerticalStackLayout Spacing="5">
+            <Label Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}"
+                   FontSize="14"
+                   Style="{StaticResource RegularLabelStyle}" />
 
-        <Label Grid.Row="1" Grid.Column="0"
-               VerticalOptions="Center"
-               Text="Image:"/>
-        <HorizontalStackLayout  Grid.Row="1" Grid.Column="1"
-                                Spacing="10">
-            <Button Text="Pick Image"
-                    Command="{Binding PickImageCommand}"
-                    Style="{StaticResource PrimaryButtonStyle}"/>
-            
-            <Label Text="{Binding ImageFileResult.FileName}"/>
-        </HorizontalStackLayout>
-        
-        
-        <Label Grid.Row="2" Grid.Column="0"
-               VerticalOptions="Start"
-               Text="Description:"/>
-        <Editor Grid.Row="2" Grid.Column="1"
-                VerticalOptions="Fill"
-                VerticalTextAlignment="Start"
-                Text="{Binding Ingredient.Description}"/>
+            <Frame CornerRadius="5"
+                   IsClippedToBounds="True"
+                   BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
+                   BorderColor="{DynamicResource FormEntryBorderColor}"
+                   Padding="10, 0">
+                <Entry Text="{Binding Ingredient.Name}"
+                       VerticalOptions="Start"
+                       Style="{StaticResource FormEntryStyle}" />
+            </Frame>
+        </VerticalStackLayout>
 
-        <Button Grid.Row="3"
-                Grid.Column="0" Grid.ColumnSpan="2"
-                HorizontalOptions="Center"
-                Text="Save"
-                Command="{Binding SaveCommand}"
-                Style="{StaticResource PrimaryButtonStyle}"/>
+        <Frame Grid.Row="1"
+               HorizontalOptions="Center"
+               WidthRequest="170" HeightRequest="170"
+               IsClippedToBounds="True"
+               CornerRadius="10"
+               Padding="0">
+            <Grid WidthRequest="170">
+                <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"
+                       WidthRequest="170" HeightRequest="170"
+                       Aspect="AspectFill"/>
+
+                <Button HorizontalOptions="Center" VerticalOptions="End"
+                        Text="{x:Static texts:IngredientEditViewTexts.SelectImage_Button_Text}"
+                        Margin="0, 0, 0, 10"
+                        CornerRadius="5"
+                        Style="{StaticResource PrimaryButtonStyle}"/>
+            </Grid>
+        </Frame>
+
+        <Grid Grid.Row="2"
+              RowDefinitions="Auto, *"
+              RowSpacing="5">
+            <Label Grid.Row="0"
+                   Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}"
+                   FontSize="14"
+                   Style="{StaticResource RegularLabelStyle}" />
+
+            <Frame Grid.Row="1"
+                   BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
+                   CornerRadius="5"
+                   Padding="10, 0">
+                <Editor Text="{Binding Ingredient.Description}"
+                        Style="{StaticResource FormEditorStyle}" />
+            </Frame>
+        </Grid>
     </Grid>
 </views:ContentPageBase>

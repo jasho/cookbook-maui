@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
         <!-- Targets possible from Windows OS -->
@@ -66,10 +66,9 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
-      <None Remove="Resources\Images\ingredient_detail_placeholder.jpg" />
-      <None Remove="Resources\Images\ingredient_list_placeholder.jpg" />
+      <None Remove="Resources\Images\ingredient_placeholder.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
-      <None Remove="Resources\Images\recipe_list_placeholder.jpg" />
+      <None Remove="Resources\Images\recipe_placeholder.jpg" />
     </ItemGroup>
 
     <ItemGroup>
@@ -91,6 +90,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Styles\EditorStyle.xaml.cs">
+        <DependentUpon>EditorStyle.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Styles\EntryStyle.xaml.cs">
+        <DependentUpon>EntryStyle.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Styles\ContentPageStyle.xaml.cs">
         <DependentUpon>ContentPageStyle.xaml</DependentUpon>
       </Compile>
@@ -117,6 +122,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>IngredientDetailViewTexts.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Texts\IngredientEditViewTexts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>IngredientEditViewTexts.resx</DependentUpon>
       </Compile>
       <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -163,6 +173,10 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
@@ -179,6 +193,14 @@
 
     <ItemGroup>
       <MauiXaml Update="AppShell.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\EditorStyle.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Resources\Styles\EntryStyle.xaml">
+        <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Resources\Styles\ContentPageStyle.xaml">

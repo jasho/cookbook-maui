@@ -42,7 +42,7 @@
                HorizontalOptions="Center"
                CornerRadius="10"
                IsClippedToBounds="True">
-            <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_detail_placeholder.jpg'}"
+            <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"
                    HorizontalOptions="Center" VerticalOptions="Center"
                    WidthRequest="170" HeightRequest="170"
                    Aspect="AspectFill"/>

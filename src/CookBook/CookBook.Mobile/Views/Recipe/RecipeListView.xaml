@@ -38,7 +38,7 @@
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*, *">
                                 <Image Grid.Row="0" Grid.RowSpan="2"
-                                       Source="{Binding ImageUrl, TargetNullValue='/Images/recipe_list_placeholder.jpg'}"
+                                       Source="{Binding ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}"
                                        HeightRequest="200"
                                        Aspect="AspectFill"/>
                                     
