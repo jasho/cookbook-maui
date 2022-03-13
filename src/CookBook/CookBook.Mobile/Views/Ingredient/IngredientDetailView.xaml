@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                        xmlns:models="clr-namespace:CookBook.Mobile.Models"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Class="CookBook.Mobile.Views.IngredientDetailView"
-                       Title="{Binding Ingredient.Name}"
+                       Title="{x:Static texts:IngredientDetailTexts.Page_Title}"
                        x:DataType="viewModels:IngredientDetailViewModel">
-    <Label Text="{Binding Ingredient.Name}"
-           HorizontalOptions="Center" VerticalOptions="Center"
-           TextColor="Red"/>
+    <views:ContentPageBase.ToolbarItems>
+        <ToolbarItem Command="{Binding DeleteCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Trash}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}"
+                                 FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        
+        <ToolbarItem Command="{Binding GoToEditCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}"
+                                 FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </views:ContentPageBase.ToolbarItems>
+    
+    <Grid RowDefinitions="Auto, Auto, *"
+          RowSpacing="20">
+        <Label Grid.Row="0"
+               HorizontalOptions="Center"
+               Text="{Binding Ingredient.Name}"
+               FontSize="24"
+               Style="{StaticResource BoldLabelStyle}" />
+
+        <Frame Grid.Row="1"
+               WidthRequest="170" HeightRequest="170"
+               HorizontalOptions="Center"
+               CornerRadius="10"
+               IsClippedToBounds="True">
+            <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_detail_placeholder.jpg'}"
+                   HorizontalOptions="Center" VerticalOptions="Center"
+                   WidthRequest="170" HeightRequest="170"
+                   Aspect="AspectFill"/>
+        </Frame>
+
+        <Label Grid.Row="2"
+               HorizontalOptions="Center" VerticalOptions="Start"
+               Text="{Binding Ingredient.Description}"
+               FontSize="14"
+               Style="{StaticResource RegularLabelStyle}"/>
+    </Grid>
 </views:ContentPageBase>

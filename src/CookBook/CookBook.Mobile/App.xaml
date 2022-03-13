@@ -9,11 +9,13 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <local:ButtonStyle/>
+                <local:ContentPageStyle/>
                 <local:LabelStyle/>
                 <local:LightTheme/>
             </ResourceDictionary.MergedDictionaries>
             
-            <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter"/>
+            <converters:FoodTypeToColorConverter x:Key="
+                                                 FoodTypeToColorConverter"/>
             <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter"/>
         </ResourceDictionary>
     </Application.Resources>

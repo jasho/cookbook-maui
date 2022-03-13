@@ -1,4 +1,5 @@
-﻿using CookBook.Common.Models;
+﻿
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using System.Windows.Input;

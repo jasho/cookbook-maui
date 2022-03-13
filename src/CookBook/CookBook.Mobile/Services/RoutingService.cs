@@ -12,11 +12,12 @@ public class RoutingService : IRoutingService
     {
         new RouteModel("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
         new RouteModel("//ingredients/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
+        new RouteModel("//ingredients/detail/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
         
         new RouteModel("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel)),
     };
 
     public string GetRouteByViewModel<TViewModel>()
         where TViewModel : IViewModel
-        => Routes.Single(route => route.ViewModelType == typeof(TViewModel)).Route;
+        => Routes.First(route => route.ViewModelType == typeof(TViewModel)).Route;
 }

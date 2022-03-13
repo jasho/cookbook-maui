@@ -9,7 +9,7 @@
                        x:Class="CookBook.Mobile.Views.IngredientListView"
                        x:DataType="viewModels:IngredientListViewModel"
                        Title="{x:Static texts:IngredientListViewTexts.Page_Title}"
-                       BackgroundColor="{StaticResource BackgroundColor}"
+                       BackgroundColor="{DynamicResource BackgroundColor}"
                        x:Name="Root">
     <Grid>
         <Grid RowDefinitions="Auto, *"

@@ -66,6 +66,7 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+      <None Remove="Resources\Images\ingredient_detail_placeholder.jpg" />
       <None Remove="Resources\Images\ingredient_list_placeholder.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
       <None Remove="Resources\Images\recipe_list_placeholder.jpg" />
@@ -90,6 +91,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Styles\ContentPageStyle.xaml.cs">
+        <DependentUpon>ContentPageStyle.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Styles\LabelStyle.xaml.cs">
         <DependentUpon>LabelStyle.xaml</DependentUpon>
       </Compile>
@@ -108,6 +112,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>FoodTypeTexts.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Texts\IngredientDetailTexts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>IngredientDetailTexts.resx</DependentUpon>
       </Compile>
       <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -150,6 +159,10 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Texts\IngredientDetailTexts.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>IngredientDetailTexts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
@@ -168,6 +181,10 @@
       <MauiXaml Update="AppShell.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Resources\Styles\ContentPageStyle.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Resources\Styles\LabelStyle.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
@@ -177,6 +194,9 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Resources\Styles\LightTheme.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Base\ContentPageBase.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
