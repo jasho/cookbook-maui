@@ -1,73 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
-                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
-                       xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientListView"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                       x:Class="CookBook.Mobile.Views.IngredientListView"
-                       x:DataType="viewModels:IngredientListViewModel"
+                       x:Name="Root"
                        Title="{x:Static texts:IngredientListViewTexts.Page_Title}"
-                       BackgroundColor="{DynamicResource BackgroundColor}"
-                       x:Name="Root">
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="viewModels:IngredientListViewModel">
     <Grid>
-        <Grid RowDefinitions="Auto, *"
-              RowSpacing="20"
-              Margin="30">
+        <Grid HorizontalOptions="Center" RowDefinitions="Auto, *"
+              RowSpacing="20">
             <Label Grid.Row="0"
-                   Text="{x:Static texts:IngredientListViewTexts.Title_Label}"
                    FontSize="24"
-                   Style="{StaticResource BoldLabelStyle}"/>
-            
-            <CollectionView Grid.Row="1"
-                            ItemsSource="{Binding Items}">
+                   Style="{StaticResource BoldLabelStyle}"
+                   Text="{x:Static texts:IngredientListViewTexts.Title_Label}" />
+
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical"
-                                       ItemSpacing="8"/>
+                    <LinearItemsLayout ItemSpacing="8" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:IngredientListModel">
-                        <Grid ColumnDefinitions="34, *, Auto"
-                              HeightRequest="40"
-                              BackgroundColor="Transparent"
-                              ColumnSpacing="20">
+                        <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *, Auto"
+                              ColumnSpacing="20" HeightRequest="40">
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                                      CommandParameter="{Binding Id}"/>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}" CommandParameter="{Binding Id}" />
                             </Grid.GestureRecognizers>
-                            <BoxView Grid.Column="0" Grid.ColumnSpan='3'
-                                     HorizontalOptions="Fill" VerticalOptions="Fill"
-                                     Color="{DynamicResource ListItemBackgroundColor}"
-                                     CornerRadius="5"/>
+                            <BoxView Grid.Column="0" Grid.ColumnSpan="3"
+                                     CornerRadius="5" HorizontalOptions="Fill"
+                                     VerticalOptions="Fill"
+                                     Color="{DynamicResource ListItemBackgroundColor}" />
 
                             <Frame Grid.Column="0"
-                                   WidthRequest="34" HeightRequest="34" 
-                                   VerticalOptions="Center"
-                                   IsClippedToBounds="True"
-                                   CornerRadius="5"
-                                   Padding="0"
-                                   Margin="4, 0, 0, 0">
-                                <Image Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"
-                                       HeightRequest="34"
-                                       Aspect="AspectFill"/>
+                                   Margin="4,0,0,0" Padding="0"
+                                   CornerRadius="5" HeightRequest="34"
+                                   IsClippedToBounds="True" VerticalOptions="Center"
+                                   WidthRequest="34">
+                                <Image Aspect="AspectFill" HeightRequest="34"
+                                       Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}" />
                             </Frame>
 
                             <Label Grid.Column="1"
+                                   HorizontalOptions="Start"
+                                   Style="{StaticResource MediumLabelStyle}"
                                    Text="{Binding Name}"
-                                   HorizontalOptions="Start" VerticalOptions="Center"
-                                   Style="{StaticResource MediumLabelStyle}"/>
+                                   VerticalOptions="Center" />
 
                             <ImageButton Grid.Column="2"
-                                         HeightRequest="20"
-                                         HorizontalOptions="End" VerticalOptions="Center"
+                                         Margin="0,0,12,0"
                                          Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
                                          CommandParameter="{Binding Id}"
-                                         Margin="0, 0, 12, 0">
+                                         HeightRequest="20" HorizontalOptions="End"
+                                         VerticalOptions="Center">
                                 <ImageButton.Source>
-                                    <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.Pen}"
-                                                     Color="{DynamicResource PrimaryColor}"
-                                                     FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+                                    <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
+                                                     Glyph="{Static fonts:FontAwesomeIcons.Pen}"
+                                                     Color="{DynamicResource PrimaryColor}" />
                                 </ImageButton.Source>
                             </ImageButton>
                         </Grid>
@@ -76,15 +65,12 @@
             </CollectionView>
         </Grid>
 
-        <Button Text="+"
-                FontFamily="MontserratRegular"
-                HorizontalOptions="End" VerticalOptions="End"
-                WidthRequest="65"
-                FontSize="50"
-                CornerRadius="60"
+        <Button Margin="0,0,14,9" Padding="0"
                 Command="{Binding GoToCreateCommand}"
+                CornerRadius="60" FontFamily="MontserratRegular"
+                FontSize="50" HorizontalOptions="End"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Padding="0"
-                Margin="0, 0, 14, 9" />
+                Text="+" VerticalOptions="End"
+                WidthRequest="65" />
     </Grid>
 </views:ContentPageBase>

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:recipe="clr-namespace:CookBook.Mobile.ViewModels.Recipe"
-                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                       x:Class="CookBook.Mobile.Views.SettingsView"
-                       x:DataType="recipe:RecipeListViewModel"
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.SettingsView"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common" xmlns:recipe="clr-namespace:CookBook.Mobile.ViewModels.Recipe"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Name="Root"
-                       Title="{x:Static texts:SettingsViewTexts.Page_Title}">
-    <Label Text="Settings"
-           HorizontalOptions="Center" VerticalOptions="Center"/>
+                       Title="{x:Static texts:SettingsViewTexts.Page_Title}"
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="recipe:RecipeListViewModel">
+    <Label HorizontalOptions="Center" Text="Settings"
+           VerticalOptions="Center" />
 </views:ContentPageBase>
