@@ -46,7 +46,7 @@
                                     <HorizontalStackLayout Padding="0"
                                                            HorizontalOptions="Start" Spacing="8">
                                         <Label FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                               Text="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
+                                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
                                                TextColor="White" VerticalOptions="Center" />
 
                                         <Label FontSize="11"

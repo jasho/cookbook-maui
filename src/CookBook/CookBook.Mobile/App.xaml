@@ -13,8 +13,9 @@
                 <local:LightTheme />
             </ResourceDictionary.MergedDictionaries>
 
-            <converters:FoodTypeToColorConverter x:Key="                                                  FoodTypeToColorConverter" />
+            <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />
             <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter" />
+            <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
