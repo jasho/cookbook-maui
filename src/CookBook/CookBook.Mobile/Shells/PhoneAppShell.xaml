@@ -4,7 +4,7 @@
        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-       x:Class="CookBook.Mobile.AppShell"
+       x:Class="CookBook.Mobile.Shells.PhoneAppShell"
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
        Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
        Shell.UnselectedColor="{DynamicResource UnselectedColor}"
@@ -42,7 +42,7 @@
         <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
         </Tab>
@@ -50,7 +50,7 @@
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
             <Tab.Icon>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
         </Tab>

@@ -1,4 +1,6 @@
-﻿namespace CookBook.Mobile;
+﻿using CookBook.Mobile.Shells;
+
+namespace CookBook.Mobile;
 
 public partial class App
 {
@@ -6,6 +8,13 @@ public partial class App
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
+        if (Device.Idiom == TargetIdiom.Phone)
+        {
+            MainPage = new PhoneAppShell();
+        }
+        else
+        {
+            MainPage = new DesktopAppShell();
+        }
     }
 }
