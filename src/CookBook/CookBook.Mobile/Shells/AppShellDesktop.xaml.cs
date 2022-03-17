@@ -1,8 +1,8 @@
 namespace CookBook.Mobile.Shells;
 
-public partial class DesktopAppShell
+public partial class AppShellDesktop
 {
-    public DesktopAppShell()
+    public AppShellDesktop()
     {
         InitializeComponent();
     }

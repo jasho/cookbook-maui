@@ -1,8 +1,8 @@
 namespace CookBook.Mobile.Shells;
 
-public partial class PhoneAppShell
+public partial class AppShellPhone
 {
-	public PhoneAppShell()
+	public AppShellPhone()
 	{
 		InitializeComponent();
 	}

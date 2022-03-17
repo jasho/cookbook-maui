@@ -48,15 +48,14 @@
 
             <Frame Grid.Row="2"
                    BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
-                   HeightRequest="60"
+                   HeightRequest="100"
                    CornerRadius="10"
                    Padding="0">
                 <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, *"
                       HorizontalOptions="Fill" VerticalOptions="Center"
                       RowSpacing="5">
                     <Image Grid.Row="0" Grid.Column="0"
-                           HorizontalOptions="Center" VerticalOptions="End"
-                           Aspect="AspectFill">
+                           HorizontalOptions="Center" VerticalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
                                              Color="White"
@@ -73,8 +72,7 @@
                            Style="{StaticResource MediumLabelStyle}"/>
 
                     <Image Grid.Row="0" Grid.Column="1"
-                           HorizontalOptions="Center" VerticalOptions="End"
-                           Aspect="AspectFill">
+                           HorizontalOptions="Center" VerticalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Clock}"
                                              Color="White"
@@ -91,8 +89,7 @@
                            Style="{StaticResource MediumLabelStyle}"/>
 
                     <Image Grid.Row="0" Grid.Column="2"
-                           HorizontalOptions="Center" VerticalOptions="End"
-                           Aspect="AspectFill">
+                           HorizontalOptions="Center" VerticalOptions="End">
                         <Image.Source>
                             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
                                              Color="White"

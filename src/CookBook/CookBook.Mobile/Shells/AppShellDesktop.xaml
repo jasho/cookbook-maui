@@ -4,7 +4,7 @@
        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-       x:Class="CookBook.Mobile.Shells.DesktopAppShell"
+       x:Class="CookBook.Mobile.Shells.AppShellDesktop"
        Title="DesktopAppShell"
        Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}">
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">

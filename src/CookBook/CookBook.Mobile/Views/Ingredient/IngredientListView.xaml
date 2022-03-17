@@ -51,10 +51,11 @@
                                          Margin="0,0,12,0"
                                          Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
                                          CommandParameter="{Binding Id}"
-                                         HeightRequest="20" HorizontalOptions="End"
+                                         HorizontalOptions="End"
                                          VerticalOptions="Center">
                                 <ImageButton.Source>
                                     <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
+                                                     Size="20"
                                                      Glyph="{Static fonts:FontAwesomeIcons.Pen}"
                                                      Color="{DynamicResource PrimaryColor}" />
                                 </ImageButton.Source>

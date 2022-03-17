@@ -90,8 +90,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Shells\PhoneAppShell.xaml.cs">
-        <DependentUpon>PhoneAppShell.xaml</DependentUpon>
+      <Compile Update="Shells\AppShellDesktop.xaml.cs">
+        <DependentUpon>AppShellDesktop.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Shells\AppShellPhone.xaml.cs">
+        <DependentUpon>AppShellPhone.xaml</DependentUpon>
       </Compile>
       <Compile Update="Resources\Styles\EditorStyle.xaml.cs">
         <DependentUpon>EditorStyle.xaml</DependentUpon>
@@ -213,10 +216,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <MauiXaml Update="Shells\DesktopAppShell.xaml">
+      <MauiXaml Update="Shells\AppShellDesktop.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Shells\PhoneAppShell.xaml">
+      <MauiXaml Update="Shells\AppShellPhone.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Resources\Styles\EditorStyle.xaml">

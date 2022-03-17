@@ -4,7 +4,7 @@
        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-       x:Class="CookBook.Mobile.Shells.PhoneAppShell"
+       x:Class="CookBook.Mobile.Shells.AppShellPhone"
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
        Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
        Shell.UnselectedColor="{DynamicResource UnselectedColor}"

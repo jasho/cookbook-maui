@@ -10,11 +10,11 @@ public partial class App
 
         if (Device.Idiom == TargetIdiom.Phone)
         {
-            MainPage = new PhoneAppShell();
+            MainPage = new AppShellPhone();
         }
         else
         {
-            MainPage = new DesktopAppShell();
+            MainPage = new AppShellDesktop();
         }
     }
 }
