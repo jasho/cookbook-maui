@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CookBook.Mobile.Services
+namespace CookBook.Mobile.Services;
+
+public partial class DeviceOrientationService
 {
-    public partial class DeviceOrientationService
-    {
-        public partial DeviceOrientation GetOrientation()
-        {
-            return DeviceOrientation.Landscape;
-        }
-    }
+    public partial DeviceOrientation GetOrientation()
+        => DeviceOrientation.Landscape;
 }
