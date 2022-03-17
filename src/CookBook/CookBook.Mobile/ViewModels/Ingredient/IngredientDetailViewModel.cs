@@ -26,6 +26,7 @@ public class IngredientDetailViewModel : ViewModelBase
     {
         this.ingredientsClient = ingredientsClient;
         this.routingService = routingService;
+
         DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
         GoToEditCommand = commandFactory.CreateCommand(GoToEditAsync);
     }

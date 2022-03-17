@@ -133,6 +133,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>IngredientListViewTexts.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Texts\RecipeDetailViewTexts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RecipeDetailViewTexts.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Texts\RecipeListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -142,6 +147,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>SettingsViewTexts.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Texts\UnitTexts.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>UnitTexts.resx</DependentUpon>
       </Compile>
       <Compile Update="Views\Ingredient\IngredientEditView.xaml.cs">
         <DependentUpon>IngredientEditView.xaml</DependentUpon>
@@ -181,6 +191,10 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Texts\RecipeDetailViewTexts.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RecipeDetailViewTexts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>RecipeListViewTexts.Designer.cs</LastGenOutput>
@@ -188,6 +202,10 @@
       <EmbeddedResource Update="Resources\Texts\SettingsViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>SettingsViewTexts.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Texts\UnitTexts.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>UnitTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
