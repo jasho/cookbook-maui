@@ -61,7 +61,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[1],
                 Name = "Cibule",
                 Description = "Popis cibule",
-                ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"
+                ImageUrl = "https://i.ibb.co/sbXC0rS/480px-Onion-on-White.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -150,7 +150,7 @@ namespace CookBook.Api
                 Description = "Popis míchaných vajec",
                 Duration = 15,
                 FoodType = FoodType.MainDish,
-                ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Scrambled_eggs-01.jpg/320px-Scrambled_eggs-01.jpg"
+                ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
             });
             
             Recipes.Add(new RecipeEntity
