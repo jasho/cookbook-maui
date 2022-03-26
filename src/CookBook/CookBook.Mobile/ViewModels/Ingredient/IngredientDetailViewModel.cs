@@ -67,7 +67,7 @@ public class IngredientDetailViewModel : ViewModelBase
 
 {Ingredient.Description}",
                 Subject = $"CookBook - {Ingredient.Name}",
-                Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/recipes/{Ingredient.Id.Value}"
+                Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/ingredients/{Ingredient.Id.Value}"
             });
         }
     }

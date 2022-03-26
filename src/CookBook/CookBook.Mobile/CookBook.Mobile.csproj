@@ -277,4 +277,12 @@
         <OutputType>WinExe</OutputType>
         <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+      <WarningLevel>0</WarningLevel>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+      <WarningLevel>0</WarningLevel>
+    </PropertyGroup>
 </Project>

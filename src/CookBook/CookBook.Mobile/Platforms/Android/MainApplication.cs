@@ -3,7 +3,7 @@ using Android.Runtime;
 
 namespace CookBook.Mobile
 {
-    [Application]
+    [Application(Theme = "@style/Maui.SplashTheme")]
     public class MainApplication : MauiApplication
     {
         public MainApplication(IntPtr handle, JniHandleOwnership ownership)
