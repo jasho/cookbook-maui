@@ -17,6 +17,7 @@
                                  Color="{DynamicResource NavigationBarTextColor}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
+        
         <ToolbarItem Command="{Binding DeleteCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"

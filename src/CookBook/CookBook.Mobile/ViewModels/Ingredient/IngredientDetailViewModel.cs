@@ -11,6 +11,7 @@ public class IngredientDetailViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
     private readonly IRoutingService routingService;
+    private readonly IShare share;
 
     public string? Id { private get; set; }
 
@@ -18,17 +19,20 @@ public class IngredientDetailViewModel : ViewModelBase
 
     public ICommand DeleteCommand { get; set; }
     public ICommand GoToEditCommand { get; set; }
+    public ICommand ShareCommand { get; set; }
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,
         IRoutingService routingService,
-        ICommandFactory commandFactory)
+        ICommandFactory commandFactory,
+        IShare share)
     {
         this.ingredientsClient = ingredientsClient;
         this.routingService = routingService;
-
+        this.share = share;
         DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
         GoToEditCommand = commandFactory.CreateCommand(GoToEditAsync);
+        ShareCommand = commandFactory.CreateCommand(ShareAsync);
     }
 
     public override async Task OnAppearingAsync()
@@ -50,5 +54,21 @@ public class IngredientDetailViewModel : ViewModelBase
     private async Task GoToEditAsync()
     {
         await Shell.Current.GoToAsync($"/edit?id={Ingredient!.Id!.Value}");
+    }
+
+    private async Task ShareAsync()
+    {
+        if(Ingredient is not null)
+        {
+            await share.RequestAsync(new ShareTextRequest
+            {
+                Title = Ingredient.Name,
+                Text = $@"{Ingredient.Name}
+
+{Ingredient.Description}",
+                Subject = $"CookBook - {Ingredient.Name}",
+                Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/recipes/{Ingredient.Id.Value}"
+            });
+        }
     }
 }

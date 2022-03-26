@@ -19,7 +19,6 @@ public class RecipeDetailViewModel : ViewModelBase
     public ICommand GoToEditCommand { get; set; }
     public ICommand ShareCommand { get; set; }
 
-
     public RecipeDetailViewModel(
         IRecipesClient recipesClient,
         ICommandFactory commandFactory,
