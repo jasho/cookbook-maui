@@ -58,7 +58,7 @@ public class IngredientEditViewModel : ViewModelBase
             {
                 [DevicePlatform.Android] = new[] { ".png", ".jpg", ".jpeg" },
                 [DevicePlatform.iOS] = new[] { ".png", ".jpg", ".jpeg" },
-                [DevicePlatform.UWP] = new[] { ".png", ".jpg", ".jpeg" }
+                [DevicePlatform.WinUI] = new[] { ".png", ".jpg", ".jpeg" }
             })
         });
     }

@@ -1,10 +1,14 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
+using CookBook.Mobile.Options;
 using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
 using CookBook.Mobile.Views;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using System.Reflection;
 
 namespace CookBook.Mobile
 {
@@ -23,8 +27,12 @@ namespace CookBook.Mobile
                        fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
                    });
 
+            ConfigureAppSettings(builder);
+            ConfigureOptions(builder);
+            
             ConfigureViews(builder.Services);
             ConfigureViewModels(builder.Services);
+            
             ConfigureServices(builder.Services);
             ConfigureApiClients(builder.Services);
 
@@ -35,12 +43,31 @@ namespace CookBook.Mobile
             return app;
         }
 
+        private static void ConfigureAppSettings(MauiAppBuilder builder)
+        {
+            var configurationBuilder = new ConfigurationBuilder();
+            
+            var assembly = Assembly.GetExecutingAssembly();
+            var appSettingsFilePath = "CookBook.Mobile.Configuration.appsettings.json";
+            using var appSettingsStream = assembly.GetManifestResourceStream(appSettingsFilePath);
+            configurationBuilder.AddJsonStream(appSettingsStream);
+            
+            var configuration = configurationBuilder.Build();
+            builder.Configuration.AddConfiguration(configuration);
+        }
+
+        private static void ConfigureOptions(MauiAppBuilder builder)
+        {
+            builder.Services.Configure<ApiOptions>(options =>
+                builder.Configuration.GetSection(nameof(ApiOptions)).Bind(options));
+        }
+
         private static void ConfigureViews(IServiceCollection services)
         {
             services.Scan(selector => selector
                 .FromAssemblyOf<App>()
                 .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
-                    .AsSelfWithInterfaces()
+                    .AsSelf()
                     .WithTransientLifetime());
         }
 
@@ -63,16 +90,18 @@ namespace CookBook.Mobile
 
         private static void ConfigureApiClients(IServiceCollection services)
         {
-            var baseUri = new Uri("https://app-cookbook-maui-api.azurewebsites.net/");
-
             services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) =>
             {
-                client.BaseAddress = baseUri;
+                var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
+                
+                client.BaseAddress = new Uri(apiOptions.Value.ApiUrl);
             });
 
             services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) =>
             {
-                client.BaseAddress = baseUri;
+                var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
+
+                client.BaseAddress = new Uri(apiOptions.Value.ApiUrl);
             });
         }
 
