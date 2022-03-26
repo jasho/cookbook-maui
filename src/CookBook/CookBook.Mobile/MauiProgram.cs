@@ -4,6 +4,7 @@ using CookBook.Mobile.Factories;
 using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
+using CookBook.Mobile.Views;
 
 namespace CookBook.Mobile
 {
@@ -22,11 +23,9 @@ namespace CookBook.Mobile
                        fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
                    });
 
-            builder.Services.AddSingleton<ICommandFactory, CommandFactory>();
-            builder.Services.AddSingleton<IRoutingService, RoutingService>();
-            builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
-
+            ConfigureViews(builder.Services);
             ConfigureViewModels(builder.Services);
+            ConfigureServices(builder.Services);
             ConfigureApiClients(builder.Services);
 
             var app = builder.Build();
@@ -36,6 +35,15 @@ namespace CookBook.Mobile
             return app;
         }
 
+        private static void ConfigureViews(IServiceCollection services)
+        {
+            services.Scan(selector => selector
+                .FromAssemblyOf<App>()
+                .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
+                    .AsSelfWithInterfaces()
+                    .WithTransientLifetime());
+        }
+
         private static void ConfigureViewModels(IServiceCollection services)
         {
             services.Scan(selector => selector
@@ -43,6 +51,14 @@ namespace CookBook.Mobile
                 .AddClasses(filter => filter.AssignableTo<IViewModel>())
                     .AsSelfWithInterfaces()
                     .WithTransientLifetime());
+        }
+        
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<ICommandFactory, CommandFactory>();
+            services.AddSingleton<IRoutingService, RoutingService>();
+            services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
+            services.AddSingleton<IShare>(_ => Share.Current);
         }
 
         private static void ConfigureApiClients(IServiceCollection services)
