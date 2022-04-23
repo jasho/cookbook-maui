@@ -2,19 +2,16 @@
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
-using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
-public class RecipeListViewModel : ViewModelBase
+public partial class RecipeListViewModel : ViewModelBase
 {
     private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
 
     public ICollection<RecipeListModel>? Items { get; set; }
-
-    public ICommand GoToDetailCommand { get; set; }
-    public ICommand GoToCreateCommand { get; set; }
 
     public RecipeListViewModel(
         IRoutingService routingService,
@@ -23,9 +20,6 @@ public class RecipeListViewModel : ViewModelBase
     {
         this.routingService = routingService;
         this.recipesClient = recipesClient;
-
-        GoToDetailCommand = commandFactory.CreateCommand<Guid>(GoToDetailAsync);
-        GoToCreateCommand = commandFactory.CreateCommand(GoToCreateAsync);
     }
 
     public override async Task OnAppearingAsync()
@@ -35,12 +29,14 @@ public class RecipeListViewModel : ViewModelBase
         Items = await recipesClient.GetRecipesAllAsync();
     }
 
+    [ICommand]
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
         await Shell.Current.GoToAsync($"{route}?id={id}");
     }
 
+    [ICommand]
     private async Task GoToCreateAsync()
     {
     }

@@ -1,34 +1,25 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using CookBook.Mobile.Factories;
-using System.Windows.Input;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
-public class RecipeDetailViewModel : ViewModelBase
+public partial class RecipeDetailViewModel : ViewModelBase
 {
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
 
     public string? Id { private get; set; }
-    
-    public RecipeDetailModel? Recipe { get; set; }
 
-    public ICommand DeleteCommand { get; set; }
-    public ICommand GoToEditCommand { get; set; }
-    public ICommand ShareCommand { get; set; }
+    public RecipeDetailModel? Recipe { get; set; }
 
     public RecipeDetailViewModel(
         IRecipesClient recipesClient,
-        ICommandFactory commandFactory,
         IShare share)
     {
         this.recipesClient = recipesClient;
         this.share = share;
-        DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
-        GoToEditCommand = commandFactory.CreateCommand(GoToEditAsync);
-        ShareCommand = commandFactory.CreateCommand(ShareAsync);
     }
 
     public override async Task OnAppearingAsync()
@@ -41,20 +32,23 @@ public class RecipeDetailViewModel : ViewModelBase
         }
     }
 
+    [ICommand]
     private async Task DeleteAsync()
     {
         await recipesClient.DeleteRecipeAsync(Recipe!.Id!.Value);
         Shell.Current.SendBackButtonPressed();
     }
 
+    [ICommand]
     private async Task GoToEditAsync()
     {
         await Shell.Current.GoToAsync($"/edit?id={Recipe!.Id!.Value}");
     }
 
+    [ICommand]
     private async Task ShareAsync()
     {
-        if(Recipe is not null)
+        if (Recipe?.Id is not null)
         {
             await share.RequestAsync(new ShareTextRequest
             {
