@@ -1,7 +1,5 @@
 ﻿using CookBook.Mobile.Models;
 using CookBook.Mobile.ViewModels;
-using CookBook.Mobile.ViewModels.Ingredient;
-using CookBook.Mobile.ViewModels.Recipe;
 using CookBook.Mobile.Views;
 
 namespace CookBook.Mobile.Services;

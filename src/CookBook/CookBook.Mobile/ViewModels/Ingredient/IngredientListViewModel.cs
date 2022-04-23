@@ -4,7 +4,7 @@ using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using System.Windows.Input;
 
-namespace CookBook.Mobile.ViewModels.Ingredient;
+namespace CookBook.Mobile.ViewModels;
 
 public class IngredientListViewModel : ViewModelBase
 {
@@ -12,7 +12,7 @@ public class IngredientListViewModel : ViewModelBase
     private readonly IIngredientsClient ingredientsClient;
 
     public ICollection<IngredientListModel>? Items { get; set; }
-
+    
     public ICommand GoToDetailCommand { get; set; }
     public ICommand GoToCreateCommand { get; set; }
     public ICommand GoToEditCommand { get; set; }

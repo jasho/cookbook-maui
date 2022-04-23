@@ -1,16 +1,16 @@
 ﻿<Application x:Class="CookBook.Mobile.App"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:CookBook.Mobile.Converters" xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
-             xmlns:local="clr-namespace:CookBook.Mobile" xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls">
+             xmlns:styles="clr-namespace:CookBook.Mobile.Resources.Styles" xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <local:ButtonStyle />
-                <local:ContentPageStyle />
-                <local:EditorStyle />
-                <local:EntryStyle />
-                <local:LabelStyle />
-                <local:LightTheme />
+                <styles:ButtonStyle />
+                <styles:ContentPageStyle />
+                <styles:EditorStyle />
+                <styles:EntryStyle />
+                <styles:LabelStyle />
+                <styles:LightTheme />
             </ResourceDictionary.MergedDictionaries>
 
             <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />

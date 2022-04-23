@@ -1,4 +1,4 @@
-namespace CookBook.Mobile;
+namespace CookBook.Mobile.Resources.Styles;
 
 public partial class LabelStyle
 {

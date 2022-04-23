@@ -3,7 +3,7 @@ using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using System.Windows.Input;
 
-namespace CookBook.Mobile.ViewModels.Recipe;
+namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
 public class RecipeDetailViewModel : ViewModelBase

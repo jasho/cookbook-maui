@@ -4,7 +4,7 @@ using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using System.Windows.Input;
 
-namespace CookBook.Mobile.ViewModels.Ingredient;
+namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
 public class IngredientDetailViewModel : ViewModelBase

@@ -1,10 +1,9 @@
-﻿
-using CookBook.Common.Models;
+﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using System.Windows.Input;
 
-namespace CookBook.Mobile.ViewModels.Ingredient;
+namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
 public class IngredientEditViewModel : ViewModelBase

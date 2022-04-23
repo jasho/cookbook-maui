@@ -2,11 +2,11 @@
 <views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientEditView"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:controls="using:CookBook.Mobile.Controls" xmlns:models="clr-namespace:CookBook.Mobile.Models"
-                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:viewModels="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        Title="{x:Static texts:IngredientEditViewTexts.Page_Title}"
                        Style="{StaticResource ContentPageStyle}"
-                       x:DataType="viewModels:IngredientEditViewModel">
+                       x:DataType="vm:IngredientEditViewModel">
     <Grid RowDefinitions="Auto, Auto, *" RowSpacing="20">
         <VerticalStackLayout Spacing="5">
             <Label FontSize="14"

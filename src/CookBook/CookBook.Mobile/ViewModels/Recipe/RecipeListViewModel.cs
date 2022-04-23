@@ -4,7 +4,7 @@ using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using System.Windows.Input;
 
-namespace CookBook.Mobile.ViewModels.Recipe;
+namespace CookBook.Mobile.ViewModels;
 
 public class RecipeListViewModel : ViewModelBase
 {
