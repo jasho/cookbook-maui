@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
+using CookBook.Mobile.Controls;
 using CookBook.Mobile.Factories;
+using CookBook.Mobile.Handlers;
 using CookBook.Mobile.Options;
 using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
@@ -35,6 +37,8 @@ namespace CookBook.Mobile
             
             ConfigureServices(builder.Services);
             ConfigureApiClients(builder.Services);
+            
+            ConfigureCustomHandlers(builder);
 
             var app = builder.Build();
 
@@ -85,7 +89,7 @@ namespace CookBook.Mobile
             services.AddSingleton<ICommandFactory, CommandFactory>();
             services.AddSingleton<IRoutingService, RoutingService>();
             services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
-            services.AddSingleton<IShare>(_ => Share.Current);
+            services.AddSingleton<IShare>(_ => Share.Default);
         }
 
         private static void ConfigureApiClients(IServiceCollection services)
@@ -102,6 +106,16 @@ namespace CookBook.Mobile
                 var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
 
                 client.BaseAddress = new Uri(apiOptions.Value.ApiUrl);
+            });
+        }
+
+        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
+        {
+            builder.ConfigureMauiHandlers(handlers =>
+            {
+#if __ANDROID__
+                handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
+#endif
             });
         }
 
