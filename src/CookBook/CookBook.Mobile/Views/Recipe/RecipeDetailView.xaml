@@ -47,7 +47,7 @@
                    IsClippedToBounds="True">
                 <Image Grid.Row="0" Grid.RowSpan="2"
                        Aspect="AspectFill" HeightRequest="200"
-                       Source="{Binding Recipe.ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}" />
+                       Source="{Binding Recipe.ImageUrl, Converter={StaticResource LocalImageWithPlaceholderConverter}, ConverterParameter='/Images/recipe_placeholder.jpg'}" />
             </Frame>
 
             <Label Grid.Row="1"

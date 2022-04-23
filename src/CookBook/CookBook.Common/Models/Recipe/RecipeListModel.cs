@@ -5,4 +5,5 @@ namespace CookBook.Common.Models;
 public record RecipeListModel(Guid Id, string Name, FoodType FoodType, string? ImageUrl = null)
     : ModelBase
 {
+    public string? ImageUrl { get; set; } = ImageUrl;
 }
