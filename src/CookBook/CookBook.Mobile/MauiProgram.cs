@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
-using CookBook.Mobile.Controls;
-using CookBook.Mobile.Handlers;
+//using CookBook.Mobile.Controls;
 using CookBook.Mobile.Options;
+//using CookBook.Mobile.Platforms.Android;
 using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.ViewModels;
@@ -37,7 +37,7 @@ namespace CookBook.Mobile
             ConfigureServices(builder.Services);
             ConfigureApiClients(builder.Services);
             
-            ConfigureCustomHandlers(builder);
+            //ConfigureCustomHandlers(builder);
 
             var app = builder.Build();
 
@@ -107,15 +107,15 @@ namespace CookBook.Mobile
             });
         }
 
-        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
-        {
-            builder.ConfigureMauiHandlers(handlers =>
-            {
-#if __ANDROID__
-                handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
-#endif
-            });
-        }
+//        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
+//        {
+//            builder.ConfigureMauiHandlers(handlers =>
+//            {
+//#if __ANDROID__
+//                handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
+//#endif
+//            });
+//        }
 
         private static void RegisterRoutes(MauiApp app)
         {

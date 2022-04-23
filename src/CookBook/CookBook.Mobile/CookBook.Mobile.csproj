@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+	    <!-- Targets possible from Windows OS -->
+	    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
         <OutputType>Exe</OutputType>
 
         <!-- .NET MAUI -->
@@ -18,6 +20,7 @@
 
         <!-- App Identifier -->
         <ApplicationId>com.companyname.cookbook.mobile</ApplicationId>
+	    <ApplicationId Condition="$(TargetFramework.Contains('-windows'))">E9C978E0-3A19-40A7-8A38-66F5ED3A3C2D</ApplicationId>
 
         <!-- Versions -->
         <ApplicationVersion>1</ApplicationVersion>
@@ -30,6 +33,9 @@
         <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 
+	    <!-- Minimum Target OS Version for Windows Platform -->
+	    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
+	    <TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -44,6 +50,12 @@
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.1" />
+	</ItemGroup>
 
     <ItemGroup>
       <MauiFont Remove="Resources\Fonts\FontAwesomeIcons.cs" />
@@ -82,6 +94,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
         <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+        
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Scrutor" Version="4.1.0" />
     </ItemGroup>
@@ -287,6 +300,12 @@
       <MauiImage Include="Resources\Images\Recipes\recipe_miso_soup.jpg" />
       <MauiImage Include="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
     </ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<OutputType>WinExe</OutputType>
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
       <WarningLevel>0</WarningLevel>
       <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
