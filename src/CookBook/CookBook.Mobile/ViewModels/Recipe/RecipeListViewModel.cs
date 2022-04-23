@@ -2,16 +2,19 @@
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
-public partial class RecipeListViewModel : ViewModelBase
+[INotifyPropertyChanged]
+public partial class RecipeListViewModel : IViewModel
 {
     private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
 
-    public ICollection<RecipeListModel>? Items { get; set; }
+    [ObservableProperty]
+    private ICollection<RecipeListModel>? items;
 
     public RecipeListViewModel(
         IRoutingService routingService,
@@ -22,10 +25,8 @@ public partial class RecipeListViewModel : ViewModelBase
         this.recipesClient = recipesClient;
     }
 
-    public override async Task OnAppearingAsync()
+    public async Task OnAppearingAsync()
     {
-        await base.OnAppearingAsync();
-
         Items = await recipesClient.GetRecipesAllAsync();
     }
 

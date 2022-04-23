@@ -1,9 +1,8 @@
 ﻿using CookBook.Common.Enums;
 
-namespace CookBook.Common.Models
+namespace CookBook.Common.Models;
+
+public record RecipeDetailIngredientModel(Guid? Id, double Amount, Unit Unit, IngredientListModel Ingredient)
+    : ModelBase
 {
-    public record RecipeDetailIngredientModel(Guid? Id, double Amount, Unit Unit, IngredientListModel Ingredient)
-        : ModelBase
-    {
-    }
 }

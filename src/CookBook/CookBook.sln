@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{35D2A91F-5E5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F2929ECE-EB99-47A0-B305-EBB71448833A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Common", "CookBook.Common\CookBook.Common.csproj", "{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Common", "CookBook.Common\CookBook.Common.csproj", "{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Api", "CookBook.Api\CookBook.Api.csproj", "{AA490C3E-2B2E-4552-9ECF-4AC9626501F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Api", "CookBook.Api\CookBook.Api.csproj", "{AA490C3E-2B2E-4552-9ECF-4AC9626501F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Api.DAL", "CookBook.Api.DAL\CookBook.Api.DAL.csproj", "{76DCBDDC-6C03-42EF-8CF5-DEBCBBE2C16E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Api.DAL", "CookBook.Api.DAL\CookBook.Api.DAL.csproj", "{76DCBDDC-6C03-42EF-8CF5-DEBCBBE2C16E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Api.BL", "CookBook.Api.BL\CookBook.Api.BL.csproj", "{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Api.BL", "CookBook.Api.BL\CookBook.Api.BL.csproj", "{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

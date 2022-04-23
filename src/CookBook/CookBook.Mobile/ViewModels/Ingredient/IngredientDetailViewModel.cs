@@ -1,18 +1,22 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
-public partial class IngredientDetailViewModel : ViewModelBase
+[INotifyPropertyChanged]
+public partial class IngredientDetailViewModel : IViewModel
 {
     private readonly IIngredientsClient ingredientsClient;
     private readonly IShare share;
 
-    public string? Id { private get; set; }
+    [ObservableProperty]
+    private string? id;
 
-    public IngredientDetailModel? Ingredient { get; set; }
+    [ObservableProperty]
+    private IngredientDetailModel? ingredient;
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,
@@ -22,10 +26,8 @@ public partial class IngredientDetailViewModel : ViewModelBase
         this.share = share;
     }
 
-    public override async Task OnAppearingAsync()
+    public async Task OnAppearingAsync()
     {
-        await base.OnAppearingAsync();
-
         if (Guid.TryParse(Id, out var id))
         {
             Ingredient = await ingredientsClient.GetIngredientByIdAsync(id);
