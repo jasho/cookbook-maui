@@ -55,8 +55,19 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+      <None Remove="Resources\Images\Ingredients\ingredient_chicken.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_chilli.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_egg.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_lemon.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_milk.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_onion.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_rice.jpg" />
+      <None Remove="Resources\Images\Ingredients\ingredient_tomato.jpg" />
       <None Remove="Resources\Images\ingredient_placeholder.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
+      <None Remove="Resources\Images\Recipes\recipe_chicken_lemon_herbs.jpg" />
+      <None Remove="Resources\Images\Recipes\recipe_miso_soup.jpg" />
+      <None Remove="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
       <None Remove="Resources\Images\recipe_placeholder.jpg" />
     </ItemGroup>
 
@@ -65,8 +76,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre9" />
-        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-pre9" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc1" />
+        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc1" />
         <PackageReference Include="Fody" Version="6.6.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -265,6 +276,20 @@
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_chicken.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_chilli.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_egg.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_lemon.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_milk.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_onion.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_rice.jpg" />
+      <MauiImage Include="Resources\Images\Ingredients\ingredient_tomato.jpg" />
+      <MauiImage Include="Resources\Images\Recipes\recipe_chicken_lemon_herbs.jpg" />
+      <MauiImage Include="Resources\Images\Recipes\recipe_miso_soup.jpg" />
+      <MauiImage Include="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
     </ItemGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
       <WarningLevel>0</WarningLevel>
