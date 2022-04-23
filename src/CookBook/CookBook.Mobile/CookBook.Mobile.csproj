@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-        <!-- Targets possible from Windows OS -->
-        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
         <OutputType>Exe</OutputType>
 
         <!-- .NET MAUI -->
@@ -31,10 +29,7 @@
         <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 
-        <!-- Minimum Target OS Version for Windows Platform -->
-        <TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -48,12 +43,6 @@
         <MauiFont Include="Resources\Fonts\*" />
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-    </ItemGroup>
-
-    <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-        <!-- Required - WinUI does not yet have buildTransitive for everything -->
-        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-        <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
     </ItemGroup>
 
     <ItemGroup>
@@ -76,8 +65,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre7" />
-        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-pre7" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre9" />
+        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-pre9" />
         <PackageReference Include="Fody" Version="6.6.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -85,7 +74,6 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-        <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
         <PackageReference Include="Scrutor" Version="4.1.0" />
@@ -278,14 +266,9 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-        <OutputType>WinExe</OutputType>
-        <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-    </PropertyGroup>
-
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
       <WarningLevel>0</WarningLevel>
+      <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">

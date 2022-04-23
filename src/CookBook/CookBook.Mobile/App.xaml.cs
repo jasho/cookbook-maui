@@ -8,7 +8,7 @@ public partial class App
     {
         InitializeComponent();
 
-        if (Device.Idiom == TargetIdiom.Phone)
+        if (DeviceInfo.Idiom == DeviceIdiom.Phone)
         {
             MainPage = new AppShellPhone();
         }

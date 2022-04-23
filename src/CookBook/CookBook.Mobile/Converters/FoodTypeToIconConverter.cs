@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
 using CookBook.Mobile.Resources.Fonts;
+using System.Globalization;
 
 namespace CookBook.Mobile.Converters;
 
 public class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
 {
-    public override string ConvertFrom(FoodType value)
+    public override string ConvertFrom(FoodType value, CultureInfo? culture)
     {
         var icon = FontAwesomeIcons.ConciergeBell;
 

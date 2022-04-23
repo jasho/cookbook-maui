@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
 using CookBook.Mobile.Resources.Texts;
+using System.Globalization;
 
 namespace CookBook.Mobile.Converters;
 
 public class UnitToStringConverter : BaseConverterOneWay<Unit, string>
 {
-    public override string? ConvertFrom(Unit value)
-        => UnitTexts.ResourceManager.GetString(value.ToString());
+    public override string ConvertFrom(Unit value, CultureInfo? culture)
+        => UnitTexts.ResourceManager.GetString(value.ToString(), culture) 
+           ?? UnitTexts.Unknown;
 }
