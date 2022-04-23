@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Controls;
-using CookBook.Mobile.Factories;
 using CookBook.Mobile.Handlers;
 using CookBook.Mobile.Options;
 using CookBook.Mobile.Resources.Fonts;
@@ -86,7 +85,6 @@ namespace CookBook.Mobile
         
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ICommandFactory, CommandFactory>();
             services.AddSingleton<IRoutingService, RoutingService>();
             services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             services.AddSingleton<IShare>(_ => Share.Default);

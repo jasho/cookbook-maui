@@ -1,6 +1,5 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using CookBook.Mobile.Factories;
 using CookBook.Mobile.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
@@ -18,7 +17,6 @@ public partial class RecipeListViewModel : IViewModel
 
     public RecipeListViewModel(
         IRoutingService routingService,
-        ICommandFactory commandFactory,
         IRecipesClient recipesClient)
     {
         this.routingService = routingService;
