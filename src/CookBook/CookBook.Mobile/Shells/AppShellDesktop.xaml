@@ -5,30 +5,38 @@
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.Shells.AppShellDesktop"
-       Title="DesktopAppShell"
-       Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}">
-    <FlyoutItem Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
+       Title="CookBook"
+       Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}"
+       FlyoutWidth="68"
+       FlyoutBehavior="Locked">
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Exit" Clicked="Exit_Clicked" />
+        </MenuBarItem>
+    </Shell.MenuBarItems>
+
+    <FlyoutItem>
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Book}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
         </FlyoutItem.Icon>
 
         <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
     </FlyoutItem>
 
-    <FlyoutItem Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
+    <FlyoutItem>
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
         </FlyoutItem.Icon>
         
         <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
     </FlyoutItem>
 
-    <FlyoutItem Title="{x:Static texts:AppShellTexts.Settings_FlyoutItem_Title}">
+    <FlyoutItem>
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
         </FlyoutItem.Icon>
 
         <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" Route="settings" />

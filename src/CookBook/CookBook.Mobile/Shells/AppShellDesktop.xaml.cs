@@ -6,4 +6,9 @@ public partial class AppShellDesktop
     {
         InitializeComponent();
     }
+
+    private void Exit_Clicked(object sender, EventArgs e)
+    {
+        Application.Current?.Quit();
+    }
 }

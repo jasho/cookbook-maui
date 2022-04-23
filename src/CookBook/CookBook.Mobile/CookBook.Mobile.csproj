@@ -16,7 +16,7 @@
         <RootNamespace>CookBook.Mobile</RootNamespace>
 
         <!-- Display name -->
-        <ApplicationTitle>COOKBOOK</ApplicationTitle>
+        <ApplicationTitle>CookBook</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>com.companyname.cookbook.mobile</ApplicationId>

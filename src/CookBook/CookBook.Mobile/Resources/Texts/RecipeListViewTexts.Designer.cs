@@ -61,7 +61,7 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to COOKBOOK.
+        ///   Looks up a localized string similar to CookBook.
         /// </summary>
         internal static string Page_Title {
             get {
