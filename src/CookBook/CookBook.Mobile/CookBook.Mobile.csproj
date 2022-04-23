@@ -36,13 +36,14 @@
 	    <!-- Minimum Target OS Version for Windows Platform -->
 	    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 	    <TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+	    <DefaultLanguage>en-US</DefaultLanguage>
     </PropertyGroup>
 
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
         <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
+        <MauiSplashScreen Include="Resources\Images\splashscreen.svg" Color="#00AE4B" />
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
         <!-- Custom Fonts -->
@@ -60,6 +61,10 @@
     <ItemGroup>
       <MauiFont Remove="Resources\Fonts\FontAwesomeIcons.cs" />
       <MauiFont Remove="Resources\Fonts\Fonts.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiImage Remove="Resources\Images\splashscreen.svg" />
     </ItemGroup>
 
     <ItemGroup>
@@ -81,6 +86,7 @@
       <None Remove="Resources\Images\Recipes\recipe_miso_soup.jpg" />
       <None Remove="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
       <None Remove="Resources\Images\recipe_placeholder.jpg" />
+      <None Remove="Resources\Images\splashscreen.svg" />
     </ItemGroup>
 
     <ItemGroup>
