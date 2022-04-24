@@ -5,7 +5,7 @@
                        xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels" xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        x:Name="Root"
-                       Title="{x:Static texts:RecipeDetailViewTexts.Page_Title}"
+                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeDetailViewModel">
     <views:ContentPageBase.ToolbarItems>

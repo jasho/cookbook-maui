@@ -5,11 +5,16 @@
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.Shells.AppShellDesktop"
-       Title="CookBook"
        HeightRequest="1000"
        Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}"
        FlyoutWidth="68"
        FlyoutBehavior="Locked">
+    <Shell.TitleView>
+        <Grid BackgroundColor="{StaticResource NavigationBarBackgroudColor}">
+            <Image Source="page_title_logo.png"
+                   HeightRequest="24" />
+        </Grid>
+    </Shell.TitleView>
     <Shell.MenuBarItems>
         <MenuBarItem Text="{x:Static texts:AppShellTexts.File_MenuItem_Title}">
             <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"

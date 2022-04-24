@@ -82,6 +82,7 @@
       <None Remove="Resources\Images\Ingredients\ingredient_tomato.jpg" />
       <None Remove="Resources\Images\ingredient_placeholder.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
+      <None Remove="Resources\Images\page_title_logo.png" />
       <None Remove="Resources\Images\Recipes\recipe_chicken_lemon_herbs.jpg" />
       <None Remove="Resources\Images\Recipes\recipe_miso_soup.jpg" />
       <None Remove="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />

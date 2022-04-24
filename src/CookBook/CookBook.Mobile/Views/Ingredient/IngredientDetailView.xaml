@@ -4,7 +4,7 @@
                        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Mobile.Models"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                       Title="{x:Static texts:IngredientDetailViewTexts.Page_Title}"
+                       Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel">
     <views:ContentPageBase.ToolbarItems>
