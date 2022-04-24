@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientDetailViewDesktop"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
-                       x:DataType="vm:IngredientDetailViewModel">
+                       x:DataType="vm:IngredientDetailViewModel"
+                       NavigationPage.HasBackButton="False">
     <Grid RowDefinitions="70, *">
         <Grid Grid.Row="0"
               ColumnDefinitions="*, Auto, Auto"
               ColumnSpacing="15">
-            <Button Grid.Column="0"
-                    Text="Zpět"/>
+
+            <StackLayout Grid.Column="0"
+                         Spacing="12"
+                         VerticalOptions="Start"
+                         Orientation="Horizontal">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label VerticalOptions="Center"
+                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
+                       TextColor="{StaticResource PrimaryLabelTextColor}"
+                       FontSize="14"
+                       FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
+                <Label VerticalOptions="Center"
+                       Text="{x:Static texts:IngredientDetailViewTexts.Back_Button_Text_Desktop}"
+                       TextColor="{StaticResource PrimaryLabelTextColor}"
+                       FontSize="14"
+                       Style="{StaticResource MediumLabelStyle}" />
+            </StackLayout>
 
             <Button Grid.Column="1"
-                    VerticalOptions="Center"
+                    VerticalOptions="Start"
                     HeightRequest="30"
-                    Text="Smazat"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"
                     CornerRadius="5"
-                    BackgroundColor="{StaticResource ErrorColor}" />
+                    BackgroundColor="{StaticResource ErrorColor}"
+                    Command="{Binding DeleteCommand}" />
 
             <Button Grid.Column="2"
-                    VerticalOptions="Center"
+                    VerticalOptions="Start"
                     HeightRequest="30"
-                    Text="Upravit"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text_Desktop}"
                     CornerRadius="5"
-                    BackgroundColor="{StaticResource PrimaryColor}" />
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    Command="{Binding GoToEditCommand}" />
         </Grid>
         <Grid Grid.Row="1"
               HorizontalOptions="Center" VerticalOptions="Start"
-              RowDefinitions="Auto, *" ColumnDefinitions="Auto, *"
+              RowDefinitions="170, *" ColumnDefinitions="*, Auto, Auto, *"
               RowSpacing="20" ColumnSpacing="20">
 
-            <Frame Grid.Row="0" Grid.RowSpan="2"
-                   Grid.Column="0"
+            <Frame Grid.Row="0" Grid.Column="1"
+                   HorizontalOptions="End" VerticalOptions="Center"
                    CornerRadius="10" HeightRequest="170"
-                   HorizontalOptions="Center" IsClippedToBounds="True"
+                   IsClippedToBounds="True"
                    BorderColor="{StaticResource ImageBorderColor}"
                    WidthRequest="170">
                 <Image Aspect="AspectFill" HeightRequest="170"
@@ -44,17 +65,18 @@
                        VerticalOptions="Center" WidthRequest="170" />
             </Frame>
 
-            <Label Grid.Row="0" Grid.Column="1"
-                   Margin="0, 12, 0, 0"
-                   FontSize="24" HorizontalOptions="Center"
-                   Style="{StaticResource BoldLabelStyle}"
-                   Text="{Binding Ingredient.Name}" />
+            <StackLayout Grid.Row="0" Grid.RowSpan="2"
+                         Grid.Column="2"
+                         Spacing="20"
+                         Orientation="Vertical">
+                <Label FontSize="24" 
+                       Style="{StaticResource BoldLabelStyle}"
+                       Text="{Binding Ingredient.Name}" />
 
-            <Label Grid.Row="1" Grid.Column="1"
-                   FontSize="14" HorizontalOptions="Center"
-                   Style="{StaticResource RegularLabelStyle}"
-                   Text="{Binding Ingredient.Description}"
-                   VerticalOptions="Start" />
+                <Label FontSize="14" 
+                       Style="{StaticResource RegularLabelStyle}"
+                       Text="{Binding Ingredient.Description}"/>
+            </StackLayout>
         </Grid>
     </Grid>
 </views:ContentPageBase>

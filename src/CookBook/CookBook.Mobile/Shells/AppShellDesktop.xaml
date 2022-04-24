@@ -15,6 +15,7 @@
                    HeightRequest="24" />
         </Grid>
     </Shell.TitleView>
+
     <Shell.MenuBarItems>
         <MenuBarItem Text="{x:Static texts:AppShellTexts.File_MenuItem_Title}">
             <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"

@@ -90,11 +90,11 @@
     </views:ContentPageBase.Resources>
 
     <Grid HorizontalOptions="Center" RowDefinitions="Auto, *"
-            RowSpacing="20">
+          RowSpacing="20">
         <Label Grid.Row="0"
-                FontSize="24"
-                Style="{StaticResource BoldLabelStyle}"
-                Text="{x:Static texts:IngredientListViewTexts.Title_Label}" />
+               FontSize="24"
+               Style="{StaticResource BoldLabelStyle}"
+               Text="{x:Static texts:IngredientListViewTexts.Title_Label}" />
 
         <Button Grid.Row="0"
                 Padding="12, 6"

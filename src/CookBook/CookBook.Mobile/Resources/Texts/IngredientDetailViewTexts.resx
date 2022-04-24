@@ -100,4 +100,13 @@
   <data name="Page_Title" xml:space="preserve">
     <value>Ingredient</value>
   </data>
+  <data name="Edit_Button_Text_Desktop" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Delete_Button_Text_Desktop" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Back_Button_Text_Desktop" xml:space="preserve">
+    <value>Back</value>
+  </data>
 </root>
