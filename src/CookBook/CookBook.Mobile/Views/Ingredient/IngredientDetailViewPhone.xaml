@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientDetailView"
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientDetailViewPhone"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Mobile.Models"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
@@ -16,7 +16,7 @@
                                  Color="{DynamicResource NavigationBarTextColor}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-        
+
         <ToolbarItem Command="{Binding DeleteCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"

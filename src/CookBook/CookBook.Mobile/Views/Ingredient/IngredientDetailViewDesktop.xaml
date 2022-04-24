@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientDetailViewDesktop"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="vm:IngredientDetailViewModel">
+    <Grid RowDefinitions="70, *">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*, Auto, Auto"
+              ColumnSpacing="15">
+            <Button Grid.Column="0"
+                    Text="Zpět"/>
+
+            <Button Grid.Column="1"
+                    VerticalOptions="Center"
+                    HeightRequest="30"
+                    Text="Smazat"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource ErrorColor}" />
+
+            <Button Grid.Column="2"
+                    VerticalOptions="Center"
+                    HeightRequest="30"
+                    Text="Upravit"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource PrimaryColor}" />
+        </Grid>
+        <Grid Grid.Row="1"
+              HorizontalOptions="Center" VerticalOptions="Start"
+              RowDefinitions="Auto, *" ColumnDefinitions="Auto, *"
+              RowSpacing="20" ColumnSpacing="20">
+
+            <Frame Grid.Row="0" Grid.RowSpan="2"
+                   Grid.Column="0"
+                   CornerRadius="10" HeightRequest="170"
+                   HorizontalOptions="Center" IsClippedToBounds="True"
+                   BorderColor="{StaticResource ImageBorderColor}"
+                   WidthRequest="170">
+                <Image Aspect="AspectFill" HeightRequest="170"
+                       HorizontalOptions="Center"
+                       Source="{Binding Ingredient.ImageUrl, Converter={StaticResource LocalImageWithPlaceholderConverter}, ConverterParameter='/Images/ingredient_placeholder.jpg'}"
+                       VerticalOptions="Center" WidthRequest="170" />
+            </Frame>
+
+            <Label Grid.Row="0" Grid.Column="1"
+                   Margin="0, 12, 0, 0"
+                   FontSize="24" HorizontalOptions="Center"
+                   Style="{StaticResource BoldLabelStyle}"
+                   Text="{Binding Ingredient.Name}" />
+
+            <Label Grid.Row="1" Grid.Column="1"
+                   FontSize="14" HorizontalOptions="Center"
+                   Style="{StaticResource RegularLabelStyle}"
+                   Text="{Binding Ingredient.Description}"
+                   VerticalOptions="Start" />
+        </Grid>
+    </Grid>
+</views:ContentPageBase>

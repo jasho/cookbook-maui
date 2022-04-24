@@ -180,11 +180,14 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>UnitTexts.resx</DependentUpon>
       </Compile>
+      <Compile Update="Views\Ingredient\IngredientDetailViewDesktop.xaml.cs">
+        <DependentUpon>IngredientDetailViewDesktop.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Views\Ingredient\IngredientEditView.xaml.cs">
         <DependentUpon>IngredientEditView.xaml</DependentUpon>
       </Compile>
-      <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
-        <DependentUpon>IngredientDetailView.xaml</DependentUpon>
+      <Compile Update="Views\Ingredient\IngredientDetailViewPhone.xaml.cs">
+        <DependentUpon>IngredientDetailViewPhone.xaml</DependentUpon>
       </Compile>
       <Compile Update="Views\Recipe\RecipeDetailView.xaml.cs">
         <DependentUpon>RecipeDetailView.xaml</DependentUpon>
@@ -269,11 +272,14 @@
       <MauiXaml Update="Views\Base\ContentPageBase.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Views\Ingredient\IngredientDetailViewDesktop.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Ingredient\IngredientDetailView.xaml">
+      <MauiXaml Update="Views\Ingredient\IngredientDetailViewPhone.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
