@@ -8,6 +8,9 @@ public partial class App
     {
         InitializeComponent();
 
+        Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("cs-CZ");
+        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("cs-CZ");
+
         if (DeviceInfo.Idiom == DeviceIdiom.Phone)
         {
             MainPage = new AppShellPhone();

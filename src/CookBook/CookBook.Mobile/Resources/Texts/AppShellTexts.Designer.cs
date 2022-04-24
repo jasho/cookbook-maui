@@ -61,7 +61,25 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string Exit_MenuFlyoutItem_Title {
+            get {
+                return ResourceManager.GetString("Exit_MenuFlyoutItem_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File_MenuItem_Title {
+            get {
+                return ResourceManager.GetString("File_MenuItem_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home_FlyoutItem_Title {
             get {
@@ -79,7 +97,7 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recipes.
         /// </summary>
         public static string Recipes_Tab_Title {
             get {
@@ -88,7 +106,7 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings_FlyoutItem_Title {
             get {

@@ -109,4 +109,10 @@
   <data name="Settings_FlyoutItem_Title" xml:space="preserve">
     <value>Nastavení</value>
   </data>
+  <data name="File_MenuItem_Title" xml:space="preserve">
+    <value>Soubor</value>
+  </data>
+  <data name="Exit_MenuFlyoutItem_Title" xml:space="preserve">
+    <value>Ukončit</value>
+  </data>
 </root>

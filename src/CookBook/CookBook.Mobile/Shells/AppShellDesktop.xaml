@@ -11,8 +11,9 @@
        FlyoutWidth="68"
        FlyoutBehavior="Locked">
     <Shell.MenuBarItems>
-        <MenuBarItem Text="File">
-            <MenuFlyoutItem Text="Exit" Clicked="Exit_Clicked" />
+        <MenuBarItem Text="{x:Static texts:AppShellTexts.File_MenuItem_Title}">
+            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"
+                            Clicked="Exit_Clicked" />
         </MenuBarItem>
     </Shell.MenuBarItems>
 

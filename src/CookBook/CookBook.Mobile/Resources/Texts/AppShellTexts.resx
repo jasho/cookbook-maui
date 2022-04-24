@@ -101,12 +101,18 @@
     <value>Ingredients</value>
   </data>
   <data name="Recipes_Tab_Title" xml:space="preserve">
-    <value></value>
+    <value>Recipes</value>
   </data>
   <data name="Settings_FlyoutItem_Title" xml:space="preserve">
-    <value></value>
+    <value>Settings</value>
   </data>
   <data name="Home_FlyoutItem_Title" xml:space="preserve">
-    <value></value>
+    <value>Home</value>
+  </data>
+  <data name="File_MenuItem_Title" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Exit_MenuFlyoutItem_Title" xml:space="preserve">
+    <value>Exit</value>
   </data>
 </root>
