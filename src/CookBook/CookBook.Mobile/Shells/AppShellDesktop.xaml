@@ -6,6 +6,7 @@
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.Shells.AppShellDesktop"
        Title="CookBook"
+       HeightRequest="1000"
        Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}"
        FlyoutWidth="68"
        FlyoutBehavior="Locked">
