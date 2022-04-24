@@ -26,12 +26,6 @@ public partial class RecipeListViewModel : IViewModel
     public async Task OnAppearingAsync()
     {
         Items = await recipesClient.GetRecipesAllAsync();
-#if WINDOWS
-        foreach (var item in Items)
-	    {
-            item.ImageUrl = item.ImageUrl?.Split('/').Last();
-	    }
-#endif
     }
 
     [ICommand]
