@@ -183,8 +183,11 @@
       <Compile Update="Views\Ingredient\IngredientDetailViewDesktop.xaml.cs">
         <DependentUpon>IngredientDetailViewDesktop.xaml</DependentUpon>
       </Compile>
-      <Compile Update="Views\Ingredient\IngredientEditView.xaml.cs">
-        <DependentUpon>IngredientEditView.xaml</DependentUpon>
+      <Compile Update="Views\Ingredient\IngredientEditViewDesktop.xaml.cs">
+        <DependentUpon>IngredientEditViewDesktop.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Views\Ingredient\IngredientEditViewPhone.xaml.cs">
+        <DependentUpon>IngredientEditViewPhone.xaml</DependentUpon>
       </Compile>
       <Compile Update="Views\Ingredient\IngredientDetailViewPhone.xaml.cs">
         <DependentUpon>IngredientDetailViewPhone.xaml</DependentUpon>
@@ -275,7 +278,10 @@
       <MauiXaml Update="Views\Ingredient\IngredientDetailViewDesktop.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
+      <MauiXaml Update="Views\Ingredient\IngredientEditViewDesktop.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Ingredient\IngredientEditViewPhone.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

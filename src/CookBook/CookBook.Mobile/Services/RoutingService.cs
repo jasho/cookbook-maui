@@ -9,8 +9,8 @@ public class RoutingService : IRoutingService
     private ICollection<RouteModel> routesPhone = new List<RouteModel>
     {
         new("//ingredients/detail", typeof(IngredientDetailViewPhone), typeof(IngredientDetailViewModel)),
-        new("//ingredients/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
-        new("//ingredients/detail/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
+        new("//ingredients/edit", typeof(IngredientEditViewPhone), typeof(IngredientEditViewModel)),
+        new("//ingredients/detail/edit", typeof(IngredientEditViewPhone), typeof(IngredientEditViewModel)),
 
         new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel)),
     };
@@ -18,8 +18,8 @@ public class RoutingService : IRoutingService
     private ICollection<RouteModel> routesDesktop = new List<RouteModel>
     {
         new("//ingredients/detail", typeof(IngredientDetailViewDesktop), typeof(IngredientDetailViewModel)),
-        new("//ingredients/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
-        new("//ingredients/detail/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
+        new("//ingredients/edit", typeof(IngredientEditViewDesktop), typeof(IngredientEditViewModel)),
+        new("//ingredients/detail/edit", typeof(IngredientEditViewDesktop), typeof(IngredientEditViewModel)),
 
         new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel)),
     };

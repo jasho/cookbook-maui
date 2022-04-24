@@ -2,11 +2,11 @@ using CookBook.Mobile.ViewModels;
 
 namespace CookBook.Mobile.Views;
 
-public partial class ContentPageBase : ContentPage
+public abstract partial class ContentPageBase : ContentPage
 {
     protected IViewModel viewModel { get; }
 
-    public ContentPageBase(IViewModel viewModel)
+    protected ContentPageBase(IViewModel viewModel)
     {
         BindingContext = this.viewModel = viewModel;
     }

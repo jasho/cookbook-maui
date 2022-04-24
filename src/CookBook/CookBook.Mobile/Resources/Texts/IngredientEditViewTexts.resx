@@ -109,4 +109,10 @@
   <data name="SelectImage_Button_Text" xml:space="preserve">
     <value>Select Image</value>
   </data>
+  <data name="Back_Button_Text_Desktop" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Save_Button_Text_Desktop" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

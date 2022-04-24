@@ -109,4 +109,10 @@
   <data name="SelectImage_Button_Text" xml:space="preserve">
     <value>Nahrát obrázek</value>
   </data>
+  <data name="Back_Button_Text_Desktop" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Save_Button_Text_Desktop" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
 </root>

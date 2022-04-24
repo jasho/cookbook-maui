@@ -7,7 +7,7 @@ namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
 [INotifyPropertyChanged]
-public partial class IngredientEditViewModel : IViewModel
+public partial class IngredientEditViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
 
@@ -26,7 +26,7 @@ public partial class IngredientEditViewModel : IViewModel
         this.ingredientsClient = ingredientsClient;
     }
 
-    public async Task OnAppearingAsync()
+    public override async Task OnAppearingAsync()
     {
         if (Id is not null && Guid.TryParse(Id, out var id))
         {
