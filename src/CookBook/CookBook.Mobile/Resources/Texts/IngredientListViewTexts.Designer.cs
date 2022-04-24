@@ -61,6 +61,24 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Ingredient.
+        /// </summary>
+        public static string Add_Button_Text_Desktop {
+            get {
+                return ResourceManager.GetString("Add_Button_Text_Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to +.
+        /// </summary>
+        public static string Add_Button_Text_Phone {
+            get {
+                return ResourceManager.GetString("Add_Button_Text_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CookBook.
         /// </summary>
         public static string Page_Title {

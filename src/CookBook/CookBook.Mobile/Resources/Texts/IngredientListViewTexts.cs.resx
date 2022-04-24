@@ -103,4 +103,10 @@
   <data name="Title_Label" xml:space="preserve">
     <value>Ingredience</value>
   </data>
+  <data name="Add_Button_Text_Desktop" xml:space="preserve">
+    <value>Přidat ingredienci</value>
+  </data>
+  <data name="Add_Button_Text_Phone" xml:space="preserve">
+    <value>+</value>
+  </data>
 </root>

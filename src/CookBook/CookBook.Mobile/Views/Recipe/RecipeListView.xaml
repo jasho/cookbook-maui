@@ -9,13 +9,13 @@
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeListViewModel">
     <views:ContentPageBase.Resources>
-        <LinearItemsLayout x:Key="RecipesLayoutPhone"
-                           ItemSpacing="20" Orientation="Vertical"/>
+        <LinearItemsLayout x:Key="ItemsLayoutPhone"
+                           ItemSpacing="20" Orientation="Vertical" />
 
-        <GridItemsLayout x:Key="RecipesLayoutDesktop"
+        <GridItemsLayout x:Key="ItemsLayoutDesktop"
                          Orientation="Horizontal"
                          HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                         Span="3"/>
+                         Span="3" />
     </views:ContentPageBase.Resources>
 
     <Grid>
@@ -27,15 +27,15 @@
                    Text="{x:Static texts:RecipeListViewTexts.Title_Label}" />
 
             <CollectionView Grid.Row="1" ItemsSource="{Binding Items}"
-                            ItemsLayout="{OnIdiom Phone={StaticResource RecipesLayoutPhone}, Desktop={StaticResource RecipesLayoutDesktop}}">
+                            ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone}, Desktop={StaticResource ItemsLayoutDesktop}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
-                        <Frame Grid.Row="0" Grid.RowSpan="2"
-                               Padding="0"
+                        <Frame Padding="0"
                                CornerRadius="10" HeightRequest="200"
                                IsClippedToBounds="True">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}" CommandParameter="{Binding Id}" />
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                                      CommandParameter="{Binding Id}" />
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*, *">
                                 <Image Grid.Row="0" Grid.RowSpan="2"
