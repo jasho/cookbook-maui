@@ -2,9 +2,9 @@ using CookBook.Mobile.ViewModels;
 
 namespace CookBook.Mobile.Views;
 
-public partial class RecipeDetailView
+public partial class RecipeDetailViewDesktop
 {
-    public RecipeDetailView(RecipeDetailViewModel viewModel)
+    public RecipeDetailViewDesktop(RecipeDetailViewModel viewModel)
         : base(viewModel)
     {
         InitializeComponent();

@@ -95,12 +95,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc1" />
-        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc1" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc2" />
+        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc2" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
         <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0-preview2" />
         
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Scrutor" Version="4.1.0" />
@@ -192,8 +193,11 @@
       <Compile Update="Views\Ingredient\IngredientDetailViewPhone.xaml.cs">
         <DependentUpon>IngredientDetailViewPhone.xaml</DependentUpon>
       </Compile>
-      <Compile Update="Views\Recipe\RecipeDetailView.xaml.cs">
-        <DependentUpon>RecipeDetailView.xaml</DependentUpon>
+      <Compile Update="Views\Recipe\RecipeDetailViewDesktop.xaml.cs">
+        <DependentUpon>RecipeDetailViewDesktop.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Views\Recipe\RecipeDetailViewPhone.xaml.cs">
+        <DependentUpon>RecipeDetailViewPhone.xaml</DependentUpon>
       </Compile>
       <Compile Update="Views\SettingsView.xaml.cs">
         <DependentUpon>SettingsView.xaml</DependentUpon>
@@ -292,7 +296,10 @@
       <MauiXaml Update="Views\Ingredient\IngredientListView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Recipe\RecipeDetailView.xaml">
+      <MauiXaml Update="Views\Recipe\RecipeDetailViewDesktop.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Views\Recipe\RecipeDetailViewPhone.xaml">
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

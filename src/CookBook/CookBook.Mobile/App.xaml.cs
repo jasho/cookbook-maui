@@ -4,7 +4,7 @@ namespace CookBook.Mobile;
 
 public partial class App
 {
-    public App()
+    public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
 
@@ -13,11 +13,11 @@ public partial class App
 
         if (DeviceInfo.Idiom == DeviceIdiom.Phone)
         {
-            MainPage = new AppShellPhone();
+            MainPage = serviceProvider.GetRequiredService<AppShellPhone>();
         }
         else
         {
-            MainPage = new AppShellDesktop();
+            MainPage = serviceProvider.GetRequiredService<AppShellDesktop>();
         }
     }
 }

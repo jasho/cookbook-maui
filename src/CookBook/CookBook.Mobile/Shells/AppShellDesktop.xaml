@@ -8,45 +8,50 @@
        HeightRequest="1000"
        Shell.TabBarBackgroundColor="{DynamicResource PrimaryColor}"
        FlyoutWidth="68"
-       FlyoutBehavior="Locked">
+       FlyoutBehavior="Locked"
+       x:Name="AppShellRoot"
+       NavigationPage.HasNavigationBar="False"
+       NavigationPage.HasBackButton="False">
     <Shell.TitleView>
-        <Grid BackgroundColor="{StaticResource NavigationBarBackgroudColor}">
+        <Grid>
             <Image Source="page_title_logo.png"
                    HeightRequest="24" />
         </Grid>
     </Shell.TitleView>
 
+    <Shell.ToolbarItems>
+        <ToolbarItem Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToSettingsCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"
+                                 Size="10"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </Shell.ToolbarItems>
+
     <Shell.MenuBarItems>
         <MenuBarItem Text="{x:Static texts:AppShellTexts.File_MenuItem_Title}">
+            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Recipes_Tab_Title}"
+                            Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToRecipesCommand}">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Book}"
+                                     FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+
+            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}"
+                            Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToIngredientsCommand}">
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
+                                     FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
+                </MenuFlyoutItem.IconImageSource>
+            </MenuFlyoutItem>
+
             <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"
-                            Clicked="Exit_Clicked" />
+                            Command="{Binding Source={x:Reference AppShellRoot}, Path=ExitCommand}" />
         </MenuBarItem>
     </Shell.MenuBarItems>
-
-    <FlyoutItem>
-        <FlyoutItem.Icon>
-            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Book}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-        </FlyoutItem.Icon>
-
-        <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
-    </FlyoutItem>
-
-    <FlyoutItem>
-        <FlyoutItem.Icon>
-            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-        </FlyoutItem.Icon>
-        
-        <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
-    </FlyoutItem>
-
-    <FlyoutItem>
-        <FlyoutItem.Icon>
-            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"
-                             FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-        </FlyoutItem.Icon>
-
-        <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" Route="settings" />
-    </FlyoutItem>
+    
+    <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
 </Shell>
