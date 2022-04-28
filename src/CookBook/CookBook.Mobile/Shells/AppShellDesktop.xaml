@@ -5,10 +5,11 @@
        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts"
        xmlns:views="clr-namespace:CookBook.Mobile.Views"
        x:Class="CookBook.Mobile.Shells.AppShellDesktop"
-       HeightRequest="1000"
        x:Name="AppShellRoot"
        NavigationPage.HasNavigationBar="False"
-       NavigationPage.HasBackButton="False">
+       NavigationPage.HasBackButton="False"
+       MinimumHeightRequest="{OnIdiom Desktop=1000}"
+       HeightRequest="{OnIdiom Desktop=1000}">
     <Shell.TitleView>
         <Grid>
             <Image Source="page_title_logo.png"

@@ -7,7 +7,8 @@
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:RecipeListViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
-                       x:DataType="vm:RecipeListViewModel">
+                       x:DataType="vm:RecipeListViewModel"
+                       MinimumHeightRequest="{OnIdiom Desktop=500}">
     <views:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
                            ItemSpacing="20" Orientation="Vertical" />
@@ -15,11 +16,12 @@
         <GridItemsLayout x:Key="ItemsLayoutDesktop"
                          Orientation="Horizontal"
                          HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                         Span="3" />
+                         Span="2" />
     </views:ContentPageBase.Resources>
 
     <Grid>
-        <Grid HorizontalOptions="Center" RowDefinitions="Auto, *"
+        <Grid HorizontalOptions="Center" 
+              RowDefinitions="Auto, *"
               RowSpacing="20">
             <Label Grid.Row="0"
                    FontSize="24"
@@ -27,11 +29,14 @@
                    Text="{x:Static texts:RecipeListViewTexts.Title_Label}" />
 
             <CollectionView Grid.Row="1" ItemsSource="{Binding Items}"
+                            VerticalOptions="FillAndExpand"
                             ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone}, Desktop={StaticResource ItemsLayoutDesktop}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
                         <Frame Padding="0"
-                               CornerRadius="10" HeightRequest="200"
+                               CornerRadius="10"
+                               HeightRequest="200"
+                               WidthRequest="{OnIdiom Desktop=300}"
                                IsClippedToBounds="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
@@ -50,14 +55,17 @@
                                        Margin="22" Padding="6,3"
                                        BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
                                        CornerRadius="5" HorizontalOptions="Start"
-                                       VerticalOptions="Start">
+                                       VerticalOptions="Start"
+                                       HeightRequest="{OnIdiom Desktop=20, Phone=30}">
                                     <HorizontalStackLayout Padding="0"
                                                            HorizontalOptions="Start" Spacing="8">
-                                        <Label FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                        <Label VerticalOptions="Center"
+                                               FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
-                                               TextColor="White" VerticalOptions="Center" />
+                                               TextColor="White" />
 
-                                        <Label FontSize="11"
+                                        <Label VerticalOptions="Center"
+                                               FontSize="11"
                                                Style="{StaticResource BoldLabelStyle}"
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
                                                TextColor="White" />
