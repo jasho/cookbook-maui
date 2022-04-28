@@ -22,7 +22,8 @@
             <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *, Auto"
                   ColumnSpacing="20" HeightRequest="40">
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}" CommandParameter="{Binding Id}" />
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                          CommandParameter="{Binding Id}" />
                 </Grid.GestureRecognizers>
                 <BoxView Grid.Column="0" Grid.ColumnSpan="3"
                          CornerRadius="5" HorizontalOptions="Fill"

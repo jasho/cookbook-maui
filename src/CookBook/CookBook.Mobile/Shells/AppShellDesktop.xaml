@@ -52,4 +52,5 @@
     </Shell.MenuBarItems>
     
     <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
+    <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
 </Shell>
