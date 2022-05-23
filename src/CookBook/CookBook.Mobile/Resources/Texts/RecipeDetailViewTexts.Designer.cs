@@ -61,11 +61,29 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back_Button_Text_Desktop {
+            get {
+                return ResourceManager.GetString("Back_Button_Text_Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description_Label_Text {
             get {
                 return ResourceManager.GetString("Description_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit_Button_Text_Desktop {
+            get {
+                return ResourceManager.GetString("Edit_Button_Text_Desktop", resourceCulture);
             }
         }
         
