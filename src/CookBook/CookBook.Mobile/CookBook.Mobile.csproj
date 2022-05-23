@@ -39,6 +39,10 @@
 	    <DefaultLanguage>cs-CZ</DefaultLanguage>
     </PropertyGroup>
 
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
+
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#00AE4B" />
@@ -54,8 +58,17 @@
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0-preview2" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.0-preview3" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Generated\**" />
+	  <Compile Remove="Generated\**" />
+	  <EmbeddedResource Remove="Generated\**" />
+	  <MauiCss Remove="Generated\**" />
+	  <MauiXaml Remove="Generated\**" />
+	  <None Remove="Generated\**" />
 	</ItemGroup>
 
     <ItemGroup>
@@ -72,20 +85,9 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
-      <None Remove="Resources\Images\Ingredients\ingredient_chicken.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_chilli.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_egg.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_lemon.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_milk.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_onion.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_rice.jpg" />
-      <None Remove="Resources\Images\Ingredients\ingredient_tomato.jpg" />
       <None Remove="Resources\Images\ingredient_placeholder.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
       <None Remove="Resources\Images\page_title_logo.png" />
-      <None Remove="Resources\Images\Recipes\recipe_chicken_lemon_herbs.jpg" />
-      <None Remove="Resources\Images\Recipes\recipe_miso_soup.jpg" />
-      <None Remove="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
       <None Remove="Resources\Images\recipe_placeholder.jpg" />
       <None Remove="Resources\Images\splashscreen.svg" />
     </ItemGroup>
@@ -95,8 +97,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc2" />
-        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc2" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc3" />
+        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0-rc3" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
@@ -312,19 +314,9 @@
       </MauiXaml>
     </ItemGroup>
 
-    <ItemGroup>
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_chicken.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_chilli.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_egg.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_lemon.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_milk.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_onion.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_rice.jpg" />
-      <MauiImage Include="Resources\Images\Ingredients\ingredient_tomato.jpg" />
-      <MauiImage Include="Resources\Images\Recipes\recipe_chicken_lemon_herbs.jpg" />
-      <MauiImage Include="Resources\Images\Recipes\recipe_miso_soup.jpg" />
-      <MauiImage Include="Resources\Images\Recipes\recipe_scrambled_eggs.jpg" />
-    </ItemGroup>
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
