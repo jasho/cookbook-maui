@@ -20,7 +20,7 @@
     </views:ContentPageBase.Resources>
 
     <Grid>
-        <Grid HorizontalOptions="Center" 
+        <Grid HorizontalOptions="Center"
               RowDefinitions="Auto, *"
               RowSpacing="20">
             <Label Grid.Row="0"
@@ -36,7 +36,7 @@
                         <Frame Padding="0"
                                CornerRadius="10"
                                HeightRequest="200"
-                               WidthRequest="{OnIdiom Desktop=300}"
+                               WidthRequest="{OnIdiom Phone=-1, Desktop=300}"
                                IsClippedToBounds="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
@@ -52,13 +52,14 @@
                                          Color="Black" />
 
                                 <Frame Grid.Row="0"
-                                       Margin="22" Padding="6,3"
+                                       Margin="22" Padding="6,0"
                                        BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
                                        CornerRadius="5" HorizontalOptions="Start"
                                        VerticalOptions="Start"
                                        HeightRequest="{OnIdiom Desktop=20, Phone=30}">
                                     <HorizontalStackLayout Padding="0"
-                                                           HorizontalOptions="Start" Spacing="8">
+                                                           HorizontalOptions="Start" VerticalOptions="Center"
+                                                           Spacing="8">
                                         <Label VerticalOptions="Center"
                                                FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
