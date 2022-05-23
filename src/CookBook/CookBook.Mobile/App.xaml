@@ -10,7 +10,7 @@
                 <styles:EditorStyle />
                 <styles:EntryStyle />
                 <styles:LabelStyle />
-                <styles:LightTheme />
+                <styles:DarkTheme />
             </ResourceDictionary.MergedDictionaries>
 
             <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />

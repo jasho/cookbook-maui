@@ -5,7 +5,7 @@
                     x:Class="CookBook.Mobile.Resources.Styles.EditorStyle">
     <Style x:Key="FormEditorStyle" TargetType="Editor">
         <Setter Property="BackgroundColor" Value="{DynamicResource FormEntryBackgroundColor}"/>
-        <Setter Property="TextColor" Value="{DynamicResource PrimaryLabelTextColor}"/>
+        <Setter Property="TextColor" Value="{DynamicResource FormEntryTextColor}"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Regular}"/>
     </Style>

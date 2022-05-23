@@ -113,6 +113,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Resources\Styles\DarkTheme.xaml.cs">
+        <DependentUpon>DarkTheme.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Shells\AppShellDesktop.xaml.cs">
         <DependentUpon>AppShellDesktop.xaml</DependentUpon>
       </Compile>
@@ -248,6 +251,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Shells\AppShellDesktop.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

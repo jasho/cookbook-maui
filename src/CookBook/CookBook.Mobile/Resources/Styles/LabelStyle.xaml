@@ -3,22 +3,20 @@
                     xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="CookBook.Mobile.Resources.Styles.LabelStyle">
-    <Style x:Key="LabelStyleBase" TargetType="Label">
+
+    <Style TargetType="Label" ApplyToDerivedTypes="True">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryLabelTextColor}"/>
     </Style>
 
-    <Style x:Key="RegularLabelStyle" TargetType="Label"
-           BasedOn="{StaticResource LabelStyleBase}">
+    <Style x:Key="RegularLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Regular}" />
     </Style>
 
-    <Style x:Key="MediumLabelStyle" TargetType="Label"
-           BasedOn="{StaticResource LabelStyleBase}">
+    <Style x:Key="MediumLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Medium}" />
     </Style>
 
-    <Style x:Key="BoldLabelStyle" TargetType="Label"
-           BasedOn="{StaticResource LabelStyleBase}">
+    <Style x:Key="BoldLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Bold}" />
     </Style>
 </ResourceDictionary>

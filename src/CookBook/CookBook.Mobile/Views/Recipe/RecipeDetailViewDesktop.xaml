@@ -21,12 +21,10 @@
                 </StackLayout.GestureRecognizers>
                 <Label VerticalOptions="Center"
                        Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
                        FontSize="14"
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
                 <Label VerticalOptions="Center"
                        Text="{x:Static texts:RecipeDetailViewTexts.Back_Button_Text_Desktop}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
                        FontSize="14"
                        Style="{StaticResource MediumLabelStyle}" />
             </StackLayout>
@@ -114,13 +112,11 @@
 
                     <Label Grid.Row="2"
                            Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"
-                           TextColor="{StaticResource PrimaryLabelTextColor}"
                            FontSize="16"
                            Style="{StaticResource BoldLabelStyle}" />
 
                     <Label Grid.Row="3"
                            Text="{Binding Recipe.Description}"
-                           TextColor="{StaticResource PrimaryLabelTextColor}"
                            FontSize="14"
                            Style="{StaticResource RegularLabelStyle}"/>
                 </Grid>
