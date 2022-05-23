@@ -12,7 +12,6 @@
         <Grid Grid.Row="0"
               ColumnDefinitions="*, Auto, Auto"
               ColumnSpacing="15">
-
             <StackLayout Grid.Column="0"
                          Spacing="12"
                          VerticalOptions="Start"
@@ -48,6 +47,7 @@
                     BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}" />
         </Grid>
+
         <Grid Grid.Row="1"
               HorizontalOptions="Center" VerticalOptions="Start"
               RowDefinitions="170, *" ColumnDefinitions="*, Auto, Auto, *"
@@ -61,7 +61,7 @@
                    WidthRequest="170">
                 <Image Aspect="AspectFill" HeightRequest="170"
                        HorizontalOptions="Center"
-                       Source="{Binding Ingredient.ImageUrl, Converter={StaticResource LocalImageWithPlaceholderConverter}, ConverterParameter='/Images/ingredient_placeholder.jpg'}"
+                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
                        VerticalOptions="Center" WidthRequest="170" />
             </Frame>
 

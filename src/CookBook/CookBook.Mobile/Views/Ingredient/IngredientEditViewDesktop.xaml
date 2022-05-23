@@ -53,7 +53,7 @@
                    WidthRequest="170">
                 <Grid WidthRequest="170">
                     <Image Aspect="AspectFill" HeightRequest="170"
-                           Source="{Binding Ingredient.ImageUrl, Converter={StaticResource LocalImageWithPlaceholderConverter}, ConverterParameter='/Images/ingredient_placeholder.jpg'}"
+                           Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
                            WidthRequest="170" />
 
                     <Button Margin="0,0,0,10"

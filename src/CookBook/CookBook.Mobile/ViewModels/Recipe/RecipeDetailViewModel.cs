@@ -7,7 +7,7 @@ namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
 [INotifyPropertyChanged]
-public partial class RecipeDetailViewModel : IViewModel
+public partial class RecipeDetailViewModel : ViewModelBase
 {
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
@@ -26,7 +26,7 @@ public partial class RecipeDetailViewModel : IViewModel
         this.share = share;
     }
 
-    public async Task OnAppearingAsync()
+    public override async Task OnAppearingAsync()
     {
         if (Guid.TryParse(Id, out var id))
         {
