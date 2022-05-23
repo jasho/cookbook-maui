@@ -53,7 +53,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[0],
                 Name = "Vejce",
                 Description = "Popis vejce",
-                ImageUrl = "/Images/Ingredients/ingredient_egg.jpg"
+                ImageUrl = "https://i.ibb.co/d7mZWGN/image.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -61,7 +61,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[1],
                 Name = "Cibule",
                 Description = "Popis cibule",
-                ImageUrl = "/Images/Ingredients/ingredient_onion.jpg"
+                ImageUrl = "https://i.ibb.co/sbXC0rS/480px-Onion-on-White.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -76,7 +76,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[3],
                 Name = "Rajče",
                 Description = "Popis rajčete",
-                ImageUrl = "/Images/Ingredients/ingredient_tomato.jpg"
+                ImageUrl = "https://i.ibb.co/1TzsF6B/ingredient-7.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -84,7 +84,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[4],
                 Name = "Mléko",
                 Description = "Popis mléka",
-                ImageUrl = "/Images/Ingredients/ingredient_milk.jpg"
+                ImageUrl = "https://i.ibb.co/BB3gVxr/ingredient-2.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -92,7 +92,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[5],
                 Name = "Rýže",
                 Description = "Popis rýže",
-                ImageUrl = "/Images/Ingredients/ingredient_rice.jpg"
+                ImageUrl = "https://i.ibb.co/98CGN3H/ingredient-3.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -100,7 +100,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[6],
                 Name = "Citron",
                 Description = "Popis citronu",
-                ImageUrl = "/Images/Ingredients/ingredient_lemon.jpg"
+                ImageUrl = "https://i.ibb.co/0KQgsdT/ingredient-4.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -108,7 +108,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[7],
                 Name = "Kuřecí maso",
                 Description = "Popis kuřecího masa",
-                ImageUrl = "/Images/Ingredients/ingredient_chicken.jpg"
+                ImageUrl = "https://i.ibb.co/4KVB05k/ingredient-5.jpg"
             });
 
             Ingredients.Add(new IngredientEntity
@@ -116,7 +116,7 @@ namespace CookBook.Api
                 Id = ingredientGuids[8],
                 Name = "Chilli paprička",
                 Description = "Popis chilli papričky",
-                ImageUrl = "/Images/Ingredients/ingredient_chilli.jpg"
+                ImageUrl = "https://i.ibb.co/VDB2bQT/ingredient-6.jpg"
             });
         }
 
@@ -150,7 +150,7 @@ namespace CookBook.Api
                 Description = "Popis míchaných vajec",
                 Duration = 15,
                 FoodType = FoodType.MainDish,
-                ImageUrl = "/Images/Recipes/recipe_scrambled_eggs.jpg"
+                ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
             });
             
             Recipes.Add(new RecipeEntity
@@ -160,7 +160,7 @@ namespace CookBook.Api
                 Duration = 60,
                 FoodType = FoodType.Soup,
                 Description = "Polévka!",
-                ImageUrl = "/Images/Recipes/recipe_miso_soup.jpg"
+                ImageUrl = "https://i.ibb.co/RY1XKmL/recipe-2.jpg",
             });
 
 
@@ -171,7 +171,7 @@ namespace CookBook.Api
                 Duration = 60,
                 FoodType = FoodType.MainDish,
                 Description = "Popis kuřete",
-                ImageUrl = "/Images/Recipes/recipe_chicken_lemon_herbs.jpg"
+                ImageUrl = "https://i.ibb.co/QJF2ZxX/recipe-1.jpg",
             });
 
             Recipes.Add(new RecipeEntity
