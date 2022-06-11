@@ -90,7 +90,7 @@
         </DataTemplate>
     </views:ContentPageBase.Resources>
 
-    <Grid HorizontalOptions="Center" RowDefinitions="Auto, *"
+    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
           RowSpacing="20">
         <Label Grid.Row="0"
                FontSize="24"
@@ -107,7 +107,8 @@
                 Style="{StaticResource PrimaryButtonStyle}"
                 IsVisible="{OnIdiom Phone=False, Desktop=True}" />
 
-        <CollectionView Grid.Row="1" ItemsSource="{Binding Items}"
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Items}"
                         ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone}, Desktop={StaticResource ItemsLayoutDesktop}}"
                         ItemTemplate="{OnIdiom Phone={StaticResource ItemTemplatePhone}, Desktop={StaticResource ItemTemplateDesktop}}" />
 
