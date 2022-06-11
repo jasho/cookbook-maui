@@ -20,9 +20,10 @@
     </views:ContentPageBase.Resources>
 
     <Grid>
-        <Grid HorizontalOptions="Center"
+        <Grid HorizontalOptions="FillAndExpand"
               RowDefinitions="Auto, *"
-              RowSpacing="20">
+              RowSpacing="20"
+              Margin="{OnIdiom Phone='10, 0'}">
             <Label Grid.Row="0"
                    FontSize="24"
                    Style="{StaticResource BoldLabelStyle}"
