@@ -151,9 +151,11 @@
                      HorizontalOptions="End"
                      Spacing="20">
             <Button Text="Smazat"
+                    Command="{Binding DeleteCommand}"
                     Style="{StaticResource ErrorButtonStyle}" />
 
             <Button Text="Uložit"
+                    Command="{Binding SaveCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
         </StackLayout>
     </Grid>
