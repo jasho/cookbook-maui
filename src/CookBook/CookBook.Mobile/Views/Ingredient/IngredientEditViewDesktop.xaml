@@ -73,8 +73,7 @@
                        TextColor="{StaticResource PrimaryLabelTextColor}"
                        Style="{StaticResource RegularLabelStyle}" />
 
-                <Frame Grid.Row="1"
-                       Padding="10,0"
+                <Frame Padding="10,0"
                        HorizontalOptions="FillAndExpand"
                        BackgroundColor="{StaticResource FormEntryBackgroundColor}"
                        BorderColor="{StaticResource FormEntryBorderColor}"
@@ -88,8 +87,7 @@
                        TextColor="{StaticResource PrimaryLabelTextColor}"
                        Style="{StaticResource RegularLabelStyle}" />
 
-                <Frame Grid.Row="1"
-                       Padding="10,0"
+                <Frame Padding="10,0"
                        HorizontalOptions="FillAndExpand"
                        BackgroundColor="{StaticResource FormEntryBackgroundColor}"
                        BorderColor="{StaticResource FormEntryBorderColor}"
