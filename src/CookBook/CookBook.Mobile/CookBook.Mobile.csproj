@@ -94,6 +94,7 @@
 
     <ItemGroup>
       <Page Remove="Views\Recipe\RecipeEditViewDesktop.xaml" />
+      <Page Remove="Views\Recipe\RecipeIngredientsEditViewDesktop.xaml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -319,6 +320,9 @@
       </MauiXaml>
 	    <MauiXaml Update="Views\Recipe\RecipeEditViewDesktop.xaml">
 		    <Generator>MSBuild:Compile</Generator>
+	    </MauiXaml>
+	    <MauiXaml Update="Views\Recipe\RecipeIngredientsEditViewDesktop.xaml">
+	      <Generator>MSBuild:Compile</Generator>
 	    </MauiXaml>
 		<MauiXaml Update="Views\SettingsView.xaml">
         <SubType>Designer</SubType>

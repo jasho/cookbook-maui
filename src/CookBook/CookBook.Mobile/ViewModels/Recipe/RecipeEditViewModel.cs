@@ -22,6 +22,12 @@ public partial class RecipeEditViewModel : ViewModelBase
     }
 
     [ICommand]
+    private async Task GoToRecipeIngredientEditAsync()
+    {
+        await Shell.Current.GoToAsync("/ingredients", new Dictionary<string, object> { [nameof(RecipeIngredientsEditViewModel.Recipe)] = Recipe });
+    }
+
+    [ICommand]
     private async Task DeleteAsync()
     {
         await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);

@@ -141,6 +141,7 @@
                     <Button Grid.Row="0"
                             HorizontalOptions="End" VerticalOptions="Start" 
                             Text="Upravit ingredience"
+                            Command="{Binding GoToRecipeIngredientEditCommand}"
                             Style="{StaticResource PrimaryButtonStyle}" />
                 </Grid>
             </Frame>
