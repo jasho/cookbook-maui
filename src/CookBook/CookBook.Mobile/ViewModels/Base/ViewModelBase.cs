@@ -1,21 +1,22 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 
-namespace CookBook.Mobile.ViewModels
+namespace CookBook.Mobile.ViewModels;
+
+[INotifyPropertyChanged]
+public abstract partial class ViewModelBase : IViewModel
 {
-    public abstract partial class ViewModelBase : IViewModel
+    public virtual Task OnAppearingAsync()
     {
-        public virtual Task OnAppearingAsync()
-        {
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
+    }
 
-        [ICommand]
-        private async Task GoBackAsync()
+    [ICommand]
+    private async Task GoBackAsync()
+    {
+        if (Shell.Current.Navigation.NavigationStack.Count > 1)
         {
-            if (Shell.Current.Navigation.NavigationStack.Count > 1)
-            {
-                Shell.Current.SendBackButtonPressed();
-            }
+            Shell.Current.SendBackButtonPressed();
         }
     }
 }

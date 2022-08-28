@@ -20,6 +20,8 @@
 
     <Color x:Key="ImageBorderColor">#707070</Color>
 
+    <Color x:Key="FormFrameBackgroundColor">#D5D5D5</Color>
+
     <Color x:Key="FormEntryTextColor">#000000</Color>
     <Color x:Key="FormEntryBackgroundColor">#F8F8F8</Color>
     <Color x:Key="FormEntryBorderColor">#E4E4E4</Color>

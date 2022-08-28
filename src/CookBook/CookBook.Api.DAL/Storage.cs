@@ -148,7 +148,7 @@ namespace CookBook.Api
                 Id = recipeGuids[0],
                 Name = "Míchaná vejce",
                 Description = "Popis míchaných vajec",
-                Duration = 15,
+                Duration = TimeSpan.FromMinutes(15),
                 FoodType = FoodType.MainDish,
                 ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
             });
@@ -157,7 +157,7 @@ namespace CookBook.Api
             {
                 Id = recipeGuids[1],
                 Name = "Miso polévka",
-                Duration = 60,
+                Duration = TimeSpan.FromMinutes(60),
                 FoodType = FoodType.Soup,
                 Description = "Polévka!",
                 ImageUrl = "https://i.ibb.co/RY1XKmL/recipe-2.jpg",
@@ -168,7 +168,7 @@ namespace CookBook.Api
             {
                 Id = recipeGuids[2],
                 Name = "Vykoštěné kuře s citronem a bylinkami",
-                Duration = 60,
+                Duration = TimeSpan.FromMinutes(60),
                 FoodType = FoodType.MainDish,
                 Description = "Popis kuřete",
                 ImageUrl = "https://i.ibb.co/QJF2ZxX/recipe-1.jpg",
@@ -178,7 +178,7 @@ namespace CookBook.Api
             {
                 Id = recipeGuids[3],
                 Name = "Citronový sorbet",
-                Duration = 30,
+                Duration = TimeSpan.FromMinutes(30),
                 FoodType = FoodType.Dessert,
                 Description = "Zákusek",
             });

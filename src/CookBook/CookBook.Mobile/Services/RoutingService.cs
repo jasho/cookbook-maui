@@ -1,6 +1,7 @@
 ﻿using CookBook.Mobile.Models;
 using CookBook.Mobile.ViewModels;
 using CookBook.Mobile.Views;
+using RecipeIngredientsEditViewDesktop = CookBook.Mobile.Views.RecipeIngredientsEditViewDesktop;
 
 namespace CookBook.Mobile.Services;
 
@@ -29,6 +30,12 @@ public class RoutingService : IRoutingService
         new("//ingredients/detail/edit", typeof(IngredientEditViewDesktop), typeof(IngredientEditViewModel)),
 
         new("//recipes/detail", typeof(RecipeDetailViewDesktop), typeof(RecipeDetailViewModel)),
+
+        new("//recipes/detail/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
+        new("//recipes/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
+
+        new("//recipes/detail/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
+        new("//recipes/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
     }.Concat(routesCommon);
 
     public IEnumerable<RouteModel> Routes
