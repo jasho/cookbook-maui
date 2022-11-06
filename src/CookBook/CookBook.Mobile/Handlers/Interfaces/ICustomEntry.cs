@@ -1,7 +1,7 @@
-﻿//namespace CookBook.Mobile.Handlers;
+﻿namespace CookBook.Mobile.Handlers;
 
-//public interface ICustomEntry : IView
-//{
-//    public string Text { get; }
-//    public Color TextColor { get; }
-//}
+public interface ICustomEntry : IView
+{
+    public string Text { get; }
+    public Color TextColor { get; }
+}

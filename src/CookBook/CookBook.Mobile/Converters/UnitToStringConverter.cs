@@ -10,4 +10,6 @@ public class UnitToStringConverter : BaseConverterOneWay<Unit, string>
     public override string ConvertFrom(Unit value, CultureInfo? culture)
         => UnitTexts.ResourceManager.GetString(value.ToString(), culture) 
            ?? UnitTexts.Unknown;
+
+    public override string DefaultConvertReturnValue { get; set; } = UnitTexts.Unknown;
 }
