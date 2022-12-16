@@ -27,6 +27,6 @@ public class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
 
         return icon;
     }
-
+    
     public override string DefaultConvertReturnValue { get; set; } = FontAwesomeIcons.EmptySet;
 }
