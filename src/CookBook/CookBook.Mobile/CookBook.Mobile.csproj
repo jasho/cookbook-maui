@@ -1,40 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android33.0</TargetFrameworks>
+      <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 	    <!-- Targets possible from Windows OS -->
-	    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
-        <OutputType>Exe</OutputType>
+	    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
+      <OutputType>Exe</OutputType>
 
-        <!-- .NET MAUI -->
-        <UseMaui>true</UseMaui>
-        <SingleProject>true</SingleProject>
-        <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+      <!-- .NET MAUI -->
+      <UseMaui>true</UseMaui>
+      <SingleProject>true</SingleProject>
+      <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
-        <!-- Project Options -->
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>CookBook.Mobile</RootNamespace>
+      <!-- Project Options -->
+      <Nullable>enable</Nullable>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <RootNamespace>CookBook.Mobile</RootNamespace>
 
-        <!-- Display name -->
-        <ApplicationTitle>CookBook</ApplicationTitle>
+      <!-- Display name -->
+      <ApplicationTitle>CookBook</ApplicationTitle>
 
-        <!-- App Identifier -->
-        <ApplicationId>com.companyname.cookbook.mobile</ApplicationId>
+      <!-- App Identifier -->
+      <ApplicationId>com.companyname.cookbook.mobile</ApplicationId>
 	    <ApplicationId Condition="$(TargetFramework.Contains('-windows'))">E9C978E0-3A19-40A7-8A38-66F5ED3A3C2D</ApplicationId>
 
-        <!-- Versions -->
-        <ApplicationVersion>1</ApplicationVersion>
+      <!-- Versions -->
+      <ApplicationVersion>1</ApplicationVersion>
 
-        <!-- Required for C# Hot Reload -->
-        <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+      <!-- Required for C# Hot Reload -->
+      <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 
-        <!-- Target Platform Options -->
-	    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
-	    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-	    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-	    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-	    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-    </PropertyGroup>
+      <!-- Target Platform Options -->
+      <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion>
+
+      <!-- Minimum Target OS Version for Windows Platform -->
+      <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
+      <TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+      <DefaultLanguage>cs-CZ</DefaultLanguage>
+  </PropertyGroup>
 
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
@@ -98,8 +101,8 @@
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221209.1" />
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
 	</ItemGroup>
 	<ItemGroup>
 	  <AndroidResource Remove="Generated\**" />
@@ -113,10 +116,6 @@
     <ItemGroup>
       <MauiFont Remove="Resources\Fonts\FontAwesomeIcons.cs" />
       <MauiFont Remove="Resources\Fonts\Fonts.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <MauiImage Remove="Resources\Images\splashscreen.svg" />
     </ItemGroup>
 
     <ItemGroup>
@@ -141,17 +140,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
-        <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0-rc.2.22472.3" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0-rc.2.22472.3" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0-rc.2.22472.3" />
-        <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
-        
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        
-        <PackageReference Include="PropertyChanged.Fody" Version="4.0.5" />
-        <PackageReference Include="Scrutor" Version="4.2.0" />
+      <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
+      <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+      <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+      <PackageReference Include="Scrutor" Version="4.2.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -371,4 +368,21 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>
+   <PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<OutputType>WinExe</OutputType>
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
 </Project>

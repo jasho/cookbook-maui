@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
 using CookBook.Mobile.Resources.Fonts;
+using CookBook.Mobile.Resources.Texts;
 using System.Globalization;
 
 namespace CookBook.Mobile.Converters;
@@ -26,6 +27,6 @@ public class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
 
         return icon;
     }
-
-    public override string DefaultConvertReturnValue { get; set; } = FontAwesomeIcons.ConciergeBell;
+    
+    public override string DefaultConvertReturnValue { get; set; } = FontAwesomeIcons.EmptySet;
 }
