@@ -9,6 +9,7 @@
       <UseMaui>true</UseMaui>
       <SingleProject>true</SingleProject>
       <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+	  <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 
       <!-- Project Options -->
 	  <NoWarn>1591</NoWarn>
