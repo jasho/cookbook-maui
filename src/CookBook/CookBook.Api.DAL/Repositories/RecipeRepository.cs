@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using CookBook.Api.Entities;
+using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Repositories.Interfaces;
 
-namespace CookBook.Api.Repositories
+namespace CookBook.Api.DAL.Repositories
 {
     public class RecipeRepository : IRecipeRepository
     {
@@ -58,52 +59,12 @@ namespace CookBook.Api.Repositories
             {
                 mapper.Map(entity, recipeEntityExisting);
                 recipeEntityExisting.IngredientAmounts = GetIngredientAmountsByRecipeId(entity.Id);
-                UpdateIngredientAmounts(entity, recipeEntityExisting);
+                //TODO: update ingredient amounts for existing recipe
                 return recipeEntityExisting.Id;
             }
             else
             {
                 return null;
-            }
-        }
-
-        private void UpdateIngredientAmounts(RecipeEntity updatedEntity, RecipeEntity existingEntity)
-        {
-            var ingredientAmountsToDelete = existingEntity.IngredientAmounts.Where(t =>
-                !updatedEntity.IngredientAmounts.Select(a => a.Id).Contains(t.Id));
-            DeleteIngredientAmounts(ingredientAmountsToDelete);
-
-            var recipeUpdateIngredientModelsToInsert = updatedEntity.IngredientAmounts.Where(t =>
-                !existingEntity.IngredientAmounts.Select(a => a.Id).Contains(t.Id));
-            InsertIngredientAmounts(existingEntity, recipeUpdateIngredientModelsToInsert);
-
-            var recipeUpdateIngredientModelsToUpdate = updatedEntity.IngredientAmounts.Where(
-                ingredient => existingEntity.IngredientAmounts.Any(ia => ia.IngredientId == ingredient.IngredientId));
-            UpdateIngredientAmounts(existingEntity, recipeUpdateIngredientModelsToUpdate);
-        }
-
-        private void UpdateIngredientAmounts(RecipeEntity recipeEntity,
-            IEnumerable<IngredientAmountEntity> recipeIngredientModelsToUpdate)
-        {
-            foreach (var recipeUpdateIngredientModel in recipeIngredientModelsToUpdate)
-            {
-                IngredientAmountEntity? ingredientAmountEntity;
-                if (recipeUpdateIngredientModel.Id == null)
-                {
-                    ingredientAmountEntity = GetIngredientAmountRecipeIdAndIngredientId(recipeEntity.Id,
-                        recipeUpdateIngredientModel.IngredientId);
-                }
-                else
-                {
-                    ingredientAmountEntity = storage.IngredientAmounts.Single(t => t.Id == recipeUpdateIngredientModel.Id);
-                }
-
-                if (ingredientAmountEntity is not null)
-                {
-                    ingredientAmountEntity.Amount = recipeUpdateIngredientModel.Amount;
-                    ingredientAmountEntity.Unit = recipeUpdateIngredientModel.Unit;
-                    ingredientAmountEntity.IngredientId = recipeUpdateIngredientModel.IngredientId;
-                }
             }
         }
 
@@ -132,7 +93,7 @@ namespace CookBook.Api.Repositories
             return storage.IngredientAmounts.Where(ingredientAmountEntity => ingredientAmountEntity.RecipeId == recipeId).ToList();
         }
 
-        private IngredientAmountEntity? GetIngredientAmountRecipeIdAndIngredientId(Guid recipeId, Guid ingredientId)
+        private IngredientAmountEntity? GetIngredientAmountByRecipeIdAndIngredientId(Guid recipeId, Guid ingredientId)
         {
             return storage.IngredientAmounts.SingleOrDefault(entity => entity.RecipeId == recipeId && entity.IngredientId == ingredientId);
         }

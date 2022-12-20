@@ -12,19 +12,10 @@ namespace CookBook.Mobile.ViewModels
     {
         private readonly IIngredientsClient ingredientsClient;
         private readonly IRecipesClient recipesClient;
-        private RecipeDetailModel recipe;
 
         public bool IsRefreshRequested { get; set; } = true;
 
-        public RecipeDetailModel Recipe
-        {
-            get => recipe;
-            set
-            {
-                recipe = value;
-                recipe.IngredientAmounts = new ObservableCollection<RecipeDetailIngredientModel>(recipe.IngredientAmounts);
-            }
-        }
+        public RecipeDetailModel Recipe { get; set; } = null!;
 
         public List<Unit> Units { get; set; }
         public ObservableCollection<IngredientListModel> Ingredients { get; set; } = new();
@@ -61,12 +52,20 @@ namespace CookBook.Mobile.ViewModels
         }
 
         private RecipeDetailIngredientModel GetNewIngredient()
-            => new(Guid.NewGuid(), 0, Unit.Unknown, Ingredients.FirstOrDefault());
+            => new()
+            {
+                Id = Guid.NewGuid(),
+                Ingredient = Ingredients?.FirstOrDefault()
+            };
 
         [ICommand]
         private async Task AddNewIngredientToRecipeAsync()
         {
-            Recipe.IngredientAmounts.Add(IngredientNew);
+            if (IngredientNew is not null)
+            {
+                Recipe.IngredientAmounts?.Add(IngredientNew);
+            }
+
             IngredientNew = GetNewIngredient();
 
             await recipesClient.UpdateRecipeAsync(Recipe);
@@ -83,7 +82,7 @@ namespace CookBook.Mobile.ViewModels
         private async Task RemoveIngredientAsync(RecipeDetailIngredientModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
-            Recipe.IngredientAmounts.Remove(ingredient);
+            Recipe.IngredientAmounts?.Remove(ingredient);
 
             await recipesClient.UpdateRecipeAsync(Recipe);
         }

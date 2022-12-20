@@ -1,7 +1,7 @@
 using AutoMapper;
+using CookBook.Api.BL.Facades.Interfaces;
 using CookBook.Api.BL.Installers;
 using CookBook.Api.DAL.Installers;
-using CookBook.Api.Facades;
 using CookBook.Common.Models;
 using NSwag.AspNetCore;
 
@@ -12,14 +12,14 @@ new ApiDALInstaller().Install(builder.Services);
 new ApiBLInstaller().Install(builder.Services);
 builder.Services.AddAutoMapper(typeof(ApiBLInstaller));
 
-var app = builder.Build();
+var application = builder.Build();
 
-ValidateAutoMapperConfiguration(app.Services);
-UseSecurityFeatures(app);
-UseRouting(app);
-UseOpenApi(app);
+ValidateAutoMapperConfiguration(application.Services);
+UseSecurityFeatures(application);
+UseRouting(application);
+UseOpenApi(application);
 
-app.Run();
+application.Run();
 
 
 void ConfigureOpenApiDocuments(IServiceCollection services)
@@ -45,7 +45,11 @@ void UseSecurityFeatures(IApplicationBuilder app)
 
 void UseRouting(WebApplication app)
 {
-    app.MapGet("/", async http => http.Response.Redirect("/swagger", false));
+    app.MapGet("/", http =>
+    {
+        http.Response.Redirect("/swagger", false);
+        return Task.CompletedTask;
+    });
 
     UseIngredientRouting(app);
     UseRecipeRouting(app);

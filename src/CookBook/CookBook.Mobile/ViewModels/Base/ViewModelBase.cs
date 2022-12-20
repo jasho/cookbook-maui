@@ -12,11 +12,13 @@ public abstract partial class ViewModelBase : IViewModel
     }
 
     [ICommand]
-    private async Task GoBackAsync()
+    private Task GoBackAsync()
     {
         if (Shell.Current.Navigation.NavigationStack.Count > 1)
         {
             Shell.Current.SendBackButtonPressed();
         }
+
+        return Task.CompletedTask;
     }
 }

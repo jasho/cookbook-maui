@@ -9,8 +9,8 @@ namespace CookBook.Mobile.ViewModels;
 public partial class RecipeEditViewModel : ViewModelBase
 {
     private readonly IRecipesClient recipesClient;
-    
-    public RecipeDetailModel Recipe { get; set; }
+
+    public RecipeDetailModel Recipe { get; set; } = null!;
 
     public List<FoodType> FoodTypes { get; set; }
 
@@ -30,7 +30,11 @@ public partial class RecipeEditViewModel : ViewModelBase
     [ICommand]
     private async Task DeleteAsync()
     {
-        await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
+        if (Recipe.Id is not null)
+        {
+            await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
+        }
+
         await Shell.Current.GoToAsync("../");
     }
 

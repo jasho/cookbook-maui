@@ -1,4 +1,5 @@
-﻿using CookBook.Api.Facades;
+﻿using CookBook.Api.BL.Facades;
+using CookBook.Api.BL.Facades.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CookBook.Api.BL.Installers

@@ -1,7 +1,7 @@
-﻿using CookBook.Api.Entities;
+﻿using CookBook.Api.DAL.Entities;
 using CookBook.Common.Enums;
 
-namespace CookBook.Api
+namespace CookBook.Api.DAL
 {
     public class Storage : IStorage
     {

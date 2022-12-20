@@ -39,7 +39,10 @@ public partial class RecipeDetailViewModel : ViewModelBase
     [ICommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object> { ["recipe"] = Recipe });
+        if (Recipe is not null)
+        {
+            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object> { ["recipe"] = Recipe });
+        }
     }
 
     [ICommand]

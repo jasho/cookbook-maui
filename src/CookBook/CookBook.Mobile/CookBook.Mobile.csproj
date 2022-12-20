@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-	    <!-- Targets possible from Windows OS -->
-	    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
+	  <!-- Targets possible from Windows OS -->
+	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) AND '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
       <OutputType>Exe</OutputType>
 
       <!-- .NET MAUI -->
@@ -11,6 +11,7 @@
       <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
       <!-- Project Options -->
+	  <NoWarn>1591</NoWarn>
       <Nullable>enable</Nullable>
       <ImplicitUsings>enable</ImplicitUsings>
       <RootNamespace>CookBook.Mobile</RootNamespace>
@@ -100,9 +101,7 @@
 
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221209.1" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
+	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
 	</ItemGroup>
 	<ItemGroup>
 	  <AndroidResource Remove="Generated\**" />
@@ -147,7 +146,7 @@
       <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
       <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-      <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+      <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.0" />
     </ItemGroup>
 

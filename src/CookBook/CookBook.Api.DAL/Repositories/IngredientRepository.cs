@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using CookBook.Api.Entities;
+using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Repositories.Interfaces;
 
-namespace CookBook.Api.Repositories
+namespace CookBook.Api.DAL.Repositories
 {
     public class IngredientRepository : IIngredientRepository
     {

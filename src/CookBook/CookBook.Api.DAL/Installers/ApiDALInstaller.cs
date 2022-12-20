@@ -1,4 +1,5 @@
-﻿using CookBook.Api.Repositories;
+﻿using CookBook.Api.DAL.Repositories;
+using CookBook.Api.DAL.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CookBook.Api.DAL.Installers
