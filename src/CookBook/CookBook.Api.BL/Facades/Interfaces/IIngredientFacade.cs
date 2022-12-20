@@ -1,6 +1,6 @@
 ﻿using CookBook.Common.Models;
 
-namespace CookBook.Api.Facades
+namespace CookBook.Api.BL.Facades.Interfaces
 {
     public interface IIngredientFacade
     {

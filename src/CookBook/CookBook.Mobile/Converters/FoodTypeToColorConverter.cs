@@ -10,9 +10,10 @@ public class FoodTypeToColorConverter : BaseConverterOneWay<FoodType, Color>
     {
         var color = Grey;
 
-        if (Application.Current.Resources.TryGetValue($"{value}FoodTypeColor", out var resourceColor))
+        if (Application.Current?.Resources.TryGetValue($"{value}FoodTypeColor", out var resourceValue) is true
+            && resourceValue is Color resourceColor)
         {
-            color = resourceColor as Color;
+            color = resourceColor;
         }
 
         return color;

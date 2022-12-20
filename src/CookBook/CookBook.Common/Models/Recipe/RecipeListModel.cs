@@ -2,8 +2,10 @@
 
 namespace CookBook.Common.Models;
 
-public record RecipeListModel(Guid Id, string Name, FoodType FoodType, string? ImageUrl = null)
-    : ModelBase
+public record RecipeListModel : ModelBase
 {
-    public string? ImageUrl { get; set; } = ImageUrl;
+    public Guid Id { get; set; }
+    public required string Name { get; set; }
+    public FoodType FoodType { get; set; }
+    public string? ImageUrl { get; set; }
 }

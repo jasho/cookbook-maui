@@ -61,7 +61,7 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Page_Title {
             get {

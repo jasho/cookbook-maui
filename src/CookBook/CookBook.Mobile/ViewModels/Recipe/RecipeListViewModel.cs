@@ -37,7 +37,6 @@ public partial class RecipeListViewModel : IViewModel
     }
 
     [ICommand]
-    private async Task GoToCreateAsync()
-    {
-    }
+    private Task GoToCreateAsync()
+        => Task.CompletedTask;
 }

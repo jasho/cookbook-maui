@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using CookBook.Api.Entities;
-using CookBook.Api.Repositories;
+using CookBook.Api.BL.Facades.Interfaces;
+using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Repositories.Interfaces;
 using CookBook.Common.Models;
 
-namespace CookBook.Api.Facades
+namespace CookBook.Api.BL.Facades
 {
     public class RecipeFacade : IRecipeFacade
     {
@@ -42,31 +43,42 @@ namespace CookBook.Api.Facades
             var mergedRecipeModel = MergeIngredientAmounts(recipeModel);
 
             var recipeEntity = mapper.Map<RecipeEntity>(mergedRecipeModel);
-            recipeEntity.IngredientAmounts = mergedRecipeModel.IngredientAmounts.Select(t =>
+            recipeEntity.IngredientAmounts = mergedRecipeModel.IngredientAmounts?.Select(t =>
                 new IngredientAmountEntity
                 {
                     Id = t.Id ?? Guid.NewGuid(),
                     Amount = t.Amount,
                     Unit = t.Unit,
                     RecipeId = recipeEntity.Id,
-                    IngredientId = t.Ingredient.Id
-                }).ToList();
+                    IngredientId = t.Ingredient?.Id
+                }).ToList()
+                ?? new List<IngredientAmountEntity>();
+
             var result = recipeRepository.Update(recipeEntity);
             return result;
         }
 
-        private RecipeDetailModel MergeIngredientAmounts(RecipeDetailModel recipe)
+        private static RecipeDetailModel MergeIngredientAmounts(RecipeDetailModel recipe)
         {
             var result = new List<RecipeDetailIngredientModel>();
-            var ingredientAmountGroups = recipe.IngredientAmounts.GroupBy(t => $"{t.Ingredient.Id}-{t.Unit}");
+            var ingredientAmountGroups = recipe.IngredientAmounts?.GroupBy(t => $"{t.Ingredient?.Id}-{t.Unit}");
 
-            foreach (var ingredientAmountGroup in ingredientAmountGroups)
+            if (ingredientAmountGroups is not null)
             {
-                var ingredientAmountFirst = ingredientAmountGroup.First();
-                var totalAmount = ingredientAmountGroup.Sum(t => t.Amount);
-                var ingredientAmount = new RecipeDetailIngredientModel(ingredientAmountFirst.Id, totalAmount, ingredientAmountFirst.Unit, ingredientAmountFirst.Ingredient);
-                
-                result.Add(ingredientAmount);
+                foreach (var ingredientAmountGroup in ingredientAmountGroups)
+                {
+                    var ingredientAmountFirst = ingredientAmountGroup.First();
+                    var totalAmount = ingredientAmountGroup.Sum(t => t.Amount);
+                    var ingredientAmount = new RecipeDetailIngredientModel()
+                    {
+                        Id = ingredientAmountFirst.Id,
+                        Amount = totalAmount,
+                        Unit = ingredientAmountFirst.Unit,
+                        Ingredient = ingredientAmountFirst.Ingredient,
+                    };
+
+                    result.Add(ingredientAmount);
+                }
             }
 
             return recipe with { IngredientAmounts = result };

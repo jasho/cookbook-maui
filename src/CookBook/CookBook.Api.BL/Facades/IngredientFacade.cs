@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using CookBook.Api.Entities;
-using CookBook.Api.Repositories;
+using CookBook.Api.BL.Facades.Interfaces;
+using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Repositories.Interfaces;
 using CookBook.Common.Models;
 
-namespace CookBook.Api.Facades
+namespace CookBook.Api.BL.Facades
 {
     public class IngredientFacade : IIngredientFacade
     {

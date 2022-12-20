@@ -2,8 +2,13 @@
 
 namespace CookBook.Common.Models;
 
-public record RecipeDetailModel(Guid? Id, string Name, string Description, TimeSpan Duration, FoodType FoodType, IList<RecipeDetailIngredientModel> IngredientAmounts, string? ImageUrl = null)
-    : ModelBase
+public record RecipeDetailModel : ModelBase
 {
-    public IList<RecipeDetailIngredientModel> IngredientAmounts { get; set; } = IngredientAmounts;
+    public Guid? Id { get; set; }
+    public required string Name { get; set; }
+    public string? Description { get; set; }
+    public TimeSpan Duration { get; set; }
+    public FoodType FoodType { get; set; }
+    public IList<RecipeDetailIngredientModel>? IngredientAmounts { get; set; }
+    public string? ImageUrl { get; set; }
 }

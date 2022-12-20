@@ -1,4 +1,4 @@
-﻿namespace CookBook.Api.Entities
+﻿namespace CookBook.Api.DAL.Entities
 {
     public abstract record EntityBase
     {

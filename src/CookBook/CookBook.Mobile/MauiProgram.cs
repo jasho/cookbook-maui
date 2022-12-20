@@ -55,8 +55,11 @@ public static class MauiProgram
         var assembly = Assembly.GetExecutingAssembly();
         var appSettingsFilePath = "CookBook.Mobile.Configuration.appsettings.json";
         using var appSettingsStream = assembly.GetManifestResourceStream(appSettingsFilePath);
-        configurationBuilder.AddJsonStream(appSettingsStream);
-            
+        if (appSettingsStream is not null)
+        {
+            configurationBuilder.AddJsonStream(appSettingsStream);
+        }
+
         var configuration = configurationBuilder.Build();
         builder.Configuration.AddConfiguration(configuration);
     }
@@ -100,7 +103,6 @@ public static class MauiProgram
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IRoutingService, RoutingService>();
-        services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
         services.AddSingleton<IShare>(_ => Share.Default);
     }
 
@@ -109,19 +111,17 @@ public static class MauiProgram
         services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) =>
         {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
-                
-            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl);
+            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
         });
 
         services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) =>
         {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
-
-            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl);
+            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
         });
     }
 
-//        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
+    //        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
 //        {
 //            builder.ConfigureMauiHandlers(handlers =>
 //            {
