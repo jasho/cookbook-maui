@@ -1,9 +1,8 @@
-﻿namespace CookBook.Mobile.Enums
+﻿namespace CookBook.Mobile.Enums;
+
+public enum DeviceOrientation
 {
-    public enum DeviceOrientation
-    {
-        Undefined,
-        Landscape,
-        Portrait
-    }
+    Undefined,
+    Landscape,
+    Portrait
 }

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 
-namespace CookBook.Api.BL.MapperProfiles
+namespace CookBook.Api.BL.MapperProfiles;
+
+public class IngredientAmountMapperProfile : Profile
 {
-    public class IngredientAmountMapperProfile : Profile
+    public IngredientAmountMapperProfile()
     {
-        public IngredientAmountMapperProfile()
-        {
-        }
     }
 }
