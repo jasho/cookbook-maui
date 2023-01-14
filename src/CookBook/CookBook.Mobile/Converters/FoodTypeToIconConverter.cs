@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
 using CookBook.Mobile.Resources.Fonts;
-using CookBook.Mobile.Resources.Texts;
 using System.Globalization;
 
 namespace CookBook.Mobile.Converters;
