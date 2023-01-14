@@ -31,7 +31,9 @@
 
             <CollectionView Grid.Row="1" ItemsSource="{Binding Items}"
                             VerticalOptions="FillAndExpand"
-                            ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone}, Desktop={StaticResource ItemsLayoutDesktop}}">
+                            ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone},
+                                                  Desktop={StaticResource ItemsLayoutDesktop},
+                                                  Default={StaticResource ItemsLayoutDesktop}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
                         <Frame Padding="0"
