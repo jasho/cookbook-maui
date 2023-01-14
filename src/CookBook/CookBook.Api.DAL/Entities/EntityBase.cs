@@ -1,7 +1,6 @@
-﻿namespace CookBook.Api.DAL.Entities
+﻿namespace CookBook.Api.DAL.Entities;
+
+public abstract record EntityBase
 {
-    public abstract record EntityBase
-    {
-        public Guid Id { get; init; } = Guid.NewGuid();
-    }
+    public Guid Id { get; init; } = Guid.NewGuid();
 }

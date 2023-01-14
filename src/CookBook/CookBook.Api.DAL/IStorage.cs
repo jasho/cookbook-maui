@@ -1,11 +1,10 @@
 ﻿using CookBook.Api.DAL.Entities;
 
-namespace CookBook.Api.DAL
+namespace CookBook.Api.DAL;
+
+public interface IStorage
 {
-    public interface IStorage
-    {
-        IList<IngredientEntity> Ingredients { get; }
-        IList<IngredientAmountEntity> IngredientAmounts { get; }
-        IList<RecipeEntity> Recipes { get; }
-    }
+    IList<IngredientEntity> Ingredients { get; }
+    IList<IngredientAmountEntity> IngredientAmounts { get; }
+    IList<RecipeEntity> Recipes { get; }
 }
