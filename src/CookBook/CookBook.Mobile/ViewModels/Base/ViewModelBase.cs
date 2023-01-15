@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
@@ -11,7 +11,7 @@ public abstract partial class ViewModelBase : IViewModel
         return Task.CompletedTask;
     }
 
-    [ICommand]
+    [RelayCommand]
     private Task GoBackAsync()
     {
         if (Shell.Current.Navigation.NavigationStack.Count > 1)

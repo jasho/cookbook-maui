@@ -1,7 +1,7 @@
-﻿using CookBook.Common.Enums;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Enums;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
@@ -21,13 +21,13 @@ public partial class RecipeEditViewModel : ViewModelBase
         FoodTypes = new List<FoodType>((FoodType[])Enum.GetValues(typeof(FoodType)));
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task GoToRecipeIngredientEditAsync()
     {
         await Shell.Current.GoToAsync("/ingredients", new Dictionary<string, object> { [nameof(RecipeIngredientsEditViewModel.Recipe)] = Recipe });
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task DeleteAsync()
     {
         if (Recipe.Id is not null)
@@ -38,7 +38,7 @@ public partial class RecipeEditViewModel : ViewModelBase
         await Shell.Current.GoToAsync("../");
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task SaveAsync()
     {
         await recipesClient.UpdateRecipeAsync(Recipe);

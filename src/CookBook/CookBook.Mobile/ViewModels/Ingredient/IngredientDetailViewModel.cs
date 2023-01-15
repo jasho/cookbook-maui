@@ -1,6 +1,6 @@
-﻿using CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
@@ -27,20 +27,23 @@ public partial class IngredientDetailViewModel : ViewModelBase
         Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task DeleteAsync()
     {
         await ingredientsClient.DeleteIngredientAsync(Id);
         Shell.Current.SendBackButtonPressed();
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync($"/edit?id={Ingredient!.Id!.Value}");
+        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        {
+            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
+        });
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task ShareAsync()
     {
         if (Ingredient?.Id is not null)
