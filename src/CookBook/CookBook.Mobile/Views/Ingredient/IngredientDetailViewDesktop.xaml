@@ -8,61 +8,36 @@
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel"
                        NavigationPage.HasBackButton="False">
-    <Grid RowDefinitions="70, *">
-        <Grid Grid.Row="0"
-              ColumnDefinitions="*, Auto, Auto"
-              ColumnSpacing="15">
-            <StackLayout Grid.Column="0"
-                         Spacing="12"
-                         VerticalOptions="Start"
-                         Orientation="Horizontal">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
-                </StackLayout.GestureRecognizers>
-                <Label VerticalOptions="Center"
-                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
-                       FontSize="14"
-                       FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-                <Label VerticalOptions="Center"
-                       Text="{x:Static texts:IngredientDetailViewTexts.Back_Button_Text_Desktop}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
-                       FontSize="14"
-                       Style="{StaticResource MediumLabelStyle}" />
-            </StackLayout>
-
-            <Button Grid.Column="1"
-                    VerticalOptions="Start"
-                    HeightRequest="30"
-                    Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"
+    <StackLayout Orientation="Vertical"
+                 Spacing="10">
+        <StackLayout HorizontalOptions="End"
+                     Orientation="Horizontal"
+                     Spacing="15"
+                     HeightRequest="30">
+            <Button Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"
                     CornerRadius="5"
                     BackgroundColor="{StaticResource ErrorColor}"
                     Command="{Binding DeleteCommand}" />
 
-            <Button Grid.Column="2"
-                    VerticalOptions="Start"
-                    HeightRequest="30"
-                    Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text_Desktop}"
+            <Button Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text_Desktop}"
                     CornerRadius="5"
                     BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}" />
-        </Grid>
+        </StackLayout>
 
-        <Grid Grid.Row="1"
-              HorizontalOptions="Center" VerticalOptions="Start"
+        <Grid HorizontalOptions="Center" VerticalOptions="Start"
               RowDefinitions="170, *" ColumnDefinitions="*, Auto, Auto, *"
               RowSpacing="20" ColumnSpacing="20">
 
             <Frame Grid.Row="0" Grid.Column="1"
-                   HorizontalOptions="End" VerticalOptions="Center"
-                   CornerRadius="10" HeightRequest="170"
+                   HorizontalOptions="Center" VerticalOptions="Center"
+                   WidthRequest="170" HeightRequest="170"
+                   CornerRadius="10" 
                    IsClippedToBounds="True"
-                   BorderColor="{StaticResource ImageBorderColor}"
-                   WidthRequest="170">
-                <Image Aspect="AspectFill" HeightRequest="170"
-                       HorizontalOptions="Center"
-                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
-                       VerticalOptions="Center" WidthRequest="170" />
+                   Padding="0">
+                <Image Aspect="AspectFill"
+                       WidthRequest="170" HeightRequest="170"
+                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}" />
             </Frame>
 
             <StackLayout Grid.Row="0" Grid.RowSpan="2"
@@ -78,5 +53,5 @@
                        Text="{Binding Ingredient.Description}"/>
             </StackLayout>
         </Grid>
-    </Grid>
+    </StackLayout>
 </views:ContentPageBase>

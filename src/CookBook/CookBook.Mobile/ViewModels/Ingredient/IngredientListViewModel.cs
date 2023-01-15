@@ -32,7 +32,10 @@ public partial class IngredientListViewModel : IViewModel
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync($"{route}?id={id}");
+        await Shell.Current.GoToAsync(route, new Dictionary<string, object>
+        {
+            [nameof(IngredientDetailViewModel.Id)] = id
+        });
     }
 
     [ICommand]
