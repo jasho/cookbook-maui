@@ -9,6 +9,7 @@
       <UseMaui>true</UseMaui>
       <SingleProject>true</SingleProject>
       <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+	  <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 
       <!-- Project Options -->
 	  <NoWarn>1591</NoWarn>
@@ -141,10 +142,10 @@
     <ItemGroup>
       <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
       <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
-      <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
       <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.0" />

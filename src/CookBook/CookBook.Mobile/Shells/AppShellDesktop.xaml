@@ -9,7 +9,8 @@
        NavigationPage.HasNavigationBar="False"
        NavigationPage.HasBackButton="False"
        MinimumHeightRequest="{OnIdiom Desktop=1000}"
-       HeightRequest="{OnIdiom Desktop=1000}">
+       HeightRequest="{OnIdiom Desktop=1000}"
+       FlyoutBehavior="Disabled">
     <Shell.TitleView>
         <Grid>
             <Image Source="page_title_logo.png"

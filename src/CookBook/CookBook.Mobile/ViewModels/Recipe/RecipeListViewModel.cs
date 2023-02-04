@@ -1,8 +1,8 @@
-﻿using CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 using CookBook.Mobile.Services;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
@@ -28,7 +28,7 @@ public partial class RecipeListViewModel : IViewModel
         Items = await recipesClient.GetRecipesAllAsync();
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
@@ -36,7 +36,7 @@ public partial class RecipeListViewModel : IViewModel
         await Shell.Current.GoToAsync($"{route}", new Dictionary<string, object> { ["id"] = id });
     }
 
-    [ICommand]
+    [RelayCommand]
     private Task GoToCreateAsync()
         => Task.CompletedTask;
 }

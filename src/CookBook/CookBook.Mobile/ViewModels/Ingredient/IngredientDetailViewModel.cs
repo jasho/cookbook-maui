@@ -1,22 +1,18 @@
-﻿using CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
-[QueryProperty(nameof(Id), "id")]
-[INotifyPropertyChanged]
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class IngredientDetailViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
     private readonly IShare share;
 
-    [ObservableProperty]
-    private string? id;
+    public Guid Id { get; set; } = Guid.Empty;
 
-    [ObservableProperty]
-    private IngredientDetailModel? ingredient;
+    public IngredientDetailModel? Ingredient { get; set; }
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,
@@ -28,26 +24,26 @@ public partial class IngredientDetailViewModel : ViewModelBase
 
     public override async Task OnAppearingAsync()
     {
-        if (Guid.TryParse(Id, out var id))
-        {
-            Ingredient = await ingredientsClient.GetIngredientByIdAsync(id);
-        }
+        Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task DeleteAsync()
     {
-        await ingredientsClient.DeleteIngredientAsync(Ingredient!.Id!.Value);
+        await ingredientsClient.DeleteIngredientAsync(Id);
         Shell.Current.SendBackButtonPressed();
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync($"/edit?id={Ingredient!.Id!.Value}");
+        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        {
+            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
+        });
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task ShareAsync()
     {
         if (Ingredient?.Id is not null)

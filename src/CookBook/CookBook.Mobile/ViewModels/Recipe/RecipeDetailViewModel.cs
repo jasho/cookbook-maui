@@ -1,6 +1,6 @@
-﻿using CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.Input;
 using PropertyChanged;
 
 namespace CookBook.Mobile.ViewModels;
@@ -29,14 +29,14 @@ public partial class RecipeDetailViewModel : ViewModelBase
         Recipe = await recipesClient.GetRecipeByIdAsync(Id);
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task DeleteAsync()
     {
         await recipesClient.DeleteRecipeAsync(Recipe!.Id!.Value);
         Shell.Current.SendBackButtonPressed();
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task GoToEditAsync()
     {
         if (Recipe is not null)
@@ -45,7 +45,7 @@ public partial class RecipeDetailViewModel : ViewModelBase
         }
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task ShareAsync()
     {
         if (Recipe?.Id is not null)

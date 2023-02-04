@@ -1,7 +1,7 @@
-﻿using CookBook.Common.Enums;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Enums;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace CookBook.Mobile.ViewModels
@@ -58,7 +58,7 @@ namespace CookBook.Mobile.ViewModels
                 Ingredient = Ingredients?.FirstOrDefault()
             };
 
-        [ICommand]
+        [RelayCommand]
         private async Task AddNewIngredientToRecipeAsync()
         {
             if (IngredientNew is not null)
@@ -71,14 +71,14 @@ namespace CookBook.Mobile.ViewModels
             await recipesClient.UpdateRecipeAsync(Recipe);
         }
 
-        [ICommand]
+        [RelayCommand]
         private async Task UpdateIngredientAsync(RecipeDetailIngredientModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
             await recipesClient.UpdateRecipeAsync(Recipe);
         }
 
-        [ICommand]
+        [RelayCommand]
         private async Task RemoveIngredientAsync(RecipeDetailIngredientModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe

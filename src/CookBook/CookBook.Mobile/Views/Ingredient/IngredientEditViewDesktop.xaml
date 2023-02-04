@@ -10,36 +10,17 @@
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientEditViewModel">
     <Grid RowDefinitions="70, *">
-        <Grid Grid.Row="0"
-              ColumnDefinitions="*, Auto"
-              ColumnSpacing="15">
-            <StackLayout Grid.Column="0"
-                         Spacing="12"
-                         VerticalOptions="Start"
-                         Orientation="Horizontal">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBackCommand}" />
-                </StackLayout.GestureRecognizers>
-                <Label VerticalOptions="Center"
-                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
-                       FontSize="14"
-                       FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-                <Label VerticalOptions="Center"
-                       Text="{x:Static texts:IngredientDetailViewTexts.Back_Button_Text_Desktop}"
-                       TextColor="{StaticResource PrimaryLabelTextColor}"
-                       FontSize="14"
-                       Style="{StaticResource MediumLabelStyle}" />
-            </StackLayout>
 
-            <Button Grid.Column="1"
-                    VerticalOptions="Start"
-                    HeightRequest="30"
-                    Text="{x:Static texts:IngredientEditViewTexts.Save_Button_Text_Desktop}"
+        <StackLayout HorizontalOptions="End"
+                     Orientation="Horizontal"
+                     Spacing="15"
+                     HeightRequest="30">
+            <Button Text="{x:Static texts:IngredientEditViewTexts.Save_Button_Text_Desktop}"
                     CornerRadius="5"
                     BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding SaveCommand}" />
-        </Grid>
+        </StackLayout>
+
         <Grid Grid.Row="1"
               HorizontalOptions="Center" VerticalOptions="Start"
               RowDefinitions="170, *" ColumnDefinitions="*, Auto, Auto, *"
@@ -53,7 +34,7 @@
                    WidthRequest="170">
                 <Grid WidthRequest="170">
                     <Image Aspect="AspectFill" HeightRequest="170"
-                           Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
+                           Source="{Binding Ingredient.ImageUrl}"
                            WidthRequest="170" />
 
                     <Button Margin="0,0,0,10"
@@ -73,29 +54,17 @@
                        TextColor="{StaticResource PrimaryLabelTextColor}"
                        Style="{StaticResource RegularLabelStyle}" />
 
-                <Frame Padding="10,0"
-                       HorizontalOptions="FillAndExpand"
-                       BackgroundColor="{StaticResource FormEntryBackgroundColor}"
-                       BorderColor="{StaticResource FormEntryBorderColor}"
-                       CornerRadius="5">
-                    <Entry HorizontalOptions="FillAndExpand"
-                           Text="{Binding Ingredient.Name}"
-                           Style="{StaticResource FormEntryStyle}" />
-                </Frame>
+                <Entry HorizontalOptions="FillAndExpand"
+                       Text="{Binding Ingredient.Name}"
+                       Style="{StaticResource FormEntryStyle}" />
 
                 <Label Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}"
                        TextColor="{StaticResource PrimaryLabelTextColor}"
                        Style="{StaticResource RegularLabelStyle}" />
 
-                <Frame Padding="10,0"
-                       HorizontalOptions="FillAndExpand"
-                       BackgroundColor="{StaticResource FormEntryBackgroundColor}"
-                       BorderColor="{StaticResource FormEntryBorderColor}"
-                       CornerRadius="5">
-                    <Editor HorizontalOptions="FillAndExpand"
-                            Text="{Binding Ingredient.Description}"
-                            Style="{StaticResource FormEditorStyle}" />
-                </Frame>
+                <Entry HorizontalOptions="FillAndExpand"
+                       Text="{Binding Ingredient.Description}"
+                       Style="{StaticResource FormEntryStyle}" />
             </StackLayout>
         </Grid>
     </Grid>

@@ -1,24 +1,16 @@
-﻿using CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using CookBook.Common.Models;
 using CookBook.Mobile.Api;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
-[QueryProperty(nameof(Id), "id")]
-[INotifyPropertyChanged]
+[QueryProperty(nameof(Ingredient), nameof(Ingredient))]
 public partial class IngredientEditViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
 
-    [ObservableProperty]
-    private FileResult? imageFileResult;
-
-    [ObservableProperty]
-    private string? id;
-
-    [ObservableProperty]
-    private IngredientDetailModel? ingredient;
+    public FileResult? ImageFileResult { get; set; }
+    public IngredientDetailModel Ingredient { get; init; }
 
     public IngredientEditViewModel(
         IIngredientsClient ingredientsClient)
@@ -26,26 +18,14 @@ public partial class IngredientEditViewModel : ViewModelBase
         this.ingredientsClient = ingredientsClient;
     }
 
-    public override async Task OnAppearingAsync()
-    {
-        if (Id is not null && Guid.TryParse(Id, out var id))
-        {
-            Ingredient = await ingredientsClient.GetIngredientByIdAsync(id);
-        }
-        else
-        {
-            Ingredient = new(Guid.NewGuid(), string.Empty, string.Empty, null);
-        }
-    }
-
-    [ICommand]
+    [RelayCommand]
     private async Task SaveAsync()
     {
         await ingredientsClient.CreateIngredientAsync(Ingredient);
         Shell.Current.SendBackButtonPressed();
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task PickImageAsync()
     {
         ImageFileResult = await FilePicker.PickAsync(new PickOptions
