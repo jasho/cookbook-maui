@@ -388,11 +388,13 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
+    <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
     <AndroidKeyStore>False</AndroidKeyStore>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
     <AndroidKeyStore>False</AndroidKeyStore>
+    <RunAOTCompilation>True</RunAOTCompilation>
+    <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
   </PropertyGroup>
 </Project>

@@ -3,9 +3,21 @@
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                        Title="{OnIdiom Phone={x:Static texts:IngredientEditViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientEditViewModel">
+    <views:ContentPageBase.ToolbarItems>
+        <ToolbarItem Command="{Binding SaveCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Save}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </views:ContentPageBase.ToolbarItems>
+
     <Grid RowDefinitions="Auto, Auto, *" RowSpacing="20">
         <VerticalStackLayout Spacing="5">
             <Label FontSize="14"
@@ -36,6 +48,7 @@
                         CornerRadius="5" HorizontalOptions="Center"
                         Style="{StaticResource PrimaryButtonStyle}"
                         Text="{x:Static texts:IngredientEditViewTexts.SelectImage_Button_Text}"
+                        Command="{Binding PickImageCommand}"
                         VerticalOptions="End" />
             </Grid>
         </Frame>

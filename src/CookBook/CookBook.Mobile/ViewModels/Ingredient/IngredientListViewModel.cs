@@ -49,6 +49,9 @@ public partial class IngredientListViewModel : IViewModel
     private async Task GoToEditAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
-        await Shell.Current.GoToAsync($"{route}?id={id}");
+        await Shell.Current.GoToAsync($"{route}", new Dictionary<string, object>
+        {
+            [nameof(IngredientEditViewModel.Id)] = id
+        });
     }
 }

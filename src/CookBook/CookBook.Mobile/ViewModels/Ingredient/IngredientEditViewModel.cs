@@ -4,18 +4,24 @@ using CookBook.Mobile.Api;
 
 namespace CookBook.Mobile.ViewModels;
 
-[QueryProperty(nameof(Ingredient), nameof(Ingredient))]
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class IngredientEditViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
+    public Guid Id { get; set; } = Guid.Empty;
 
+    public IngredientDetailModel Ingredient { get; set; }
     public FileResult? ImageFileResult { get; set; }
-    public IngredientDetailModel Ingredient { get; init; }
 
     public IngredientEditViewModel(
         IIngredientsClient ingredientsClient)
     {
         this.ingredientsClient = ingredientsClient;
+    }
+
+    public override async Task OnAppearingAsync()
+    {
+        Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
     }
 
     [RelayCommand]
@@ -28,15 +34,10 @@ public partial class IngredientEditViewModel : ViewModelBase
     [RelayCommand]
     private async Task PickImageAsync()
     {
-        ImageFileResult = await FilePicker.PickAsync(new PickOptions
+        ImageFileResult = await MediaPicker.Default.CapturePhotoAsync();
+        if (ImageFileResult is not null)
         {
-            PickerTitle = "Pick an image",
-            FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-            {
-                [DevicePlatform.Android] = new[] { ".png", ".jpg", ".jpeg" },
-                [DevicePlatform.iOS] = new[] { ".png", ".jpg", ".jpeg" },
-                [DevicePlatform.WinUI] = new[] { ".png", ".jpg", ".jpeg" }
-            })
-        });
+            Ingredient.ImageUrl = ImageFileResult.FullPath;
+        }
     }
 }

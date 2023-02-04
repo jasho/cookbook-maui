@@ -37,10 +37,14 @@ public partial class IngredientDetailViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        if (Ingredient?.Id is not null)
         {
-            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
+            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        {
+            [nameof(IngredientEditViewModel.Id)] = Ingredient.Id
         });
+        }
+        
     }
 
     [RelayCommand]
