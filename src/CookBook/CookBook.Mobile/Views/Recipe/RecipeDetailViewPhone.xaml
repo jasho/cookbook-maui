@@ -26,18 +26,9 @@
                                  Color="{DynamicResource NavigationBarTextColor}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-
-        <ToolbarItem Command="{Binding GoToEditCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
-                                 Size="15"
-                                 Color="{DynamicResource NavigationBarTextColor}" />
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
     </views:ContentPageBase.ToolbarItems>
     
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Never">
         <Grid RowDefinitions="200, Auto, Auto, Auto, Auto, Auto, *"
               RowSpacing="20"
               x:DataType="vm:RecipeDetailViewModel">
