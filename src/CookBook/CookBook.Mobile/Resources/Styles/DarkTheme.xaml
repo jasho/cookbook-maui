@@ -5,6 +5,7 @@
     <Color x:Key="UnselectedColor">#888888</Color>
     <Color x:Key="BackgroundColor">#000000</Color>
 
+    <Color x:Key="FlyoutTextColor">#FFFFFF</Color>
     <Color x:Key="NavigationBarBackgroudColor">#3A3A3A</Color>
     <Color x:Key="NavigationBarTextColor">#FFFFFF</Color>
 
