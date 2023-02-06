@@ -11,6 +11,8 @@ using CookBook.Mobile.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Reflection;
+using Akavache;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace CookBook.Mobile;
 
@@ -28,8 +30,29 @@ public static class MauiProgram
                 fonts.AddFont("Montserrat-Medium.ttf", Fonts.Medium);
                 fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
             });
+#if WINDOWS
+        builder.ConfigureLifecycleEvents(events => {
+            events.AddWindows(windowsLifecycle =>
+            {
+                // Windows does not have OnPause/OnResume callbacks like iOS/AN.
+                // To still showcase caching on the platform this approach is used.
+                // In a real application the cache on Windows may be handled differently.
+                windowsLifecycle.OnVisibilityChanged((w, args) =>
+                {
+                    if (args.Visible)
+                    {
+                        BlobCache.EnsureInitialized();
+                    }
+                    else
+                    {
+                        BlobCache.Shutdown().Wait(TimeSpan.FromMilliseconds(500));
+                    }
+                });
+            });
+        });
+#endif
 
-        ConfigureAppSettings(builder);
+		ConfigureAppSettings(builder);
         ConfigureOptions(builder);
             
         ConfigureShell(builder.Services);
@@ -103,10 +126,13 @@ public static class MauiProgram
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IRoutingService, RoutingService>();
-        services.AddSingleton<IShare>(_ => Share.Default);
-        services.AddSingleton<ISecureStorage>(_ => SecureStorage.Default);
-        services.AddSingleton<IPreferences>(_ => Preferences.Default);
-    }
+        services.AddSingleton(_ => Share.Default);
+
+        services.AddSingleton(_ => SecureStorage.Default);
+        services.AddSingleton(_ => Preferences.Default);
+
+        Akavache.Sqlite3.Registrations.Start(AppDomain.CurrentDomain.FriendlyName, () => SQLitePCL.Batteries_V2.Init());
+	}
 
     private static void ConfigureApiClients(IServiceCollection services)
     {

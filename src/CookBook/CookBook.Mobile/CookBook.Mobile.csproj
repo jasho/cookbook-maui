@@ -140,6 +140,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="akavache.sqlite3" Version="9.1.7" />
       <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
       <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
@@ -149,6 +150,8 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
       <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.0" />
+      <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+      <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
     </ItemGroup>
 
     <ItemGroup>

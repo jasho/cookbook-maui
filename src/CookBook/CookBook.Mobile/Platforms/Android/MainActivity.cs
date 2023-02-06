@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Akavache;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 
@@ -11,6 +12,18 @@ public class MainActivity : MauiAppCompatActivity
     {
         base.OnCreate(savedInstanceState);
         Platform.Init(this, savedInstanceState);
+    }
+
+    protected override void OnResume()
+    {
+        BlobCache.EnsureInitialized();
+        base.OnResume();
+    }
+
+    protected override void OnPause()
+    {
+        BlobCache.Shutdown().Wait(TimeSpan.FromMilliseconds(500));
+        base.OnPause();
     }
 
     public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
