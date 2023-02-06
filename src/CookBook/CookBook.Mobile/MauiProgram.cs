@@ -104,6 +104,8 @@ public static class MauiProgram
     {
         services.AddSingleton<IRoutingService, RoutingService>();
         services.AddSingleton<IShare>(_ => Share.Default);
+        services.AddSingleton<ISecureStorage>(_ => SecureStorage.Default);
+        services.AddSingleton<IPreferences>(_ => Preferences.Default);
     }
 
     private static void ConfigureApiClients(IServiceCollection services)
