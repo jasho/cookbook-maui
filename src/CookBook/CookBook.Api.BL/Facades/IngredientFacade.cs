@@ -30,6 +30,13 @@ public class IngredientFacade : IIngredientFacade
         return mapper.Map<IngredientDetailModel>(ingredientEntity);
     }
 
+
+    public List<IngredientDetailModel> GetByRecipeId(Guid id)
+    {
+        var ingredientEntity = ingredientRepository.GetByRecipeId(id);
+        return mapper.Map<List<IngredientDetailModel>>(ingredientEntity);
+    }
+
     public Guid Create(IngredientDetailModel ingredientModel)
     {
         var ingredientEntity = mapper.Map<IngredientEntity>(ingredientModel);

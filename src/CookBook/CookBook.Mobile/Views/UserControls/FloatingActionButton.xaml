@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CookBook.Mobile.Views.UserControls.FloatingActionButton"
+             x:Name="FABRoot">
+    <Button Margin="0, 0, 14, 9" Padding="0"
+            Command="{Binding Source={x:Reference FABRoot}, Path=Command}"
+            CornerRadius="32" WidthRequest="64" HeightRequest="64"
+            FontFamily="MontserratRegular" FontSize="44" 
+            HorizontalOptions="End" VerticalOptions="End"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Text="{Binding Source={x:Reference FABRoot}, Path=Text}"
+            IsVisible="{OnIdiom Phone=True, Desktop=False}" />
+</ContentView>

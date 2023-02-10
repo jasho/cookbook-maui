@@ -69,6 +69,10 @@ void UseIngredientRouting(WebApplication app)
         .WithTags(IngredientsTag)
         .WithName($"Get{IngredientBaseName}ById");
 
+    app.MapGet($"{IngredientsBasePath}/for_recipe/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.GetByRecipeId(id))
+        .WithTags(IngredientsTag)
+        .WithName($"Get{IngredientBaseName}ByRecipeId");
+
     app.MapPost($"{IngredientsBasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Create(ingredient))
         .WithTags(IngredientsTag)
         .WithName($"Create{IngredientBaseName}");

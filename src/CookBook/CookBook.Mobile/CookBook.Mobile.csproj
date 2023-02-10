@@ -53,6 +53,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 		<Optimize>False</Optimize>
+		<EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
@@ -77,6 +78,8 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 		<Optimize>True</Optimize>
+		<EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+		<DebugSymbols>True</DebugSymbols>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
@@ -144,6 +147,7 @@
       <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
       <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+      <PackageReference Include="M.BindableProperty.Generator" Version="0.9.3" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
@@ -151,7 +155,9 @@
       <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.0" />
       <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+      <PackageReference Include="SQLite.Net.Extensions.Async" Version="3.0.1" />
       <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
+      <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
     </ItemGroup>
 
     <ItemGroup>
@@ -254,6 +260,9 @@
       </Compile>
       <Compile Update="Views\Recipe\RecipeListView.xaml.cs">
         <DependentUpon>RecipeListView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Views\UserControls\FloatingActionButton.xaml.cs">
+        <DependentUpon>FloatingActionButton.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -370,6 +379,9 @@
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Views\UserControls\FloatingActionButton.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
     </ItemGroup>
    <PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
@@ -379,13 +391,4 @@
 		<OutputType>WinExe</OutputType>
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
-    <WarningLevel>0</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-    <WarningLevel>0</WarningLevel>
-  </PropertyGroup>
 </Project>

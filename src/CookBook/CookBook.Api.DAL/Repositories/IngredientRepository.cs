@@ -6,62 +6,72 @@ namespace CookBook.Api.DAL.Repositories;
 
 public class IngredientRepository : IIngredientRepository
 {
-    private readonly IStorage storage;
-    private readonly IMapper mapper;
+	private readonly IStorage storage;
+	private readonly IMapper mapper;
 
-    public IngredientRepository(
-        IStorage storage,
-        IMapper mapper)
-    {
-        this.storage = storage;
-        this.mapper = mapper;
-    }
+	public IngredientRepository(
+		IStorage storage,
+		IMapper mapper)
+	{
+		this.storage = storage;
+		this.mapper = mapper;
+	}
 
-    public IList<IngredientEntity> GetAll()
-    {
-        return storage.Ingredients;
-    }
+	public IList<IngredientEntity> GetAll()
+	{
+		return storage.Ingredients;
+	}
 
-    public IngredientEntity? GetById(Guid id)
-    {
-        return storage.Ingredients.SingleOrDefault(entity => entity.Id == id);
-    }
+	public IngredientEntity? GetById(Guid id)
+	{
+		return storage.Ingredients.SingleOrDefault(entity => entity.Id == id);
+	}
 
-    public Guid Insert(IngredientEntity ingredient)
-    {
-        storage.Ingredients.Add(ingredient);
-        return ingredient.Id;
-    }
+	public List<IngredientEntity> GetByRecipeId(Guid id)
+	{
+		return storage.Recipes
+			.First(f => f.Id == id).IngredientAmounts
+				.Select(s => s.IngredientId)
+				.Select(s => storage.Ingredients
+					.First(f => f.Id == s))
+				.ToList();
+	}
 
-    public Guid? Update(IngredientEntity entity)
-    {
-        var ingredientExisting = storage.Ingredients.SingleOrDefault(ingredientInStorage =>
-            ingredientInStorage.Id == entity.Id);
-        if (ingredientExisting != null)
-        {
-            mapper.Map(entity, ingredientExisting);
-        }
+	public Guid Insert(IngredientEntity ingredient)
+	{
+		storage.Ingredients.Add(ingredient);
+		return ingredient.Id;
+	}
 
-        return ingredientExisting?.Id;
-    }
+	public Guid? Update(IngredientEntity entity)
+	{
+		var ingredientExisting = storage.Ingredients.SingleOrDefault(ingredientInStorage =>
+			ingredientInStorage.Id == entity.Id);
+		if (ingredientExisting != null)
+		{
+			mapper.Map(entity, ingredientExisting);
+		}
 
-    public void Remove(Guid id)
-    {
-        var ingredientAmountsToRemove =
-            storage.IngredientAmounts.Where(ingredientAmount => ingredientAmount.IngredientId == id).ToList();
+		return ingredientExisting?.Id;
+	}
 
-        for (var i = 0; i < ingredientAmountsToRemove.Count; i++)
-        {
-            var ingredientAmountToRemove = ingredientAmountsToRemove.ElementAt(i);
-            storage.IngredientAmounts.Remove(ingredientAmountToRemove);
-        }
+	public void Remove(Guid id)
+	{
+		var ingredientAmountsToRemove =
+			storage.IngredientAmounts.Where(ingredientAmount => ingredientAmount.IngredientId == id).ToList();
 
-        var ingredientToRemove = storage.Ingredients.Single(ingredient => ingredient.Id.Equals(id));
-        storage.Ingredients.Remove(ingredientToRemove);
-    }
+		for (var i = 0; i < ingredientAmountsToRemove.Count; i++)
+		{
+			var ingredientAmountToRemove = ingredientAmountsToRemove.ElementAt(i);
+			storage.IngredientAmounts.Remove(ingredientAmountToRemove);
+		}
 
-    public bool Exists(Guid id)
-    {
-        return storage.Ingredients.Any(ingredient => ingredient.Id == id);
-    }
+		var ingredientToRemove = storage.Ingredients.Single(ingredient => ingredient.Id.Equals(id));
+		storage.Ingredients.Remove(ingredientToRemove);
+	}
+
+	public bool Exists(Guid id)
+	{
+		return storage.Ingredients.Any(ingredient => ingredient.Id == id);
+	}
 }

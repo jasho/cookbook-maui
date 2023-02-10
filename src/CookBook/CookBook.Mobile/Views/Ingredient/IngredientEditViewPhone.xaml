@@ -51,9 +51,11 @@
                    Padding="10,0"
                    BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
                    CornerRadius="5">
+                
+                <!-- The editor style breaks it... Style="{StaticResource FormEditorStyle}"-->
+
                 <Editor Text="{Binding Ingredient.Description}"
-                        HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource FormEditorStyle}" />
+                        HorizontalOptions="FillAndExpand" />
             </Frame>
         </Grid>
     </Grid>

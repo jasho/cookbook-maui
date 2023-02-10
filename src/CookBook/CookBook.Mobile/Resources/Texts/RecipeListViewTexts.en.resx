@@ -123,4 +123,7 @@
   <data name="Title_Label" xml:space="preserve">
     <value>Recipes</value>
   </data>
+  <data name="Add_Button_Text_Phone" xml:space="preserve">
+    <value>+</value>
+  </data>
 </root>

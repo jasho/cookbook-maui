@@ -1,4 +1,4 @@
-﻿using CookBook.Common.Enums;
+﻿using CookBook.Entities.Enums;
 
 namespace CookBook.Common.Models;
 

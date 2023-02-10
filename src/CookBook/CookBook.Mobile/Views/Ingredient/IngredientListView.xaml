@@ -4,6 +4,7 @@
                        xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:uc="clr-namespace:CookBook.Mobile.Views.UserControls"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
@@ -114,15 +115,8 @@
                                               Default={StaticResource ItemsLayoutDesktop}}"
                         ItemTemplate="{OnIdiom Phone={StaticResource ItemTemplatePhone}, Desktop={StaticResource ItemTemplateDesktop}}" />
 
-        <Button Grid.Row="1"
-                Margin="0, 0, 14, 9" Padding="0"
-                HorizontalOptions="End" VerticalOptions="End"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"
-                Command="{Binding GoToCreateCommand}"
-                CornerRadius="60" FontFamily="MontserratRegular"
-                FontSize="50" 
-                Style="{StaticResource PrimaryButtonStyle}"
-                WidthRequest="65"
-                IsVisible="{OnIdiom Phone=True, Desktop=False}" />
+        <uc:FloatingActionButton Grid.Row="1"
+                                 Command="{Binding GoToCreateCommand}"
+                                 Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"/>
     </Grid>
 </views:ContentPageBase>

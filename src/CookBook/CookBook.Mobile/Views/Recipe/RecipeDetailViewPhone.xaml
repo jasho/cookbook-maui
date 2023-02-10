@@ -9,6 +9,16 @@
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeDetailViewModel">
     <views:ContentPageBase.ToolbarItems>
+        
+        <ToolbarItem Command="{Binding SaveRecipeCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Download}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
         <ToolbarItem Command="{Binding ShareCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"

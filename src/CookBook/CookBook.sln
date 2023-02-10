@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Entities", "CookBook.Entities\CookBook.Entities.csproj", "{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{AA490C3E-2B2E-4552-9ECF-4AC9626501F2} = {35D2A91F-5E55-4057-9B37-735F272C5C99}
 		{76DCBDDC-6C03-42EF-8CF5-DEBCBBE2C16E} = {35D2A91F-5E55-4057-9B37-735F272C5C99}
 		{E1A60DFA-0CD0-4D38-B711-AF7162D19FC2} = {35D2A91F-5E55-4057-9B37-735F272C5C99}
+		{1ABC1F47-6C4A-405F-8C0D-FD0E539E51D9} = {F2929ECE-EB99-47A0-B305-EBB71448833A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {217CAA8F-92AB-4156-AD90-39412D3172F5}
