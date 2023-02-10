@@ -37,10 +37,11 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
                         <Frame Padding="0"
+                               x:Name="PFrame"
                                CornerRadius="10"
                                HeightRequest="200"
                                WidthRequest="{OnIdiom Phone=-1, Desktop=300}"
-                               IsClippedToBounds="True">
+                               BackgroundColor="Bisque">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                                       CommandParameter="{Binding Id}" />
@@ -48,7 +49,8 @@
                             
                             <Grid>
                                 <Image Grid.Row="0"
-                                       HorizontalOptions="Fill" VerticalOptions="Fill"
+                                       HeightRequest="{Binding Source={x:Reference PFrame}, Path=HeightRequest}"
+                                       WidthRequest="{Binding Source={x:Reference PFrame}, Path=WidthRequest}"
                                        Aspect="AspectFill"
                                        Source="{Binding ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}" />
 
