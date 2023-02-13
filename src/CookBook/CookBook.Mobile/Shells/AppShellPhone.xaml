@@ -28,7 +28,7 @@
 
                 <Label Grid.Column="1" Text="{Binding Title}"
                        VerticalOptions="Center"
-                       TextColor="{DynamicResource BackgroundColor}"/>
+                       TextColor="White"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>

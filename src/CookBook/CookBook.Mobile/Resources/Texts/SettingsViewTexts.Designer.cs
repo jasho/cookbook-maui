@@ -61,11 +61,56 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply_Button_Text {
+            get {
+                return ResourceManager.GetString("Apply_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the localization of the application from the available options..
+        /// </summary>
+        public static string Localization_Label_Text {
+            get {
+                return ResourceManager.GetString("Localization_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Localization_Title {
+            get {
+                return ResourceManager.GetString("Localization_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the appearance of the application, with System Theme respecting the system wide theme..
+        /// </summary>
+        public static string Theme_Label_Text {
+            get {
+                return ResourceManager.GetString("Theme_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Theme_Title {
+            get {
+                return ResourceManager.GetString("Theme_Title", resourceCulture);
             }
         }
     }

@@ -2,7 +2,7 @@
 <ResourceDictionary x:Class="CookBook.Mobile.Resources.Styles.ContentPageStyle"
                     xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
-        <Setter Property="Padding" Value="{OnIdiom Phone='30, 30, 30, 0', Desktop='30'}" />
+        <Setter Property="Padding" Value="{OnIdiom Phone='16, 16, 16, 8', Desktop='16'}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
     </Style>
 </ResourceDictionary>

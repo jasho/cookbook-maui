@@ -100,4 +100,19 @@
   <data name="Page_Title" xml:space="preserve">
     <value>Nastavení</value>
   </data>
+  <data name="Theme_Label_Text" xml:space="preserve">
+    <value>Pro změnu vzhledu aplikace, styl: "Systém" reflektuje nastavení operačního systému.</value>
+  </data>
+  <data name="Theme_Title" xml:space="preserve">
+    <value>Barevný styl</value>
+  </data>
+  <data name="Localization_Title" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="Apply_Button_Text" xml:space="preserve">
+    <value>Potvrdit</value>
+  </data>
+  <data name="Localization_Label_Text" xml:space="preserve">
+    <value>Pro změnu jazyka aplikace. Podpora pouze dále uvedených.</value>
+  </data>
 </root>

@@ -6,6 +6,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <styles:ButtonStyle />
+                <styles:PickerStyle />
                 <styles:ContentPageStyle />
                 <styles:EditorStyle />
                 <styles:EntryStyle />

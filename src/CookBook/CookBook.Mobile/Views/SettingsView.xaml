@@ -7,7 +7,78 @@
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:SettingsViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
-                       x:DataType="vm:RecipeListViewModel">
-    <Label HorizontalOptions="Center" Text="Settings"
-           VerticalOptions="Center" />
+                       x:DataType="vm:SettingsViewModel">
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
+        <VerticalStackLayout>
+            <Label Text="{x:Static texts:SettingsViewTexts.Page_Title}"
+                   FontSize="36"
+                   Margin="0, 0, 0, 16"
+                   IsVisible="{OnIdiom Phone=False, Default=True}"/>
+
+            <Grid RowDefinitions="Auto, Auto, 16, Auto"
+                  ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{OnIdiom Phone=100, Default=200}"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{x:Static texts:SettingsViewTexts.Theme_Title}"
+                       FontSize="26"
+                       Margin="0, 0, 0, 8"/>
+                <Label Grid.Row="1"
+                       Text="{x:Static texts:SettingsViewTexts.Theme_Label_Text}"
+                       FontAttributes="Italic" />
+                <Picker Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        WidthRequest="{OnIdiom Phone=100, Default=200}"
+                        ItemsSource="{Binding AvailableThemes}"
+                        SelectedItem="{Binding SelectedTheme.Value, Mode=TwoWay}"
+                        Style="{StaticResource PrimaryPickerStyle}">
+                </Picker>
+
+                <BoxView Grid.Row="3"
+                         Grid.ColumnSpan="2"
+                         HeightRequest="1"
+                         VerticalOptions="End"
+                         BackgroundColor="{StaticResource PrimaryColor}"/>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  RowDefinitions="Auto, Auto, 16, Auto"
+                  Margin="0, 16, 0, 0"
+                  ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{OnIdiom Phone=100, Default=200}"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{x:Static texts:SettingsViewTexts.Localization_Title}"
+                       FontSize="26"
+                       Margin="0, 0, 0, 8" />
+                <Label Grid.Row="1"
+                       Text="{x:Static texts:SettingsViewTexts.Localization_Label_Text}"
+                       FontAttributes="Italic"/>
+                <Picker Grid.Column="1"
+                        Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        WidthRequest="{OnIdiom Phone=100, Default=200}"
+                        ItemsSource="{Binding AvailableLanguages}"
+                        SelectedItem="{Binding SelectedLanguage.Value, Mode=TwoWay}"
+                        Style="{StaticResource PrimaryPickerStyle}">
+                </Picker>
+                
+                <BoxView Grid.Row="3"
+                         Grid.ColumnSpan="2"
+                         HeightRequest="1"
+                         VerticalOptions="End"
+                         Margin="0, 0, 0, 0"
+                         BackgroundColor="{StaticResource PrimaryColor}"/>
+            </Grid>
+        </VerticalStackLayout>
+        <Button Grid.Row="2" Text="{x:Static texts:SettingsViewTexts.Apply_Button_Text}"
+                VerticalOptions="End" HorizontalOptions="End"
+                Padding="16"
+                Margin="8, 0, 0, 8"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Command="{Binding ApplyChangesCommand}"/>
+    </Grid>
 </views:ContentPageBase>
