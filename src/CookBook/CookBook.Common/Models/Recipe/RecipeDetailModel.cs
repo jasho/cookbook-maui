@@ -1,14 +1,28 @@
-﻿using CookBook.Common.Enums;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CookBook.Common.Enums;
 
 namespace CookBook.Common.Models;
 
-public record RecipeDetailModel : ModelBase
+public partial class RecipeDetailModel : ModelBase
 {
-    public Guid? Id { get; set; }
-    public required string Name { get; set; }
-    public string? Description { get; set; }
-    public TimeSpan Duration { get; set; }
-    public FoodType FoodType { get; set; }
-    public IList<RecipeDetailIngredientModel>? IngredientAmounts { get; set; }
-    public string? ImageUrl { get; set; }
+    [ObservableProperty]
+    private Guid? id;
+
+    [ObservableProperty]
+    private string name = string.Empty;
+
+    [ObservableProperty]
+    private string? description;
+
+    [ObservableProperty]
+    private TimeSpan duration;
+
+    [ObservableProperty]
+    private FoodType foodType;
+
+    [ObservableProperty]
+    private IList<RecipeDetailIngredientModel> ingredientAmounts = new List<RecipeDetailIngredientModel>();
+
+    [ObservableProperty]
+    private string? imageUrl;
 }

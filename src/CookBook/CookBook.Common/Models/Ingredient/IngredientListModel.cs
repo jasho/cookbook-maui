@@ -1,6 +1,14 @@
-﻿namespace CookBook.Common.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public record IngredientListModel(Guid Id, string Name, string? ImageUrl = null)
-    : ModelBase
+namespace CookBook.Common.Models;
+
+public partial class IngredientListModel : ModelBase
 {
+    public Guid Id { get; set; }
+
+    [ObservableProperty]
+    private string name = string.Empty;
+
+    [ObservableProperty]
+    private string? imageUrl;
 }
