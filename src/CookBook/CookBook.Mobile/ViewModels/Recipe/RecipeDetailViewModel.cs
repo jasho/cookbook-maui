@@ -6,7 +6,8 @@ using CookBook.Mobile.Api;
 namespace CookBook.Mobile.ViewModels;
 
 [QueryProperty(nameof(Id), "id")]
-public partial class RecipeDetailViewModel : ViewModelBase {
+public partial class RecipeDetailViewModel : ViewModelBase
+{
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
 
@@ -17,32 +18,40 @@ public partial class RecipeDetailViewModel : ViewModelBase {
 
     public RecipeDetailViewModel(
         IRecipesClient recipesClient,
-        IShare share) {
+        IShare share)
+    {
         this.recipesClient = recipesClient;
         this.share = share;
     }
 
-    public override async Task OnAppearingAsync() {
+    public override async Task OnAppearingAsync()
+    {
         Recipe = await recipesClient.GetRecipeByIdAsync(Id);
     }
 
     [RelayCommand]
-    private async Task DeleteAsync() {
+    private async Task DeleteAsync()
+    {
         await recipesClient.DeleteRecipeAsync(Recipe!.Id!.Value);
         Shell.Current.SendBackButtonPressed();
     }
 
     [RelayCommand]
-    private async Task GoToEditAsync() {
-        if (Recipe is not null) {
+    private async Task GoToEditAsync()
+    {
+        if (Recipe is not null)
+        {
             await Shell.Current.GoToAsync("/edit", new Dictionary<string, object> { ["recipe"] = Recipe });
         }
     }
 
     [RelayCommand]
-    private async Task ShareAsync() {
-        if (Recipe?.Id is not null) {
-            await share.RequestAsync(new ShareTextRequest {
+    private async Task ShareAsync()
+    {
+        if (Recipe?.Id is not null)
+        {
+            await share.RequestAsync(new ShareTextRequest
+            {
                 Title = Recipe.Name,
                 Text = $@"{Recipe.Name}
 
