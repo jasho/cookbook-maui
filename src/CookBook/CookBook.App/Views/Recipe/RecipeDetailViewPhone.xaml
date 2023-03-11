@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase x:Class="CookBook.App.Views.RecipeDetailViewPhone"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:vm="clr-namespace:CookBook.App.ViewModels" xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
+                       xmlns:views="clr-namespace:CookBook.App.Views"
+                       xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
+                       x:Name="Root"
+                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title}, Desktop=''}"
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="vm:RecipeDetailViewModel">
+    <views:ContentPageBase.ToolbarItems>
+        <ToolbarItem Command="{Binding ShareCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.ShareAlt}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        
+        <ToolbarItem Command="{Binding DeleteCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Trash}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding GoToEditCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </views:ContentPageBase.ToolbarItems>
+    
+    <ScrollView>
+        <Grid RowDefinitions="200, Auto, Auto, Auto, Auto, Auto, *"
+              RowSpacing="20"
+              x:DataType="vm:RecipeDetailViewModel">
+            <Frame Grid.Row="0"
+                   Padding="0"
+                   CornerRadius="10" HeightRequest="200"
+                   IsClippedToBounds="True">
+                <Image Grid.Row="0" Grid.RowSpan="2"
+                       Aspect="AspectFill" HeightRequest="200"
+                       Source="{Binding Recipe.ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}" />
+            </Frame>
+
+            <Label Grid.Row="1"
+                   Text="{Binding Recipe.Name}"
+                   FontSize="20"
+                   Style="{StaticResource BoldLabelStyle}" />
+
+            <Frame Grid.Row="2"
+                   BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
+                   HeightRequest="100"
+                   CornerRadius="10"
+                   Padding="0">
+                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *, *"
+                      HorizontalOptions="Fill" VerticalOptions="Center"
+                      RowSpacing="5">
+                    <Image Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Center" VerticalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
+                                             Color="White"
+                                             Size="17"
+                                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                        </Image.Source>
+                    </Image>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           HorizontalOptions="Center" VerticalOptions="Start"
+                           Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                           FontSize="11"
+                           TextColor="White"
+                           Style="{StaticResource MediumLabelStyle}"/>
+
+                    <Image Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="Center" VerticalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Clock}"
+                                             Color="White"
+                                             Size="17"
+                                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                        </Image.Source>
+                    </Image>
+
+                    <Label Grid.Row="1" Grid.Column="1"
+                           HorizontalOptions="Center" VerticalOptions="Start"
+                           Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
+                           FontSize="11"
+                           TextColor="White"
+                           Style="{StaticResource MediumLabelStyle}"/>
+
+                    <Image Grid.Row="0" Grid.Column="2"
+                           HorizontalOptions="Center" VerticalOptions="End">
+                        <Image.Source>
+                            <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
+                                             Color="White"
+                                             Size="17"
+                                             FontFamily="{x:Static fonts:Fonts.FontAwesome}"/>
+                        </Image.Source>
+                    </Image>
+
+                    <Label Grid.Row="1" Grid.Column="2"
+                           HorizontalOptions="Center" VerticalOptions="Start"
+                           Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
+                           TextColor="White"
+                           FontSize="11"
+                           Style="{StaticResource MediumLabelStyle}"/>
+                </Grid>
+            </Frame>
+
+            <Label Grid.Row="3"
+                   Text="{x:Static texts:RecipeDetailViewTexts.Ingredients_Label_Text}"
+                   FontSize="18"
+                   Style="{StaticResource BoldLabelStyle}"/>
+
+            <CollectionView Grid.Row="4"
+                            ItemsSource="{Binding Recipe.IngredientAmounts}"
+                            VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
+                        <Grid ColumnDefinitions="Auto, *, Auto"
+                              ColumnSpacing="15">
+                            <Frame Grid.Column="0"
+                                   CornerRadius="10"
+                                   HeightRequest="30" WidthRequest="30"
+                                   HorizontalOptions="Center" IsClippedToBounds="True">
+                                <Image Aspect="AspectFill" HeightRequest="30"
+                                       HorizontalOptions="Center"
+                                       Source="{Binding Ingredient.ImageUrl, FallbackValue='/Images/ingredient_placeholder.jpg'}"
+                                       VerticalOptions="Center" WidthRequest="30" />
+                            </Frame>
+
+                            <Label Grid.Column="1"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Ingredient.Name}"
+                                   FontSize="16"
+                                   Style="{StaticResource MediumLabelStyle}"/>
+
+                            <Label Grid.Column="2"
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   Style="{StaticResource MediumLabelStyle}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Amount}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Grid.Row="5"
+                   Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"
+                   FontSize="18"
+                   Style="{StaticResource BoldLabelStyle}" />
+
+            <Label Grid.Row="6"
+                   Text="{Binding Recipe.Description}"
+                   FontSize="14"
+                   Style="{StaticResource MediumLabelStyle}" />
+        </Grid>
+    </ScrollView>
+</views:ContentPageBase>
