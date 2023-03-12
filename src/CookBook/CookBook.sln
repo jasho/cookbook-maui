@@ -40,6 +40,8 @@ Global
 		Debug Desktop|Any CPU = Debug Desktop|Any CPU
 		Debug Phone|Any CPU = Debug Phone|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		Release Desktop|Any CPU = Release Desktop|Any CPU
+		Release Phone|Any CPU = Release Phone|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -49,6 +51,10 @@ Global
 		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Debug Phone|Any CPU.Build.0 = Debug|Any CPU
 		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release Desktop|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release Desktop|Any CPU.Build.0 = Release|Any CPU
+		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release Phone|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release Phone|Any CPU.Build.0 = Release|Any CPU
 		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CAEBA5C-D948-4460-9F42-E07EBC1C7455}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Debug Desktop|Any CPU.ActiveCfg = Debug Desktop|Any CPU
@@ -60,6 +66,12 @@ Global
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Debug|Any CPU.ActiveCfg = Debug Desktop|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Debug|Any CPU.Build.0 = Debug Desktop|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Debug|Any CPU.Deploy.0 = Debug Desktop|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Desktop|Any CPU.ActiveCfg = Release Desktop|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Desktop|Any CPU.Build.0 = Release Desktop|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Desktop|Any CPU.Deploy.0 = Release Desktop|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Phone|Any CPU.ActiveCfg = Release Phone|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Phone|Any CPU.Build.0 = Release Phone|Any CPU
+		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release Phone|Any CPU.Deploy.0 = Release Phone|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release|Any CPU.ActiveCfg = Release Desktop|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release|Any CPU.Build.0 = Release Desktop|Any CPU
 		{A58A19AA-D3F8-4966-B4C8-83FFCEB3C39D}.Release|Any CPU.Deploy.0 = Release Desktop|Any CPU
@@ -69,6 +81,10 @@ Global
 		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Debug Phone|Any CPU.Build.0 = Debug Phone|Any CPU
 		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Debug|Any CPU.ActiveCfg = Debug Desktop|Any CPU
 		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Debug|Any CPU.Build.0 = Debug Desktop|Any CPU
+		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release Desktop|Any CPU.ActiveCfg = Release Desktop|Any CPU
+		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release Desktop|Any CPU.Build.0 = Release Desktop|Any CPU
+		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release Phone|Any CPU.ActiveCfg = Release Phone|Any CPU
+		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release Phone|Any CPU.Build.0 = Release Phone|Any CPU
 		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release|Any CPU.ActiveCfg = Release Desktop|Any CPU
 		{4EBEB7B2-F66F-4DE2-8BBD-F2A88EAEB883}.Release|Any CPU.Build.0 = Release Desktop|Any CPU
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Debug Desktop|Any CPU.ActiveCfg = Debug Desktop|Any CPU
@@ -77,6 +93,10 @@ Global
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Debug Phone|Any CPU.Build.0 = Debug Phone|Any CPU
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Debug|Any CPU.ActiveCfg = Debug Desktop|Any CPU
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Debug|Any CPU.Build.0 = Debug Desktop|Any CPU
+		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release Desktop|Any CPU.ActiveCfg = Release Desktop|Any CPU
+		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release Desktop|Any CPU.Build.0 = Release Desktop|Any CPU
+		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release Phone|Any CPU.ActiveCfg = Release Phone|Any CPU
+		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release Phone|Any CPU.Build.0 = Release Phone|Any CPU
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release|Any CPU.ActiveCfg = Release Desktop|Any CPU
 		{270A347B-0D0A-4C55-A3CD-A7C0A2D91CA7}.Release|Any CPU.Build.0 = Release Desktop|Any CPU
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Debug Desktop|Any CPU.ActiveCfg = Debug Desktop|Any CPU
@@ -85,6 +105,10 @@ Global
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Debug Phone|Any CPU.Build.0 = Debug Phone|Any CPU
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Debug|Any CPU.ActiveCfg = Debug Desktop|Any CPU
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Debug|Any CPU.Build.0 = Debug Desktop|Any CPU
+		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release Desktop|Any CPU.ActiveCfg = Release Desktop|Any CPU
+		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release Desktop|Any CPU.Build.0 = Release Desktop|Any CPU
+		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release Phone|Any CPU.ActiveCfg = Release Phone|Any CPU
+		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release Phone|Any CPU.Build.0 = Release Phone|Any CPU
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release|Any CPU.ActiveCfg = Release Desktop|Any CPU
 		{A13B1847-D82E-4176-8E01-5C69E44E7159}.Release|Any CPU.Build.0 = Release Desktop|Any CPU
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Debug Desktop|Any CPU.ActiveCfg = Debug|Any CPU
@@ -93,6 +117,10 @@ Global
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Debug Phone|Any CPU.Build.0 = Debug|Any CPU
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release Desktop|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release Desktop|Any CPU.Build.0 = Release|Any CPU
+		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release Phone|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release Phone|Any CPU.Build.0 = Release|Any CPU
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF3F007-E9A6-4466-880F-FC844946B7CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Debug Desktop|Any CPU.ActiveCfg = Debug|Any CPU
@@ -101,6 +129,10 @@ Global
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Debug Phone|Any CPU.Build.0 = Debug|Any CPU
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release Desktop|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release Desktop|Any CPU.Build.0 = Release|Any CPU
+		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release Phone|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release Phone|Any CPU.Build.0 = Release|Any CPU
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9B5518-18D1-4FCE-9BF5-D9EE840D9B34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Debug Desktop|Any CPU.ActiveCfg = Debug|Any CPU
@@ -109,6 +141,10 @@ Global
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Debug Phone|Any CPU.Build.0 = Debug|Any CPU
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release Desktop|Any CPU.ActiveCfg = Release|Any CPU
+		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release Desktop|Any CPU.Build.0 = Release|Any CPU
+		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release Phone|Any CPU.ActiveCfg = Release|Any CPU
+		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release Phone|Any CPU.Build.0 = Release|Any CPU
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC692BCE-BFD8-4FEB-9323-70DFF04C2CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

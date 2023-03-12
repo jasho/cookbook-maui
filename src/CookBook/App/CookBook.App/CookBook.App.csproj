@@ -174,10 +174,10 @@
       <PackageReference Include="Scrutor" Version="4.2.0" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(Configuration)' == 'Debug Desktop'">
+    <ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
 	    <ProjectReference Include="..\CookBook.App.Components.Desktop\CookBook.App.Components.Desktop.csproj" />
     </ItemGroup>
-	<ItemGroup Condition="'$(Configuration)' == 'Debug Phone'">
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
 		<ProjectReference Include="..\CookBook.App.Components.Phone\CookBook.App.Components.Phone.csproj" />
 	</ItemGroup>
 

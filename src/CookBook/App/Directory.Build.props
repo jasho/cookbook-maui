@@ -15,7 +15,7 @@
 		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug Phone'">
+	<PropertyGroup Condition="'$(Configuration)' == 'Release Phone'">
 		<ConfigurationIdiom>Phone</ConfigurationIdiom>
 	</PropertyGroup>
 </Project>
