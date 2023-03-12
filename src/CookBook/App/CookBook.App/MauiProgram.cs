@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.App.Api;
+using CookBook.App.Components;
 using CookBook.App.Options;
 using CookBook.App.Resources.Fonts;
 using CookBook.App.Shells;
@@ -78,12 +79,24 @@ public static class MauiProgram {
             .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
             .AsSelf()
             .WithTransientLifetime());
+
+        services.Scan(selector => selector
+            .FromAssemblyOf<Components.Components>()
+            .AddClasses(filter => filter.AssignableTo<CookBook.App.Components.Views.ContentPageBase>())
+            .AsSelf()
+            .WithTransientLifetime());
     }
 
     private static void ConfigureViewModels(IServiceCollection services) {
         services.Scan(selector => selector
             .FromAssemblyOf<App>()
             .AddClasses(filter => filter.AssignableTo<IViewModel>())
+            .AsSelfWithInterfaces()
+            .WithTransientLifetime());
+
+        services.Scan(selector => selector
+            .FromAssemblyOf<Components.Components>()
+            .AddClasses(filter => filter.AssignableTo<CookBook.App.Components.ViewModels.IViewModel>())
             .AsSelfWithInterfaces()
             .WithTransientLifetime());
     }

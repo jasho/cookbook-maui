@@ -1,0 +1,21 @@
+<Project>
+	<PropertyGroup>
+		<Configurations>Debug Desktop;Debug Phone; Release Desktop; Release Phone</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug Desktop'">
+		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug Phone'">
+		<ConfigurationIdiom>Phone</ConfigurationIdiom>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release Desktop'">
+		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug Phone'">
+		<ConfigurationIdiom>Phone</ConfigurationIdiom>
+	</PropertyGroup>
+</Project>

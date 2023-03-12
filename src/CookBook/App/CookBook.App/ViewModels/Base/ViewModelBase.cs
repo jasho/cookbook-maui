@@ -3,8 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace CookBook.App.ViewModels;
 
-[INotifyPropertyChanged]
-public abstract partial class ViewModelBase : IViewModel
+public abstract partial class ViewModelBase : ObservableObject, IViewModel
 {
     public virtual Task OnAppearingAsync()
     {

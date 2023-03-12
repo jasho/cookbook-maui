@@ -29,6 +29,7 @@
 
       <!-- Required for C# Hot Reload -->
       <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+      <UseInterpreter Condition="'$(Configuration)'=='Debug Desktop'">True</UseInterpreter>
 
       <!-- Target Platform Options -->
       <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">14.2</SupportedOSPlatformVersion>
@@ -50,6 +51,10 @@
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net.0-android|AnyCPU'">
+	  <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 		<Optimize>False</Optimize>
@@ -58,6 +63,11 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-ios|AnyCPU'">
+	  <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+	  <Optimize>True</Optimize>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
@@ -70,6 +80,11 @@
 		<Optimize>True</Optimize>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-windows10.0.22621.0|AnyCPU'">
+	  <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
 		<CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
 		<Optimize>False</Optimize>
@@ -79,8 +94,16 @@
 		<Optimize>True</Optimize>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-android|AnyCPU'">
+	  <Optimize>True</Optimize>
+	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
 		<Optimize>True</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <Optimize>True</Optimize>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
@@ -142,7 +165,7 @@
     <ItemGroup>
       <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
       <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
-      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
@@ -151,8 +174,15 @@
       <PackageReference Include="Scrutor" Version="4.2.0" />
     </ItemGroup>
 
+    <ItemGroup Condition="'$(Configuration)' == 'Debug Desktop'">
+	    <ProjectReference Include="..\CookBook.App.Components.Desktop\CookBook.App.Components.Desktop.csproj" />
+    </ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug Phone'">
+		<ProjectReference Include="..\CookBook.App.Components.Phone\CookBook.App.Components.Phone.csproj" />
+	</ItemGroup>
+
     <ItemGroup>
-      <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj" />
+      <ProjectReference Include="..\..\Common\CookBook.Common\CookBook.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -378,6 +408,11 @@
 	</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
