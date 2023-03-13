@@ -5,11 +5,17 @@
                        xmlns:vm="clr-namespace:CookBook.App.ViewModels" xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
                        xmlns:views="clr-namespace:CookBook.App.Views"
                        xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
+                       xmlns:converters="using:CookBook.App.Converters"
+                       xmlns:styles="clr-namespace:CookBook.App.Resources.Styles"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:RecipeListViewTexts.Page_Title}, Desktop=''}"
-                       Style="{StaticResource ContentPageStyle}"
+                       Style="{x:Static styles:ContentPageStyleStatic.ContentPageStyle}"
                        x:DataType="vm:RecipeListViewModel"
                        MinimumHeightRequest="{OnIdiom Desktop=500}">
+    <views:ContentPageBase.IconImageSource>
+        <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                         Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
+    </views:ContentPageBase.IconImageSource>
     <views:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
                            ItemSpacing="20" Orientation="Vertical" />
@@ -18,6 +24,10 @@
                          Orientation="Horizontal"
                          HorizontalItemSpacing="10" VerticalItemSpacing="10"
                          Span="2" />
+
+        <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />
+        <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
+        <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter" />
     </views:ContentPageBase.Resources>
 
     <Grid>
@@ -27,7 +37,7 @@
               Margin="{OnIdiom Phone='10, 0'}">
             <Label Grid.Row="0"
                    FontSize="24"
-                   Style="{StaticResource BoldLabelStyle}"
+                   Style="{x:Static styles:LabelStyleStatic.BoldLabelStyle}"
                    Text="{x:Static texts:RecipeListViewTexts.Title_Label}" />
 
             <CollectionView Grid.Row="1" ItemsSource="{Binding Items}"
@@ -73,7 +83,7 @@
 
                                         <Label VerticalOptions="Center"
                                                FontSize="11"
-                                               Style="{StaticResource BoldLabelStyle}"
+                                               Style="{x:Static styles:LabelStyleStatic.BoldLabelStyle}"
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
                                                TextColor="White" />
                                     </HorizontalStackLayout>
@@ -82,7 +92,7 @@
                                 <Label Grid.Row="0"
                                        Margin="22,12"
                                        FontSize="20" LineBreakMode="WordWrap"
-                                       Style="{StaticResource BoldLabelStyle}"
+                                       Style="{x:Static styles:LabelStyleStatic.BoldLabelStyle}"
                                        Text="{Binding Name}"
                                        TextColor="White" VerticalOptions="End" />
                             </Grid>
@@ -99,14 +109,14 @@
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="5" FontFamily="MontserratMedium"
                 FontSize="14"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 IsVisible="{OnIdiom Phone=False, Desktop=True}" />
 
         <Button Margin="0,0,14,9" Padding="0"
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="60" FontFamily="MontserratRegular"
                 FontSize="50" HorizontalOptions="End"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 Text="+" VerticalOptions="End"
                 WidthRequest="65"
                 IsVisible="{OnIdiom Phone=True, Desktop=False}" />

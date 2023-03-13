@@ -5,8 +5,7 @@ using CookBook.Common.Models;
 
 namespace CookBook.App.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class RecipeListViewModel : IViewModel
+public partial class RecipeListViewModel : ObservableObject, IViewModel
 {
     private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
@@ -24,7 +23,9 @@ public partial class RecipeListViewModel : IViewModel
 
     public async Task OnAppearingAsync()
     {
+        TimingHelper.Log("START");
         Items = await recipesClient.GetRecipesAllAsync();
+        TimingHelper.Log("END");
     }
 
     [RelayCommand]

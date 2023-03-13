@@ -15,7 +15,10 @@ using System.Reflection;
 namespace CookBook.App;
 
 public static class MauiProgram {
-    public static MauiApp CreateMauiApp() {
+    public static MauiApp CreateMauiApp()
+    {
+        TimingHelper.Log("START");
+
         var builder = MauiApp.CreateBuilder();
         builder.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
@@ -26,21 +29,33 @@ public static class MauiProgram {
                 fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
             });
 
-        ConfigureAppSettings(builder);
-        ConfigureOptions(builder);
+        TimingHelper.Log("CreateBuilder END");
 
-        ConfigureShell(builder.Services);
-        ConfigureViews(builder.Services);
-        ConfigureViewModels(builder.Services);
+        //ConfigureAppSettings(builder);
+        //TimingHelper.Log(message: "ConfigureAppSettings END");
+        //ConfigureOptions(builder);
+        //TimingHelper.Log(message: "ConfigureOptions END");
 
-        ConfigureServices(builder.Services);
-        ConfigureApiClients(builder.Services);
+        //ConfigureShell(builder.Services);
+        //TimingHelper.Log(message: "ConfigureShell END");
+        //ConfigureViews(builder.Services);
+        //TimingHelper.Log(message: "ConfigureViews END");
+        //ConfigureViewModels(builder.Services);
+        //TimingHelper.Log(message: "ConfigureViewModels END");
+
+        //ConfigureServices(builder.Services);
+        //TimingHelper.Log(message: "ConfigureServices END");
+        //ConfigureApiClients(builder.Services);
 
         //ConfigureCustomHandlers(builder);
 
-        var app = builder.Build();
+        TimingHelper.Log("ConfigureApiClients END");
 
-        RegisterRoutes(app);
+        var app = builder.Build();
+        TimingHelper.Log("Build END");
+
+        //RegisterRoutes(app);
+        TimingHelper.Log("RegisterRoutes END");
 
         return app;
     }

@@ -172,6 +172,7 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
       <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.0" />
+      <PackageReference Include="ZeroIoC" Version="0.3.1" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">

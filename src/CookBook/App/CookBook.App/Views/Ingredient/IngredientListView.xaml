@@ -5,10 +5,16 @@
                        xmlns:texts="clr-namespace:CookBook.App.Resources.Texts" xmlns:vm="clr-namespace:CookBook.App.ViewModels"
                        xmlns:views="clr-namespace:CookBook.App.Views"
                        xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
+                       xmlns:styles="clr-namespace:CookBook.App.Resources.Styles"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title}, Desktop=''}"
-                       Style="{StaticResource ContentPageStyle}"
+                       Style="{x:Static styles:ContentPageStyleStatic.ContentPageStyle}"
                        x:DataType="vm:IngredientListViewModel">
+    <views:ContentPageBase.IconImageSource>
+        <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                         Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
+    </views:ContentPageBase.IconImageSource>
+
     <views:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
                            ItemSpacing="8" Orientation="Vertical" />
@@ -42,7 +48,7 @@
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Start"
-                       Style="{StaticResource MediumLabelStyle}"
+                       Style="{x:Static styles:LabelStyleStatic.MediumLabelStyle}"
                        Text="{Binding Name}"
                        VerticalOptions="Center" />
 
@@ -51,7 +57,7 @@
                        Margin="0, 0, 12, 0"
                        Text="{x:Static fonts:FontAwesomeIcons.Pen}"
                        FontSize="20"
-                       TextColor="{StaticResource PrimaryColor}"
+                       TextColor="{x:Static styles:ThemeStatic.PrimaryColor}"
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
@@ -83,7 +89,7 @@
                     <Label Grid.Row="1"
                            Margin="22,12"
                            FontSize="20" LineBreakMode="WordWrap"
-                           Style="{StaticResource BoldLabelStyle}"
+                           Style="{x:Static styles:LabelStyleStatic.BoldLabelStyle}"
                            Text="{Binding Name}"
                            TextColor="White" VerticalOptions="End" />
                 </Grid>
@@ -95,7 +101,7 @@
           RowSpacing="20">
         <Label Grid.Row="0"
                FontSize="24"
-               Style="{StaticResource BoldLabelStyle}"
+               Style="{x:Static styles:LabelStyleStatic.BoldLabelStyle}"
                Text="{x:Static texts:IngredientListViewTexts.Title_Label}" />
 
         <Button Grid.Row="0"
@@ -105,7 +111,7 @@
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="5" FontFamily="MontserratMedium"
                 FontSize="14"
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 IsVisible="{OnIdiom Phone=False, Desktop=True}" />
 
         <CollectionView Grid.Row="1"
@@ -122,7 +128,7 @@
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="60" FontFamily="MontserratRegular"
                 FontSize="50" 
-                Style="{StaticResource PrimaryButtonStyle}"
+                Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 WidthRequest="65"
                 IsVisible="{OnIdiom Phone=True, Desktop=False}" />
     </Grid>

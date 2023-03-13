@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:styles="clr-namespace:CookBook.App.Resources.Styles"
              xmlns:converters="clr-namespace:CookBook.App.Converters">
-    <Application.Resources>
+    <!--<Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <styles:ButtonStyle />
@@ -18,5 +18,5 @@
             <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
             <converters:UnitToStringConverter x:Key="UnitToStringConverter" />
         </ResourceDictionary>
-    </Application.Resources>
+    </Application.Resources>-->
 </Application>

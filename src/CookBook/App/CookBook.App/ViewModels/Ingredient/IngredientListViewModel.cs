@@ -5,8 +5,7 @@ using CookBook.Common.Models;
 
 namespace CookBook.App.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class IngredientListViewModel : IViewModel {
+public partial class IngredientListViewModel : ObservableObject, IViewModel {
     private readonly IRoutingService routingService;
     private readonly IIngredientsClient ingredientsClient;
 
