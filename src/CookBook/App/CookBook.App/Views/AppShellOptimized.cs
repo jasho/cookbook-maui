@@ -1,15 +1,18 @@
-﻿namespace CookBook.App.Views;
+﻿using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+using TabbedPage = Microsoft.Maui.Controls.TabbedPage;
+
+namespace CookBook.App.Views;
 
 public class AppShellOptimized : FlyoutPage
 {
-    public AppShellOptimized(RecipeListView recipeListView, IngredientListView ingredientListView)
+    public AppShellOptimized(RecipeListViewOptimized recipeListView, IngredientListViewOptimized ingredientListView)
     {
-        Flyout = new EmptyView2
+        Flyout = new AppShellFlyoutView
         {
             Title = "Test title"
         };
 
-        Detail = new TabbedPage
+        var detailView = new TabbedPage
         {
             Children =
             {
@@ -17,5 +20,8 @@ public class AppShellOptimized : FlyoutPage
                 ingredientListView
             }
         };
+        detailView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+
+        Detail = detailView;
     }
 }

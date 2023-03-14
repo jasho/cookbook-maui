@@ -357,9 +357,6 @@
       <MauiXaml Update="Resources\Styles\LightTheme.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Base\ContentPageBase.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientDetailViewDesktop.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>

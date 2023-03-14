@@ -23,9 +23,7 @@ public partial class RecipeListViewModel : ObservableObject, IViewModel
 
     public async Task OnAppearingAsync()
     {
-        TimingHelper.Log("START");
         Items = await recipesClient.GetRecipesAllAsync();
-        TimingHelper.Log("END");
     }
 
     [RelayCommand]

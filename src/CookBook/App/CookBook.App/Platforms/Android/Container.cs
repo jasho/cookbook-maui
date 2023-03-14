@@ -13,13 +13,14 @@ namespace CookBook.App {
 
             bootstrapper.AddTransient<IRoutingService, RoutingService>();
             bootstrapper.AddSingleton<IRecipesClient, RecipesClient>();
-            bootstrapper.AddSingleton<RecipeListViewModel>();
-        
-            bootstrapper.AddSingleton<RecipeListView>();
+            bootstrapper.AddTransient<RecipeListViewModel>();
+            bootstrapper.AddTransient<RecipeListView>();
+            bootstrapper.AddTransient<RecipeListViewOptimized>();
 
             bootstrapper.AddTransient<IIngredientsClient, IngredientsClient>();
-            bootstrapper.AddSingleton<IngredientListViewModel>();
-            bootstrapper.AddSingleton<IngredientListView>();
+            bootstrapper.AddTransient<IngredientListViewModel>();
+            bootstrapper.AddTransient<IngredientListView>();
+            bootstrapper.AddTransient<IngredientListViewOptimized>();
 
             bootstrapper.AddSingleton<AppShellOptimized>();
         }

@@ -117,7 +117,8 @@
                 CornerRadius="60" FontFamily="MontserratRegular"
                 FontSize="50" HorizontalOptions="End"
                 Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
-                Text="+" VerticalOptions="End"
+                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"
+                VerticalOptions="End"
                 WidthRequest="65"
                 IsVisible="{OnIdiom Phone=True, Desktop=False}" />
     </Grid>
