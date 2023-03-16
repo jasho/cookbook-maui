@@ -109,7 +109,7 @@
                 HorizontalOptions="End" VerticalOptions="Start"
                 Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"
                 Command="{Binding GoToCreateCommand}"
-                CornerRadius="5" FontFamily="MontserratMedium"
+                CornerRadius="5" FontFamily="{x:Static fonts:Fonts.Medium}"
                 FontSize="14"
                 Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 IsVisible="{OnIdiom Phone=False, Desktop=True}" />
@@ -126,7 +126,7 @@
                 HorizontalOptions="End" VerticalOptions="End"
                 Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"
                 Command="{Binding GoToCreateCommand}"
-                CornerRadius="60" FontFamily="MontserratRegular"
+                CornerRadius="60" FontFamily="{x:Static fonts:Fonts.Regular}"
                 FontSize="50" 
                 Style="{x:Static styles:ButtonStyleStatic.PrimaryButtonStyle}"
                 WidthRequest="65"

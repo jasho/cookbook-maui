@@ -5,6 +5,7 @@ namespace CookBook.App.Views;
 
 public class AppShellOptimized : FlyoutPage
 {
+    //public AppShellOptimized(RecipeListView recipeListView, IngredientListView ingredientListView)
     public AppShellOptimized(RecipeListViewOptimized recipeListView, IngredientListViewOptimized ingredientListView)
     {
         Flyout = new AppShellFlyoutView

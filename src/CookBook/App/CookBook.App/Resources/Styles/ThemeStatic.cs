@@ -8,6 +8,9 @@
 
         public static Color PrimaryButtonTextColor { get; set; } = Color.FromArgb("#FFFFFF");
 
+        public static Color ListItemBackgroundColor { get; set; } = Color.FromArgb("#3A3A3A");
+
+
         public static Color DessertFoodTypeColor { get; set; } = Color.FromArgb("#F868AB");
         public static Color MainDishFoodTypeColor { get; set; } = Color.FromArgb("#00AE4B");
         public static Color SoupFoodTypeColor { get; set; } = Color.FromArgb("#ED7500");
