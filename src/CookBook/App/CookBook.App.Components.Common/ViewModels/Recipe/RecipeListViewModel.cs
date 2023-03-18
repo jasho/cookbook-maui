@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
-using CookBook.App.Components.Common.ViewModels;
+using CookBook.App.Components.Common.Services;
 using CookBook.Common.Models;
 
-namespace CookBook.App.ViewModels;
+namespace CookBook.App.Components.Common.ViewModels;
 
 public partial class RecipeListViewModel : ViewModelBase
 {
@@ -30,7 +30,7 @@ public partial class RecipeListViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
+        var route = routingService.GetRouteByViewModel<Components.Common.ViewModels.RecipeDetailViewModel>();
 
         await Shell.Current.GoToAsync($"{route}", new Dictionary<string, object> { ["id"] = id });
     }

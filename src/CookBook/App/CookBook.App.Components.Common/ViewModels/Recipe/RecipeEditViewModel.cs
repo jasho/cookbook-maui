@@ -1,10 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
-using CookBook.App.Components.Common.ViewModels;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
 
-namespace CookBook.App.ViewModels;
+namespace CookBook.App.Components.Common.ViewModels;
 
 [QueryProperty(nameof(Recipe), "recipe")]
 public partial class RecipeEditViewModel : ViewModelBase
