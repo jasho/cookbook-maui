@@ -8,17 +8,17 @@ namespace CookBook.App.Components.Common.ViewModels;
 
 public partial class RecipeListViewModel : ViewModelBase
 {
-    private readonly IRoutingService routingService;
+    private readonly INavigationService navigationService;
     private readonly IRecipesClient recipesClient;
 
     [ObservableProperty]
     private ICollection<RecipeListModel>? items;
 
     public RecipeListViewModel(
-        IRoutingService routingService,
+        INavigationService navigationService,
         IRecipesClient recipesClient)
     {
-        this.routingService = routingService;
+        this.navigationService = navigationService;
         this.recipesClient = recipesClient;
     }
 
@@ -30,9 +30,7 @@ public partial class RecipeListViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        var route = routingService.GetRouteByViewModel<Components.Common.ViewModels.RecipeDetailViewModel>();
-
-        await Shell.Current.GoToAsync($"{route}", new Dictionary<string, object> { ["id"] = id });
+        await navigationService.GoToAsync<RecipeDetailViewModel>(new Dictionary<string, object> { ["id"] = id });
     }
 
     [RelayCommand]

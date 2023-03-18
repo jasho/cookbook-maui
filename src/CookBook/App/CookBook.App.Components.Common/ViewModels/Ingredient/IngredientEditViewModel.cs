@@ -10,7 +10,7 @@ public partial class IngredientEditViewModel : ViewModelBase
     private readonly IIngredientsClient ingredientsClient;
 
     public FileResult? ImageFileResult { get; set; }
-    public IngredientDetailModel Ingredient { get; init; }
+    public IngredientDetailModel Ingredient { get; init; } = IngredientDetailModel.Empty;
 
     public IngredientEditViewModel(
         IIngredientsClient ingredientsClient)

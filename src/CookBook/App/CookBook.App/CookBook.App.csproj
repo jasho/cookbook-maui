@@ -405,15 +405,22 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Phone|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release Desktop|net7.0-android|AnyCPU'">
+    <DebugSymbols>False</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release Phone|net7.0-android|AnyCPU'">
+    <DebugSymbols>False</DebugSymbols>
   </PropertyGroup>
 </Project>

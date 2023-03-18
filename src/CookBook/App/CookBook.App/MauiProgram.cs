@@ -10,6 +10,8 @@ using CookBook.App.Shells;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Reflection;
+using INavigationService = CookBook.App.Components.Common.Services.INavigationService;
+
 //using CookBook.App.Controls;
 //using CookBook.App.Platforms.Android;
 
@@ -109,7 +111,10 @@ public static class MauiProgram
 
     private static void ConfigureServices(IServiceCollection services)
     {
+        services.AddSingleton<Shell>(_ => Shell.Current);
+
         services.AddSingleton<IRoutingService, RoutingService>();
+        services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<IShare>(_ => Share.Default);
     }
 
