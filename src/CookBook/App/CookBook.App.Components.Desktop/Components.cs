@@ -1,7 +1,6 @@
-﻿namespace CookBook.App.Components
+﻿namespace CookBook.App.Components;
+
+public class Components
 {
-    public class Components
-    {
         
-    }
 }

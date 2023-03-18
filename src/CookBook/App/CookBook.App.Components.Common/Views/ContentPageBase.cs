@@ -8,4 +8,14 @@ public class ContentPageBase : ContentPage
     {
         BindingContext = viewModel;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is IViewModel viewModel)
+        {
+            await viewModel.OnAppearingAsync();
+        }
+    }
 }

@@ -2,7 +2,7 @@
 <views:ContentPageBase x:Class="CookBook.App.Views.IngredientDetailViewPhone"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
-                       xmlns:views="clr-namespace:CookBook.App.Views"
+                       xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"

@@ -1,18 +1,20 @@
-﻿using CookBook.App.Components.Common.ViewModels;
+﻿using CookBook.App.Components.Common.Models;
+using CookBook.App.Components.Common.Services;
+using CookBook.App.Components.Common.ViewModels;
 using CookBook.App.Components.Views.Ingredient;
-using CookBook.App.ViewModels;
 using CookBook.App.Views;
 using RecipeIngredientsEditViewDesktop = CookBook.App.Views.RecipeIngredientsEditViewDesktop;
 
 namespace CookBook.App.Services;
 
-public class RoutingService : IRoutingService {
+public class RoutingService : IRoutingService
+{
     private static ICollection<RouteModel> routesCommon = new List<RouteModel>
     {
         new("//recipes", typeof(RecipeListView), typeof(RecipeListViewModel)),
         new("//ingredients", typeof(IngredientListView), typeof(IngredientListViewModel)),
         new("//settings", typeof(SettingsView), typeof(SettingsViewModel)),
-      
+
         new("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
     };
 

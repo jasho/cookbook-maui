@@ -355,9 +355,6 @@
       <MauiXaml Update="Resources\Styles\LightTheme.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Views\Base\ContentPageBase.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
       <MauiXaml Update="Views\Ingredient\IngredientDetailViewDesktop.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
@@ -396,10 +393,6 @@
         <SubType>Designer</SubType>
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="ViewModels\Recipe\" />
     </ItemGroup>
    <PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
