@@ -1,6 +1,7 @@
-﻿using CookBook.App.Components.Common.ViewModels;
+﻿using CookBook.App.Components.Common.Models;
+using CookBook.App.Components.Common.ViewModels;
 
-namespace CookBook.App.Services;
+namespace CookBook.App.Components.Common.Services;
 
 public interface IRoutingService
 {

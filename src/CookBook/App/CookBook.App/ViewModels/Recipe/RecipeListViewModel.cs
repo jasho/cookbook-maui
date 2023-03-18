@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Api;
+using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.ViewModels;
 using CookBook.Common.Models;
 
 namespace CookBook.App.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class RecipeListViewModel : IViewModel
+public partial class RecipeListViewModel : ViewModelBase
 {
     private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
@@ -22,7 +22,7 @@ public partial class RecipeListViewModel : IViewModel
         this.recipesClient = recipesClient;
     }
 
-    public async Task OnAppearingAsync()
+    public override async Task OnAppearingAsync()
     {
         Items = await recipesClient.GetRecipesAllAsync();
     }

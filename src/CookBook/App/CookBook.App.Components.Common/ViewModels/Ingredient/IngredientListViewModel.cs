@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Api;
+using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.Services;
 using CookBook.Common.Models;
 
-namespace CookBook.App.ViewModels;
+namespace CookBook.App.Components.Common.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class IngredientListViewModel : IViewModel {
+public partial class IngredientListViewModel : ViewModelBase
+{
     private readonly IRoutingService routingService;
     private readonly IIngredientsClient ingredientsClient;
 
@@ -15,31 +16,37 @@ public partial class IngredientListViewModel : IViewModel {
 
     public IngredientListViewModel(
         IRoutingService routingService,
-        IIngredientsClient ingredientsClient) {
+        IIngredientsClient ingredientsClient)
+    {
         this.routingService = routingService;
         this.ingredientsClient = ingredientsClient;
     }
 
-    public async Task OnAppearingAsync() {
+    public override async Task OnAppearingAsync()
+    {
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }
 
     [RelayCommand]
-    private async Task GoToDetailAsync(Guid id) {
+    private async Task GoToDetailAsync(Guid id)
+    {
         //var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync("//ingredients/detail", new Dictionary<string, object> {
+        await Shell.Current.GoToAsync("//ingredients/detail", new Dictionary<string, object>
+        {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
     }
 
     [RelayCommand]
-    private async Task GoToCreateAsync() {
+    private async Task GoToCreateAsync()
+    {
         var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
         await Shell.Current.GoToAsync(route);
     }
 
     [RelayCommand]
-    private async Task GoToEditAsync(Guid id) {
+    private async Task GoToEditAsync(Guid id)
+    {
         var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
         await Shell.Current.GoToAsync($"{route}?id={id}");
     }

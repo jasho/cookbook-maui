@@ -1,4 +1,4 @@
-using CookBook.App.ViewModels;
+using CookBook.App.Components.Common.ViewModels;
 
 namespace CookBook.App.Views;
 

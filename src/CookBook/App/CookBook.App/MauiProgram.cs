@@ -1,10 +1,9 @@
 ﻿using CommunityToolkit.Maui;
-using CookBook.App.Api;
-using CookBook.App.Components;
+using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.ViewModels;
 using CookBook.App.Options;
 using CookBook.App.Resources.Fonts;
 using CookBook.App.Shells;
-using CookBook.App.ViewModels;
 using CookBook.App.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -14,12 +13,15 @@ using System.Reflection;
 
 namespace CookBook.App;
 
-public static class MauiProgram {
-    public static MauiApp CreateMauiApp() {
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
         var builder = MauiApp.CreateBuilder();
         builder.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-            .ConfigureFonts(fonts => {
+            .ConfigureFonts(fonts =>
+            {
                 fonts.AddFont("FontAwesome-Solid.ttf", Fonts.FontAwesome);
                 fonts.AddFont("Montserrat-Bold.ttf", Fonts.Bold);
                 fonts.AddFont("Montserrat-Medium.ttf", Fonts.Medium);
@@ -45,13 +47,15 @@ public static class MauiProgram {
         return app;
     }
 
-    private static void ConfigureAppSettings(MauiAppBuilder builder) {
+    private static void ConfigureAppSettings(MauiAppBuilder builder)
+    {
         var configurationBuilder = new ConfigurationBuilder();
 
         var assembly = Assembly.GetExecutingAssembly();
         var appSettingsFilePath = "CookBook.App.Configuration.appsettings.json";
         using var appSettingsStream = assembly.GetManifestResourceStream(appSettingsFilePath);
-        if (appSettingsStream is not null) {
+        if (appSettingsStream is not null)
+        {
             configurationBuilder.AddJsonStream(appSettingsStream);
         }
 
@@ -59,21 +63,26 @@ public static class MauiProgram {
         builder.Configuration.AddConfiguration(configuration);
     }
 
-    private static void ConfigureOptions(MauiAppBuilder builder) {
+    private static void ConfigureOptions(MauiAppBuilder builder)
+    {
         builder.Services.Configure<ApiOptions>(options =>
             builder.Configuration.GetSection(nameof(ApiOptions)).Bind(options));
     }
 
-    private static void ConfigureShell(IServiceCollection services) {
-        if (DeviceInfo.Idiom == DeviceIdiom.Phone) {
+    private static void ConfigureShell(IServiceCollection services)
+    {
+        if (DeviceInfo.Idiom == DeviceIdiom.Phone)
+        {
             services.AddSingleton<AppShellPhone>();
         }
-        else {
+        else
+        {
             services.AddSingleton<AppShellDesktop>();
         }
     }
 
-    private static void ConfigureViews(IServiceCollection services) {
+    private static void ConfigureViews(IServiceCollection services)
+    {
         services.Scan(selector => selector
             .FromAssemblyOf<App>()
             .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
@@ -82,12 +91,13 @@ public static class MauiProgram {
 
         services.Scan(selector => selector
             .FromAssemblyOf<Components.Components>()
-            .AddClasses(filter => filter.AssignableTo<CookBook.App.Components.Views.ContentPageBase>())
+            .AddClasses(filter => filter.AssignableTo<Components.Common.Views.ContentPageBase>())
             .AsSelf()
             .WithTransientLifetime());
     }
 
-    private static void ConfigureViewModels(IServiceCollection services) {
+    private static void ConfigureViewModels(IServiceCollection services)
+    {
         services.Scan(selector => selector
             .FromAssemblyOf<App>()
             .AddClasses(filter => filter.AssignableTo<IViewModel>())
@@ -96,23 +106,27 @@ public static class MauiProgram {
 
         services.Scan(selector => selector
             .FromAssemblyOf<Components.Components>()
-            .AddClasses(filter => filter.AssignableTo<CookBook.App.Components.ViewModels.IViewModel>())
+            .AddClasses(filter => filter.AssignableTo<IViewModel>())
             .AsSelfWithInterfaces()
             .WithTransientLifetime());
     }
 
-    private static void ConfigureServices(IServiceCollection services) {
+    private static void ConfigureServices(IServiceCollection services)
+    {
         services.AddSingleton<IRoutingService, RoutingService>();
         services.AddSingleton<IShare>(_ => Share.Default);
     }
 
-    private static void ConfigureApiClients(IServiceCollection services) {
-        services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) => {
+    private static void ConfigureApiClients(IServiceCollection services)
+    {
+        services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) =>
+        {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
             client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
         });
 
-        services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) => {
+        services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) =>
+        {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
             client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
         });
@@ -128,10 +142,12 @@ public static class MauiProgram {
     //            });
     //        }
 
-    private static void RegisterRoutes(MauiApp app) {
+    private static void RegisterRoutes(MauiApp app)
+    {
         var routingService = app.Services.GetRequiredService<IRoutingService>();
 
-        foreach (var routeModel in routingService.Routes) {
+        foreach (var routeModel in routingService.Routes)
+        {
             Routing.RegisterRoute(routeModel.Route, routeModel.ViewType);
         }
     }

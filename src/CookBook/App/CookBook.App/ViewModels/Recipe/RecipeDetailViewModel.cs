@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Api;
+using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.ViewModels;
 using CookBook.Common.Models;
 using PropertyChanged;
 
@@ -10,7 +11,7 @@ public partial class RecipeDetailViewModel : ViewModelBase
 {
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
-
+     
     [DoNotNotify]
     public Guid Id { get; set; }
 

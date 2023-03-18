@@ -1,6 +1,6 @@
-using CookBook.App.Components.ViewModels;
+using CookBook.App.Components.Common.ViewModels;
 
-namespace CookBook.App.Components.Views;
+namespace CookBook.App.Components.Common.Views;
 
 public class ContentPageBase : ContentPage
 {

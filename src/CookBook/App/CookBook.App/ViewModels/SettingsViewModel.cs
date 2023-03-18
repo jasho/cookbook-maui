@@ -1,8 +1,10 @@
-﻿namespace CookBook.App.ViewModels;
+﻿using CookBook.App.Components.Common.ViewModels;
 
-public class SettingsViewModel : IViewModel
+namespace CookBook.App.ViewModels;
+
+public class SettingsViewModel : ViewModelBase
 {
-    public Task OnAppearingAsync()
+    public override Task OnAppearingAsync()
     {
         return Task.CompletedTask;
     }

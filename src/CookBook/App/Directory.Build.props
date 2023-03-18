@@ -1,6 +1,7 @@
 <Project>
 	<PropertyGroup>
 		<Configurations>Debug Desktop;Debug Phone; Release Desktop; Release Phone</Configurations>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug Desktop'">

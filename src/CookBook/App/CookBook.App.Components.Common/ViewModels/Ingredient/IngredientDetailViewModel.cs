@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Api;
+using CookBook.App.Components.Common.Api;
 using CookBook.Common.Models;
 
-namespace CookBook.App.ViewModels;
+namespace CookBook.App.Components.Common.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class IngredientDetailViewModel : ViewModelBase

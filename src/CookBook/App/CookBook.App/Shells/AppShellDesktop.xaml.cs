@@ -1,5 +1,5 @@
 using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Services;
+using CookBook.App.Components.Common.ViewModels;
 using CookBook.App.ViewModels;
 
 namespace CookBook.App.Shells;

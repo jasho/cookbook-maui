@@ -4,7 +4,6 @@
 // </auto-generated>
 //----------------------
 
-using CookBook.App.Api;
 using CookBook.Common.Models;
 
 #pragma warning disable 108 // Disable "CS0108 '{derivedDto}.ToJson()' hides inherited member '{dtoBase}.ToJson()'. Use the new keyword if hiding was intended."
@@ -16,7 +15,7 @@ using CookBook.Common.Models;
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace CookBook.App.Api
+namespace CookBook.App.Components.Common.Api
 {
     using System = global::System;
 

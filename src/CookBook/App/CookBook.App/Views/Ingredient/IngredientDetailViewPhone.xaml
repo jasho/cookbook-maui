@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:ContentPageBase x:Class="CookBook.App.Views.IngredientDetailViewPhone"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:texts="clr-namespace:CookBook.App.Resources.Texts" xmlns:vm="clr-namespace:CookBook.App.ViewModels"
+                       xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
                        xmlns:views="clr-namespace:CookBook.App.Views"
                        xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
+                       xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel">
