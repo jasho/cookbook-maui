@@ -142,6 +142,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Platforms\Android\environment.txt" />
       <None Remove="Resources\Fonts\FontAwesome-Solid.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
@@ -156,6 +157,10 @@
     <ItemGroup>
       <Page Remove="Views\Recipe\RecipeEditViewDesktop.xaml" />
       <Page Remove="Views\Recipe\RecipeIngredientsEditViewDesktop.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AndroidEnvironment Include="Platforms\Android\environment.txt" />
     </ItemGroup>
 
     <ItemGroup>
@@ -405,17 +410,21 @@
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Phone|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug Desktop|net7.0-android|AnyCPU'">
     <WarningLevel>0</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-    <WarningLevel>0</WarningLevel>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release Phone|net7.0-android|AnyCPU'">
+	<RunAOTCompilation>True</RunAOTCompilation>
+	<EnableLLVM>True</EnableLLVM>
+	<PublishTrimmed>True</PublishTrimmed>
+	<!--<EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>-->
+	<!--<AndroidEnableProfiler>true</AndroidEnableProfiler>-->
   </PropertyGroup>
 </Project>

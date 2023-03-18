@@ -9,14 +9,14 @@ namespace CookBook.App.Views;
 
 public class RecipeListViewOptimized : ContentPageBase
 {
-    private RecipeListViewModel viewModel;
+    private readonly RecipeListViewModel viewModel;
 
     public RecipeListViewOptimized(RecipeListViewModel viewModel)
         : base(viewModel)
     {
         this.viewModel = viewModel;
 
-        Title = RecipeListViewTexts.Page_Title;
+        Title = RecipeListViewTextsStatic.Page_Title;
         Style = ContentPageStyleStatic.ContentPageStyle;
         IconImageSource = new FontImageSource { FontFamily = Fonts.FontAwesome, Glyph = FontAwesomeIcons.Book };
         Content = GetRootContent();
@@ -24,43 +24,41 @@ public class RecipeListViewOptimized : ContentPageBase
 
     private Grid GetRootContent()
     {
-        var rootGrid = new Grid();
+        var rootGrid = new Grid
+        {
+            Children =
+            {
+                GetContentGrid(),
+                GetAddRecipeButton()
+            }
+        };
         rootGrid.SetValue(CompressedLayout.IsHeadlessProperty, true);
 
-        var contentGrid = new Grid
+        return rootGrid;
+    }
+
+    private Grid GetContentGrid()
+        => new()
         {
             HorizontalOptions = LayoutOptions.Fill,
             RowDefinitions = new RowDefinitionCollection(new RowDefinition { Height = GridLength.Auto },
                 new RowDefinition { Height = GridLength.Star }),
             RowSpacing = 20,
-            Margin = new Thickness(10, 0)
+            Margin = new Thickness(10, 0),
+            Children =
+            {
+                GetTitleLabel(),
+                GetRecipeCollectionView(),
+            },
         };
 
-        var titleLabel = GetTitleLabel();
-        contentGrid.Children.Add(titleLabel);
-            
-        var recipeCollectionView = GetRecipeCollectionView();
-        contentGrid.Children.Add(recipeCollectionView);
-
-        rootGrid.Children.Add(contentGrid);
-            
-        var addRecipeButton = GetAddRecipeButton();
-        rootGrid.Children.Add(addRecipeButton);
-
-        return rootGrid;
-    }
-
     private static Label GetTitleLabel()
-    {
-        var titleLabel = new Label
+        => new ()
         {
             FontSize = 24,
             Style = LabelStyleStatic.BoldLabelStyle,
-            Text = RecipeListViewTexts.Title_Label,
+            Text = RecipeListViewTextsStatic.Title_Label,
         };
-        titleLabel.SetValue(Grid.RowProperty, 0);
-        return titleLabel;
-    }
 
     private CollectionView GetRecipeCollectionView()
     {
@@ -72,6 +70,7 @@ public class RecipeListViewOptimized : ContentPageBase
         };
         recipeCollectionView.SetValue(Grid.RowProperty, 1);
         recipeCollectionView.SetBinding(ItemsView.ItemsSourceProperty, new Binding(nameof(RecipeListViewModel.Items)));
+
         return recipeCollectionView;
     }
 
@@ -87,20 +86,29 @@ public class RecipeListViewOptimized : ContentPageBase
                     CornerRadius = 10,
                     HeightRequest = 200,
                     IsClippedToBounds = true,
-                    Content = GetContentGrid()
+                    Content = GetDataTemplateContentGrid(),
+                    GestureRecognizers =
+                    {
+                        GetTapGestureRecognizer()
+                    }
                 };
-                var tapGestureRecognizer = new TapGestureRecognizer
-                {
-                    Command = viewModel.GoToDetailCommand,
-                };
-                tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(RecipeListModel.Id)));
-                dataTemplateRoot.GestureRecognizers.Add(tapGestureRecognizer);
 
                 return dataTemplateRoot;
             }
         };
 
-        Grid GetContentGrid()
+        TapGestureRecognizer GetTapGestureRecognizer()
+        {
+            var tapGestureRecognizer = new TapGestureRecognizer
+            {
+                Command = viewModel.GoToDetailCommand,
+            };
+            tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(RecipeListModel.Id)));
+
+            return tapGestureRecognizer;
+        }
+
+        Grid GetDataTemplateContentGrid()
             => new()
             {
                 Children =
@@ -119,23 +127,17 @@ public class RecipeListViewOptimized : ContentPageBase
                 VerticalOptions = LayoutOptions.Fill,
                 Aspect = Aspect.AspectFill
             };
-            recipeItemTemplateImage.SetValue(Grid.RowProperty, 0);
             recipeItemTemplateImage.SetBinding(Image.SourceProperty, new Binding(nameof(RecipeListModel.ImageUrl)) { TargetNullValue = "/Images/recipe_placeholder.jpg" });
 
             return recipeItemTemplateImage;
         }
 
         BoxView GetImageOverlay()
-        {
-            var imageOverlay = new BoxView
+            => new()
             {
                 Opacity = 0.25,
                 Color = Black
             };
-            imageOverlay.SetValue(Grid.RowProperty, 0);
-
-            return imageOverlay;
-        }
 
         Frame GetFoodTypeFrame()
         {
@@ -146,13 +148,11 @@ public class RecipeListViewOptimized : ContentPageBase
                 CornerRadius = 5,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Start,
-                HeightRequest = 30
+                HeightRequest = 30,
+                Content = GetFoodTypeFrameContent()
             };
 
-            foodTypeFrame.SetValue(Grid.RowProperty, 0);
-            foodTypeFrame.SetBinding(Microsoft.Maui.Controls.Frame.BackgroundColorProperty, new Binding(nameof(RecipeListModel.FoodType), converter: ConvertersStatic.FoodTypeToColorConverter));
-
-            foodTypeFrame.Content = GetFoodTypeFrameContent();
+            foodTypeFrame.SetBinding(BackgroundColorProperty, new Binding(nameof(RecipeListModel.FoodType), converter: ConvertersStatic.FoodTypeToColorConverter));
 
             return foodTypeFrame;
         }
@@ -164,14 +164,13 @@ public class RecipeListViewOptimized : ContentPageBase
                 Padding = 0,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
-                Spacing = 8
+                Spacing = 8,
+                Children =
+                {
+                    GetFoodTypeIconLabel(),
+                    GetFoodTypeLabel()
+                }
             };
-
-            var foodTypeIconLabel = GetFoodTypeIconLabel();
-            foodTypeFrameRoot.Children.Add(foodTypeIconLabel);
-
-            var foodTypeLabel = GetFoodTypeLabel();
-            foodTypeFrameRoot.Children.Add(foodTypeLabel);
 
             return foodTypeFrameRoot;
 
@@ -218,12 +217,7 @@ public class RecipeListViewOptimized : ContentPageBase
             HorizontalOptions = LayoutOptions.End,
             VerticalOptions = LayoutOptions.End,
             Style = ButtonStyleStatic.PrimaryButtonStyle,
-            Text = IngredientListViewTexts.Add_Button_Text_Phone,
+            Text = RecipeListViewTextsStatic.Add_Button_Text_Phone,
             WidthRequest = 65
         };
-
-    protected override void OnAppearing() {
-        base.OnAppearing();
-        TimingHelper.Log("END");
-    }
 }

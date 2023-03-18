@@ -8,12 +8,12 @@ public abstract class ContentPageBase : ContentPage {
         BindingContext = viewModel;
     }
 
-    protected override async void OnAppearing() {
+    protected override void OnAppearing() {
         base.OnAppearing();
 
         if (BindingContext is IViewModel viewModel)
         {
-            await viewModel.OnAppearingAsync();
+            Task.Run(() => viewModel.OnAppearingAsync());
         }
     }
 }

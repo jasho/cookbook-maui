@@ -1,4 +1,9 @@
-﻿namespace CookBook.App;
+﻿using CookBook.App.Views;
 
-public partial class Container {
+namespace CookBook.App;
+
+public partial class Container
+{
+    public Page? GetAppShell()
+        => Resolve(typeof(AppShellOptimized)) as Page;
 }

@@ -13,14 +13,14 @@ namespace CookBook.App.Views;
 
 public class IngredientListViewOptimized : ContentPageBase
 {
-    private IngredientListViewModel viewModel;
+    private readonly IngredientListViewModel viewModel;
 
     public IngredientListViewOptimized(IngredientListViewModel viewModel)
         : base(viewModel)
     {
         this.viewModel = viewModel;
 
-        Title = IngredientListViewTexts.Page_Title;
+        Title = IngredientListViewTextsStatic.Page_Title;
         Style = ContentPageStyleStatic.ContentPageStyle;
         IconImageSource = new FontImageSource { FontFamily = Fonts.FontAwesome, Glyph = FontAwesomeIcons.Seedling };
 
@@ -50,7 +50,7 @@ public class IngredientListViewOptimized : ContentPageBase
         {
             FontSize = 24,
             Style = LabelStyleStatic.BoldLabelStyle,
-            Text = IngredientListViewTexts.Title_Label
+            Text = IngredientListViewTextsStatic.Title_Label
         };
 
     private CollectionView GetIngredientCollectionView()
@@ -81,25 +81,34 @@ public class IngredientListViewOptimized : ContentPageBase
                         new() { Width = GridLength.Auto }
                     },
                     ColumnSpacing = 20,
-                    HeightRequest = 40
+                    HeightRequest = 40,
+                    Children =
+                    {
+                        GetBackgroundBoxView(),
+                        GetImageWithFrame(),
+                        GetNameLabel(),
+                        GetEditLabel()
+                    },
+                    GestureRecognizers =
+                    {
+                        GetDataTemplateRootGestureRecognizer()
+                    }
                 };
-
-                dataTemplateRoot.Children.Add(GetBackgroundBoxView());
-                dataTemplateRoot.Children.Add(GetImageWithFrame());
-                dataTemplateRoot.Children.Add(GetNameLabel());
-                dataTemplateRoot.Children.Add(GetEditLabel());
-
-                var tapGestureRecognizer = new TapGestureRecognizer
-                {
-                    Command = viewModel.GoToDetailCommand
-                };
-                tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(IngredientListModel.Id)));
-
-                dataTemplateRoot.GestureRecognizers.Add(tapGestureRecognizer);
 
                 return dataTemplateRoot;
             }
         };
+
+        TapGestureRecognizer GetDataTemplateRootGestureRecognizer()
+        {
+            var tapGestureRecognizer = new TapGestureRecognizer
+            {
+                Command = viewModel.GoToDetailCommand
+            };
+            tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(IngredientListModel.Id)));
+
+            return tapGestureRecognizer;
+        }
 
         BoxView GetBackgroundBoxView()
         {
@@ -108,18 +117,16 @@ public class IngredientListViewOptimized : ContentPageBase
                 CornerRadius = 5,
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
-                Color = ThemeStatic.ListItemBackgroundColor
+                Color = ThemeStatic.ListItemBackgroundColor,
             };
 
-            boxView.SetValue(Grid.ColumnProperty, 0);
             boxView.SetValue(Grid.ColumnSpanProperty, 3);
 
             return boxView;
         }
 
         Frame GetImageWithFrame()
-        {
-            var frame = new Frame
+            => new()
             {
                 Margin = new Thickness(4, 0, 0, 0),
                 Padding = 0,
@@ -127,23 +134,23 @@ public class IngredientListViewOptimized : ContentPageBase
                 HeightRequest = 34,
                 IsClippedToBounds = true,
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 34
+                WidthRequest = 34,
+                Content = GetImage()
             };
-            frame.SetValue(Grid.ColumnProperty, 0);
 
+        Image GetImage()
+        {
             var image = new Image
             {
                 Aspect = Aspect.AspectFill,
                 HeightRequest = 34,
             };
-
             image.SetBinding(Image.SourceProperty, new Binding(nameof(IngredientListModel.ImageUrl))
             {
                 TargetNullValue = "/Images/ingredient_placeholder.jpg"
             });
-            frame.Content = image;
 
-            return frame;
+            return image;
         }
 
         Label GetNameLabel()
@@ -170,30 +177,38 @@ public class IngredientListViewOptimized : ContentPageBase
                 Text = FontAwesomeIcons.Pen,
                 FontSize = 20,
                 TextColor = ThemeStatic.PrimaryColor,
-                FontFamily = Fonts.FontAwesome
+                FontFamily = Fonts.FontAwesome,
+                GestureRecognizers =
+                {
+                    GetEditLabelTapGestureRecognizer()
+                }
             };
             label.SetValue(Grid.ColumnProperty, 2);
 
+            return label;
+        }
+
+        TapGestureRecognizer GetEditLabelTapGestureRecognizer()
+        {
             var tapGestureRecognizer = new TapGestureRecognizer
             {
                 Command = viewModel.GoToEditCommand
             };
             tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(IngredientListModel.Id)));
-            label.GestureRecognizers.Add(tapGestureRecognizer);
 
-            return label;
+            return tapGestureRecognizer;
         }
     }
 
     private Button GetAddIngredientButton()
     {
-        var button = new Button()
+        var button = new Button
         {
             Margin = new Thickness(0, 0, 14, 9),
             Padding = 0,
             HorizontalOptions = LayoutOptions.End,
             VerticalOptions = LayoutOptions.End,
-            Text = IngredientListViewTexts.Add_Button_Text_Phone,
+            Text = IngredientListViewTextsStatic.Add_Button_Text,
             Command = viewModel.GoToCreateCommand,
             CornerRadius = 60,
             FontFamily = Fonts.Regular,
