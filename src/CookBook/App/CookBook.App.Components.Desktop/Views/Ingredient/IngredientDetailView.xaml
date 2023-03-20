@@ -5,7 +5,7 @@
                        xmlns:texts="clr-namespace:CookBook.App.Components.Common.Resources.Texts;assembly=CookBook.App.Components.Common"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
-                       x:Class="CookBook.App.Components.Views.Ingredient.IngredientDetailView"
+                       x:Class="CookBook.App.Components.Views.IngredientDetailView"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel"
                        NavigationPage.HasBackButton="False">

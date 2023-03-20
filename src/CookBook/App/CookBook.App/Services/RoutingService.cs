@@ -1,9 +1,8 @@
 ﻿using CookBook.App.Components.Common.Models;
 using CookBook.App.Components.Common.Services;
 using CookBook.App.Components.Common.ViewModels;
-using CookBook.App.Components.Views.Ingredient;
+using CookBook.App.Components.Views;
 using CookBook.App.Views;
-using RecipeIngredientsEditViewDesktop = CookBook.App.Views.RecipeIngredientsEditViewDesktop;
 
 namespace CookBook.App.Services;
 

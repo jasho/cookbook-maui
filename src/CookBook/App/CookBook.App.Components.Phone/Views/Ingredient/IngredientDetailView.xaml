@@ -7,7 +7,7 @@
                        xmlns:texts="clr-namespace:CookBook.App.Components.Common.Resources.Texts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
                        Title="{x:Static texts:IngredientDetailViewTexts.Page_Title}"
-                       x:Class="CookBook.App.Components.Views.Ingredient.IngredientDetailView"
+                       x:Class="CookBook.App.Components.Views.IngredientDetailView"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel">
     <views:ContentPageBase.ToolbarItems>
