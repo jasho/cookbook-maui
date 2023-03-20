@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.Services;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
 using System.Collections.ObjectModel;
@@ -23,7 +24,9 @@ public partial class RecipeIngredientsEditViewModel : ViewModelBase
 
     public RecipeIngredientsEditViewModel(
         IIngredientsClient ingredientsClient,
-        IRecipesClient recipesClient)
+        IRecipesClient recipesClient,
+        INavigationService navigationService)
+        : base(navigationService)
     {
         this.ingredientsClient = ingredientsClient;
         this.recipesClient = recipesClient;

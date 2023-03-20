@@ -36,4 +36,12 @@ public class NavigationService : INavigationService
         var route = routingService.GetRouteByViewModel<TViewModel>();
         await GoToAsync(route, parameters);
     }
+
+    public void GoBack()
+    {
+        if (Shell.Current.Navigation.NavigationStack.Count > 1)
+        {
+            Shell.Current.SendBackButtonPressed();
+        }
+    }
 }

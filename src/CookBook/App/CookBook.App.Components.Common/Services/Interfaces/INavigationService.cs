@@ -12,4 +12,6 @@ public interface INavigationService
 
     Task GoToAsync<TViewModel>(IDictionary<string, object> parameters)
         where TViewModel : IViewModel;
+
+    void GoBack();
 }

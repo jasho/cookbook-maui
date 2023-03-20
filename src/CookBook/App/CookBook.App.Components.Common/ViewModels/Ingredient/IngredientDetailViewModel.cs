@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.Services;
 using CookBook.Common.Models;
 
 namespace CookBook.App.Components.Common.ViewModels;
@@ -18,7 +19,9 @@ public partial class IngredientDetailViewModel : ViewModelBase
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,
-        IShare share)
+        IShare share,
+        INavigationService navigationService)
+        : base(navigationService)
     {
         this.ingredientsClient = ingredientsClient;
         this.share = share;
@@ -33,16 +36,19 @@ public partial class IngredientDetailViewModel : ViewModelBase
     private async Task DeleteAsync()
     {
         await ingredientsClient.DeleteIngredientAsync(Id);
-        Shell.Current.SendBackButtonPressed();
+        navigationService.GoBack();
     }
 
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        if (Ingredient is not null)
         {
-            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
-        });
+            await navigationService.GoToAsync("/edit", new Dictionary<string, object>
+            {
+                [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
+            });
+        }
     }
 
     [RelayCommand]

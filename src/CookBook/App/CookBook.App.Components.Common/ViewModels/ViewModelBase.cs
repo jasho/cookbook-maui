@@ -1,10 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CookBook.App.Components.Common.Services;
 
 namespace CookBook.App.Components.Common.ViewModels;
 
 public partial class ViewModelBase : ObservableObject, IViewModel
 {
+    protected readonly INavigationService navigationService;
+
+    public ViewModelBase(INavigationService navigationService)
+    {
+        this.navigationService = navigationService;
+    }
+
     public virtual Task OnAppearingAsync()
     {
         return Task.CompletedTask;
@@ -13,11 +21,7 @@ public partial class ViewModelBase : ObservableObject, IViewModel
     [RelayCommand]
     private Task GoBackAsync()
     {
-        if (Shell.Current.Navigation.NavigationStack.Count > 1)
-        {
-            Shell.Current.SendBackButtonPressed();
-        }
-
+        navigationService.GoBack();
         return Task.CompletedTask;
     }
 }

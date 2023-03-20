@@ -8,17 +8,16 @@ namespace CookBook.App.Components.Common.ViewModels;
 
 public partial class IngredientListViewModel : ViewModelBase
 {
-    private readonly INavigationService navigationService;
     private readonly IIngredientsClient ingredientsClient;
 
     [ObservableProperty]
     private ICollection<IngredientListModel>? items;
 
     public IngredientListViewModel(
-        INavigationService navigationService,
-        IIngredientsClient ingredientsClient)
+        IIngredientsClient ingredientsClient,
+        INavigationService navigationService)
+        : base(navigationService)
     {
-        this.navigationService = navigationService;
         this.ingredientsClient = ingredientsClient;
     }
 

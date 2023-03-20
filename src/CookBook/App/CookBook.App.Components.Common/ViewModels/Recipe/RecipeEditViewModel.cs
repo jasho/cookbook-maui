@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.Services;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
 
@@ -14,7 +15,10 @@ public partial class RecipeEditViewModel : ViewModelBase
 
     public List<FoodType> FoodTypes { get; set; }
 
-    public RecipeEditViewModel(IRecipesClient recipesClient)
+    public RecipeEditViewModel(
+        IRecipesClient recipesClient,
+        INavigationService navigationService)
+        : base(navigationService)
     {
         this.recipesClient = recipesClient;
 
@@ -24,7 +28,7 @@ public partial class RecipeEditViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToRecipeIngredientEditAsync()
     {
-        await Shell.Current.GoToAsync("/ingredients", new Dictionary<string, object> { [nameof(RecipeIngredientsEditViewModel.Recipe)] = Recipe });
+        await navigationService.GoToAsync("/ingredients", new Dictionary<string, object> { [nameof(RecipeIngredientsEditViewModel.Recipe)] = Recipe });
     }
 
     [RelayCommand]
@@ -35,13 +39,13 @@ public partial class RecipeEditViewModel : ViewModelBase
             await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
         }
 
-        await Shell.Current.GoToAsync("../");
+        await navigationService.GoToAsync("../");
     }
 
     [RelayCommand]
     private async Task SaveAsync()
     {
         await recipesClient.UpdateRecipeAsync(Recipe);
-        await Shell.Current.GoToAsync("../");
+        await navigationService.GoToAsync("../");
     }
 }
