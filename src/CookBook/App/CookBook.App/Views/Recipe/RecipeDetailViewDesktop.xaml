@@ -29,7 +29,7 @@
                        FontSize="14"
                        Style="{StaticResource MediumLabelStyle}" />
             </StackLayout>
-
+ 
             <Button Grid.Column="2"
                     VerticalOptions="Start"
                     HeightRequest="30"
@@ -43,8 +43,7 @@
               ColumnDefinitions="*, Auto"
               ColumnSpacing="20">
             <ScrollView Orientation="Vertical">
-                <Grid Grid.Column="0"
-                      RowDefinitions="Auto, Auto, Auto, *"
+                <Grid RowDefinitions="Auto, Auto, Auto, *"
                       RowSpacing="20">
                     <Label Grid.Row="0"
                            Text="{Binding Recipe.Name}"

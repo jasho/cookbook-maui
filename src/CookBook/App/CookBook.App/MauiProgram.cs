@@ -95,7 +95,7 @@ public static class MauiProgram
 
         services.Scan(selector => selector
             .FromAssemblyOf<Components.Components>()
-            .AddClasses(filter => filter.AssignableTo<Components.Common.Views.ContentPageBase>())
+            .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
             .AsSelf()
             .WithTransientLifetime());
     }
@@ -111,8 +111,6 @@ public static class MauiProgram
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<Shell>(_ => Shell.Current);
-
         services.AddSingleton<IRoutingService, RoutingService>();
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<IShare>(_ => Share.Default);

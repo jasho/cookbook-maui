@@ -154,6 +154,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <MauiImage Include="Resources\Images\recipe_placeholder.jpg" LogicalName="recipe_placeholder.jpg"/>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Remove="Views\Recipe\RecipeEditViewDesktop.xaml" />
       <Page Remove="Views\Recipe\RecipeIngredientsEditViewDesktop.xaml" />
     </ItemGroup>

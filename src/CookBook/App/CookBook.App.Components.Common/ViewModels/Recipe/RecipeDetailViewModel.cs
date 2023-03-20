@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
 using CookBook.Common.Models;
 
@@ -12,7 +13,8 @@ public partial class RecipeDetailViewModel : ViewModelBase
      
     public Guid Id { get; set; }
 
-    public RecipeDetailModel? Recipe { get; set; }
+    [ObservableProperty]
+    private RecipeDetailModel? recipe;
 
     public RecipeDetailViewModel(
         IRecipesClient recipesClient,
