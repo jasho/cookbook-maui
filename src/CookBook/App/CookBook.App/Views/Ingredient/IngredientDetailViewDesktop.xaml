@@ -37,7 +37,7 @@
                    Padding="0">
                 <Image Aspect="AspectFill"
                        WidthRequest="170" HeightRequest="170"
-                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}" />
+                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg', FallbackValue='ingredient_placeholder.jpg'}" />
             </Frame>
 
             <StackLayout Grid.Row="0" Grid.RowSpan="2"
@@ -46,11 +46,11 @@
                          Orientation="Vertical">
                 <Label FontSize="24" 
                        Style="{StaticResource BoldLabelStyle}"
-                       Text="{Binding Ingredient.Name}" />
+                       Text="{Binding Ingredient.Name, FallbackValue=''}" />
 
                 <Label FontSize="14" 
                        Style="{StaticResource RegularLabelStyle}"
-                       Text="{Binding Ingredient.Description}"/>
+                       Text="{Binding Ingredient.Description, FallbackValue=''}"/>
             </StackLayout>
         </Grid>
     </StackLayout>
