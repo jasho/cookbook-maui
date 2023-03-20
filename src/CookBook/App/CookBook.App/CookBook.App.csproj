@@ -221,11 +221,6 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>FoodTypeTexts.resx</DependentUpon>
       </Compile>
-      <Compile Update="Resources\Texts\IngredientEditViewTexts.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>IngredientEditViewTexts.resx</DependentUpon>
-      </Compile>
       <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -280,10 +275,6 @@
       <EmbeddedResource Update="Resources\Texts\FoodTypeTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>

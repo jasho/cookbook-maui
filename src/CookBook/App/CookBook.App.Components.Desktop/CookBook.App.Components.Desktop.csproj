@@ -25,7 +25,6 @@
 	  <Folder Include="Platforms\Tizen\" />
 	  <Folder Include="Platforms\Windows\" />
 	  <Folder Include="ViewModels\" />
-	  <Folder Include="Views\Ingredient\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -36,6 +35,12 @@
 	  <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
 	    <DependentUpon>IngredientDetailView.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

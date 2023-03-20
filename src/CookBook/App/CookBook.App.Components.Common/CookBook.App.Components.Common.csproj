@@ -24,7 +24,6 @@
 	  <Folder Include="Platforms\MacCatalyst\" />
 	  <Folder Include="Platforms\Tizen\" />
 	  <Folder Include="Platforms\Windows\" />
-	  <Folder Include="Views\Ingredient\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -42,6 +41,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
+	  <Compile Update="Resources\Texts\IngredientEditViewTexts.Designer.cs">
+	    <DependentUpon>IngredientEditViewTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
 	  <Compile Update="Resources\Texts\RecipeDetailViewTexts.Designer.cs">
 	    <DependentUpon>RecipeDetailViewTexts.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
@@ -52,6 +56,10 @@
 	<ItemGroup>
 	  <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
 	    <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
+	    <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Texts\RecipeDetailViewTexts.resx">
