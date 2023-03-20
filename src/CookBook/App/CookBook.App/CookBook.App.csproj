@@ -149,6 +149,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <MauiImage Include="Resources\Images\ingredient_placeholder.jpg" LogicalName="ingredient_placeholder.jpg" />
         <MauiImage Include="Resources\Images\recipe_placeholder.jpg" LogicalName="recipe_placeholder.jpg" />
     </ItemGroup>
 

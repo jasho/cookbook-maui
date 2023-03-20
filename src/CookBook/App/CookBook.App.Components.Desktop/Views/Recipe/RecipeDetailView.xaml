@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.App.Views.RecipeDetailViewDesktop"
-                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:CookBook.App.Components.Common.Resources.Texts;assembly=CookBook.App.Components.Common"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:fonts="clr-namespace:CookBook.App.Components.Common.Resources.Fonts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
-                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title}, Desktop=''}"
+                       x:Class="CookBook.App.Components.Views.RecipeDetailView"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeDetailViewModel">
     <Grid RowDefinitions="70, *">

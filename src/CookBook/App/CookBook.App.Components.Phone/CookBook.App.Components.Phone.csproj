@@ -43,6 +43,9 @@
 	  <MauiXaml Update="Views\Ingredient\IngredientEditView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Recipe\RecipeDetailView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
