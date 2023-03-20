@@ -107,15 +107,5 @@
                 FontSize="14"
                 Style="{StaticResource PrimaryButtonStyle}"
                 IsVisible="{OnIdiom Phone=False, Desktop=True}" />
-
-        <Button Margin="0,0,14,9" Padding="-15"
-                Command="{Binding GoToCreateCommand}"
-                CornerRadius="60" FontFamily="MontserratRegular"
-                FontSize="40" HorizontalOptions="End"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Text="+" VerticalOptions="End"
-                HeightRequest="50"
-                WidthRequest="50"
-                IsVisible="{OnIdiom Phone=True, Desktop=False}" />
     </Grid>
 </views:ContentPageBase>
