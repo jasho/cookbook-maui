@@ -3,7 +3,7 @@
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
-                       xmlns:fonts="clr-namespace:CookBook.App.Resources.Fonts"
+                       xmlns:fonts="clr-namespace:CookBook.App.Components.Common.Resources.Fonts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title}, Desktop=''}"

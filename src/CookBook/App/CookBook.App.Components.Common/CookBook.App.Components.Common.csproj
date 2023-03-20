@@ -35,4 +35,28 @@
 	  <ProjectReference Include="..\..\Common\CookBook.Common\CookBook.Common.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Resources\Texts\IngredientDetailViewTexts.Designer.cs">
+	    <DependentUpon>IngredientDetailViewTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeDetailViewTexts.Designer.cs">
+	    <DependentUpon>RecipeDetailViewTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
+	    <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeDetailViewTexts.resx">
+	    <LastGenOutput>RecipeDetailViewTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>

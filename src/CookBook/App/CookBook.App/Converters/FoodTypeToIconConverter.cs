@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui.Converters;
-using CookBook.App.Resources.Fonts;
+using CookBook.App.Components.Common.Resources.Fonts;
 using CookBook.Common.Enums;
 using System.Globalization;
 

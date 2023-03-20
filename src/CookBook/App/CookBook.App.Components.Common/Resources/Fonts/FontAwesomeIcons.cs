@@ -1,4 +1,4 @@
-﻿namespace CookBook.App.Resources.Fonts;
+﻿namespace CookBook.App.Components.Common.Resources.Fonts;
 /// <summary>
 /// The unicode values for all FontAwesome icons.
 /// <para/>

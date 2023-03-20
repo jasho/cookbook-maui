@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.App.Components.Common;
 using CookBook.App.Components.Common.Api;
+using CookBook.App.Components.Common.Resources.Fonts;
 using CookBook.App.Components.Common.Services;
 using CookBook.App.Components.Common.ViewModels;
 using CookBook.App.Components.Common.Views;
 using CookBook.App.Options;
-using CookBook.App.Resources.Fonts;
 using CookBook.App.Shells;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;

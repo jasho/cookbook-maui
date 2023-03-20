@@ -137,11 +137,6 @@
 	</ItemGroup>
 
     <ItemGroup>
-      <MauiFont Remove="Resources\Fonts\FontAwesomeIcons.cs" />
-      <MauiFont Remove="Resources\Fonts\Fonts.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Resources\Fonts\FontAwesome-Solid.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
@@ -154,7 +149,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <MauiImage Include="Resources\Images\recipe_placeholder.jpg" LogicalName="recipe_placeholder.jpg"/>
+        <MauiImage Include="Resources\Images\recipe_placeholder.jpg" LogicalName="recipe_placeholder.jpg" />
     </ItemGroup>
 
     <ItemGroup>
@@ -226,11 +221,6 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>FoodTypeTexts.resx</DependentUpon>
       </Compile>
-      <Compile Update="Resources\Texts\IngredientDetailViewTexts.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>IngredientDetailViewTexts.resx</DependentUpon>
-      </Compile>
       <Compile Update="Resources\Texts\IngredientEditViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -240,11 +230,6 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>IngredientListViewTexts.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\Texts\RecipeDetailViewTexts.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>RecipeDetailViewTexts.resx</DependentUpon>
       </Compile>
       <Compile Update="Resources\Texts\RecipeListViewTexts.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -296,10 +281,6 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
@@ -307,10 +288,6 @@
       <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Texts\RecipeDetailViewTexts.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>RecipeDetailViewTexts.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
         <Generator>ResXFileCodeGenerator</Generator>

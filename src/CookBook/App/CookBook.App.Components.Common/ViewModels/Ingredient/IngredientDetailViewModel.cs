@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
 using CookBook.Common.Models;
 
@@ -10,9 +11,10 @@ public partial class IngredientDetailViewModel : ViewModelBase
     private readonly IIngredientsClient ingredientsClient;
     private readonly IShare share;
 
-    public Guid Id { get; set; } = Guid.Empty;
+    [ObservableProperty]
+    private IngredientDetailModel? ingredient;
 
-    public IngredientDetailModel? Ingredient { get; set; }
+    public Guid Id { get; set; } = Guid.Empty;
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,

@@ -1,4 +1,4 @@
-﻿namespace CookBook.App.Resources.Fonts;
+﻿namespace CookBook.App.Components.Common.Resources.Fonts;
 
 public class Fonts
 {

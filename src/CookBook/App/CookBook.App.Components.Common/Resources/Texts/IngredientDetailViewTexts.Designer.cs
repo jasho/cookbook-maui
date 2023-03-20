@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CookBook.App.Resources.Texts {
+namespace CookBook.App.Components.Common.Resources.Texts {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -36,7 +39,7 @@ namespace CookBook.App.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.App.Resources.Texts.IngredientDetailViewTexts", typeof(IngredientDetailViewTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.App.Components.Common.Resources.Texts.IngredientDetailViewTexts", typeof(IngredientDetailViewTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
