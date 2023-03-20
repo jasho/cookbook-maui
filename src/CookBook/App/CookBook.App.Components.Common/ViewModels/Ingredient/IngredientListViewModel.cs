@@ -40,15 +40,4 @@ public partial class IngredientListViewModel : ViewModelBase
     {
         await navigationService.GoToAsync<IngredientEditViewModel>();
     }
-
-    [RelayCommand]
-    private async Task GoToEditAsync(Guid id)
-    {
-        var ingredientListModel = Items?.SingleOrDefault(item => item.Id == id);
-
-        if (ingredientListModel is not null)
-        {
-            await navigationService.GoToAsync<IngredientEditViewModel>();
-        }
-    }
 }

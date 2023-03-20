@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
 using CookBook.App.Components.Common.Services;
 using CookBook.Common.Models;
@@ -10,8 +11,10 @@ public partial class IngredientEditViewModel : ViewModelBase
 {
     private readonly IIngredientsClient ingredientsClient;
 
+    [ObservableProperty]
+    private IngredientDetailModel ingredient = IngredientDetailModel.Empty;
+
     public FileResult? ImageFileResult { get; set; }
-    public IngredientDetailModel Ingredient { get; init; } = IngredientDetailModel.Empty;
 
     public IngredientEditViewModel(
         IIngredientsClient ingredientsClient,

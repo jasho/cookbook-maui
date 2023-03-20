@@ -4,7 +4,6 @@
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        xmlns:texts="clr-namespace:CookBook.App.Resources.Texts"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
-                       xmlns:fonts="clr-namespace:CookBook.App.Components.Common.Resources.Fonts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title}, Desktop=''}"
@@ -21,7 +20,7 @@
 
         <DataTemplate x:Key="ItemTemplatePhone"
                       x:DataType="models:IngredientListModel">
-            <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *, Auto"
+            <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *"
                   ColumnSpacing="20" HeightRequest="40">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
@@ -46,19 +45,6 @@
                        Style="{StaticResource MediumLabelStyle}"
                        Text="{Binding Name}"
                        VerticalOptions="Center" />
-
-                <Label Grid.Column="2"
-                       HorizontalOptions="End" VerticalOptions="Center"
-                       Margin="0, 0, 12, 0"
-                       Text="{x:Static fonts:FontAwesomeIcons.Pen}"
-                       FontSize="20"
-                       TextColor="{StaticResource PrimaryColor}"
-                       FontFamily="{x:Static fonts:Fonts.FontAwesome}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
-                                              CommandParameter="{Binding Id}" />
-                    </Label.GestureRecognizers>
-                </Label>
             </Grid>
         </DataTemplate>
 
