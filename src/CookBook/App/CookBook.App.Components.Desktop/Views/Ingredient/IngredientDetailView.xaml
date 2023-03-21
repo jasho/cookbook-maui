@@ -15,7 +15,7 @@
                      Orientation="Horizontal"
                      Spacing="15"
                      HeightRequest="30">
-            <Button Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"
+            <Button Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text}"
                     CornerRadius="5"
                     BackgroundColor="{StaticResource ErrorColor}"
                     Command="{Binding DeleteCommand}" />

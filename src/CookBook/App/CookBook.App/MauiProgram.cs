@@ -12,9 +12,6 @@ using Microsoft.Extensions.Options;
 using System.Reflection;
 using INavigationService = CookBook.App.Components.Common.Services.INavigationService;
 
-//using CookBook.App.Controls;
-//using CookBook.App.Platforms.Android;
-
 namespace CookBook.App;
 
 public static class MauiProgram
@@ -41,8 +38,6 @@ public static class MauiProgram
 
         ConfigureServices(builder.Services);
         ConfigureApiClients(builder.Services);
-
-        //ConfigureCustomHandlers(builder);
 
         var app = builder.Build();
 
@@ -131,15 +126,6 @@ public static class MauiProgram
         });
     }
 
-    //        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
-    //        {
-    //            builder.ConfigureMauiHandlers(handlers =>
-    //            {
-    //#if __ANDROID__
-    //                handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
-    //#endif
-    //            });
-    //        }
 
     private static void RegisterRoutes(MauiApp app)
     {

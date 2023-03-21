@@ -4,6 +4,7 @@
                        xmlns:texts="clr-namespace:CookBook.App.Components.Common.Resources.Texts;assembly=CookBook.App.Components.Common"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
+                       xmlns:controls="using:CookBook.App.Controls"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel"
@@ -14,10 +15,15 @@
                      Orientation="Horizontal"
                      Spacing="15"
                      HeightRequest="30">
-            <Button Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"
-                    CornerRadius="5"
-                    BackgroundColor="{StaticResource ErrorColor}"
-                    Command="{Binding DeleteCommand}" />
+            
+            <controls:ButtonWithConfirmation CornerRadius="5"
+                                             Style="{StaticResource ErrorButtonStyle}"
+                                             ConfirmationTitle="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationTitle}"
+                                             ConfirmationMessage="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationMessage}"
+                                             ConfirmationAcceptButtonText="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationAcceptButtonText}"
+                                             ConfirmationCancelButtonText="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationCancelButtonText}"
+                                             Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text}"
+                                             Command="{Binding DeleteCommand}" />
 
             <Button Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text_Desktop}"
                     CornerRadius="5"

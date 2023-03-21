@@ -5,6 +5,7 @@
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:fonts="clr-namespace:CookBook.App.Components.Common.Resources.Fonts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
+                       xmlns:controls="clr-namespace:CookBook.App.Controls"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel">
@@ -13,15 +14,6 @@
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.ShareAlt}"
-                                 Size="15"
-                                 Color="{DynamicResource NavigationBarTextColor}" />
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-
-        <ToolbarItem Command="{Binding DeleteCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Trash}"
                                  Size="15"
                                  Color="{DynamicResource NavigationBarTextColor}" />
             </ToolbarItem.IconImageSource>
@@ -37,7 +29,7 @@
         </ToolbarItem>
     </views:ContentPageBase.ToolbarItems>
 
-    <Grid RowDefinitions="Auto, Auto, *" RowSpacing="20">
+    <Grid RowDefinitions="Auto, Auto, *, Auto" RowSpacing="20">
         <Label Grid.Row="0"
                FontSize="24" HorizontalOptions="Center"
                Style="{StaticResource BoldLabelStyle}"
@@ -58,5 +50,14 @@
                Style="{StaticResource RegularLabelStyle}"
                Text="{Binding Ingredient.Description}"
                VerticalOptions="Start" />
+
+        <controls:ButtonWithConfirmation Grid.Row="3"
+                                         Command="{Binding DeleteCommand}"
+                                         ConfirmationTitle="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationTitle}"
+                                         ConfirmationMessage="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationMessage}"
+                                         ConfirmationAcceptButtonText="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationAcceptButtonText}"
+                                         ConfirmationCancelButtonText="{x:Static texts:IngredientDetailViewTexts.Delete_Button_ConfirmationCancelButtonText}"
+                                         Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text}"
+                                         Style="{StaticResource ErrorButtonStyle}" />
     </Grid>
 </views:ContentPageBase>

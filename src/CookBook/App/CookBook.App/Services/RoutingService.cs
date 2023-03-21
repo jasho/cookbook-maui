@@ -16,16 +16,22 @@ public class RoutingService : IRoutingService
 
         new("//ingredients/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
 
-        new("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
+        //new("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
         new("//ingredients/detail/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
 
-        new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel))
+        //new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel))
     };
 
-    private static IEnumerable<RouteModel> routesPhone = new List<RouteModel>().Concat(routesCommon);
+    private static IEnumerable<RouteModel> routesPhone = new List<RouteModel>
+    {
+        new("//ingredients/detail", typeof(IngredientDetailViewPhone), typeof(IngredientDetailViewModel)),
+    }.Concat(routesCommon);
 
     private static IEnumerable<RouteModel> routesDesktop = new List<RouteModel>
     {
+        new("//ingredients/detail", typeof(IngredientDetailViewDesktop), typeof(IngredientDetailViewModel)),
+        new("//recipes/detail", typeof(RecipeDetailViewDesktop), typeof(RecipeDetailViewModel)),
+
         new("//recipes/detail/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
         new("//recipes/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
 
