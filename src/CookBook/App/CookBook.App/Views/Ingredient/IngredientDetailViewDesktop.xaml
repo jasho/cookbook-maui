@@ -4,7 +4,7 @@
                        xmlns:texts="clr-namespace:CookBook.App.Components.Common.Resources.Texts;assembly=CookBook.App.Components.Common"
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
-                       xmlns:controls="using:CookBook.App.Controls"
+                       xmlns:controls="clr-namespace:CookBook.App.Components.Common.Controls;assembly=CookBook.App.Components.Common"
                        Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientDetailViewModel"

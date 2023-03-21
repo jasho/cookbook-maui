@@ -1,4 +1,4 @@
-﻿namespace CookBook.App.Controls;
+﻿namespace CookBook.App.Components.Common.Controls;
 
 public partial class ButtonWithConfirmation : Button
 {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace CookBook.App.Controls;
+namespace CookBook.App.Components.Common.Controls;
 
 public partial class ButtonWithConfirmation
 {

@@ -8,7 +8,7 @@ using HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment;
 using ICommand = System.Windows.Input.ICommand;
 using RowDefinition = Microsoft.UI.Xaml.Controls.RowDefinition;
 
-namespace CookBook.App.Controls;
+namespace CookBook.App.Components.Common.Controls;
 
 public partial class ButtonWithConfirmation
 {
