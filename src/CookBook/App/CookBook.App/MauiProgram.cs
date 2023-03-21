@@ -106,7 +106,7 @@ public static class MauiProgram
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<IRoutingService, RoutingService>();
+        services.AddSingleton<IRoutingService, RoutingService1>();
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<IShare>(_ => Share.Default);
     }

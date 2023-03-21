@@ -367,6 +367,17 @@
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
     </ItemGroup>
+	
+	<!--<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
+		<MauiXaml Remove="**\*Phone.xaml" />
+		<Compile Remove="**\*Phone.xaml.cs"/>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
+		<MauiXaml Remove="**\*Desktop.xaml" />
+		<Compile Remove="**\*Desktop.xaml.cs"/>
+	</ItemGroup>-->
+
    <PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 	</PropertyGroup>

@@ -5,18 +5,22 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug Desktop'">
+		<DefineConstants>$(DefineConstants);DESKTOP</DefineConstants>
 		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug Phone'">
+		<DefineConstants>$(DefineConstants);PHONE</DefineConstants>
 		<ConfigurationIdiom>Phone</ConfigurationIdiom>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release Desktop'">
+		<DefineConstants>$(DefineConstants);DESKTOP</DefineConstants>
 		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release Phone'">
+		<DefineConstants>$(DefineConstants);PHONE</DefineConstants>
 		<ConfigurationIdiom>Phone</ConfigurationIdiom>
 	</PropertyGroup>
 </Project>
