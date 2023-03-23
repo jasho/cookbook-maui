@@ -18,10 +18,10 @@
       <RootNamespace>CookBook.App</RootNamespace>
 
       <!-- Display name -->
-      <ApplicationTitle>CookBook</ApplicationTitle>
+      <ApplicationTitle>Cook CUST</ApplicationTitle>
 
       <!-- App Identifier -->
-      <ApplicationId>cookbook.app</ApplicationId>
+      <ApplicationId>cust.cookbook.app</ApplicationId>
 	  <ApplicationId Condition="$(TargetFramework.Contains('-windows'))">E9C978E0-3A19-40A7-8A38-66F5ED3A3C2D</ApplicationId>
 
       <!-- Versions -->

@@ -8,8 +8,8 @@ public partial class App
     {
         InitializeComponent();
 
-        Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("cs-CZ");
-        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("cs-CZ");
+        Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
 
         if (DeviceInfo.Idiom == DeviceIdiom.Phone)
         {

@@ -51,71 +51,71 @@ public class Storage : IStorage
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[0],
-            Name = "Vejce",
-            Description = "Popis vejce",
+            Name = "Egg",
+            Description = "Description of egg",
             ImageUrl = "https://i.ibb.co/d7mZWGN/image.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[1],
-            Name = "Cibule",
-            Description = "Popis cibule",
+            Name = "Onion",
+            Description = "Onion description",
             ImageUrl = "https://i.ibb.co/sbXC0rS/480px-Onion-on-White.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[2],
-            Name = "Slanina",
-            Description = "Popis slaniny"
+            Name = "Bacon",
+            Description = "Bacon description"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[3],
-            Name = "Rajče",
-            Description = "Popis rajčete",
+            Name = "Tomato",
+            Description = "Tomato!",
             ImageUrl = "https://i.ibb.co/1TzsF6B/ingredient-7.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[4],
-            Name = "Mléko",
-            Description = "Popis mléka",
+            Name = "Milk",
+            Description = "Milk description",
             ImageUrl = "https://i.ibb.co/BB3gVxr/ingredient-2.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[5],
-            Name = "Rýže",
-            Description = "Popis rýže",
+            Name = "Rice",
+            Description = "Rice description",
             ImageUrl = "https://i.ibb.co/98CGN3H/ingredient-3.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[6],
-            Name = "Citron",
-            Description = "Popis citronu",
+            Name = "Lemon",
+            Description = "Lemon description",
             ImageUrl = "https://i.ibb.co/0KQgsdT/ingredient-4.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[7],
-            Name = "Kuřecí maso",
-            Description = "Popis kuřecího masa",
+            Name = "Chicken",
+            Description = "Chicken description",
             ImageUrl = "https://i.ibb.co/4KVB05k/ingredient-5.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
         {
             Id = ingredientGuids[8],
-            Name = "Chilli paprička",
-            Description = "Popis chilli papričky",
+            Name = "Chilli pepper",
+            Description = "Chilli pepper description",
             ImageUrl = "https://i.ibb.co/VDB2bQT/ingredient-6.jpg"
         });
     }
@@ -146,8 +146,8 @@ public class Storage : IStorage
         Recipes.Add(new RecipeEntity
         {
             Id = recipeGuids[0],
-            Name = "Míchaná vejce",
-            Description = "Popis míchaných vajec",
+            Name = "Scrambled eggs",
+            Description = "Description of scrambled eggs",
             Duration = TimeSpan.FromMinutes(15),
             FoodType = FoodType.MainDish,
             ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
@@ -156,10 +156,10 @@ public class Storage : IStorage
         Recipes.Add(new RecipeEntity
         {
             Id = recipeGuids[1],
-            Name = "Miso polévka",
+            Name = "Miso soup",
             Duration = TimeSpan.FromMinutes(60),
             FoodType = FoodType.Soup,
-            Description = "Polévka!",
+            Description = "Soup!",
             ImageUrl = "https://i.ibb.co/RY1XKmL/recipe-2.jpg",
         });
 
@@ -167,20 +167,20 @@ public class Storage : IStorage
         Recipes.Add(new RecipeEntity
         {
             Id = recipeGuids[2],
-            Name = "Vykoštěné kuře s citronem a bylinkami",
+            Name = "Boneless chicken with lemon and herbs",
             Duration = TimeSpan.FromMinutes(60),
             FoodType = FoodType.MainDish,
-            Description = "Popis kuřete",
+            Description = "Description of chicken",
             ImageUrl = "https://i.ibb.co/QJF2ZxX/recipe-1.jpg",
         });
 
         Recipes.Add(new RecipeEntity
         {
             Id = recipeGuids[3],
-            Name = "Citronový sorbet",
+            Name = "Lemon sorbet",
             Duration = TimeSpan.FromMinutes(30),
             FoodType = FoodType.Dessert,
-            Description = "Zákusek",
+            Description = "Dessert",
         });
     }
 }
