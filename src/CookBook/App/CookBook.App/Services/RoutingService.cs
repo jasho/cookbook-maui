@@ -1,5 +1,4 @@
-﻿using CookBook.App.Components.Views.Ingredient;
-using CookBook.App.ViewModels;
+﻿using CookBook.App.ViewModels;
 using CookBook.App.Views;
 using RecipeIngredientsEditViewDesktop = CookBook.App.Views.RecipeIngredientsEditViewDesktop;
 
@@ -11,12 +10,12 @@ public class RoutingService : IRoutingService {
         new("//recipes", typeof(RecipeListView), typeof(RecipeListViewModel)),
         new("//ingredients", typeof(IngredientListView), typeof(IngredientListViewModel)),
         new("//settings", typeof(SettingsView), typeof(SettingsViewModel)),
-      
-        new("//ingredients/detail", typeof(IngredientDetailView), typeof(Components.ViewModels.IngredientDetailViewModel)),
     };
 
     private static IEnumerable<RouteModel> routesPhone = new List<RouteModel>
     {
+        new("//ingredients/detail", typeof(IngredientDetailViewPhone), typeof(IngredientDetailViewModel)),
+
         new("//ingredients/edit", typeof(IngredientEditViewPhone), typeof(IngredientEditViewModel)),
         new("//ingredients/detail/edit", typeof(IngredientEditViewPhone), typeof(IngredientEditViewModel)),
 
@@ -25,6 +24,8 @@ public class RoutingService : IRoutingService {
 
     private static IEnumerable<RouteModel> routesDesktop = new List<RouteModel>
     {
+        new("//ingredients/detail", typeof(IngredientDetailViewDesktop), typeof(IngredientDetailViewModel)),
+
         new("//ingredients/edit", typeof(IngredientEditViewDesktop), typeof(IngredientEditViewModel)),
         new("//ingredients/detail/edit", typeof(IngredientEditViewDesktop), typeof(IngredientEditViewModel)),
 

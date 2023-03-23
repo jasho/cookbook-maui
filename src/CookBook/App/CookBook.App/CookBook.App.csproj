@@ -18,10 +18,10 @@
       <RootNamespace>CookBook.App</RootNamespace>
 
       <!-- Display name -->
-      <ApplicationTitle>CookBook</ApplicationTitle>
+      <ApplicationTitle>Cook ON</ApplicationTitle>
 
       <!-- App Identifier -->
-      <ApplicationId>cookbook.app</ApplicationId>
+      <ApplicationId>on.cookbook.app</ApplicationId>
 	  <ApplicationId Condition="$(TargetFramework.Contains('-windows'))">E9C978E0-3A19-40A7-8A38-66F5ED3A3C2D</ApplicationId>
 
       <!-- Versions -->
@@ -180,13 +180,6 @@
       <PackageReference Include="ZeroIoC" Version="0.3.1" />
     </ItemGroup>
 
-    <ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
-	    <ProjectReference Include="..\CookBook.App.Components.Desktop\CookBook.App.Components.Desktop.csproj" />
-    </ItemGroup>
-	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
-		<ProjectReference Include="..\CookBook.App.Components.Phone\CookBook.App.Components.Phone.csproj" />
-	</ItemGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\..\Common\CookBook.Common\CookBook.Common.csproj" />
     </ItemGroup>
@@ -330,6 +323,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <MauiXaml Update="AppOptimized.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Resources\Styles\DarkTheme.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
@@ -421,9 +417,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release Phone|net7.0-android|AnyCPU'">
-	<RunAOTCompilation>True</RunAOTCompilation>
+	<!--<RunAOTCompilation>True</RunAOTCompilation>
 	<EnableLLVM>True</EnableLLVM>
-	<PublishTrimmed>True</PublishTrimmed>
+	<PublishTrimmed>True</PublishTrimmed>-->
+
 	<!--<EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>-->
 	<!--<AndroidEnableProfiler>true</AndroidEnableProfiler>-->
   </PropertyGroup>

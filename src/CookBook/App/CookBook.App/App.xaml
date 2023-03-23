@@ -1,3 +1,22 @@
 ﻿<Application x:Class="CookBook.App.App"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:CookBook.App.Converters"
+             xmlns:styles="clr-namespace:CookBook.App.Resources.Styles">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:ButtonStyle />
+                <styles:ContentPageStyle />
+                <styles:EditorStyle />
+                <styles:EntryStyle />
+                <styles:LabelStyle />
+                <styles:DarkTheme />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />
+            <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter" />
+            <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
+            <converters:UnitToStringConverter x:Key="UnitToStringConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
