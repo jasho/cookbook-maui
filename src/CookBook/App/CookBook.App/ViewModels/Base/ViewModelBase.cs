@@ -5,6 +5,13 @@ namespace CookBook.App.ViewModels;
 
 public abstract partial class ViewModelBase : ObservableObject, IViewModel
 {
+    protected readonly INavigationService navigationService;
+
+    protected ViewModelBase(INavigationService navigationService)
+    {
+        this.navigationService = navigationService;
+    }
+
     public virtual Task OnAppearingAsync()
     {
         return Task.CompletedTask;
@@ -13,11 +20,7 @@ public abstract partial class ViewModelBase : ObservableObject, IViewModel
     [RelayCommand]
     private Task GoBackAsync()
     {
-        if (Shell.Current.Navigation.NavigationStack.Count > 1)
-        {
-            Shell.Current.SendBackButtonPressed();
-        }
-
+        navigationService.GoBack();
         return Task.CompletedTask;
     }
 }

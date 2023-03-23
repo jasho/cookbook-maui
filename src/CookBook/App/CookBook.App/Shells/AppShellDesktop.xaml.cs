@@ -1,5 +1,4 @@
 using CommunityToolkit.Mvvm.Input;
-using CookBook.App.Services;
 using CookBook.App.ViewModels;
 
 namespace CookBook.App.Shells;
@@ -7,10 +6,14 @@ namespace CookBook.App.Shells;
 public partial class AppShellDesktop
 {
     private readonly IRoutingService routingService;
+    private readonly INavigationService navigationService;
 
-    public AppShellDesktop(IRoutingService routingService)
+    public AppShellDesktop(
+        IRoutingService routingService,
+        INavigationService navigationService)
     {
         this.routingService = routingService;
+        this.navigationService = navigationService;
         InitializeComponent();
     }
 
@@ -18,21 +21,21 @@ public partial class AppShellDesktop
     private async Task GoToRecipesAsync()
     {
         var route = routingService.GetRouteByViewModel<RecipeListViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await navigationService.GoToAsync(route);
     }
 
     [RelayCommand]
     private async Task GoToIngredientsAsync()
     {
         var route = routingService.GetRouteByViewModel<IngredientListViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await navigationService.GoToAsync(route);
     }
 
     [RelayCommand]
     private async Task GoToSettingsAsync()
     {
         var route = routingService.GetRouteByViewModel<SettingsViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await navigationService.GoToAsync(route);
     }
 
     [RelayCommand]

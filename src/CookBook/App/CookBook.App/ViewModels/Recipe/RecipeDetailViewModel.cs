@@ -18,7 +18,9 @@ public partial class RecipeDetailViewModel : ViewModelBase
 
     public RecipeDetailViewModel(
         IRecipesClient recipesClient,
-        IShare share)
+        IShare share,
+        INavigationService navigationService)
+        : base(navigationService)
     {
         this.recipesClient = recipesClient;
         this.share = share;
@@ -33,16 +35,16 @@ public partial class RecipeDetailViewModel : ViewModelBase
     private async Task DeleteAsync()
     {
         await recipesClient.DeleteRecipeAsync(Recipe!.Id!.Value);
-        Shell.Current.SendBackButtonPressed();
+        navigationService.GoBack();
     }
 
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        if (Recipe is not null)
+        await navigationService.GoToAsync("/edit", new Dictionary<string, object>
         {
-            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object> { ["recipe"] = Recipe });
-        }
+            [nameof(RecipeEditViewModel.Recipe)] = Recipe!
+        });
     }
 
     [RelayCommand]

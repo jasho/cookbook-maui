@@ -13,7 +13,9 @@ public partial class IngredientEditViewModel : ViewModelBase
     public IngredientDetailModel Ingredient { get; init; }
 
     public IngredientEditViewModel(
-        IIngredientsClient ingredientsClient)
+        IIngredientsClient ingredientsClient,
+        INavigationService navigationService)
+        : base(navigationService)
     {
         this.ingredientsClient = ingredientsClient;
     }
@@ -22,7 +24,7 @@ public partial class IngredientEditViewModel : ViewModelBase
     private async Task SaveAsync()
     {
         await ingredientsClient.CreateIngredientAsync(Ingredient);
-        Shell.Current.SendBackButtonPressed();
+        navigationService.GoBack();
     }
 
     [RelayCommand]

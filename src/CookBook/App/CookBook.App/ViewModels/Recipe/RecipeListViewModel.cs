@@ -5,19 +5,18 @@ using CookBook.Common.Models;
 
 namespace CookBook.App.ViewModels;
 
-public partial class RecipeListViewModel : ObservableObject, IViewModel
+public partial class RecipeListViewModel : ViewModelBase, IViewModel
 {
-    private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
 
     [ObservableProperty]
     private ICollection<RecipeListModel>? items;
 
     public RecipeListViewModel(
-        IRoutingService routingService,
-        IRecipesClient recipesClient)
+        IRecipesClient recipesClient,
+        INavigationService navigationService)
+        : base(navigationService)
     {
-        this.routingService = routingService;
         this.recipesClient = recipesClient;
     }
 
@@ -29,9 +28,10 @@ public partial class RecipeListViewModel : ObservableObject, IViewModel
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
-
-        await Shell.Current.GoToAsync($"{route}", new Dictionary<string, object> { ["id"] = id });
+        await navigationService.GoToAsync<RecipeDetailViewModel>(new Dictionary<string, object>
+        {
+            [nameof(RecipeDetailViewModel.Id)] = id
+        });
     }
 
     [RelayCommand]

@@ -23,7 +23,9 @@ namespace CookBook.App.ViewModels
 
         public RecipeIngredientsEditViewModel(
             IIngredientsClient ingredientsClient,
-            IRecipesClient recipesClient)
+            IRecipesClient recipesClient,
+            INavigationService navigationService)
+            : base(navigationService)
         {
             this.ingredientsClient = ingredientsClient;
             this.recipesClient = recipesClient;

@@ -5,7 +5,8 @@ using CookBook.Common.Models;
 
 namespace CookBook.App.ViewModels;
 
-public partial class IngredientListViewModel : ObservableObject, IViewModel {
+public partial class IngredientListViewModel : ViewModelBase, IViewModel
+{
     private readonly IRoutingService routingService;
     private readonly IIngredientsClient ingredientsClient;
 
@@ -14,32 +15,31 @@ public partial class IngredientListViewModel : ObservableObject, IViewModel {
 
     public IngredientListViewModel(
         IRoutingService routingService,
-        IIngredientsClient ingredientsClient) {
+        IIngredientsClient ingredientsClient,
+        INavigationService navigationService)
+        : base(navigationService)
+    {
         this.routingService = routingService;
         this.ingredientsClient = ingredientsClient;
     }
 
-    public async Task OnAppearingAsync() {
+    public async Task OnAppearingAsync()
+    {
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }
 
     [RelayCommand]
-    private async Task GoToDetailAsync(Guid id) {
-        var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync("//ingredients/detail", new Dictionary<string, object> {
+    private async Task GoToDetailAsync(Guid id)
+    {
+        await navigationService.GoToAsync<IngredientDetailViewModel>(new Dictionary<string, object>
+        {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
     }
 
     [RelayCommand]
-    private async Task GoToCreateAsync() {
-        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
-        await Shell.Current.GoToAsync(route);
-    }
-
-    [RelayCommand]
-    private async Task GoToEditAsync(Guid id) {
-        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
-        await Shell.Current.GoToAsync($"{route}?id={id}");
+    private async Task GoToCreateAsync()
+    {
+        await navigationService.GoToAsync<IngredientEditViewModel>();
     }
 }

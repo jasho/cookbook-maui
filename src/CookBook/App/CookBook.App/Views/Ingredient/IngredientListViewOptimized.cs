@@ -87,7 +87,6 @@ public class IngredientListViewOptimized : ContentPageBase
                         GetBackgroundBoxView(),
                         GetImageWithFrame(),
                         GetNameLabel(),
-                        GetEditLabel()
                     },
                     GestureRecognizers =
                     {
@@ -165,38 +164,6 @@ public class IngredientListViewOptimized : ContentPageBase
             label.SetBinding(Label.TextProperty, new Binding(nameof(IngredientListModel.Name)));
 
             return label;
-        }
-
-        Label GetEditLabel()
-        {
-            var label = new Label
-            {
-                HorizontalOptions = LayoutOptions.End,
-                VerticalOptions = LayoutOptions.Center,
-                Margin = new Thickness(0, 0, 12, 0),
-                Text = FontAwesomeIcons.Pen,
-                FontSize = 20,
-                TextColor = ThemeStatic.PrimaryColor,
-                FontFamily = Fonts.FontAwesome,
-                GestureRecognizers =
-                {
-                    GetEditLabelTapGestureRecognizer()
-                }
-            };
-            label.SetValue(Grid.ColumnProperty, 2);
-
-            return label;
-        }
-
-        TapGestureRecognizer GetEditLabelTapGestureRecognizer()
-        {
-            var tapGestureRecognizer = new TapGestureRecognizer
-            {
-                Command = viewModel.GoToEditCommand
-            };
-            tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, new Binding(nameof(IngredientListModel.Id)));
-
-            return tapGestureRecognizer;
         }
     }
 
