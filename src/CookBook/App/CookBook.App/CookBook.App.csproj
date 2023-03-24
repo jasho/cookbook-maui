@@ -141,7 +141,8 @@
       <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
       <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
-      <None Remove="Resources\Images\ingredient_placeholder.jpg" />
+      <None Remove="Resources\Images\ingredient_placeholder.desktop.jpg" />
+      <None Remove="Resources\Images\ingredient_placeholder.phone.jpg" />
       <None Remove="Resources\Images\logo_text.png" />
       <None Remove="Resources\Images\page_title_logo.png" />
       <None Remove="Resources\Images\recipe_placeholder.jpg" />
@@ -149,9 +150,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <MauiImage Include="Resources\Images\ingredient_placeholder.jpg" LogicalName="ingredient_placeholder.jpg" />
         <MauiImage Include="Resources\Images\recipe_placeholder.jpg" LogicalName="recipe_placeholder.jpg" />
     </ItemGroup>
+    
+    <ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
+	    <MauiImage Include="Resources\Images\ingredient_placeholder.desktop.jpg" LogicalName="ingredient_placeholder.jpg" />
+    </ItemGroup>
+
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
+		<MauiImage Include="Resources\Images\ingredient_placeholder.phone.jpg" LogicalName="ingredient_placeholder.jpg" />
+	</ItemGroup>
 
     <ItemGroup>
       <Page Remove="Views\Recipe\RecipeEditViewDesktop.xaml" />
