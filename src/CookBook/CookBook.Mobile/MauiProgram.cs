@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Mobile.Api;
-//using CookBook.Mobile.Controls;
+using CookBook.Mobile.Commands;
 using CookBook.Mobile.Options;
-//using CookBook.Mobile.Platforms.Android;
+using CookBook.Mobile.Platforms;
 using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Services;
 using CookBook.Mobile.Shells;
@@ -104,6 +104,9 @@ public static class MauiProgram
     {
         services.AddSingleton<IRoutingService, RoutingService>();
         services.AddSingleton<IShare>(_ => Share.Default);
+        services.AddSingleton<ICommandFactory, CommandFactory>();
+        services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
+        services.AddSingleton<IGlobalExceptionServiceInitializer, GlobalExceptionServiceInitializer>();
     }
 
     private static void ConfigureApiClients(IServiceCollection services)

@@ -2,7 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
+using CookBook.Mobile.Commands;
 using CookBook.Mobile.Services;
+using System.Windows.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
@@ -15,12 +17,17 @@ public partial class RecipeListViewModel : IViewModel
     [ObservableProperty]
     private ICollection<RecipeListModel>? items;
 
+    public ICommand GoToDetailCommand { get; set; }
+
     public RecipeListViewModel(
         IRoutingService routingService,
-        IRecipesClient recipesClient)
+        IRecipesClient recipesClient,
+        ICommandFactory commandFactory)
     {
         this.routingService = routingService;
         this.recipesClient = recipesClient;
+
+        GoToDetailCommand = commandFactory.Create<Guid>(GoToDetailAsync);
     }
 
     public async Task OnAppearingAsync()
@@ -28,7 +35,7 @@ public partial class RecipeListViewModel : IViewModel
         Items = await recipesClient.GetRecipesAllAsync();
     }
 
-    [RelayCommand]
+    //[RelayCommand(FlowExceptionsToTaskScheduler = true)]
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<RecipeDetailViewModel>();
