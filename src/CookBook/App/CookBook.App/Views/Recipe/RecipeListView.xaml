@@ -101,7 +101,7 @@
         <Button Grid.Row="0"
                 Padding="12, 6"
                 HorizontalOptions="End" VerticalOptions="Start"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"
+                Text="{x:Static texts:RecipeListViewTexts.Add_Button_Text}"
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="5" FontFamily="MontserratMedium"
                 FontSize="14"

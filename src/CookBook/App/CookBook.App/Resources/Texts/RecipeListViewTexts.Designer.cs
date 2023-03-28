@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace CookBook.App.Resources.Texts {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -54,6 +57,15 @@ namespace CookBook.App.Resources.Texts {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Recipe.
+        /// </summary>
+        internal static string Add_Button_Text {
+            get {
+                return ResourceManager.GetString("Add_Button_Text", resourceCulture);
             }
         }
         
