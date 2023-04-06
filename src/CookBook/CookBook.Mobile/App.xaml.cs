@@ -32,4 +32,12 @@ public partial class App
         var globalExceptionServiceInitializer = serviceProvider.GetRequiredService<IGlobalExceptionServiceInitializer>();
         globalExceptionServiceInitializer.Initialize();
     }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        var window = base.CreateWindow(activationState);
+
+        window.MinimumHeight = 700;
+        return window;
+    }
 }
