@@ -20,4 +20,12 @@ public partial class App
             MainPage = serviceProvider.GetRequiredService<AppShellDesktop>();
         }
     }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        var window = base.CreateWindow(activationState);
+
+        window.MinimumHeight = 700;
+        return window;
+    }
 }
