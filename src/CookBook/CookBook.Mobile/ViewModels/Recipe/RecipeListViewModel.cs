@@ -8,8 +8,7 @@ using System.Windows.Input;
 
 namespace CookBook.Mobile.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class RecipeListViewModel : IViewModel
+public partial class RecipeListViewModel : ViewModelBase
 {
     private readonly IRoutingService routingService;
     private readonly IRecipesClient recipesClient;
@@ -30,7 +29,7 @@ public partial class RecipeListViewModel : IViewModel
         GoToDetailCommand = commandFactory.Create<Guid>(GoToDetailAsync);
     }
 
-    public async Task OnAppearingAsync()
+    public override async Task OnAppearingAsync()
     {
         Items = await recipesClient.GetRecipesAllAsync();
     }

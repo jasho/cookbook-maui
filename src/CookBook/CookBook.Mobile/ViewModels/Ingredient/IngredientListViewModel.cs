@@ -6,8 +6,7 @@ using CookBook.Mobile.Services;
 
 namespace CookBook.Mobile.ViewModels;
 
-[INotifyPropertyChanged]
-public partial class IngredientListViewModel : IViewModel
+public partial class IngredientListViewModel : ViewModelBase
 {
     private readonly IRoutingService routingService;
     private readonly IIngredientsClient ingredientsClient;
@@ -23,7 +22,7 @@ public partial class IngredientListViewModel : IViewModel
         this.ingredientsClient = ingredientsClient;
     }
 
-    public async Task OnAppearingAsync()
+    public override async Task OnAppearingAsync()
     {
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }

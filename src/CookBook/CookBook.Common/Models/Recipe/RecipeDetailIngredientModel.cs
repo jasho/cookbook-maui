@@ -1,11 +1,19 @@
-﻿using CookBook.Common.Enums;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CookBook.Common.Enums;
 
 namespace CookBook.Common.Models;
 
-public record RecipeDetailIngredientModel : ModelBase
+public partial class RecipeDetailIngredientModel : ModelBase
 {
-    public Guid? Id { get; set; }
-    public double Amount { get; set; }
-    public Unit Unit { get; set; }
-    public IngredientListModel? Ingredient { get; set; }
+    [ObservableProperty]
+    private Guid? id;
+
+    [ObservableProperty]
+    private double amount;
+
+    [ObservableProperty]
+    private Unit? unit;
+
+    [ObservableProperty]
+    private IngredientListModel? ingredient;
 }

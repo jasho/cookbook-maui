@@ -2,6 +2,7 @@
 using CookBook.Api.BL.Facades.Interfaces;
 using CookBook.Api.DAL.Entities;
 using CookBook.Api.DAL.Repositories.Interfaces;
+using CookBook.Common.Enums;
 using CookBook.Common.Models;
 
 namespace CookBook.Api.BL.Facades;
@@ -48,7 +49,7 @@ public class RecipeFacade : IRecipeFacade
                                              {
                                                  Id = t.Id ?? Guid.NewGuid(),
                                                  Amount = t.Amount,
-                                                 Unit = t.Unit,
+                                                 Unit = t.Unit ?? Unit.Unknown,
                                                  RecipeId = recipeEntity.Id,
                                                  IngredientId = t.Ingredient?.Id
                                              }).ToList()
@@ -81,7 +82,16 @@ public class RecipeFacade : IRecipeFacade
             }
         }
 
-        return recipe with { IngredientAmounts = result };
+        return new RecipeDetailModel
+        {
+            Id = recipe.Id,
+            Name = recipe.Name,
+            Description = recipe.Description,
+            Duration = recipe.Duration,
+            FoodType = recipe.FoodType,
+            IngredientAmounts = result,
+            ImageUrl = recipe.ImageUrl,
+        };
     }
 
     public void Delete(Guid id)

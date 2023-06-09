@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 
@@ -12,7 +13,8 @@ public partial class IngredientDetailViewModel : ViewModelBase
 
     public Guid Id { get; set; } = Guid.Empty;
 
-    public IngredientDetailModel? Ingredient { get; set; }
+    [ObservableProperty]
+    private IngredientDetailModel? ingredient;
 
     public IngredientDetailViewModel(
         IIngredientsClient ingredientsClient,
@@ -39,7 +41,7 @@ public partial class IngredientDetailViewModel : ViewModelBase
     {
         await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
         {
-            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
+            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient!
         });
     }
 
