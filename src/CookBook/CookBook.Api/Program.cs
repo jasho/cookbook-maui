@@ -16,11 +16,11 @@ new ApiBLInstaller().Install(builder.Services);
 builder.Services.AddAutoMapper(typeof(ApiBLInstaller));
 builder.Services.Configure<JsonOptions>(options =>
 {
-	options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
 {
-	options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
 var application = builder.Build();
@@ -64,7 +64,7 @@ void UseRouting(WebApplication app)
 
     UseIngredientRouting(app);
     UseRecipeRouting(app);
-	UseImageRouting(app);
+    UseImageRouting(app);
 }
 
 void UseIngredientRouting(WebApplication app)
@@ -121,37 +121,41 @@ void UseRecipeRouting(WebApplication app)
         .WithName($"Delete{RecipeBaseName}");
 }
 
-void UseImageRouting(WebApplication app) {
-	const string ImageBasePath = "/api/images";
-	const string ImageBaseName = "Image";
-	var ImagesTag = $"{ImageBaseName}s";
-	
-	app.MapGet($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => Results.File(imageFacade.GetById(id)?.Data ?? Array.Empty<byte>(), "image/**"))
-		.WithTags(ImagesTag)
-		.WithName($"Get{ImageBaseName}ById");
+void UseImageRouting(WebApplication app)
+{
+    const string ImageBasePath = "/api/images";
+    const string ImageBaseName = "Image";
+    var ImagesTag = $"{ImageBaseName}s";
 
-	app.MapPost($"{ImageBasePath}", (ImageModel image, HttpRequest request, IImageFacade imageFacade) => {
-			// TODO input validation maybe ;)
-			Guid id = imageFacade.Create(new ImageModel { Id = image.Id, Data = image.Data});
-			return Results.Created($"{request.Scheme}://{request.Host}{request.Path}/{id}", $"{request.Scheme}://{request.Host}{request.Path}/{id}");
-		})
-		.WithTags(ImagesTag)
-		.WithName($"Create{ImageBaseName}")
-		.Produces<string>((int)HttpStatusCode.Created);
+    app.MapGet($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => Results.File(imageFacade.GetById(id)?.Data ?? Array.Empty<byte>(), "image/**"))
+        .WithTags(ImagesTag)
+        .WithName($"Get{ImageBaseName}ById");
 
-	app.MapPut($"{ImageBasePath}", (ImageModel image, IImageFacade imageFacade) => {
-			Guid? id = imageFacade.Update(image);
-			if (id is not null) {
-				return Results.NoContent();
-			}
-			return Results.NotFound();
-		})
-		.WithTags(ImagesTag)
-		.WithName($"Update{ImageBaseName}");
+    app.MapPost($"{ImageBasePath}", (ImageModel image, HttpRequest request, IImageFacade imageFacade) =>
+        {
+            // TODO input validation maybe ;)
+            Guid id = imageFacade.Create(new ImageModel { Id = image.Id, Data = image.Data });
+            return Results.Created($"{request.Scheme}://{request.Host}{request.Path}/{id}", $"{request.Scheme}://{request.Host}{request.Path}/{id}");
+        })
+        .WithTags(ImagesTag)
+        .WithName($"Create{ImageBaseName}")
+        .Produces<string>((int)HttpStatusCode.Created);
 
-	app.MapDelete($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => imageFacade.Delete(id))
-		.WithTags(ImagesTag)
-		.WithName($"Delete{ImageBaseName}");
+    app.MapPut($"{ImageBasePath}", (ImageModel image, IImageFacade imageFacade) =>
+        {
+            Guid? id = imageFacade.Update(image);
+            if (id is not null)
+            {
+                return Results.NoContent();
+            }
+            return Results.NotFound();
+        })
+        .WithTags(ImagesTag)
+        .WithName($"Update{ImageBaseName}");
+
+    app.MapDelete($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => imageFacade.Delete(id))
+        .WithTags(ImagesTag)
+        .WithName($"Delete{ImageBaseName}");
 }
 
 void UseOpenApi(IApplicationBuilder app)
@@ -161,6 +165,6 @@ void UseOpenApi(IApplicationBuilder app)
     {
         settings.DocumentTitle = "CookBook Swagger UI";
         settings.SwaggerRoutes.Add(new SwaggerUi3Route("CookBook API", "/swagger/cookbook-api/swagger.json"));
-		settings.ValidateSpecification = true;
+        settings.ValidateSpecification = true;
     });
 }

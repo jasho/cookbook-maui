@@ -7,5 +7,5 @@ public interface IStorage
     IList<IngredientEntity> Ingredients { get; }
     IList<IngredientAmountEntity> IngredientAmounts { get; }
     IList<RecipeEntity> Recipes { get; }
-	IList<ImageEntity> Images { get; }
+    IList<ImageEntity> Images { get; }
 }

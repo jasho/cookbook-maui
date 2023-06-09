@@ -27,6 +27,8 @@ csharp_style_prefer_index_operator = true:suggestion
 csharp_style_prefer_range_operator = true:suggestion
 csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
 csharp_style_prefer_tuple_swap = true:suggestion
+indent_style = space
+
 [*.{cs,vb}]
 #### Naming styles ####
 
@@ -89,3 +91,44 @@ dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_compound_assignment = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
 dotnet_style_namespace_match_folder = true:suggestion
+
+[*]
+
+# Microsoft .NET properties
+csharp_indent_braces = false
+csharp_new_line_before_members_in_object_initializers = false
+csharp_new_line_before_open_brace = anonymous_methods,anonymous_types,control_blocks,events,indexers,lambdas,local_functions,methods,properties,types
+csharp_preferred_modifier_order = new, protected, public, private, internal, override, static, sealed, virtual, async, readonly, extern, unsafe, volatile, abstract:suggestion
+csharp_style_var_elsewhere = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+dotnet_sort_system_directives_first = false
+
+# ReSharper properties
+resharper_accessor_owner_body = accessors_with_expression_body
+resharper_blank_lines_around_namespace = 1
+resharper_blank_lines_before_single_line_comment = 0
+resharper_braces_for_foreach = required
+resharper_braces_redundant = false
+resharper_csharp_align_multiline_argument = false
+resharper_csharp_align_multiline_parameter = false
+resharper_csharp_case_block_braces = end_of_line
+resharper_csharp_indent_style = space
+resharper_csharp_max_line_length = 230
+resharper_csharp_wrap_before_binary_opsign = true
+resharper_csharp_wrap_parameters_style = chop_if_long
+resharper_csharp_wrap_ternary_expr_style = chop_always
+resharper_empty_block_style = multiline
+resharper_instance_members_qualify_declared_in = 
+resharper_method_or_operator_body = expression_body
+resharper_modifiers_order = new protected public private internal override static sealed virtual async readonly extern unsafe volatile abstract
+resharper_parentheses_redundancy_style = remove
+resharper_place_expr_accessor_on_single_line = true
+resharper_place_expr_method_on_single_line = false
+resharper_place_expr_property_on_single_line = false
+resharper_place_field_attribute_on_same_line = false
+resharper_place_simple_anonymousmethod_on_single_line = false
+resharper_stick_comment = true
+resharper_wrap_before_arrow_with_expressions = true
+resharper_wrap_chained_binary_expressions = chop_if_long
+resharper_wrap_object_and_collection_initializer_style = chop_always
