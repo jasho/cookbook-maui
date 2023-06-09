@@ -35,6 +35,7 @@ public class Storage : IStorage
     public IList<IngredientEntity> Ingredients { get; } = new List<IngredientEntity>();
     public IList<IngredientAmountEntity> IngredientAmounts { get; } = new List<IngredientAmountEntity>();
     public IList<RecipeEntity> Recipes { get; } = new List<RecipeEntity>();
+	public IList<ImageEntity> Images { get; } = new List<ImageEntity>();
 
     public Storage(bool seedData = true)
     {

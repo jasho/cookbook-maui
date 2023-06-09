@@ -11,5 +11,6 @@ public class ApiDALInstaller
         services.AddSingleton<IStorage, Storage>();
         services.AddSingleton<IIngredientRepository, IngredientRepository>();
         services.AddSingleton<IRecipeRepository, RecipeRepository>();
+		services.AddSingleton<IImageRepository, ImageRepository>();
     }
 }
