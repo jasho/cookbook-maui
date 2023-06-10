@@ -10,5 +10,6 @@ public class ApiBLInstaller
     {
         services.AddSingleton<IIngredientFacade, IngredientFacade>();
         services.AddSingleton<IRecipeFacade, RecipeFacade>();
+		services.AddSingleton<IImageFacade, ImageFacade>();
     }
 }

@@ -1,7 +1,9 @@
 ﻿using CookBook.Common.Enums;
+using NJsonSchema.Annotations;
 
 namespace CookBook.Common.Models;
 
+[JsonSchemaFlatten]
 public record RecipeDetailModel : ModelBase
 {
     public Guid? Id { get; set; }
