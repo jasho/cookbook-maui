@@ -111,7 +111,7 @@ public class Storage : IStorage
             Id = ingredientGuids[5],
             Name = "Flour",
             Description = "Flour description",
-            ImageUrl = "https://i.ibb.co/gD2gKvK/ingredient-flour.png"
+            ImageUrl = "https://i.ibb.co/M1qtmFD/ingredient-flour.jpg"
         });
 
         Ingredients.Add(new IngredientEntity
