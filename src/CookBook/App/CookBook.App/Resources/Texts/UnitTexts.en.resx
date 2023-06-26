@@ -118,4 +118,10 @@
   <data name="Spoons" xml:space="preserve">
     <value>spoons</value>
   </data>
+  <data name="TeaSpoons" xml:space="preserve">
+    <value>tea spoons</value>
+  </data>
+  <data name="Cups" xml:space="preserve">
+    <value>cups</value>
+  </data>
 </root>

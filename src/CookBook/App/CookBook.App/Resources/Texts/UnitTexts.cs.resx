@@ -118,4 +118,10 @@
   <data name="Spoons" xml:space="preserve">
     <value>lžice</value>
   </data>
+  <data name="TeaSpoons" xml:space="preserve">
+    <value>lžičky</value>
+  </data>
+  <data name="Cups" xml:space="preserve">
+    <value>hrnky</value>
+  </data>
 </root>
