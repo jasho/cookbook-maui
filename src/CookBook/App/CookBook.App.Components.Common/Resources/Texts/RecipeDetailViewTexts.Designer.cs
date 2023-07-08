@@ -70,6 +70,15 @@ namespace CookBook.App.Components.Common.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete_Button_Text {
+            get {
+                return ResourceManager.GetString("Delete_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description_Label_Text {
@@ -81,9 +90,9 @@ namespace CookBook.App.Components.Common.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
-        public static string Edit_Button_Text_Desktop {
+        public static string Edit_Button_Text {
             get {
-                return ResourceManager.GetString("Edit_Button_Text_Desktop", resourceCulture);
+                return ResourceManager.GetString("Edit_Button_Text", resourceCulture);
             }
         }
         
@@ -102,6 +111,33 @@ namespace CookBook.App.Components.Common.Resources.Texts {
         public static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ingredients.
+        /// </summary>
+        public static string RecipeIngredientAmountsCount_Label_Text_0 {
+            get {
+                return ResourceManager.GetString("RecipeIngredientAmountsCount_Label_Text_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ingredient.
+        /// </summary>
+        public static string RecipeIngredientAmountsCount_Label_Text_1 {
+            get {
+                return ResourceManager.GetString("RecipeIngredientAmountsCount_Label_Text_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ingredients.
+        /// </summary>
+        public static string RecipeIngredientAmountsCount_Label_Text_MoreThan1 {
+            get {
+                return ResourceManager.GetString("RecipeIngredientAmountsCount_Label_Text_MoreThan1", resourceCulture);
             }
         }
     }

@@ -32,7 +32,7 @@
             <Button Grid.Column="2"
                     VerticalOptions="Start"
                     HeightRequest="30"
-                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text_Desktop}"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text}"
                     CornerRadius="5"
                     BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}" />

@@ -5,44 +5,37 @@
                        xmlns:views="clr-namespace:CookBook.App.Components.Common.Views;assembly=CookBook.App.Components.Common"
                        xmlns:fonts="clr-namespace:CookBook.App.Components.Common.Resources.Fonts;assembly=CookBook.App.Components.Common"
                        xmlns:vm="clr-namespace:CookBook.App.Components.Common.ViewModels;assembly=CookBook.App.Components.Common"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        x:Class="CookBook.App.Components.Views.RecipeDetailView"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeDetailViewModel">
-    <Grid RowDefinitions="70, *">
+    <Grid RowDefinitions="Auto, *"
+          RowSpacing="20">
         <Grid Grid.Row="0"
-              ColumnDefinitions="*, Auto"
+              ColumnDefinitions="*, Auto, Auto"
               ColumnSpacing="15">
-            <StackLayout Grid.Column="0"
-                         Spacing="12"
-                         VerticalOptions="Start"
-                         Orientation="Horizontal">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
-                </StackLayout.GestureRecognizers>
-                <Label VerticalOptions="Center"
-                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
-                       FontSize="14"
-                       FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
-                <Label VerticalOptions="Center"
-                       Text="{x:Static texts:RecipeDetailViewTexts.Back_Button_Text_Desktop}"
-                       FontSize="14"
-                       Style="{StaticResource MediumLabelStyle}" />
-            </StackLayout>
- 
-            <Button Grid.Column="2"
+            <Button Grid.Column="1"
                     VerticalOptions="Start"
                     HeightRequest="30"
-                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text_Desktop}"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Delete_Button_Text}"
                     CornerRadius="5"
-                    BackgroundColor="{StaticResource PrimaryColor}"
-                    Command="{Binding GoToEditCommand}" />
+                    BackgroundColor="{StaticResource ErrorColor}"
+                    Command="{Binding DeleteCommand}" />
+
+            <Button Grid.Row="0"
+                    HorizontalOptions="End" VerticalOptions="Start"
+                    HeightRequest="30"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text}"
+                    CornerRadius="5"
+                    Command="{Binding GoToEditCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}" />
         </Grid>
 
         <Grid Grid.Row="1"
               ColumnDefinitions="*, Auto"
               ColumnSpacing="20">
             <ScrollView Orientation="Vertical">
-                <Grid RowDefinitions="Auto, Auto, Auto, *"
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, *"
                       RowSpacing="20">
                     <Label Grid.Row="0"
                            Text="{Binding Recipe.Name}"
@@ -74,7 +67,8 @@
                                    Style="{StaticResource MediumLabelStyle}"/>
 
                             <Image Grid.Row="0" Grid.Column="1"
-                           HorizontalOptions="Center" VerticalOptions="End">
+                                   HorizontalOptions="Center" VerticalOptions="End"
+                                   HeightRequest="17">
                                 <Image.Source>
                                     <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Clock}"
                                              Color="White"
@@ -84,14 +78,15 @@
                             </Image>
 
                             <Label Grid.Row="1" Grid.Column="1"
-                           HorizontalOptions="Center" VerticalOptions="Start"
-                           Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
-                           FontSize="11"
-                           TextColor="White"
-                           Style="{StaticResource MediumLabelStyle}"/>
+                                   HorizontalOptions="Center" VerticalOptions="Start"
+                                   Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
+                                   FontSize="11"
+                                   TextColor="White"
+                                   Style="{StaticResource MediumLabelStyle}"/>
 
                             <Image Grid.Row="0" Grid.Column="2"
-                           HorizontalOptions="Center" VerticalOptions="End">
+                                   HorizontalOptions="Center" VerticalOptions="End"
+                                   HeightRequest="17">
                                 <Image.Source>
                                     <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
                                              Color="White"
@@ -101,11 +96,11 @@
                             </Image>
 
                             <Label Grid.Row="1" Grid.Column="2"
-                           HorizontalOptions="Center" VerticalOptions="Start"
-                           Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
-                           TextColor="White"
-                           FontSize="11"
-                           Style="{StaticResource MediumLabelStyle}"/>
+                                   HorizontalOptions="Center" VerticalOptions="Start"
+                                   Text="{Binding Recipe.IngredientAmounts.Count, Converter={StaticResource RecipeIngredientAmountsCountToStringConverter}}"
+                                   TextColor="White"
+                                   FontSize="11"
+                                   Style="{StaticResource MediumLabelStyle}"/>
                         </Grid>
                     </Frame>
 
@@ -118,6 +113,33 @@
                            Text="{Binding Recipe.Description}"
                            FontSize="14"
                            Style="{StaticResource RegularLabelStyle}"/>
+
+                    <CollectionView Grid.Row="4"
+                                    ItemsSource="{Binding Recipe.IngredientAmounts}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
+                                <HorizontalStackLayout>
+                                    <Frame Margin="5, 5, 20, 5">
+                                        <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
+                                               WidthRequest="60" HeightRequest="60"
+                                               Aspect="AspectFill" />
+                                    </Frame>
+
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Amount}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding Ingredient.Name}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Grid>
             </ScrollView>
 

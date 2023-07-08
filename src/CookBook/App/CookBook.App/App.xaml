@@ -16,6 +16,7 @@
             <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />
             <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter" />
             <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
+            <converters:RecipeIngredientAmountsCountToStringConverter x:Key="RecipeIngredientAmountsCountToStringConverter" />
             <converters:UnitToStringConverter x:Key="UnitToStringConverter" />
         </ResourceDictionary>
     </Application.Resources>

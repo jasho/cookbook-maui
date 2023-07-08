@@ -106,10 +106,22 @@
   <data name="Page_Title" xml:space="preserve">
     <value>Recipe</value>
   </data>
-  <data name="Edit_Button_Text_Desktop" xml:space="preserve">
+  <data name="Edit_Button_Text" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="Back_Button_Text_Desktop" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="Delete_Button_Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="RecipeIngredientAmountsCount_Label_Text_0" xml:space="preserve">
+    <value>{0} ingredients</value>
+  </data>
+  <data name="RecipeIngredientAmountsCount_Label_Text_1" xml:space="preserve">
+    <value>{0} ingredient</value>
+  </data>
+  <data name="RecipeIngredientAmountsCount_Label_Text_MoreThan1" xml:space="preserve">
+    <value>{0} ingredients</value>
   </data>
 </root>
