@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.App.Components.Common.Api;
 using CookBook.App.Components.Common.Services;
 using CookBook.Common.Enums;
@@ -11,7 +12,8 @@ public partial class RecipeEditViewModel : ViewModelBase
 {
     private readonly IRecipesClient recipesClient;
 
-    public RecipeDetailModel Recipe { get; set; } = null!;
+    [ObservableProperty]
+    private RecipeDetailModel recipe = null!;
 
     public List<FoodType> FoodTypes { get; set; }
 

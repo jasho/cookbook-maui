@@ -19,7 +19,10 @@ public class RoutingService3 : IRoutingService
         new("//ingredients/detail", typeof(IngredientDetailView), typeof(IngredientDetailViewModel)),
         new("//ingredients/detail/edit", typeof(IngredientEditView), typeof(IngredientEditViewModel)),
 
-        new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel))
+        new("//recipes/detail", typeof(RecipeDetailView), typeof(RecipeDetailViewModel)),
+        new("//recipes/detail/edit", typeof(RecipeEditView), typeof(RecipeEditViewModel)),
+
+        new("//recipes/edit", typeof(RecipeEditView), typeof(RecipeEditViewModel)),
     };
 
     private static IEnumerable<RouteModel> routesPhone = new List<RouteModel>
@@ -28,9 +31,6 @@ public class RoutingService3 : IRoutingService
 
     private static IEnumerable<RouteModel> routesDesktop = new List<RouteModel>
     {
-        new("//recipes/detail/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
-        new("//recipes/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
-
         new("//recipes/detail/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
         new("//recipes/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
     }.Concat(routesCommon);
@@ -42,9 +42,6 @@ public class RoutingService3 : IRoutingService
 #elif DESKTOP
             .Concat(new List<RouteModel>
             {
-                new("//recipes/detail/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
-                new("//recipes/edit", typeof(RecipeEditViewDesktop), typeof(RecipeEditViewModel)),
-
                 new("//recipes/detail/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
                 new("//recipes/edit/ingredients", typeof(RecipeIngredientsEditViewDesktop), typeof(RecipeIngredientsEditViewModel)),
             });
