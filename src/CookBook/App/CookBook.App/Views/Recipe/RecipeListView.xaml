@@ -54,6 +54,7 @@
                                 <Image Grid.Row="0" Grid.RowSpan="2"
                                        Grid.Column="0" Grid.ColumnSpan="2"
                                        HorizontalOptions="Fill" VerticalOptions="Fill"
+                                       WidthRequest="320" HeightRequest="240"
                                        Aspect="AspectFill"
                                        Source="{Binding ImageUrl, TargetNullValue='recipe_placeholder.jpg'}" />
 
