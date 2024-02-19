@@ -161,10 +161,10 @@ void UseImageRouting(WebApplication app)
 void UseOpenApi(IApplicationBuilder app)
 {
     app.UseOpenApi();
-    app.UseSwaggerUi3(settings =>
+    app.UseSwaggerUi(settings =>
     {
         settings.DocumentTitle = "CookBook Swagger UI";
-        settings.SwaggerRoutes.Add(new SwaggerUi3Route("CookBook API", "/swagger/cookbook-api/swagger.json"));
+        settings.SwaggerRoutes.Add(new SwaggerUiRoute("CookBook API", "/swagger/cookbook-api/swagger.json"));
         settings.ValidateSpecification = true;
     });
 }
