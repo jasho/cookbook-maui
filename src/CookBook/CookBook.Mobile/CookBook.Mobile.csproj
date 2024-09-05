@@ -5,7 +5,7 @@
       <OutputType>Exe</OutputType>
 
       <!-- .NET MAUI -->
-      <UseMaui>true</UseMaui>
+	  <UseMaui>true</UseMaui>
       <SingleProject>true</SingleProject>
       <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 	  <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
@@ -134,6 +134,8 @@
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
       <PackageReference Include="Scrutor" Version="4.2.2" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.7" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
     </ItemGroup>
 
     <ItemGroup>
@@ -371,11 +373,11 @@
     <WarningLevel>0</WarningLevel>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.7" />
-  </ItemGroup>
+	<ItemGroup>
+		<AndroidEnvironment Include="Platforms\Android\environment.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
-  </ItemGroup>
+  <PropertyGroup>
+	  <AndroidEnableProfiler>false</AndroidEnableProfiler>
+  </PropertyGroup>
 </Project>
