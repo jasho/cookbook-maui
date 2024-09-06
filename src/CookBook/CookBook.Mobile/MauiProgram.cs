@@ -91,6 +91,16 @@ public static class MauiProgram
             .WithTransientLifetime());
     }
 
+    //private static void ConfigureViews(IServiceCollection services)
+    //{
+    //    services.TryAddTransient<IngredientDetailViewPhone>();
+    //    services.TryAddTransient<IngredientEditViewPhone>();
+    //    services.TryAddTransient<IngredientListView>();
+    //    services.TryAddTransient<RecipeDetailViewPhone>();
+    //    services.TryAddTransient<RecipeListView>();
+    //    services.TryAddTransient<SettingsView>();
+    //}
+
     private static void ConfigureViewModels(IServiceCollection services)
     {
         services.Scan(selector => selector
@@ -100,6 +110,18 @@ public static class MauiProgram
             .WithTransientLifetime());
     }
         
+    //private static void ConfigureViewModels(IServiceCollection services)
+    //{
+    //    services.TryAddTransient<IngredientDetailViewModel>();
+    //    services.TryAddTransient<IngredientEditViewModel>();
+    //    services.TryAddTransient<IngredientListViewModel>();
+    //    services.TryAddTransient<RecipeDetailViewModel>();
+    //    services.TryAddTransient<RecipeEditViewModel>();
+    //    services.TryAddTransient<RecipeIngredientsEditViewModel>();
+    //    services.TryAddTransient<RecipeListViewModel>();
+    //    services.TryAddTransient<SettingsViewModel>();
+    //}
+
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IRoutingService, RoutingService>();
