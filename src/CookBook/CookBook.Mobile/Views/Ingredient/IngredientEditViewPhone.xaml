@@ -12,14 +12,17 @@
                    Style="{StaticResource RegularLabelStyle}"
                    Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}" />
 
-            <Frame Padding="10,0"
+            <Border Padding="10,0"
                    BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
-                   BorderColor="{DynamicResource FormEntryBorderColor}"
-                   CornerRadius="5" IsClippedToBounds="True">
+                   Stroke="{DynamicResource FormEntryBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle Clip="True"
+                                    CornerRadius="5"/>
+                </Border.StrokeShape>
                 <Entry Style="{StaticResource FormEntryStyle}"
                        Text="{Binding Ingredient.Name}"
                        VerticalOptions="Start" />
-            </Frame>
+            </Border>
         </VerticalStackLayout>
 
         <Frame Grid.Row="1"

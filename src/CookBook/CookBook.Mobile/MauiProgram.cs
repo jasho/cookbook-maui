@@ -9,6 +9,8 @@ using CookBook.Mobile.Shells;
 using CookBook.Mobile.ViewModels;
 using CookBook.Mobile.Views;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
@@ -82,13 +84,23 @@ public static class MauiProgram
         }
     }
 
+    //private static void ConfigureViews(IServiceCollection services)
+    //{
+    //    services.Scan(selector => selector
+    //        .FromAssemblyOf<App>()
+    //        .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
+    //        .AsSelf()
+    //        .WithTransientLifetime());
+    //}
+
     private static void ConfigureViews(IServiceCollection services)
     {
-        services.Scan(selector => selector
-            .FromAssemblyOf<App>()
-            .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
-            .AsSelf()
-            .WithTransientLifetime());
+        services.TryAddTransient<IngredientDetailViewPhone>();
+        services.TryAddTransient<IngredientEditViewPhone>();
+        services.TryAddTransient<IngredientListView>();
+        services.TryAddTransient<RecipeDetailViewPhone>();
+        services.TryAddTransient<RecipeListView>();
+        services.TryAddTransient<SettingsView>();
     }
 
     //private static void ConfigureViews(IServiceCollection services)
