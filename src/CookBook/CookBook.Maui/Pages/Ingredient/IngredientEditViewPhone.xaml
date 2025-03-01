@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientEditViewPhone"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       Title="{OnIdiom Phone={x:Static texts:IngredientEditViewTexts.Page_Title}, Desktop=''}"
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="vm:IngredientEditViewModel">
+    <Grid RowDefinitions="Auto, Auto, *" RowSpacing="20">
+        <VerticalStackLayout Spacing="5">
+            <Label FontSize="14"
+                   Style="{StaticResource RegularLabelStyle}"
+                   Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}" />
+
+            <Frame Padding="10,0"
+                   BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
+                   BorderColor="{DynamicResource FormEntryBorderColor}"
+                   CornerRadius="5" IsClippedToBounds="True">
+                <Entry Style="{StaticResource FormEntryStyle}"
+                       Text="{Binding Ingredient.Name}"
+                       VerticalOptions="Start" />
+            </Frame>
+        </VerticalStackLayout>
+
+        <Frame Grid.Row="1"
+               Padding="0"
+               CornerRadius="10" HeightRequest="170"
+               HorizontalOptions="Center" IsClippedToBounds="True"
+               WidthRequest="170">
+            <Grid WidthRequest="170">
+                <Image Aspect="AspectFill" HeightRequest="170"
+                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"
+                       WidthRequest="170" />
+
+                <Button Margin="0,0,0,10"
+                        CornerRadius="5" HorizontalOptions="Center"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static texts:IngredientEditViewTexts.SelectImage_Button_Text}"
+                        VerticalOptions="End" />
+            </Grid>
+        </Frame>
+
+        <Grid Grid.Row="2"
+              RowDefinitions="Auto, *" RowSpacing="5">
+            <Label Grid.Row="0"
+                   FontSize="14"
+                   Style="{StaticResource RegularLabelStyle}"
+                   Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}" />
+
+            <Frame Grid.Row="1"
+                   Padding="10,0"
+                   BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
+                   CornerRadius="5">
+                <Editor Text="{Binding Ingredient.Description}"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource FormEditorStyle}" />
+            </Frame>
+        </Grid>
+    </Grid>
+</views:ContentPageBase>
