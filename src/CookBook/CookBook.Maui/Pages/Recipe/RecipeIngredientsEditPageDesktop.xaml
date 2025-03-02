@@ -5,7 +5,7 @@
                        xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                        xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
                        xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                       x:Class="CookBook.Maui.Pages.RecipeIngredientsEditViewDesktop"
+                       x:Class="CookBook.Maui.Pages.RecipeIngredientsEditPageDesktop"
                        Title="RecipeIngredientsEditViewDesktop"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeIngredientsEditViewModel"

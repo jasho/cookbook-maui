@@ -3,9 +3,9 @@ using CookBook.Maui.ViewModels.Recipe;
 
 namespace CookBook.Maui.Pages;
 
-public partial class RecipeListView
+public partial class RecipeListPage
 {
-    public RecipeListView(
+    public RecipeListPage(
         RecipeListViewModel viewModel,
         IGlobalExceptionService globalExceptionService)
         : base(viewModel, globalExceptionService)

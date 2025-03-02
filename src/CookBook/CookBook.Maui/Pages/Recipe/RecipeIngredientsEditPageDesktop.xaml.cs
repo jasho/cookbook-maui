@@ -1,15 +1,15 @@
 using CookBook.Maui.Services.Interfaces;
-using CookBook.Maui.ViewModels.Ingredient;
+using CookBook.Maui.ViewModels.Recipe;
 
 namespace CookBook.Maui.Pages;
 
-public partial class IngredientEditViewPhone
+public partial class RecipeIngredientsEditPageDesktop
 {
-    public IngredientEditViewPhone(
-        IngredientEditViewModel viewModel,
+	public RecipeIngredientsEditPageDesktop(
+        RecipeIngredientsEditViewModel viewModel,
         IGlobalExceptionService globalExceptionService)
         : base(viewModel, globalExceptionService)
 	{
 		InitializeComponent();
-    }
+	}
 }

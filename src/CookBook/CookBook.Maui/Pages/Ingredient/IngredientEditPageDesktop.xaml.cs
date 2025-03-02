@@ -3,9 +3,9 @@ using CookBook.Maui.ViewModels.Ingredient;
 
 namespace CookBook.Maui.Pages;
 
-public partial class IngredientEditViewDesktop
+public partial class IngredientEditPageDesktop
 {
-    public IngredientEditViewDesktop(
+    public IngredientEditPageDesktop(
         IngredientEditViewModel viewModel,
         IGlobalExceptionService globalExceptionService)
         : base(viewModel, globalExceptionService)

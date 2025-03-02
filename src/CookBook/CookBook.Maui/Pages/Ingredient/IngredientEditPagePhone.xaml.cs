@@ -3,10 +3,10 @@ using CookBook.Maui.ViewModels.Ingredient;
 
 namespace CookBook.Maui.Pages;
 
-public partial class IngredientListView
+public partial class IngredientEditPagePhone
 {
-	public IngredientListView(
-        IngredientListViewModel viewModel,
+    public IngredientEditPagePhone(
+        IngredientEditViewModel viewModel,
         IGlobalExceptionService globalExceptionService)
         : base(viewModel, globalExceptionService)
 	{

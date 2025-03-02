@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientDetailPagePhone"
+                      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                      xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
+                      x:DataType="vm:IngredientDetailViewModel"
+                      Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title},
+                                      Desktop=''}"
+                      Style="{StaticResource ContentPageStyle}">
+    <base:ContentPageBase.ToolbarItems>
+        <ToolbarItem Command="{Binding ShareCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.ShareAlt}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding DeleteCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Trash}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding GoToEditCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                 Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
+                                 Size="15"
+                                 Color="{DynamicResource NavigationBarTextColor}"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </base:ContentPageBase.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, Auto, *"
+          RowSpacing="20">
+        <Label Grid.Row="0"
+               HorizontalOptions="Center"
+               FontSize="24"
+               Style="{StaticResource BoldLabelStyle}"
+               Text="{Binding Ingredient.Name}"/>
+
+        <Frame Grid.Row="1"
+               WidthRequest="170"
+               HeightRequest="170"
+               HorizontalOptions="Center"
+               CornerRadius="10"
+               IsClippedToBounds="True">
+            <Image WidthRequest="170"
+                   HeightRequest="170"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Aspect="AspectFill"
+                   Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
+        </Frame>
+
+        <Label Grid.Row="2"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               FontSize="14"
+               Style="{StaticResource RegularLabelStyle}"
+               Text="{Binding Ingredient.Description}"/>
+    </Grid>
+</base:ContentPageBase>

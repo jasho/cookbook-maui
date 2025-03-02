@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeDetailPageDesktop"
+                      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                      xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      x:DataType="vm:RecipeDetailViewModel"
+                      x:Name="Root"
+                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
+                                      Desktop=''}"
+                      Style="{StaticResource ContentPageStyle}">
+    <Grid RowDefinitions="70, *">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*, Auto"
+              ColumnSpacing="15">
+            <StackLayout Grid.Column="0"
+                         VerticalOptions="Start"
+                         Orientation="Horizontal"
+                         Spacing="12">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label VerticalOptions="Center"
+                       FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                       FontSize="14"
+                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"/>
+                <Label VerticalOptions="Center"
+                       FontSize="14"
+                       Style="{StaticResource MediumLabelStyle}"
+                       Text="{x:Static texts:RecipeDetailViewTexts.Back_Button_Text_Desktop}"/>
+            </StackLayout>
+
+            <Button Grid.Column="2"
+                    HeightRequest="30"
+                    VerticalOptions="Start"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    Command="{Binding GoToEditCommand}"
+                    CornerRadius="5"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text_Desktop}"/>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, Auto"
+              ColumnSpacing="20">
+            <ScrollView Orientation="Vertical">
+                <Grid Grid.Column="0"
+                      RowDefinitions="Auto, Auto, Auto, *"
+                      RowSpacing="20">
+                    <Label Grid.Row="0"
+                           FontSize="20"
+                           Style="{StaticResource BoldLabelStyle}"
+                           Text="{Binding Recipe.Name}"
+                           TextColor="{StaticResource PrimaryLabelTextColor}"/>
+
+                    <Frame Grid.Row="1"
+                           HeightRequest="100"
+                           Padding="0"
+                           BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
+                           CornerRadius="10">
+                        <Grid HorizontalOptions="Fill"
+                              VerticalOptions="Center"
+                              ColumnDefinitions="*, *, *"
+                              RowDefinitions="Auto, Auto"
+                              RowSpacing="5">
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End"
+                                   FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                   FontSize="15"
+                                   Text="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
+                                   TextColor="White"/>
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"
+                                   FontSize="11"
+                                   Style="{StaticResource MediumLabelStyle}"
+                                   Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                                   TextColor="White"/>
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                                     Glyph="{x:Static fonts:FontAwesomeIcons.Clock}"
+                                                     Size="17"
+                                                     Color="White"/>
+                                </Image.Source>
+                            </Image>
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"
+                                   FontSize="11"
+                                   Style="{StaticResource MediumLabelStyle}"
+                                   Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
+                                   TextColor="White"/>
+
+                            <Image Grid.Row="0"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                                     Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
+                                                     Size="17"
+                                                     Color="White"/>
+                                </Image.Source>
+                            </Image>
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Start"
+                                   FontSize="11"
+                                   Style="{StaticResource MediumLabelStyle}"
+                                   Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
+                                   TextColor="White"/>
+                        </Grid>
+                    </Frame>
+
+                    <Label Grid.Row="2"
+                           FontSize="16"
+                           Style="{StaticResource BoldLabelStyle}"
+                           Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"/>
+
+                    <Label Grid.Row="3"
+                           FontSize="14"
+                           Style="{StaticResource RegularLabelStyle}"
+                           Text="{Binding Recipe.Description}"/>
+                </Grid>
+            </ScrollView>
+
+            <Grid Grid.Column="1"
+                  RowDefinitions="Auto, *"
+                  RowSpacing="20">
+                <Frame Grid.Row="0"
+                       WidthRequest="300"
+                       HeightRequest="200"
+                       Padding="0"
+                       CornerRadius="10"
+                       IsClippedToBounds="True">
+                    <Image WidthRequest="300"
+                           Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</base:ContentPageBase>

@@ -4,7 +4,7 @@
                        xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
                        xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                       x:Class="CookBook.Maui.Pages.RecipeEditViewDesktop"
+                       x:Class="CookBook.Maui.Pages.RecipeEditPageDesktop"
                        Title="RecipeEditViewDesktop"
                        x:DataType="vm:RecipeEditViewModel"
                        Style="{StaticResource ContentPageStyle}">

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeListPage"
+                      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                      xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                      xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      x:DataType="vm:RecipeListViewModel"
+                      x:Name="Root"
+                      Title="{OnIdiom Phone={x:Static texts:RecipeListViewTexts.Page_Title},
+                                      Desktop=''}"
+                      MinimumHeightRequest="{OnIdiom Desktop=500}"
+                      Style="{StaticResource ContentPageStyle}">
+    <base:ContentPageBase.Resources>
+        <LinearItemsLayout x:Key="ItemsLayoutPhone"
+                           ItemSpacing="20"
+                           Orientation="Vertical"/>
+
+        <GridItemsLayout x:Key="ItemsLayoutDesktop"
+                         HorizontalItemSpacing="10"
+                         Orientation="Horizontal"
+                         Span="2"
+                         VerticalItemSpacing="10"/>
+    </base:ContentPageBase.Resources>
+
+    <Grid>
+        <Grid HorizontalOptions="FillAndExpand"
+              Margin="{OnIdiom Phone='10, 0'}"
+              RowDefinitions="Auto, *"
+              RowSpacing="20">
+            <Label Grid.Row="0"
+                   FontSize="24"
+                   Style="{StaticResource BoldLabelStyle}"
+                   Text="{x:Static texts:RecipeListViewTexts.Title_Label}"/>
+
+            <CollectionView Grid.Row="1"
+                            VerticalOptions="FillAndExpand"
+                            ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone},
+                                                  Desktop={StaticResource ItemsLayoutDesktop},
+                                                  Default={StaticResource ItemsLayoutDesktop}}"
+                            ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:RecipeListModel">
+                        <Frame WidthRequest="{OnIdiom Phone=-1,
+                                                      Desktop=300}"
+                               HeightRequest="200"
+                               Padding="0"
+                               CornerRadius="10"
+                               IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Frame.GestureRecognizers>
+
+                            <Grid Padding="0"
+                                  ColumnDefinitions="200, *"
+                                  RowDefinitions="10, *">
+                                <Image Grid.Row="0"
+                                       Grid.RowSpan="2"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="2"
+                                       HorizontalOptions="Fill"
+                                       VerticalOptions="Fill"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
+
+                                <BoxView Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         Grid.Column="0"
+                                         Grid.ColumnSpan="2"
+                                         Opacity="0.25"
+                                         Color="Black"/>
+
+                                <Frame Grid.Row="0"
+                                       Grid.RowSpan="{OnIdiom Phone=1,
+                                                              Desktop=2}"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="{OnIdiom Phone=1,
+                                                                 Desktop=2}"
+                                       HeightRequest="{OnIdiom Desktop=20,
+                                                               Phone=30}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                       Margin="10,22"
+                                       Padding="6,0"
+                                       BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
+                                       CornerRadius="5">
+                                    <HorizontalStackLayout HorizontalOptions="Start"
+                                                           VerticalOptions="Center"
+                                                           Padding="0"
+                                                           Spacing="8">
+                                        <Label VerticalOptions="Center"
+                                               FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
+                                               TextColor="White"/>
+
+                                        <Label VerticalOptions="Center"
+                                               FontSize="11"
+                                               Style="{StaticResource BoldLabelStyle}"
+                                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                                               TextColor="White"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+
+                                <Label Grid.Row="0"
+                                       VerticalOptions="End"
+                                       Margin="22,12"
+                                       FontSize="20"
+                                       LineBreakMode="WordWrap"
+                                       Style="{StaticResource BoldLabelStyle}"
+                                       Text="{Binding Name}"
+                                       TextColor="White"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <Button Grid.Row="0"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Padding="12,6"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="5"
+                FontFamily="MontserratMedium"
+                FontSize="14"
+                IsVisible="{OnIdiom Phone=False,
+                                    Desktop=True}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"/>
+
+        <Button WidthRequest="65"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,14,9"
+                Padding="0"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="60"
+                FontFamily="MontserratRegular"
+                FontSize="50"
+                IsVisible="{OnIdiom Phone=True,
+                                    Desktop=False}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="+"/>
+    </Grid>
+</base:ContentPageBase>

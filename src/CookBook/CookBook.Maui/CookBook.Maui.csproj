@@ -88,12 +88,44 @@
 	  <Folder Include="Converters\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Options\" />
-	  <Folder Include="Pages\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\Ingredient\IngredientDetailPageDesktop.xaml.cs">
+	    <DependentUpon>IngredientDetailPageDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Ingredient\IngredientDetailPagePhone.xaml.cs">
+	    <DependentUpon>IngredientDetailPagePhone.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Ingredient\IngredientEditPageDesktop.xaml.cs">
+	    <DependentUpon>IngredientEditPageDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Ingredient\IngredientEditPagePhone.xaml.cs">
+	    <DependentUpon>IngredientEditPagePhone.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Ingredient\IngredientListPage.xaml.cs">
+	    <DependentUpon>IngredientListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeDetailPageDesktop.xaml.cs">
+	    <DependentUpon>RecipeDetailPageDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeDetailPagePhone.xaml.cs">
+	    <DependentUpon>RecipeDetailPagePhone.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeEditPageDesktop.xaml.cs">
+	    <DependentUpon>RecipeEditPageDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeIngredientsEditPageDesktop.xaml.cs">
+	    <DependentUpon>RecipeIngredientsEditPageDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeListPage.xaml.cs">
+	    <DependentUpon>RecipeListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\SettingsPage.xaml.cs">
+	    <DependentUpon>SettingsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Resources\Texts\AppShellTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

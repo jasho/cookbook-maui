@@ -3,13 +3,13 @@ using CookBook.Maui.ViewModels.Recipe;
 
 namespace CookBook.Maui.Pages;
 
-public partial class RecipeEditViewDesktop
+public partial class RecipeDetailPagePhone
 {
-	public RecipeEditViewDesktop(
-        RecipeEditViewModel viewModel,
+    public RecipeDetailPagePhone(
+        RecipeDetailViewModel viewModel,
         IGlobalExceptionService globalExceptionService)
         : base(viewModel, globalExceptionService)
     {
-		InitializeComponent();
-	}
+        InitializeComponent();
+    }
 }

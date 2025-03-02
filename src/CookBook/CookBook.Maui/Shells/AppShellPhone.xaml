@@ -45,7 +45,7 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate pages:RecipeListView}"
+            <ShellContent ContentTemplate="{DataTemplate pages:RecipeListPage}"
                           Route="recipes"/>
         </Tab>
 
@@ -54,7 +54,7 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate pages:IngredientListView}"
+            <ShellContent ContentTemplate="{DataTemplate pages:IngredientListPage}"
                           Route="ingredients"/>
         </Tab>
     </FlyoutItem>
@@ -65,7 +65,7 @@
                              Glyph="{Static fonts:FontAwesomeIcons.Cog}"/>
         </FlyoutItem.Icon>
 
-        <ShellContent ContentTemplate="{DataTemplate pages:SettingsView}"
+        <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"
                       Route="settings"/>
     </FlyoutItem>
 </Shell>
