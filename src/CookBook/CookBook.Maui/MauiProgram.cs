@@ -1,14 +1,16 @@
 ﻿using CommunityToolkit.Maui;
 using CookBook.Maui.Options;
-using CookBook.Maui.Pages.Base;
+using CookBook.Maui.Pages;
 using CookBook.Maui.Resources.Fonts;
 using CookBook.Maui.Services;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Maui.Shells;
-using CookBook.Maui.ViewModels.Interfaces;
+using CookBook.Maui.ViewModels;
+using CookBook.Maui.ViewModels.Ingredient;
+using CookBook.Maui.ViewModels.Recipe;
 using CookBook.Mobile.Api;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
@@ -84,20 +86,24 @@ public static class MauiProgram
 
     private static void ConfigureViews(IServiceCollection services)
     {
-        services.Scan(selector => selector
-            .FromAssemblyOf<App>()
-            .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
-            .AsSelf()
-            .WithTransientLifetime());
+        services.TryAddTransient<IngredientDetailPagePhone>();
+        services.TryAddTransient<IngredientEditPagePhone>();
+        services.TryAddTransient<IngredientListPage>();
+        services.TryAddTransient<RecipeDetailPagePhone>();
+        services.TryAddTransient<RecipeListPage>();
+        services.TryAddTransient<SettingsPage>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
-        services.Scan(selector => selector
-            .FromAssemblyOf<App>()
-            .AddClasses(filter => filter.AssignableTo<IViewModel>())
-            .AsSelfWithInterfaces()
-            .WithTransientLifetime());
+        services.TryAddTransient<IngredientDetailViewModel>();
+        services.TryAddTransient<IngredientEditViewModel>();
+        services.TryAddTransient<IngredientListViewModel>();
+        services.TryAddTransient<RecipeDetailViewModel>();
+        services.TryAddTransient<RecipeEditViewModel>();
+        services.TryAddTransient<RecipeIngredientsEditViewModel>();
+        services.TryAddTransient<RecipeListViewModel>();
+        services.TryAddTransient<SettingsViewModel>();
     }
 
     private static void ConfigureServices(IServiceCollection services)
