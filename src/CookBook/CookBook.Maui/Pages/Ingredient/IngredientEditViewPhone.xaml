@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientEditViewPhone"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientEditViewPhone"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
                        Title="{OnIdiom Phone={x:Static texts:IngredientEditViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientEditViewModel">
@@ -57,4 +58,4 @@
             </Frame>
         </Grid>
     </Grid>
-</views:ContentPageBase>
+</base:ContentPageBase>

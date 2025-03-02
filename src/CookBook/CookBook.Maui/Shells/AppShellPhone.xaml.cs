@@ -1,4 +1,4 @@
-namespace CookBook.Mobile.Shells;
+namespace CookBook.Maui.Shells;
 
 public partial class AppShellPhone
 {

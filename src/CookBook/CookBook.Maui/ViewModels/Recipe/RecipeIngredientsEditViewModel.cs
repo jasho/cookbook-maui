@@ -1,10 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
+using CookBook.Maui.ViewModels.Base;
 using CookBook.Mobile.Api;
 using System.Collections.ObjectModel;
 
-namespace CookBook.Mobile.ViewModels
+namespace CookBook.Maui.ViewModels.Recipe
 {
     [QueryProperty(nameof(Recipe), nameof(Recipe))]
     [QueryProperty(nameof(IsRefreshRequested), nameof(IsRefreshRequested))]

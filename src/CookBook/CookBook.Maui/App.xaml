@@ -1,25 +1,25 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application x:Class="CookBook.Maui.App"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:CookBook.Maui.Converters"
              xmlns:local="clr-namespace:CookBook.Maui"
-             xmlns:converters="clr-namespace:CookBook.Mobile.Converters" xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
-             xmlns:styles="clr-namespace:CookBook.Mobile.Resources.Styles"
-             x:Class="CookBook.Maui.App">
+             xmlns:styles="clr-namespace:CookBook.Maui.Resources.Styles">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-            <styles:ButtonStyle />
-            <styles:ContentPageStyle />
-            <styles:EditorStyle />
-            <styles:EntryStyle />
-            <styles:LabelStyle />
-            <styles:DarkTheme />
-        </ResourceDictionary.MergedDictionaries>
+                <styles:ButtonStyle/>
+                <styles:ContentPageStyle/>
+                <styles:EditorStyle/>
+                <styles:EntryStyle/>
+                <styles:LabelStyle/>
+                <styles:DarkTheme/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />
-        <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter" />
-        <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter" />
-        <converters:UnitToStringConverter x:Key="UnitToStringConverter" />
+            <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter"/>
+            <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter"/>
+            <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter"/>
+            <converters:UnitToStringConverter x:Key="UnitToStringConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

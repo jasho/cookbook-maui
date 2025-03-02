@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    x:Class="CookBook.Mobile.Resources.Styles.LabelStyle">
+                    xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                    x:Class="CookBook.Maui.Resources.Styles.LabelStyle">
 
     <Style TargetType="Label" ApplyToDerivedTypes="True">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryLabelTextColor}"/>

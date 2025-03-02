@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Shell x:Class="CookBook.Maui.Shells.AppShellPhone"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
+       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+       xmlns:pages="clr-namespace:CookBook.Maui.Pages"
        xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-       xmlns:views="clr-namespace:CookBook.Mobile.Views"
-       x:Class="CookBook.Mobile.Shells.AppShellPhone"
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
-       Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
-       Shell.UnselectedColor="{DynamicResource UnselectedColor}"
+       FlyoutBackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
        Shell.TabBarBackgroundColor="{DynamicResource BackgroundColor}"
-       FlyoutBackgroundColor="{DynamicResource NavigationBarBackgroudColor}">
+       Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
+       Shell.UnselectedColor="{DynamicResource UnselectedColor}">
     <Shell.FlyoutHeader>
         <Grid HorizontalOptions="Start">
             <Image HeightRequest="50"
                    HorizontalOptions="Start"
-                   Source="/Images/logo_text.png"
-                   Margin="0, 10, 0, 0"/>
+                   Margin="0,10,0,0"
+                   Source="/Images/logo_text.png"/>
         </Grid>
     </Shell.FlyoutHeader>
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid ColumnDefinitions="20, *"
-                  ColumnSpacing="10"
-                  Padding="10">
+            <Grid Padding="10"
+                  ColumnDefinitions="20, *"
+                  ColumnSpacing="10">
                 <Image Grid.Column="0"
                        Source="{Binding FlyoutIcon}"/>
 
-                <Label Grid.Column="1" Text="{Binding Title}"
+                <Label Grid.Column="1"
                        VerticalOptions="Center"
+                       Text="{Binding Title}"
                        TextColor="{DynamicResource BackgroundColor}"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
-    
+
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Home_FlyoutItem_Title}">
         <FlyoutItem.Icon>
-            <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.House}"
-                             FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+            <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
+                             Glyph="{Static fonts:FontAwesomeIcons.House}"/>
         </FlyoutItem.Icon>
 
         <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
@@ -44,7 +45,8 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
+            <ShellContent ContentTemplate="{DataTemplate pages:RecipeListView}"
+                          Route="recipes"/>
         </Tab>
 
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
@@ -52,16 +54,18 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
+            <ShellContent ContentTemplate="{DataTemplate pages:IngredientListView}"
+                          Route="ingredients"/>
         </Tab>
     </FlyoutItem>
-    
+
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Settings_FlyoutItem_Title}">
         <FlyoutItem.Icon>
-            <FontImageSource Glyph="{Static fonts:FontAwesomeIcons.Cog}"
-                             FontFamily="{Static fonts:Fonts.FontAwesome}"/>
+            <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
+                             Glyph="{Static fonts:FontAwesomeIcons.Cog}"/>
         </FlyoutItem.Icon>
-        
-        <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" Route="settings" />
+
+        <ShellContent ContentTemplate="{DataTemplate pages:SettingsView}"
+                      Route="settings"/>
     </FlyoutItem>
 </Shell>

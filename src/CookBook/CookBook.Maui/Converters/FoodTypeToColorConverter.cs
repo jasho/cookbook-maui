@@ -2,7 +2,7 @@
 using CookBook.Common.Enums;
 using System.Globalization;
 
-namespace CookBook.Mobile.Converters;
+namespace CookBook.Maui.Converters;
 
 public class FoodTypeToColorConverter : BaseConverterOneWay<FoodType, Color>
 {

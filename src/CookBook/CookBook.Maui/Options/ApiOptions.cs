@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.Options;
+﻿namespace CookBook.Maui.Options;
 
 public class ApiOptions
 {

@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Maui.Converters;
 using CookBook.Common.Enums;
-using CookBook.Mobile.Resources.Fonts;
+using CookBook.Maui.Resources.Fonts;
 using System.Globalization;
 
-namespace CookBook.Mobile.Converters;
+namespace CookBook.Maui.Converters;
 
 public class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
 {

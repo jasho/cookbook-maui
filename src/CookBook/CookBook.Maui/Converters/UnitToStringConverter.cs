@@ -3,7 +3,7 @@ using CookBook.Common.Enums;
 using CookBook.Maui.Resources.Texts;
 using System.Globalization;
 
-namespace CookBook.Mobile.Converters;
+namespace CookBook.Maui.Converters;
 
 public class UnitToStringConverter : BaseConverterOneWay<Unit, string>
 {

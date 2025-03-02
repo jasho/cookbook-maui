@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
+using CookBook.Maui.ViewModels.Base;
 using CookBook.Mobile.Api;
 
-namespace CookBook.Mobile.ViewModels;
+namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Ingredient), nameof(Ingredient))]
 public partial class IngredientEditViewModel : ViewModelBase

@@ -1,8 +1,10 @@
 using CommunityToolkit.Mvvm.Input;
-using CookBook.Mobile.Services;
-using CookBook.Mobile.ViewModels;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.ViewModels;
+using CookBook.Maui.ViewModels.Ingredient;
+using CookBook.Maui.ViewModels.Recipe;
 
-namespace CookBook.Mobile.Shells;
+namespace CookBook.Maui.Shells;
 
 public partial class AppShellDesktop
 {

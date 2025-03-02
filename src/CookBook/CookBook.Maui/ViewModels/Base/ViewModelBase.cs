@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CookBook.Maui.ViewModels.Interfaces;
 
-namespace CookBook.Mobile.ViewModels;
+namespace CookBook.Maui.ViewModels.Base;
 
 [INotifyPropertyChanged]
 public abstract partial class ViewModelBase : IViewModel

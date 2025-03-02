@@ -1,7 +1,7 @@
-using CookBook.Mobile.Services;
-using CookBook.Mobile.ViewModels;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.ViewModels.Interfaces;
 
-namespace CookBook.Mobile.Views;
+namespace CookBook.Maui.Pages.Base;
 
 public abstract partial class ContentPageBase : ContentPage
 {

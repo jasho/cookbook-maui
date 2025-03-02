@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.ViewModels;
+﻿namespace CookBook.Maui.ViewModels.Interfaces;
 
 public interface IViewModel
 {

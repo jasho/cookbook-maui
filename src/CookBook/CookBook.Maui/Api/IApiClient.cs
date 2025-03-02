@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.Api;
+﻿namespace CookBook.Maui.Api;
 
 public interface IApiClient
 {

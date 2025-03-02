@@ -1,4 +1,4 @@
-﻿using CookBook.Mobile.Shells;
+﻿using CookBook.Maui.Shells;
 
 namespace CookBook.Maui
 {

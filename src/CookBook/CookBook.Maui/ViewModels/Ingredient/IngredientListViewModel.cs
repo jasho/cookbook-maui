@@ -1,10 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.ViewModels.Interfaces;
 using CookBook.Mobile.Api;
-using CookBook.Mobile.Services;
 
-namespace CookBook.Mobile.ViewModels;
+namespace CookBook.Maui.ViewModels.Ingredient;
 
 [INotifyPropertyChanged]
 public partial class IngredientListViewModel : IViewModel

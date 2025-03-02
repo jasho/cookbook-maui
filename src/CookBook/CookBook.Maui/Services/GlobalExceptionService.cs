@@ -1,6 +1,6 @@
-﻿using Microsoft.Maui.Controls.Platform;
+﻿using CookBook.Maui.Services.Interfaces;
 
-namespace CookBook.Mobile.Services
+namespace CookBook.Maui.Services
 {
     public class GlobalExceptionService : IGlobalExceptionService
     {

@@ -1,7 +1,7 @@
-using CookBook.Mobile.Services;
-using CookBook.Mobile.ViewModels;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.ViewModels.Ingredient;
 
-namespace CookBook.Mobile.Views;
+namespace CookBook.Maui.Pages;
 
 public partial class IngredientListView
 {

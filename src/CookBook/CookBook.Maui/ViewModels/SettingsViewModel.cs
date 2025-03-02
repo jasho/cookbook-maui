@@ -1,4 +1,6 @@
-﻿namespace CookBook.Mobile.ViewModels;
+﻿using CookBook.Maui.ViewModels.Interfaces;
+
+namespace CookBook.Maui.ViewModels;
 
 public class SettingsViewModel : IViewModel
 {

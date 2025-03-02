@@ -1,9 +1,13 @@
-﻿using CookBook.Mobile.Models;
-using CookBook.Mobile.ViewModels;
-using CookBook.Mobile.Views;
-using RecipeIngredientsEditViewDesktop = CookBook.Mobile.Views.RecipeIngredientsEditViewDesktop;
+﻿using CookBook.Maui.Models;
+using CookBook.Maui.Pages;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.ViewModels;
+using CookBook.Maui.ViewModels.Ingredient;
+using CookBook.Maui.ViewModels.Interfaces;
+using CookBook.Maui.ViewModels.Recipe;
+using RecipeIngredientsEditViewDesktop = CookBook.Maui.Pages.RecipeIngredientsEditViewDesktop;
 
-namespace CookBook.Mobile.Services;
+namespace CookBook.Maui.Services;
 
 public class RoutingService : IRoutingService
 {

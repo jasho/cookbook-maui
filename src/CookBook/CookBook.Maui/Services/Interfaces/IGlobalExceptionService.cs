@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace CookBook.Mobile.Services
+namespace CookBook.Maui.Services.Interfaces
 {
     public interface IGlobalExceptionService
     {

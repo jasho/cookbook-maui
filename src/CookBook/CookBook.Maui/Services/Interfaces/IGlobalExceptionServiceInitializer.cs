@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.Services
+﻿namespace CookBook.Maui.Services.Interfaces
 {
     public interface IGlobalExceptionServiceInitializer
     {

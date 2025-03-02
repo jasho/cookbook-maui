@@ -1,9 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
+using CookBook.Maui.ViewModels.Base;
 using CookBook.Mobile.Api;
 
-namespace CookBook.Mobile.ViewModels;
+namespace CookBook.Maui.ViewModels.Recipe;
 
 [QueryProperty(nameof(Id), "id")]
 public partial class RecipeDetailViewModel : ViewModelBase

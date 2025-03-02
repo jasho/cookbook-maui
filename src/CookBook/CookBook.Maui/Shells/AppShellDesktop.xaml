@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<Shell x:Class="CookBook.Maui.Shells.AppShellDesktop"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
+       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+       xmlns:pages="clr-namespace:CookBook.Maui.Pages"
        xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-       xmlns:views="clr-namespace:CookBook.Mobile.Views"
-       x:Class="CookBook.Mobile.Shells.AppShellDesktop"
        x:Name="AppShellRoot"
-       NavigationPage.HasNavigationBar="False"
-       NavigationPage.HasBackButton="False"
-       MinimumHeightRequest="{OnIdiom Desktop=1000}"
        HeightRequest="{OnIdiom Desktop=1000}"
-       FlyoutBehavior="Disabled">
+       FlyoutBehavior="Disabled"
+       MinimumHeightRequest="{OnIdiom Desktop=1000}"
+       NavigationPage.HasBackButton="False"
+       NavigationPage.HasNavigationBar="False">
     <Shell.TitleView>
         <Grid>
-            <Image Source="page_title_logo.png"
-                   HeightRequest="24" />
+            <Image HeightRequest="24"
+                   Source="page_title_logo.png"/>
         </Grid>
     </Shell.TitleView>
 
@@ -24,34 +24,36 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"
                                  Size="10"
-                                 Color="{DynamicResource NavigationBarTextColor}" />
+                                 Color="{DynamicResource NavigationBarTextColor}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </Shell.ToolbarItems>
 
     <Shell.MenuBarItems>
         <MenuBarItem Text="{x:Static texts:AppShellTexts.File_MenuItem_Title}">
-            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Recipes_Tab_Title}"
-                            Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToRecipesCommand}">
+            <MenuFlyoutItem Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToRecipesCommand}"
+                            Text="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
                 <MenuFlyoutItem.IconImageSource>
-                    <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Book}"
-                                     FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
+                    <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                     Glyph="{x:Static fonts:FontAwesomeIcons.Book}"/>
                 </MenuFlyoutItem.IconImageSource>
             </MenuFlyoutItem>
 
-            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}"
-                            Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToIngredientsCommand}">
+            <MenuFlyoutItem Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToIngredientsCommand}"
+                            Text="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
                 <MenuFlyoutItem.IconImageSource>
-                    <FontImageSource Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
-                                     FontFamily="{x:Static fonts:Fonts.FontAwesome}" />
+                    <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                     Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"/>
                 </MenuFlyoutItem.IconImageSource>
             </MenuFlyoutItem>
 
-            <MenuFlyoutItem Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"
-                            Command="{Binding Source={x:Reference AppShellRoot}, Path=ExitCommand}" />
+            <MenuFlyoutItem Command="{Binding Source={x:Reference AppShellRoot}, Path=ExitCommand}"
+                            Text="{x:Static texts:AppShellTexts.Exit_MenuFlyoutItem_Title}"/>
         </MenuBarItem>
     </Shell.MenuBarItems>
-    
-    <ShellContent ContentTemplate="{DataTemplate views:RecipeListView}" Route="recipes" />
-    <ShellContent ContentTemplate="{DataTemplate views:IngredientListView}" Route="ingredients" />
+
+    <ShellContent ContentTemplate="{DataTemplate pages:RecipeListView}"
+                  Route="recipes"/>
+    <ShellContent ContentTemplate="{DataTemplate pages:IngredientListView}"
+                  Route="ingredients"/>
 </Shell>

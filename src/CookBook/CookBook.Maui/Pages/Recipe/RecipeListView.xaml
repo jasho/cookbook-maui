@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.RecipeListView"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeListView"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels" xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:RecipeListViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeListViewModel"
                        MinimumHeightRequest="{OnIdiom Desktop=500}">
-    <views:ContentPageBase.Resources>
+    <base:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
                            ItemSpacing="20" Orientation="Vertical" />
 
@@ -17,7 +19,7 @@
                          Orientation="Horizontal"
                          HorizontalItemSpacing="10" VerticalItemSpacing="10"
                          Span="2" />
-    </views:ContentPageBase.Resources>
+    </base:ContentPageBase.Resources>
 
     <Grid>
         <Grid HorizontalOptions="FillAndExpand"
@@ -115,4 +117,4 @@
                 WidthRequest="65"
                 IsVisible="{OnIdiom Phone=True, Desktop=False}" />
     </Grid>
-</views:ContentPageBase>
+</base:ContentPageBase>

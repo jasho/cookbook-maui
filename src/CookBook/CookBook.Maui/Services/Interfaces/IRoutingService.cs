@@ -1,7 +1,7 @@
-﻿using CookBook.Mobile.Models;
-using CookBook.Mobile.ViewModels;
+﻿using CookBook.Maui.Models;
+using CookBook.Maui.ViewModels.Interfaces;
 
-namespace CookBook.Mobile.Services;
+namespace CookBook.Maui.Services.Interfaces;
 
 public interface IRoutingService
 {

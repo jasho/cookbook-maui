@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<base:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
-                       xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
                        xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                        xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-                       x:Class="CookBook.Mobile.Views.RecipeIngredientsEditViewDesktop"
+                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                       x:Class="CookBook.Maui.Pages.RecipeIngredientsEditViewDesktop"
                        Title="RecipeIngredientsEditViewDesktop"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeIngredientsEditViewModel"
@@ -122,4 +122,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-</views:ContentPageBase>
+</base:ContentPageBase>

@@ -1,4 +1,4 @@
-namespace CookBook.Mobile.Resources.Styles;
+namespace CookBook.Maui.Resources.Styles;
 
 public partial class DarkTheme
 {

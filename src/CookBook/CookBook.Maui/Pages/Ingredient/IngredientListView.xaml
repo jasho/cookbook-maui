@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.IngredientListView"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientListView"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts" xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
+                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:IngredientListViewModel">
-    <views:ContentPageBase.Resources>
+    <base:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
                            ItemSpacing="8" Orientation="Vertical" />
 
@@ -88,7 +90,7 @@
                 </Grid>
             </Frame>
         </DataTemplate>
-    </views:ContentPageBase.Resources>
+    </base:ContentPageBase.Resources>
 
     <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
           RowSpacing="20">
@@ -125,4 +127,4 @@
                 WidthRequest="65"
                 IsVisible="{OnIdiom Phone=True, Desktop=False}" />
     </Grid>
-</views:ContentPageBase>
+</base:ContentPageBase>

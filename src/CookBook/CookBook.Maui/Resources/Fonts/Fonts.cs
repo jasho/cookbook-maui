@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.Resources.Fonts;
+﻿namespace CookBook.Maui.Resources.Fonts;
 
 public class Fonts
 {

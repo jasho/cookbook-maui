@@ -1,4 +1,4 @@
-﻿namespace CookBook.Mobile.Enums;
+﻿namespace CookBook.Maui.Enums;
 
 public enum DeviceOrientation
 {

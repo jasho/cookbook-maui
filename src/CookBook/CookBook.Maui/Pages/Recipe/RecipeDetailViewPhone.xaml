@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.RecipeDetailViewPhone"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeDetailViewPhone"
                        xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts" xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels" xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
                        x:Name="Root"
                        Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title}, Desktop=''}"
                        Style="{StaticResource ContentPageStyle}"
                        x:DataType="vm:RecipeDetailViewModel">
-    <views:ContentPageBase.ToolbarItems>
+    <base:ContentPageBase.ToolbarItems>
         <ToolbarItem Command="{Binding ShareCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
@@ -35,7 +37,7 @@
                                  Color="{DynamicResource NavigationBarTextColor}" />
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-    </views:ContentPageBase.ToolbarItems>
+    </base:ContentPageBase.ToolbarItems>
     
     <ScrollView>
         <Grid RowDefinitions="200, Auto, Auto, Auto, Auto, Auto, *"
@@ -178,4 +180,4 @@
                    Style="{StaticResource MediumLabelStyle}" />
         </Grid>
     </ScrollView>
-</views:ContentPageBase>
+</base:ContentPageBase>

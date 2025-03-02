@@ -1,10 +1,12 @@
 ﻿using CommunityToolkit.Maui;
+using CookBook.Maui.Options;
+using CookBook.Maui.Pages.Base;
+using CookBook.Maui.Resources.Fonts;
+using CookBook.Maui.Services;
+using CookBook.Maui.Services.Interfaces;
+using CookBook.Maui.Shells;
+using CookBook.Maui.ViewModels.Interfaces;
 using CookBook.Mobile.Api;
-using CookBook.Mobile.Options;
-using CookBook.Mobile.Services;
-using CookBook.Mobile.Shells;
-using CookBook.Mobile.ViewModels;
-using CookBook.Mobile.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -21,10 +23,10 @@ public static class MauiProgram
             .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("FontAwesome-Solid.ttf", CookBook.Mobile.Resources.Fonts.Fonts.FontAwesome);
-                fonts.AddFont("Montserrat-Bold.ttf", CookBook.Mobile.Resources.Fonts.Fonts.Bold);
-                fonts.AddFont("Montserrat-Medium.ttf", CookBook.Mobile.Resources.Fonts.Fonts.Medium);
-                fonts.AddFont("Montserrat-Regular.ttf", CookBook.Mobile.Resources.Fonts.Fonts.Regular);
+                fonts.AddFont("FontAwesome-Solid.ttf", Fonts.FontAwesome);
+                fonts.AddFont("Montserrat-Bold.ttf", Fonts.Bold);
+                fonts.AddFont("Montserrat-Medium.ttf", Fonts.Medium);
+                fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
             });
 
         ConfigureAppSettings(builder);
