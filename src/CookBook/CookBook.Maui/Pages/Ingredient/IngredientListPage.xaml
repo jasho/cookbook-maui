@@ -1,130 +1,158 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <base:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientListPage"
-                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
-                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
-                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
-                       x:Name="Root"
-                       Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title}, Desktop=''}"
-                       Style="{StaticResource ContentPageStyle}"
-                       x:DataType="vm:IngredientListViewModel">
+                      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                      xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                      xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
+                      x:DataType="vm:IngredientListViewModel"
+                      x:Name="Root"
+                      Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title},
+                                      Desktop=''}"
+                      Style="{StaticResource ContentPageStyle}">
     <base:ContentPageBase.Resources>
         <LinearItemsLayout x:Key="ItemsLayoutPhone"
-                           ItemSpacing="8" Orientation="Vertical" />
+                           ItemSpacing="8"
+                           Orientation="Vertical"/>
 
         <GridItemsLayout x:Key="ItemsLayoutDesktop"
+                         HorizontalItemSpacing="10"
                          Orientation="Horizontal"
-                         HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                         Span="2" />
+                         Span="2"
+                         VerticalItemSpacing="10"/>
 
-        <DataTemplate x:Key="ItemTemplatePhone"
-                      x:DataType="models:IngredientListModel">
-            <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *, Auto"
-                  ColumnSpacing="20" HeightRequest="40">
+        <DataTemplate x:DataType="models:IngredientListModel"
+                      x:Key="ItemTemplatePhone">
+            <Grid HeightRequest="40"
+                  BackgroundColor="Transparent"
+                  ColumnDefinitions="34, *, Auto"
+                  ColumnSpacing="20">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                          CommandParameter="{Binding Id}" />
+                                          CommandParameter="{Binding Id}"/>
                 </Grid.GestureRecognizers>
-                <BoxView Grid.Column="0" Grid.ColumnSpan="3"
-                         CornerRadius="5" HorizontalOptions="Fill"
+                <BoxView Grid.Column="0"
+                         Grid.ColumnSpan="3"
+                         HorizontalOptions="Fill"
                          VerticalOptions="Fill"
-                         Color="{DynamicResource ListItemBackgroundColor}" />
+                         CornerRadius="5"
+                         Color="{DynamicResource ListItemBackgroundColor}"/>
 
                 <Frame Grid.Column="0"
-                       Margin="4, 0, 0, 0" Padding="0"
-                       CornerRadius="5" HeightRequest="34"
-                       IsClippedToBounds="True" VerticalOptions="Center"
-                       WidthRequest="34">
-                    <Image Aspect="AspectFill" HeightRequest="34"
-                           Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}" />
+                       WidthRequest="34"
+                       HeightRequest="34"
+                       VerticalOptions="Center"
+                       Margin="4,0,0,0"
+                       Padding="0"
+                       CornerRadius="5"
+                       IsClippedToBounds="True">
+                    <Image HeightRequest="34"
+                           Aspect="AspectFill"
+                           Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
                 </Frame>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Start"
+                       VerticalOptions="Center"
                        Style="{StaticResource MediumLabelStyle}"
-                       Text="{Binding Name}"
-                       VerticalOptions="Center" />
+                       Text="{Binding Name}"/>
 
                 <Label Grid.Column="2"
-                       HorizontalOptions="End" VerticalOptions="Center"
-                       Margin="0, 0, 12, 0"
-                       Text="{x:Static fonts:FontAwesomeIcons.Pen}"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Margin="0,0,12,0"
+                       FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                        FontSize="20"
-                       TextColor="{StaticResource PrimaryColor}"
-                       FontFamily="{x:Static fonts:Fonts.FontAwesome}">
+                       Text="{x:Static fonts:FontAwesomeIcons.Pen}"
+                       TextColor="{StaticResource PrimaryColor}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
-                                              CommandParameter="{Binding Id}" />
+                                              CommandParameter="{Binding Id}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="ItemTemplateDesktop"
-                      x:DataType="models:IngredientListModel">
-            <Frame Padding="0"
-                   CornerRadius="10" HeightRequest="200"
+        <DataTemplate x:DataType="models:IngredientListModel"
+                      x:Key="ItemTemplateDesktop">
+            <Frame HeightRequest="200"
+                   Padding="0"
+                   CornerRadius="10"
                    IsClippedToBounds="True">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                          CommandParameter="{Binding Id}" />
+                                          CommandParameter="{Binding Id}"/>
                 </Frame.GestureRecognizers>
                 <Grid RowDefinitions="*, *">
-                    <Image Grid.Row="0" Grid.RowSpan="2"
+                    <Image Grid.Row="0"
+                           Grid.RowSpan="2"
+                           WidthRequest="200"
+                           HeightRequest="200"
                            Aspect="AspectFill"
-                           WidthRequest="200" HeightRequest="200"
-                           Source="{Binding ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}" />
+                           Source="{Binding ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
 
-                    <BoxView Grid.Row="0" Grid.RowSpan="2"
+                    <BoxView Grid.Row="0"
+                             Grid.RowSpan="2"
                              Opacity="0.25"
-                             Color="Black" />
+                             Color="Black"/>
 
                     <Label Grid.Row="1"
+                           VerticalOptions="End"
                            Margin="22,12"
-                           FontSize="20" LineBreakMode="WordWrap"
+                           FontSize="20"
+                           LineBreakMode="WordWrap"
                            Style="{StaticResource BoldLabelStyle}"
                            Text="{Binding Name}"
-                           TextColor="White" VerticalOptions="End" />
+                           TextColor="White"/>
                 </Grid>
             </Frame>
         </DataTemplate>
     </base:ContentPageBase.Resources>
 
-    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
+    <Grid HorizontalOptions="FillAndExpand"
+          RowDefinitions="Auto, *"
           RowSpacing="20">
         <Label Grid.Row="0"
                FontSize="24"
                Style="{StaticResource BoldLabelStyle}"
-               Text="{x:Static texts:IngredientListViewTexts.Title_Label}" />
+               Text="{x:Static texts:IngredientListViewTexts.Title_Label}"/>
 
         <Button Grid.Row="0"
-                Padding="12, 6"
-                HorizontalOptions="End" VerticalOptions="Start"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Padding="12,6"
                 Command="{Binding GoToCreateCommand}"
-                CornerRadius="5" FontFamily="MontserratMedium"
+                CornerRadius="5"
+                FontFamily="MontserratMedium"
                 FontSize="14"
+                IsVisible="{OnIdiom Phone=False,
+                                    Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                IsVisible="{OnIdiom Phone=False, Desktop=True}" />
+                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"/>
 
         <CollectionView Grid.Row="1"
-                        ItemsSource="{Binding Items}"
+                        ItemTemplate="{OnIdiom Phone={StaticResource ItemTemplatePhone},
+                                               Desktop={StaticResource ItemTemplateDesktop}}"
                         ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone},
                                               Desktop={StaticResource ItemsLayoutDesktop},
                                               Default={StaticResource ItemsLayoutDesktop}}"
-                        ItemTemplate="{OnIdiom Phone={StaticResource ItemTemplatePhone}, Desktop={StaticResource ItemTemplateDesktop}}" />
+                        ItemsSource="{Binding Items}"/>
 
         <Button Grid.Row="1"
-                Margin="0, 0, 14, 9" Padding="0"
-                HorizontalOptions="End" VerticalOptions="End"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"
-                Command="{Binding GoToCreateCommand}"
-                CornerRadius="60" FontFamily="MontserratRegular"
-                FontSize="50" 
-                Style="{StaticResource PrimaryButtonStyle}"
                 WidthRequest="65"
-                IsVisible="{OnIdiom Phone=True, Desktop=False}" />
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,14,9"
+                Padding="0"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="60"
+                FontFamily="MontserratRegular"
+                FontSize="50"
+                IsVisible="{OnIdiom Phone=True,
+                                    Desktop=False}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"/>
     </Grid>
 </base:ContentPageBase>

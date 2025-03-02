@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
-                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
-                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                       x:Class="CookBook.Maui.Pages.RecipeEditPageDesktop"
-                       Title="RecipeEditViewDesktop"
-                       x:DataType="vm:RecipeEditViewModel"
-                       Style="{StaticResource ContentPageStyle}">
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeEditPageDesktop"
+                      xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
+                      xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      x:DataType="vm:RecipeEditViewModel"
+                      Title="RecipeEditViewDesktop"
+                      Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="Auto, *, Auto"
           RowSpacing="40">
         <Grid Grid.Row="0"
@@ -20,57 +20,63 @@
                 <StackLayout Grid.Row="0"
                              Orientation="Vertical"
                              Spacing="10">
-                    <Label Text="Název" />
+                    <Label Text="Název"/>
 
                     <Entry HorizontalOptions="Fill"
-                           Text="{Binding Recipe.Name}" />
+                           Text="{Binding Recipe.Name}"/>
                 </StackLayout>
-                
+
                 <Grid Grid.Row="1"
-                      RowDefinitions="Auto, Auto"
                       ColumnDefinitions="Auto, *"
-                      RowSpacing="10" ColumnSpacing="17">
-                    <Label Grid.Row="0" Grid.Column="0"
-                           Text="Typ jídla" />
+                      ColumnSpacing="17"
+                      RowDefinitions="Auto, Auto"
+                      RowSpacing="10">
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Typ jídla"/>
                     <Picker Grid.Row="1"
                             Grid.Column="0"
                             HorizontalOptions="Fill"
-                            ItemsSource="{Binding FoodTypes}"
                             ItemDisplayBinding="{Binding ., Converter={StaticResource FoodTypeToStringConverter}}"
-                            SelectedItem="{Binding Recipe.FoodType}" />
+                            ItemsSource="{Binding FoodTypes}"
+                            SelectedItem="{Binding Recipe.FoodType}"/>
 
-                    <Label Grid.Row="0" Grid.Column="1"
-                           Text="Čas přípravy" />
-                    <TimePicker Grid.Row="1" Grid.Column="1"
-                                Time="{Binding Recipe.Duration}"
-                                Format="HH:mm" />
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Text="Čas přípravy"/>
+                    <TimePicker Grid.Row="1"
+                                Grid.Column="1"
+                                Format="HH:mm"
+                                Time="{Binding Recipe.Duration}"/>
                 </Grid>
 
                 <StackLayout Grid.Row="2"
                              Orientation="Vertical"
                              Spacing="10">
-                    <Label Text="URL obrázku" />
+                    <Label Text="URL obrázku"/>
 
                     <Entry Text="{Binding Recipe.ImageUrl}"/>
                 </StackLayout>
             </Grid>
 
             <Frame Grid.Column="1"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   Margin="0"
                    Padding="0"
-                   CornerRadius="10"
-                   IsClippedToBounds="True"
                    BorderColor="{StaticResource ImageBorderColor}"
-                   HorizontalOptions="Fill" VerticalOptions="Fill"
-                   Margin="0">
+                   CornerRadius="10"
+                   IsClippedToBounds="True">
                 <Grid>
-                    <Image Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"
-                           Aspect="AspectFill" />
+                    <Image Aspect="AspectFill"
+                           Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
 
-                    <Button Margin="0, 0, 0, 10"
-                            CornerRadius="5" HorizontalOptions="Center"
+                    <Button HorizontalOptions="Center"
+                            VerticalOptions="End"
+                            Margin="0,0,0,10"
+                            CornerRadius="5"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="Nahrát obrázek"
-                            VerticalOptions="End" />
+                            Text="Nahrát obrázek"/>
                 </Grid>
             </Frame>
         </Grid>
@@ -80,56 +86,58 @@
               ColumnSpacing="40">
             <Frame Grid.Column="0"
                    Padding="30"
-                   CornerRadius="10"
-                   IsClippedToBounds="True"
+                   BackgroundColor="{StaticResource FormFrameBackgroundColor}"
                    BorderColor="{StaticResource FormFrameBorderColor}"
-                   BackgroundColor="{StaticResource FormFrameBackgroundColor}">
+                   CornerRadius="10"
+                   IsClippedToBounds="True">
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
-                           Text="Postup" />
+                           Text="Postup"/>
 
                     <Editor Grid.Row="1"
-                            Text="{Binding Recipe.Description}"
-                            VerticalOptions="Fill" />
+                            VerticalOptions="Fill"
+                            Text="{Binding Recipe.Description}"/>
                 </Grid>
             </Frame>
 
             <Frame Grid.Column="1"
                    Padding="30"
-                   CornerRadius="10"
-                   IsClippedToBounds="True"
+                   BackgroundColor="{StaticResource FormFrameBackgroundColor}"
                    BorderColor="{StaticResource FormFrameBorderColor}"
-                   BackgroundColor="{StaticResource FormFrameBackgroundColor}">
+                   CornerRadius="10"
+                   IsClippedToBounds="True">
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
-                           Text="Ingredience" />
+                           Text="Ingredience"/>
 
                     <CollectionView Grid.Row="1"
                                     ItemsSource="{Binding Recipe.IngredientAmounts}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="m:RecipeDetailIngredientModel">
-                                <StackLayout Orientation="Horizontal"
-                                             Spacing="20"
-                                             Margin="0, 0, 0, 15">
-                                    <Frame CornerRadius="10"
+                                <StackLayout Margin="0,0,0,15"
+                                             Orientation="Horizontal"
+                                             Spacing="20">
+                                    <Frame WidthRequest="60"
+                                           HeightRequest="60"
                                            Padding="0"
-                                           IsClippedToBounds="True"
-                                           WidthRequest="60" HeightRequest="60">
-                                        <Image Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"
-                                               HorizontalOptions="Fill" VerticalOptions="Fill"
-                                               Aspect="AspectFill" />
+                                           CornerRadius="10"
+                                           IsClippedToBounds="True">
+                                        <Image HorizontalOptions="Fill"
+                                               VerticalOptions="Fill"
+                                               Aspect="AspectFill"
+                                               Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
                                     </Frame>
 
                                     <Label VerticalOptions="Center">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Amount}" />
-                                                <Span Text=" " />
-                                                <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}" />
-                                                <Span Text=" " />
-                                                <Span Text="{Binding Ingredient.Name}" />
+                                                <Span Text="{Binding Amount}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding Ingredient.Name}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -139,25 +147,26 @@
                     </CollectionView>
 
                     <Button Grid.Row="0"
-                            HorizontalOptions="End" VerticalOptions="Start" 
-                            Text="Upravit ingredience"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
                             Command="{Binding GoToRecipeIngredientEditCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}" />
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Upravit ingredience"/>
                 </Grid>
             </Frame>
         </Grid>
 
         <StackLayout Grid.Row="2"
-                     Orientation="Horizontal"
                      HorizontalOptions="End"
+                     Orientation="Horizontal"
                      Spacing="20">
-            <Button Text="Smazat"
-                    Command="{Binding DeleteCommand}"
-                    Style="{StaticResource ErrorButtonStyle}" />
+            <Button Command="{Binding DeleteCommand}"
+                    Style="{StaticResource ErrorButtonStyle}"
+                    Text="Smazat"/>
 
-            <Button Text="Uložit"
-                    Command="{Binding SaveCommand}"
-                    Style="{StaticResource PrimaryButtonStyle}" />
+            <Button Command="{Binding SaveCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Uložit"/>
         </StackLayout>
     </Grid>
 </base:ContentPageBase>
