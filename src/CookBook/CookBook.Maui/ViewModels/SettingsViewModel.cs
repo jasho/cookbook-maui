@@ -1,11 +1,5 @@
-﻿using CookBook.Maui.ViewModels.Interfaces;
+﻿namespace CookBook.Maui.ViewModels;
 
-namespace CookBook.Maui.ViewModels;
-
-public class SettingsViewModel : IViewModel
+public class SettingsViewModel : ViewModelBase
 {
-    public Task OnAppearingAsync()
-    {
-        return Task.CompletedTask;
-    }
 }

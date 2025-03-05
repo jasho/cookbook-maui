@@ -4,7 +4,7 @@ using NJsonSchema.Annotations;
 namespace CookBook.Common.Models;
 
 [JsonSchemaFlatten]
-public record RecipeListModel : ModelBase
+public class RecipeListModel : ModelBase
 {
     public Guid Id { get; set; }
     public required string Name { get; set; }

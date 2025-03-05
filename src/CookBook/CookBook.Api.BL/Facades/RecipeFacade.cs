@@ -6,19 +6,11 @@ using CookBook.Common.Models;
 
 namespace CookBook.Api.BL.Facades;
 
-public class RecipeFacade : IRecipeFacade
+public class RecipeFacade(
+    IMapper mapper,
+    IRecipeRepository recipeRepository)
+    : IRecipeFacade
 {
-    private readonly IMapper mapper;
-    private readonly IRecipeRepository recipeRepository;
-
-    public RecipeFacade(
-        IMapper mapper,
-        IRecipeRepository recipeRepository)
-    {
-        this.mapper = mapper;
-        this.recipeRepository = recipeRepository;
-    }
-
     public List<RecipeListModel> GetAll()
     {
         var recipeEntities = recipeRepository.GetAll();
@@ -52,7 +44,7 @@ public class RecipeFacade : IRecipeFacade
                                                  RecipeId = recipeEntity.Id,
                                                  IngredientId = t.Ingredient?.Id
                                              }).ToList()
-                                         ?? new List<IngredientAmountEntity>();
+                                         ?? [];
 
         var result = recipeRepository.Update(recipeEntity);
         return result;
@@ -81,7 +73,10 @@ public class RecipeFacade : IRecipeFacade
             }
         }
 
-        return recipe with { IngredientAmounts = result };
+        return new RecipeDetailModel(recipe)
+        {
+            IngredientAmounts = result
+        };
     }
 
     public void Delete(Guid id)

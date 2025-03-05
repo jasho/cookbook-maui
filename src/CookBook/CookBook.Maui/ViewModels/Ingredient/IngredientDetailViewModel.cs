@@ -1,27 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
-using CookBook.Maui.ViewModels.Base;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class IngredientDetailViewModel : ViewModelBase
+public partial class IngredientDetailViewModel(
+    IIngredientsClient ingredientsClient,
+    IShare share)
+    : ViewModelBase
 {
-    private readonly IIngredientsClient ingredientsClient;
-    private readonly IShare share;
-
     public Guid Id { get; set; } = Guid.Empty;
 
     public IngredientDetailModel? Ingredient { get; set; }
-
-    public IngredientDetailViewModel(
-        IIngredientsClient ingredientsClient,
-        IShare share)
-    {
-        this.ingredientsClient = ingredientsClient;
-        this.share = share;
-    }
 
     public override async Task OnAppearingAsync()
     {
@@ -38,10 +29,14 @@ public partial class IngredientDetailViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+        Dictionary<string, object> navigationParameters = [];
+
+        if (Ingredient is not null)
         {
-            [nameof(IngredientEditViewModel.Ingredient)] = Ingredient
-        });
+            navigationParameters.Add(nameof(IngredientEditViewModel.Ingredient), Ingredient);
+        }
+
+        await Shell.Current.GoToAsync("/edit", navigationParameters);
     }
 
     [RelayCommand]

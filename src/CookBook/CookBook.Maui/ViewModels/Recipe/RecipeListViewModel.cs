@@ -2,30 +2,22 @@
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Maui.Services.Interfaces;
-using CookBook.Maui.ViewModels.Interfaces;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
-[INotifyPropertyChanged]
-public partial class RecipeListViewModel : IViewModel
+public partial class RecipeListViewModel(
+    IRoutingService routingService,
+    IRecipesClient recipesClient)
+    : ViewModelBase
 {
-    private readonly IRoutingService routingService;
-    private readonly IRecipesClient recipesClient;
-
     [ObservableProperty]
-    private ICollection<RecipeListModel>? items;
+    public partial ICollection<RecipeListModel>? Items { get; set; }
 
-    public RecipeListViewModel(
-        IRoutingService routingService,
-        IRecipesClient recipesClient)
+    public override async Task OnAppearingAsync()
     {
-        this.routingService = routingService;
-        this.recipesClient = recipesClient;
-    }
+        await base.OnAppearingAsync();
 
-    public async Task OnAppearingAsync()
-    {
         Items = await recipesClient.GetRecipesAllAsync();
     }
 

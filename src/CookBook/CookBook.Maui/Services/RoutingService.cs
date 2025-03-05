@@ -3,7 +3,6 @@ using CookBook.Maui.Pages;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Maui.ViewModels;
 using CookBook.Maui.ViewModels.Ingredient;
-using CookBook.Maui.ViewModels.Interfaces;
 using CookBook.Maui.ViewModels.Recipe;
 
 namespace CookBook.Maui.Services;
@@ -47,6 +46,6 @@ public class RoutingService : IRoutingService
             : routesDesktop;
 
     public string GetRouteByViewModel<TViewModel>()
-        where TViewModel : IViewModel
+        where TViewModel : ViewModelBase
         => Routes.First(route => route.ViewModelType == typeof(TViewModel)).Route;
 }

@@ -5,7 +5,8 @@ using System.Globalization;
 
 namespace CookBook.Maui.Converters;
 
-public class UnitToStringConverter : BaseConverterOneWay<Unit, string>
+[AcceptEmptyServiceProvider]
+public partial class UnitToStringConverter : BaseConverterOneWay<Unit, string>
 {
     public override string ConvertFrom(Unit value, CultureInfo? culture)
         => UnitTexts.ResourceManager.GetString(value.ToString(), culture) 

@@ -1,11 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CookBook.Maui.ViewModels.Interfaces;
 
-namespace CookBook.Maui.ViewModels.Base;
+namespace CookBook.Maui.ViewModels;
 
-[INotifyPropertyChanged]
-public abstract partial class ViewModelBase : IViewModel
+public abstract partial class ViewModelBase : ObservableObject
 {
     public virtual Task OnAppearingAsync()
     {

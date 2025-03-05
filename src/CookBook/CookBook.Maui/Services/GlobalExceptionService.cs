@@ -8,7 +8,7 @@ namespace CookBook.Maui.Services
         {
             MainThread.InvokeOnMainThreadAsync(() =>
             {
-                Application.Current?.MainPage?.DisplayAlert("Something went wrong", exception.Message, "OK");
+                Application.Current?.Windows[0].Page?.DisplayAlert("Something went wrong", exception.Message, "OK");
             });
         }
     }

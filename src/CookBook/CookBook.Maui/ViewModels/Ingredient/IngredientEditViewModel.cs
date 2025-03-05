@@ -1,23 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
-using CookBook.Maui.ViewModels.Base;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Ingredient), nameof(Ingredient))]
-public partial class IngredientEditViewModel : ViewModelBase
+public partial class IngredientEditViewModel(IIngredientsClient ingredientsClient)
+    : ViewModelBase
 {
-    private readonly IIngredientsClient ingredientsClient;
-
     public FileResult? ImageFileResult { get; set; }
-    public IngredientDetailModel Ingredient { get; init; }
-
-    public IngredientEditViewModel(
-        IIngredientsClient ingredientsClient)
-    {
-        this.ingredientsClient = ingredientsClient;
-    }
+    public IngredientDetailModel? Ingredient { get; init; }
 
     [RelayCommand]
     private async Task SaveAsync()
@@ -34,9 +26,9 @@ public partial class IngredientEditViewModel : ViewModelBase
             PickerTitle = "Pick an image",
             FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
             {
-                [DevicePlatform.Android] = new[] { ".png", ".jpg", ".jpeg" },
-                [DevicePlatform.iOS] = new[] { ".png", ".jpg", ".jpeg" },
-                [DevicePlatform.WinUI] = new[] { ".png", ".jpg", ".jpeg" }
+                [DevicePlatform.Android] = [".png", ".jpg", ".jpeg"],
+                [DevicePlatform.iOS] = [".png", ".jpg", ".jpeg"],
+                [DevicePlatform.WinUI] = [".png", ".jpg", ".jpeg"]
             })
         });
     }

@@ -2,8 +2,6 @@
 
 public record ImageEntity : EntityBase
 {
-    public Guid Id { get; set; }
-
     public byte[] Image { get; set; } = Array.Empty<byte>();
 
     public string ImageB64

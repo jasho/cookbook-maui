@@ -4,10 +4,25 @@ using NJsonSchema.Annotations;
 namespace CookBook.Common.Models;
 
 [JsonSchemaFlatten]
-public record RecipeDetailModel : ModelBase
+public class RecipeDetailModel : ModelBase
 {
+    public RecipeDetailModel()
+    {
+    }
+
+    public RecipeDetailModel(RecipeDetailModel recipe)
+    {
+        Id = recipe.Id;
+        Name = recipe.Name;
+        Description = recipe.Description;
+        Duration = recipe.Duration;
+        FoodType = recipe.FoodType;
+        IngredientAmounts = recipe.IngredientAmounts;
+        ImageUrl = recipe.ImageUrl;
+    }
+
     public Guid? Id { get; set; }
-    public required string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
     public TimeSpan Duration { get; set; }
     public FoodType FoodType { get; set; }

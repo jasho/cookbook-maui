@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Fody" Version="6.9.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -12,5 +13,10 @@
     <PackageReference Include="NJsonSchema" Version="11.1.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
   </ItemGroup>
-
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Projects\cookbook-maui\src\CookBook\CookBook.Common\Models\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Projects\cookbook-maui\src\CookBook\CookBook.Common\Models\.editorconfig" />
+  </ItemGroup>
 </Project>

@@ -2,30 +2,22 @@
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Maui.Services.Interfaces;
-using CookBook.Maui.ViewModels.Interfaces;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
-[INotifyPropertyChanged]
-public partial class IngredientListViewModel : IViewModel
+public partial class IngredientListViewModel(
+    IRoutingService routingService,
+    IIngredientsClient ingredientsClient)
+    : ViewModelBase
 {
-    private readonly IRoutingService routingService;
-    private readonly IIngredientsClient ingredientsClient;
-
     [ObservableProperty]
-    private ICollection<IngredientListModel>? items;
+    public partial ICollection<IngredientListModel>? Items { get; set; }
 
-    public IngredientListViewModel(
-        IRoutingService routingService,
-        IIngredientsClient ingredientsClient)
+    public override async Task OnAppearingAsync()
     {
-        this.routingService = routingService;
-        this.ingredientsClient = ingredientsClient;
-    }
+        await base.OnAppearingAsync();
 
-    public async Task OnAppearingAsync()
-    {
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }
 
@@ -33,8 +25,7 @@ public partial class IngredientListViewModel : IViewModel
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync(route, new Dictionary<string, object>
-        {
+        await Shell.Current.GoToAsync(route, new Dictionary<string, object> {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
     }

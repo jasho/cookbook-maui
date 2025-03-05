@@ -5,7 +5,8 @@ using System.Globalization;
 
 namespace CookBook.Maui.Converters;
 
-public class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
+[AcceptEmptyServiceProvider]
+public partial class FoodTypeToIconConverter : BaseConverterOneWay<FoodType, string>
 {
     public override string ConvertFrom(FoodType value, CultureInfo? culture)
     {
