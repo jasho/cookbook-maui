@@ -43,16 +43,18 @@
                             ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:RecipeListModel">
-                        <Frame WidthRequest="{OnIdiom Phone=-1,
-                                                      Desktop=300}"
-                               HeightRequest="200"
-                               Padding="0"
-                               CornerRadius="10"
-                               IsClippedToBounds="True">
-                            <Frame.GestureRecognizers>
+                        <Border WidthRequest="{OnIdiom Phone=-1,
+                                                       Desktop=300}"
+                                HeightRequest="200"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                                       CommandParameter="{Binding Id}"/>
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
 
                             <Grid Padding="0"
                                   ColumnDefinitions="200, *"
@@ -72,21 +74,23 @@
                                          Grid.ColumnSpan="2"
                                          Opacity="0.25"
                                          Color="Black"/>
+                                <Border Grid.Row="0"
+                                        Grid.RowSpan="{OnIdiom Phone=1,
+                                                               Desktop=2}"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="{OnIdiom Phone=1,
+                                                                  Desktop=2}"
+                                        HeightRequest="{OnIdiom Desktop=20,
+                                                                Phone=30}"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                        Margin="10,22"
+                                        Padding="6,0"
+                                        BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="5"/>
+                                    </Border.StrokeShape>
 
-                                <Frame Grid.Row="0"
-                                       Grid.RowSpan="{OnIdiom Phone=1,
-                                                              Desktop=2}"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="{OnIdiom Phone=1,
-                                                                 Desktop=2}"
-                                       HeightRequest="{OnIdiom Desktop=20,
-                                                               Phone=30}"
-                                       HorizontalOptions="Start"
-                                       VerticalOptions="Start"
-                                       Margin="10,22"
-                                       Padding="6,0"
-                                       BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
-                                       CornerRadius="5">
                                     <HorizontalStackLayout HorizontalOptions="Start"
                                                            VerticalOptions="Center"
                                                            Padding="0"
@@ -102,7 +106,7 @@
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
                                                TextColor="White"/>
                                     </HorizontalStackLayout>
-                                </Frame>
+                                </Border>
 
                                 <Label Grid.Row="0"
                                        VerticalOptions="End"
@@ -113,7 +117,7 @@
                                        Text="{Binding Name}"
                                        TextColor="White"/>
                             </Grid>
-                        </Frame>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -59,14 +59,16 @@
                 </StackLayout>
             </Grid>
 
-            <Frame Grid.Column="1"
-                   HorizontalOptions="Fill"
-                   VerticalOptions="Fill"
-                   Margin="0"
-                   Padding="0"
-                   BorderColor="{StaticResource ImageBorderColor}"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
+            <Border Grid.Column="1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Margin="0"
+                    Padding="0"
+                    Stroke="{StaticResource ImageBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
                 <Grid>
                     <Image Aspect="AspectFill"
                            Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
@@ -78,18 +80,20 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="Nahrát obrázek"/>
                 </Grid>
-            </Frame>
+            </Border>
         </Grid>
 
         <Grid Grid.Row="1"
               ColumnDefinitions="*, *"
               ColumnSpacing="40">
-            <Frame Grid.Column="0"
-                   Padding="30"
-                   BackgroundColor="{StaticResource FormFrameBackgroundColor}"
-                   BorderColor="{StaticResource FormFrameBorderColor}"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
+            <Border Grid.Column="0"
+                    Padding="30"
+                    BackgroundColor="{StaticResource FormFrameBackgroundColor}"
+                    Stroke="{StaticResource FormFrameBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
@@ -99,14 +103,16 @@
                             VerticalOptions="Fill"
                             Text="{Binding Recipe.Description}"/>
                 </Grid>
-            </Frame>
+            </Border>
 
-            <Frame Grid.Column="1"
-                   Padding="30"
-                   BackgroundColor="{StaticResource FormFrameBackgroundColor}"
-                   BorderColor="{StaticResource FormFrameBorderColor}"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
+            <Border Grid.Column="1"
+                    Padding="30"
+                    BackgroundColor="{StaticResource FormFrameBackgroundColor}"
+                    Stroke="{StaticResource FormFrameBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
@@ -119,16 +125,18 @@
                                 <StackLayout Margin="0,0,0,15"
                                              Orientation="Horizontal"
                                              Spacing="20">
-                                    <Frame WidthRequest="60"
-                                           HeightRequest="60"
-                                           Padding="0"
-                                           CornerRadius="10"
-                                           IsClippedToBounds="True">
+                                    <Border WidthRequest="60"
+                                            HeightRequest="60"
+                                            Padding="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+
                                         <Image HorizontalOptions="Fill"
                                                VerticalOptions="Fill"
                                                Aspect="AspectFill"
                                                Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
-                                    </Frame>
+                                    </Border>
 
                                     <Label VerticalOptions="Center">
                                         <Label.FormattedText>
@@ -153,7 +161,7 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="Upravit ingredience"/>
                 </Grid>
-            </Frame>
+            </Border>
         </Grid>
 
         <StackLayout Grid.Row="2"
