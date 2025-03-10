@@ -6,20 +6,12 @@ using CookBook.Mobile.Api;
 namespace CookBook.Maui.ViewModels.Recipe;
 
 [QueryProperty(nameof(Recipe), "recipe")]
-public partial class RecipeEditViewModel : ViewModelBase
+public partial class RecipeEditViewModel(IRecipesClient recipesClient)
+    : ViewModelBase
 {
-    private readonly IRecipesClient recipesClient;
-
     public RecipeDetailModel Recipe { get; set; } = null!;
 
-    public List<FoodType> FoodTypes { get; set; }
-
-    public RecipeEditViewModel(IRecipesClient recipesClient)
-    {
-        this.recipesClient = recipesClient;
-
-        FoodTypes = new List<FoodType>((FoodType[])Enum.GetValues(typeof(FoodType)));
-    }
+    public List<FoodType> FoodTypes { get; set; } = [..Enum.GetValues<FoodType>()];
 
     [RelayCommand]
     private async Task GoToRecipeIngredientEditAsync()

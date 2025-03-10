@@ -8,28 +8,18 @@ namespace CookBook.Maui.ViewModels.Recipe
 {
     [QueryProperty(nameof(Recipe), nameof(Recipe))]
     [QueryProperty(nameof(IsRefreshRequested), nameof(IsRefreshRequested))]
-    public partial class RecipeIngredientsEditViewModel : ViewModelBase
+    public partial class RecipeIngredientsEditViewModel(
+        IIngredientsClient ingredientsClient,
+        IRecipesClient recipesClient)
+        : ViewModelBase
     {
-        private readonly IIngredientsClient ingredientsClient;
-        private readonly IRecipesClient recipesClient;
-
         public bool IsRefreshRequested { get; set; } = true;
 
         public RecipeDetailModel Recipe { get; set; } = null!;
 
-        public List<Unit> Units { get; set; }
-        public ObservableCollection<IngredientListModel> Ingredients { get; set; } = new();
+        public List<Unit> Units { get; set; } = [..Enum.GetValues<Unit>()];
+        public ObservableCollection<IngredientListModel> Ingredients { get; set; } = [];
         public RecipeDetailIngredientModel? IngredientNew { get; private set; }
-
-        public RecipeIngredientsEditViewModel(
-            IIngredientsClient ingredientsClient,
-            IRecipesClient recipesClient)
-        {
-            this.ingredientsClient = ingredientsClient;
-            this.recipesClient = recipesClient;
-
-            Units = new List<Unit>((Unit[]) Enum.GetValues(typeof(Unit)));
-        }
 
         public override async Task OnAppearingAsync()
         {
