@@ -47,19 +47,21 @@
                Style="{StaticResource BoldLabelStyle}"
                Text="{Binding Ingredient.Name}"/>
 
-        <Frame Grid.Row="1"
-               WidthRequest="170"
-               HeightRequest="170"
-               HorizontalOptions="Center"
-               CornerRadius="10"
-               IsClippedToBounds="True">
+        <Border Grid.Row="1"
+                WidthRequest="170"
+                HeightRequest="170"
+                HorizontalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+
             <Image WidthRequest="170"
                    HeightRequest="170"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    Aspect="AspectFill"
                    Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
-        </Frame>
+        </Border>
 
         <Label Grid.Row="2"
                HorizontalOptions="Center"

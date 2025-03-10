@@ -17,16 +17,18 @@
                      HorizontalOptions="Center"
                      Orientation="Horizontal"
                      Spacing="10">
-            <Frame WidthRequest="60"
-                   HeightRequest="40"
-                   Margin="0"
-                   Padding="0"
-                   BorderColor="{StaticResource ImageBorderColor}"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
+            <Border WidthRequest="60"
+                    HeightRequest="40"
+                    Margin="0"
+                    Padding="0"
+                    Stroke="{StaticResource ImageBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
                 <Image Aspect="AspectFill"
                        Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
-            </Frame>
+            </Border>
 
             <Label VerticalOptions="Center"
                    Style="{StaticResource BoldLabelStyle}"
@@ -84,17 +86,19 @@
                 <DataTemplate x:DataType="m:RecipeDetailIngredientModel">
                     <Grid ColumnDefinitions="Auto, Auto, Auto, Auto, *"
                           ColumnSpacing="10">
-                        <Frame Grid.Column="0"
-                               WidthRequest="60"
-                               HeightRequest="60"
-                               Padding="0"
-                               CornerRadius="10"
-                               IsClippedToBounds="True">
+                        <Border Grid.Column="0"
+                                WidthRequest="60"
+                                HeightRequest="60"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+
                             <Image HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
                                    Aspect="AspectFill"
                                    Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
-                        </Frame>
+                        </Border>
 
                         <Entry Grid.Column="1"
                                VerticalOptions="Center"

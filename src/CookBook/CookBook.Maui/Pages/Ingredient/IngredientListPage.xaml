@@ -40,18 +40,20 @@
                          CornerRadius="5"
                          Color="{DynamicResource ListItemBackgroundColor}"/>
 
-                <Frame Grid.Column="0"
-                       WidthRequest="34"
-                       HeightRequest="34"
-                       VerticalOptions="Center"
-                       Margin="4,0,0,0"
-                       Padding="0"
-                       CornerRadius="5"
-                       IsClippedToBounds="True">
+                <Border Grid.Column="0"
+                        WidthRequest="34"
+                        HeightRequest="34"
+                        VerticalOptions="Center"
+                        Margin="4,0,0,0"
+                        Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+
                     <Image HeightRequest="34"
                            Aspect="AspectFill"
                            Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
-                </Frame>
+                </Border>
 
                 <Label Grid.Column="1"
                        HorizontalOptions="Start"
@@ -77,14 +79,16 @@
 
         <DataTemplate x:DataType="models:IngredientListModel"
                       x:Key="ItemTemplateDesktop">
-            <Frame HeightRequest="200"
-                   Padding="0"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
-                <Frame.GestureRecognizers>
+            <Border HeightRequest="200"
+                    Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
+                <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                           CommandParameter="{Binding Id}"/>
-                </Frame.GestureRecognizers>
+                </Border.GestureRecognizers>
                 <Grid RowDefinitions="*, *">
                     <Image Grid.Row="0"
                            Grid.RowSpan="2"
@@ -107,11 +111,11 @@
                            Text="{Binding Name}"
                            TextColor="White"/>
                 </Grid>
-            </Frame>
+            </Border>
         </DataTemplate>
     </base:ContentPageBase.Resources>
 
-    <Grid HorizontalOptions="FillAndExpand"
+    <Grid HorizontalOptions="Fill"
           RowDefinitions="Auto, *"
           RowSpacing="20">
         <Label Grid.Row="0"

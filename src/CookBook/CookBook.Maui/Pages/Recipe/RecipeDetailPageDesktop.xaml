@@ -54,11 +54,14 @@
                            Text="{Binding Recipe.Name}"
                            TextColor="{StaticResource PrimaryLabelTextColor}"/>
 
-                    <Frame Grid.Row="1"
-                           HeightRequest="100"
-                           Padding="0"
-                           BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
-                           CornerRadius="10">
+                    <Border Grid.Row="1"
+                            HeightRequest="100"
+                            Padding="0"
+                            BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+
                         <Grid HorizontalOptions="Fill"
                               VerticalOptions="Center"
                               ColumnDefinitions="*, *, *"
@@ -125,7 +128,7 @@
                                    Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
                                    TextColor="White"/>
                         </Grid>
-                    </Frame>
+                    </Border>
 
                     <Label Grid.Row="2"
                            FontSize="16"
@@ -142,15 +145,17 @@
             <Grid Grid.Column="1"
                   RowDefinitions="Auto, *"
                   RowSpacing="20">
-                <Frame Grid.Row="0"
-                       WidthRequest="300"
-                       HeightRequest="200"
-                       Padding="0"
-                       CornerRadius="10"
-                       IsClippedToBounds="True">
+                <Border Grid.Row="0"
+                        WidthRequest="300"
+                        HeightRequest="200"
+                        Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+
                     <Image WidthRequest="300"
                            Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
-                </Frame>
+                </Border>
             </Grid>
         </Grid>
     </Grid>

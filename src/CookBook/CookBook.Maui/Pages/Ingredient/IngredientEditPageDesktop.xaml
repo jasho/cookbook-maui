@@ -29,15 +29,17 @@
               RowDefinitions="170, *"
               RowSpacing="20">
 
-            <Frame Grid.Row="0"
-                   Grid.Column="1"
-                   WidthRequest="170"
-                   HeightRequest="170"
-                   HorizontalOptions="Center"
-                   Padding="0"
-                   BorderColor="{StaticResource ImageBorderColor}"
-                   CornerRadius="10"
-                   IsClippedToBounds="True">
+            <Border Grid.Row="0"
+                    Grid.Column="1"
+                    WidthRequest="170"
+                    HeightRequest="170"
+                    HorizontalOptions="Center"
+                    Padding="0"
+                    Stroke="{StaticResource ImageBorderColor}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+
                 <Grid WidthRequest="170">
                     <Image WidthRequest="170"
                            HeightRequest="170"
@@ -51,7 +53,7 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static texts:IngredientEditViewTexts.SelectImage_Button_Text}"/>
                 </Grid>
-            </Frame>
+            </Border>
 
             <StackLayout Grid.Row="0"
                          Grid.RowSpan="2"
