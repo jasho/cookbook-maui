@@ -68,7 +68,7 @@
                     <RoundRectangle CornerRadius="5"/>
                 </Border.StrokeShape>
 
-                <Editor HorizontalOptions="FillAndExpand"
+                <Editor HorizontalOptions="Fill"
                         Style="{StaticResource FormEditorStyle}"
                         Text="{Binding Ingredient.Description}"/>
             </Border>

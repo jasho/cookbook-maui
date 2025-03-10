@@ -58,14 +58,14 @@
             <StackLayout Grid.Row="0"
                          Grid.RowSpan="2"
                          Grid.Column="2"
-                         HorizontalOptions="FillAndExpand"
+                         HorizontalOptions="Fill"
                          Orientation="Vertical"
                          Spacing="10">
                 <Label Style="{StaticResource RegularLabelStyle}"
                        Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}"
                        TextColor="{StaticResource PrimaryLabelTextColor}"/>
 
-                <Entry HorizontalOptions="FillAndExpand"
+                <Entry HorizontalOptions="Fill"
                        Style="{StaticResource FormEntryStyle}"
                        Text="{Binding Ingredient.Name}"/>
 
@@ -73,7 +73,7 @@
                        Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}"
                        TextColor="{StaticResource PrimaryLabelTextColor}"/>
 
-                <Entry HorizontalOptions="FillAndExpand"
+                <Entry HorizontalOptions="Fill"
                        Style="{StaticResource FormEntryStyle}"
                        Text="{Binding Ingredient.Description}"/>
             </StackLayout>
