@@ -45,7 +45,7 @@ namespace CookBook.Maui.ViewModels.Recipe
             => new()
             {
                 Id = Guid.NewGuid(),
-                Ingredient = Ingredients?.FirstOrDefault()
+                Ingredient = Ingredients.FirstOrDefault()
             };
 
         [RelayCommand]

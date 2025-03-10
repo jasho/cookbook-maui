@@ -3,7 +3,7 @@ using CookBook.Maui.ViewModels;
 
 namespace CookBook.Maui.Pages.Base;
 
-public abstract partial class ContentPageBase : ContentPage
+public abstract partial class ContentPageBase
 {
     private readonly IGlobalExceptionService globalExceptionService;
     protected ViewModelBase ViewModel { get; }

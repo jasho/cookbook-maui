@@ -127,14 +127,14 @@ void UseImageRouting(WebApplication app)
     const string ImageBaseName = "Image";
     var ImagesTag = $"{ImageBaseName}s";
 
-    app.MapGet($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => Results.File(imageFacade.GetById(id)?.Data ?? Array.Empty<byte>(), "image/**"))
+    app.MapGet($"{ImageBasePath}/{{id:guid}}", (Guid id, IImageFacade imageFacade) => Results.File(imageFacade.GetById(id)?.Data ?? [], "image/**"))
         .WithTags(ImagesTag)
         .WithName($"Get{ImageBaseName}ById");
 
     app.MapPost($"{ImageBasePath}", (ImageModel image, HttpRequest request, IImageFacade imageFacade) =>
         {
             // TODO input validation maybe ;)
-            Guid id = imageFacade.Create(new ImageModel { Id = image.Id, Data = image.Data });
+            var id = imageFacade.Create(new ImageModel { Id = image.Id, Data = image.Data });
             return Results.Created($"{request.Scheme}://{request.Host}{request.Path}/{id}", $"{request.Scheme}://{request.Host}{request.Path}/{id}");
         })
         .WithTags(ImagesTag)
@@ -143,12 +143,10 @@ void UseImageRouting(WebApplication app)
 
     app.MapPut($"{ImageBasePath}", (ImageModel image, IImageFacade imageFacade) =>
         {
-            Guid? id = imageFacade.Update(image);
-            if (id is not null)
-            {
-                return Results.NoContent();
-            }
-            return Results.NotFound();
+            var id = imageFacade.Update(image);
+            return id is null
+                ? Results.NotFound()
+                : Results.NoContent();
         })
         .WithTags(ImagesTag)
         .WithName($"Update{ImageBaseName}");

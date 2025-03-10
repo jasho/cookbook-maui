@@ -8,7 +8,6 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"
-                      x:Name="Root"
                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
@@ -52,9 +51,7 @@
                     <RoundRectangle CornerRadius="10"/>
                 </Border.StrokeShape>
 
-                <Image Grid.Row="0"
-                       Grid.RowSpan="2"
-                       HeightRequest="200"
+                <Image HeightRequest="200"
                        Aspect="AspectFill"
                        Source="{Binding Recipe.ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}"/>
             </Border>

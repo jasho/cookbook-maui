@@ -6,6 +6,7 @@ using System.Globalization;
 namespace CookBook.Maui.Converters;
 
 [AcceptEmptyServiceProvider]
+// ReSharper disable once PartialTypeWithSinglePart
 public partial class FoodTypeToStringConverter : BaseConverterOneWay<FoodType, string>
 {
     public override string ConvertFrom(FoodType value, CultureInfo? culture)

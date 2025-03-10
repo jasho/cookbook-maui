@@ -68,34 +68,9 @@ public class RecipeRepository : IRecipeRepository
         }
     }
 
-    private void DeleteIngredientAmounts(IEnumerable<IngredientAmountEntity> ingredientAmountsToDelete)
-    {
-        var toDelete = ingredientAmountsToDelete.ToList();
-        for (var i = 0; i < toDelete.Count; i++)
-        {
-            var ingredientAmountEntity = toDelete.ElementAt(i);
-            storage.IngredientAmounts.Remove(ingredientAmountEntity);
-        }
-    }
-
-    private void InsertIngredientAmounts(RecipeEntity existingEntity,
-        IEnumerable<IngredientAmountEntity> recipeIngredientAmountsToInsert)
-    {
-        foreach (var ingredientAmount in recipeIngredientAmountsToInsert)
-        {
-            var ingredientAmountEntity = ingredientAmount with { RecipeId = existingEntity.Id };
-            storage.IngredientAmounts.Add(ingredientAmountEntity);
-        }
-    }
-
     private IList<IngredientAmountEntity> GetIngredientAmountsByRecipeId(Guid recipeId)
     {
         return storage.IngredientAmounts.Where(ingredientAmountEntity => ingredientAmountEntity.RecipeId == recipeId).ToList();
-    }
-
-    private IngredientAmountEntity? GetIngredientAmountByRecipeIdAndIngredientId(Guid recipeId, Guid ingredientId)
-    {
-        return storage.IngredientAmounts.SingleOrDefault(entity => entity.RecipeId == recipeId && entity.IngredientId == ingredientId);
     }
 
     public void Remove(Guid id)

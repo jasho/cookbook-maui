@@ -1,5 +1,6 @@
 ﻿using Foundation;
 
+// ReSharper disable once CheckNamespace
 namespace CookBook.Maui
 {
     [Register("AppDelegate")]

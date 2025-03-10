@@ -3,7 +3,6 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:CookBook.Maui.Converters"
-             xmlns:local="clr-namespace:CookBook.Maui"
              xmlns:styles="clr-namespace:CookBook.Maui.Resources.Styles">
     <Application.Resources>
         <ResourceDictionary>

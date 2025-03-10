@@ -7,7 +7,6 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="vm:RecipeDetailViewModel"
-                      x:Name="Root"
                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
@@ -45,8 +44,7 @@
               ColumnDefinitions="*, Auto"
               ColumnSpacing="20">
             <ScrollView Orientation="Vertical">
-                <Grid Grid.Column="0"
-                      RowDefinitions="Auto, Auto, Auto, *"
+                <Grid RowDefinitions="Auto, Auto, Auto, *"
                       RowSpacing="20">
                     <Label Grid.Row="0"
                            FontSize="20"

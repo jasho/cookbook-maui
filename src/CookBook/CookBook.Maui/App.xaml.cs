@@ -2,7 +2,7 @@
 
 namespace CookBook.Maui
 {
-    public partial class App : Application
+    public partial class App
     {
         private readonly IServiceProvider serviceProvider;
 
