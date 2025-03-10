@@ -4,6 +4,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
                       xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                      xmlns:enums="using:CookBook.Common.Enums"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="vm:RecipeIngredientsEditViewModel"
@@ -68,7 +69,7 @@
 
             <Picker Grid.Row="1"
                     Grid.Column="2"
-                    ItemDisplayBinding="{Binding Name}"
+                    ItemDisplayBinding="{Binding Name, x:DataType={x:Type m:IngredientListModel}}"
                     ItemsSource="{Binding Ingredients}"
                     SelectedItem="{Binding IngredientNew.Ingredient}"/>
 

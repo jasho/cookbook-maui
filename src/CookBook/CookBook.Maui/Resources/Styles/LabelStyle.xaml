@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ResourceDictionary x:Class="CookBook.Maui.Resources.Styles.LabelStyle"
+                    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
-                    x:Class="CookBook.Maui.Resources.Styles.LabelStyle">
+                    xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts">
 
-    <Style TargetType="Label" ApplyToDerivedTypes="True">
+    <Style ApplyToDerivedTypes="True"
+           TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryLabelTextColor}"/>
     </Style>
 
-    <Style x:Key="RegularLabelStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Regular}" />
+    <Style x:Key="RegularLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Regular}"/>
     </Style>
 
-    <Style x:Key="MediumLabelStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Medium}" />
+    <Style x:Key="MediumLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Medium}"/>
     </Style>
 
-    <Style x:Key="BoldLabelStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Bold}" />
+    <Style x:Key="BoldLabelStyle"
+           TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static fonts:Fonts.Bold}"/>
     </Style>
 </ResourceDictionary>

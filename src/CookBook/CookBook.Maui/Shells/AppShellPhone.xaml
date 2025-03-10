@@ -19,7 +19,7 @@
         </Grid>
     </Shell.FlyoutHeader>
     <Shell.ItemTemplate>
-        <DataTemplate>
+        <DataTemplate x:DataType="{x:Type FlyoutItem}">
             <Grid Padding="10"
                   ColumnDefinitions="20, *"
                   ColumnSpacing="10">
@@ -35,10 +35,10 @@
     </Shell.ItemTemplate>
 
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Home_FlyoutItem_Title}">
-        <FlyoutItem.Icon>
+        <FlyoutItem.FlyoutIcon>
             <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
                              Glyph="{Static fonts:FontAwesomeIcons.House}"/>
-        </FlyoutItem.Icon>
+        </FlyoutItem.FlyoutIcon>
 
         <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
             <Tab.Icon>
@@ -60,10 +60,10 @@
     </FlyoutItem>
 
     <FlyoutItem Title="{x:Static texts:AppShellTexts.Settings_FlyoutItem_Title}">
-        <FlyoutItem.Icon>
+        <FlyoutItem.FlyoutIcon>
             <FontImageSource FontFamily="{Static fonts:Fonts.FontAwesome}"
                              Glyph="{Static fonts:FontAwesomeIcons.Cog}"/>
-        </FlyoutItem.Icon>
+        </FlyoutItem.FlyoutIcon>
 
         <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"
                       Route="settings"/>

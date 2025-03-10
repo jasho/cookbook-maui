@@ -7,7 +7,7 @@
                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                      x:DataType="vm:RecipeDetailViewModel"
+                      x:DataType="{x:Type vm:RecipeDetailViewModel}"
                       x:Name="Root"
                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
                                       Desktop=''}"
@@ -42,7 +42,7 @@
     </base:ContentPageBase.ToolbarItems>
 
     <ScrollView>
-        <Grid x:DataType="vm:RecipeDetailViewModel"
+        <Grid x:DataType="{x:Type vm:RecipeDetailViewModel}"
               RowDefinitions="200, Auto, Auto, Auto, Auto, Auto, *"
               RowSpacing="20">
             <Border Grid.Row="0"
