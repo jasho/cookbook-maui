@@ -119,13 +119,13 @@ public static class MauiProgram
         services.AddHttpClient<IIngredientsClient, IngredientsClient>((serviceProvider, client) =>
         {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
-            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
+            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new NullReferenceException($"Value for '{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}' cannot be null"));
         });
 
         services.AddHttpClient<IRecipesClient, RecipesClient>((serviceProvider, client) =>
         {
             var apiOptions = serviceProvider.GetRequiredService<IOptions<ApiOptions>>();
-            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new ArgumentNullException($"{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}"));
+            client.BaseAddress = new Uri(apiOptions.Value.ApiUrl ?? throw new NullReferenceException($"Value for '{nameof(apiOptions)}.{nameof(ApiOptions.ApiUrl)}' cannot be null"));
         });
     }
 
