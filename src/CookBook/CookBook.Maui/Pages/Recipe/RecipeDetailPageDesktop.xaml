@@ -6,7 +6,7 @@
                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                      x:DataType="vm:RecipeDetailViewModel"
+                      x:DataType="{x:Type vm:RecipeDetailViewModel}"
                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">

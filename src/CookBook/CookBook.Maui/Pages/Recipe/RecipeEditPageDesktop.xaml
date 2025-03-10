@@ -5,7 +5,7 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-                      x:DataType="vm:RecipeEditViewModel"
+                      x:DataType="{x:Type vm:RecipeEditViewModel}"
                       Title="RecipeEditViewDesktop"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="Auto, *, Auto"
@@ -121,7 +121,7 @@
                     <CollectionView Grid.Row="1"
                                     ItemsSource="{Binding Recipe.IngredientAmounts}">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="m:RecipeDetailIngredientModel">
+                            <DataTemplate x:DataType="{x:Type m:RecipeDetailIngredientModel}">
                                 <StackLayout Margin="0,0,0,15"
                                              Orientation="Horizontal"
                                              Spacing="20">

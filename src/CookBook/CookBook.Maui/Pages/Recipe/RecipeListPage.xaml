@@ -42,7 +42,7 @@
                                                   Default={StaticResource ItemsLayoutDesktop}}"
                             ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:RecipeListModel">
+                    <DataTemplate x:DataType="{x:Type models:RecipeListModel}">
                         <Border WidthRequest="{OnIdiom Phone=-1,
                                                        Desktop=300}"
                                 HeightRequest="200"
