@@ -72,7 +72,7 @@
                                    VerticalOptions="End"
                                    FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                    FontSize="15"
-                                   Text="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
+                                   Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
                                    TextColor="White"/>
 
                             <Label Grid.Row="1"
@@ -87,7 +87,8 @@
                             <Image Grid.Row="0"
                                    Grid.Column="1"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="End">
+                                   VerticalOptions="End"
+                                   HeightRequest="20">
                                 <Image.Source>
                                     <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                      Glyph="{x:Static fonts:FontAwesomeIcons.Clock}"
@@ -108,7 +109,8 @@
                             <Image Grid.Row="0"
                                    Grid.Column="2"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="End">
+                                   VerticalOptions="End"
+                                   HeightRequest="20">
                                 <Image.Source>
                                     <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                      Glyph="{x:Static fonts:FontAwesomeIcons.Seedling}"
