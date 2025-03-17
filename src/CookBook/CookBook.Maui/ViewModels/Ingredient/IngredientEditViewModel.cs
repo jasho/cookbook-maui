@@ -10,7 +10,7 @@ public partial class IngredientEditViewModel(IIngredientsClient ingredientsClien
     : ViewModelBase
 {
     public FileResult? ImageFileResult { get; set; }
-    public Guid Id { get; set; } = Guid.Empty;
+    public Guid Id { get; init; } = Guid.Empty;
 
     [ObservableProperty]
     public partial IngredientDetailModel? Ingredient { get; set; }

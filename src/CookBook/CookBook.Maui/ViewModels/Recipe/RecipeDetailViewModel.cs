@@ -10,31 +10,41 @@ public partial class RecipeDetailViewModel(
     IRecipesClient recipesClient,
     IShare share) : ViewModelBase
 {
-    [ObservableProperty]
-    public partial Guid Id { get; set; } = Guid.Empty;
+    public Guid Id { get; init; } = Guid.Empty;
 
-    public RecipeDetailModel? Recipe { get; set; }
+    [ObservableProperty]
+    public partial RecipeDetailModel? Recipe { get; set; }
 
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
 
-        Recipe = await recipesClient.GetRecipeByIdAsync(Id);
+        if (Id != Guid.Empty)
+        {
+            Recipe = await recipesClient.GetRecipeByIdAsync(Id);
+        }
     }
 
     [RelayCommand]
     private async Task DeleteAsync()
     {
-        await recipesClient.DeleteRecipeAsync(Recipe!.Id!.Value);
+        if (Recipe?.Id is not null)
+        {
+            await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
+        }
+
         Shell.Current.SendBackButtonPressed();
     }
 
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        if (Recipe is not null)
+        if (Recipe?.Id is not null)
         {
-            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object> { ["recipe"] = Recipe });
+            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+            {
+                [nameof(RecipeEditViewModel.Id)] = Recipe.Id
+            });
         }
     }
 
@@ -43,11 +53,14 @@ public partial class RecipeDetailViewModel(
     {
         if (Recipe?.Id is not null)
         {
-            await share.RequestAsync(new ShareTextRequest {
+            await share.RequestAsync(new ShareTextRequest
+            {
                 Title = Recipe.Name,
-                Text = $@"{Recipe.Name}
+                Text = $"""
+                        {Recipe.Name}
 
-{Recipe.Description}",
+                        {Recipe.Description}
+                        """,
                 Subject = $"CookBook - {Recipe.Name}",
                 Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/recipes/{Recipe.Id.Value}"
             });

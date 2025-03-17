@@ -11,7 +11,7 @@ public partial class IngredientDetailViewModel(
     IShare share)
     : ViewModelBase
 {
-    public Guid Id { get; set; } = Guid.Empty;
+    public Guid Id { get; init; } = Guid.Empty;
 
     [ObservableProperty]
     public partial IngredientDetailModel? Ingredient { get; set; }
@@ -58,9 +58,11 @@ public partial class IngredientDetailViewModel(
             await share.RequestAsync(new ShareTextRequest
             {
                 Title = Ingredient.Name,
-                Text = $@"{Ingredient.Name}
+                Text = $"""
+                        {Ingredient.Name}
 
-{Ingredient.Description}",
+                        {Ingredient.Description}
+                        """,
                 Subject = $"CookBook - {Ingredient.Name}",
                 Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/ingredients/{Ingredient.Id.Value}"
             });
