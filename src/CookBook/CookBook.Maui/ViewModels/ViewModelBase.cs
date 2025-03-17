@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace CookBook.Maui.ViewModels;
 
-public abstract partial class ViewModelBase : ObservableObject
+public abstract partial class ViewModelBase : ObservableRecipient
 {
     protected bool ForceDataRefresh = true;
 

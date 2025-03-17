@@ -1,12 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Messages;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class IngredientEditViewModel(IIngredientsClient ingredientsClient)
+public partial class IngredientEditViewModel(
+    IIngredientsClient ingredientsClient,
+    IMessenger messenger)
     : ViewModelBase
 {
     public FileResult? ImageFileResult { get; set; }
@@ -38,15 +42,22 @@ public partial class IngredientEditViewModel(IIngredientsClient ingredientsClien
     [RelayCommand]
     private async Task SaveAsync()
     {
-        if (Ingredient is not null)
+        if (Ingredient?.Id is not null)
         {
             if (Id == Guid.Empty)
             {
                 await ingredientsClient.CreateIngredientAsync(Ingredient);
+
+                messenger.Send<IngredientCreatedMessage>();
             }
             else
             {
                 await ingredientsClient.UpdateIngredientAsync(Ingredient);
+
+                messenger.Send(new IngredientUpdatedMessage
+                {
+                    IngredientId = Ingredient.Id.Value
+                });
             }
         }
 

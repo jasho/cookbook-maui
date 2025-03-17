@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Maui.Options;
 using CookBook.Maui.Pages;
 using CookBook.Maui.Resources.Fonts;
@@ -111,6 +112,7 @@ public static class MauiProgram
         services.AddSingleton<IRoutingService, RoutingService>();
         services.AddSingleton<IShare>(_ => Share.Default);
         services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
+        services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
         //services.AddSingleton<IGlobalExceptionServiceInitializer, GlobalExceptionServiceInitializer>();
     }
 

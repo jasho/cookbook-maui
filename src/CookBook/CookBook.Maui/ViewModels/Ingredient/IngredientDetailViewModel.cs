@@ -1,16 +1,29 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Messages;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class IngredientDetailViewModel(
-    IIngredientsClient ingredientsClient,
-    IShare share)
-    : ViewModelBase
+public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<IngredientUpdatedMessage>
 {
+    private readonly IIngredientsClient ingredientsClient;
+    private readonly IShare share;
+
+    /// <inheritdoc/>
+    public IngredientDetailViewModel(
+        IIngredientsClient ingredientsClient,
+        IShare share)
+    {
+        this.ingredientsClient = ingredientsClient;
+        this.share = share;
+
+        IsActive = true;
+    }
+
     public Guid Id { get; init; } = Guid.Empty;
 
     [ObservableProperty]
@@ -66,6 +79,14 @@ public partial class IngredientDetailViewModel(
                 Subject = $"CookBook - {Ingredient.Name}",
                 Uri = $"https://app-cookbook-maui-api.azurewebsites.net/api/ingredients/{Ingredient.Id.Value}"
             });
+        }
+    }
+
+    public void Receive(IngredientUpdatedMessage message)
+    {
+        if (message.IngredientId == Id)
+        {
+            ForceDataRefresh = true;
         }
     }
 }

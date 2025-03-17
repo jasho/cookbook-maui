@@ -1,16 +1,28 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Messages;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
-public partial class IngredientListViewModel(
-    IRoutingService routingService,
-    IIngredientsClient ingredientsClient)
-    : ViewModelBase
+public partial class IngredientListViewModel
+    : ViewModelBase, IRecipient<IngredientCreatedMessage>, IRecipient<IngredientUpdatedMessage>
 {
+    private readonly IRoutingService routingService;
+    private readonly IIngredientsClient ingredientsClient;
+
+    public IngredientListViewModel(IRoutingService routingService,
+        IIngredientsClient ingredientsClient)
+    {
+        this.routingService = routingService;
+        this.ingredientsClient = ingredientsClient;
+
+        IsActive = true;
+    }
+
     [ObservableProperty]
     public partial ICollection<IngredientListModel>? Items { get; set; }
 
@@ -43,5 +55,15 @@ public partial class IngredientListViewModel(
     {
         var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
         await Shell.Current.GoToAsync($"{route}?id={id}");
+    }
+
+    public void Receive(IngredientCreatedMessage message)
+    {
+        ForceDataRefresh = true;
+    }
+
+    public void Receive(IngredientUpdatedMessage message)
+    {
+        ForceDataRefresh = true;
     }
 }
