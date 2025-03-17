@@ -1,13 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
+using CookBook.Maui.Messages;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class RecipeEditViewModel(IRecipesClient recipesClient)
+public partial class RecipeEditViewModel(
+    IRecipesClient recipesClient,
+    IMessenger messenger)
     : ViewModelBase
 {
     public Guid Id { get; init; } = Guid.Empty;
@@ -52,16 +56,22 @@ public partial class RecipeEditViewModel(IRecipesClient recipesClient)
     [RelayCommand]
     private async Task SaveAsync()
     {
-        if (Recipe is not null)
+        if (Recipe?.Id is not null)
         {
             if (Id == Guid.Empty)
             {
                 await recipesClient.CreateRecipeAsync(Recipe);
 
+                messenger.Send<RecipeCreatedMessage>();
             }
             else
             {
                 await recipesClient.UpdateRecipeAsync(Recipe);
+
+                messenger.Send(new RecipeUpdatedMessage
+                {
+                    RecipeId = Recipe.Id.Value
+                });
             }
         }
 
