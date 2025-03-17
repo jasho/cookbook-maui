@@ -15,8 +15,10 @@ public partial class RecipeDetailViewModel(
 
     public RecipeDetailModel? Recipe { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
+        await base.LoadDataAsync();
+
         Recipe = await recipesClient.GetRecipeByIdAsync(Id);
     }
 
@@ -41,8 +43,7 @@ public partial class RecipeDetailViewModel(
     {
         if (Recipe?.Id is not null)
         {
-            await share.RequestAsync(new ShareTextRequest
-            {
+            await share.RequestAsync(new ShareTextRequest {
                 Title = Recipe.Name,
                 Text = $@"{Recipe.Name}
 

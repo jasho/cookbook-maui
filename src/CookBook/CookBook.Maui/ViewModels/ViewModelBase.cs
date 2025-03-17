@@ -5,10 +5,20 @@ namespace CookBook.Maui.ViewModels;
 
 public abstract partial class ViewModelBase : ObservableObject
 {
-    public virtual Task OnAppearingAsync()
+    protected bool ForceDataRefresh = true;
+
+    public async Task OnAppearingAsync()
     {
-        return Task.CompletedTask;
+        if (ForceDataRefresh)
+        {
+            await LoadDataAsync();
+
+            ForceDataRefresh = false;
+        }
     }
+
+    protected virtual Task LoadDataAsync()
+        => Task.CompletedTask;
 
     [RelayCommand]
     private Task GoBackAsync()

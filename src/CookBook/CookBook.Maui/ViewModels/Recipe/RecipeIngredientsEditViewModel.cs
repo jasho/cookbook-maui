@@ -17,13 +17,13 @@ namespace CookBook.Maui.ViewModels.Recipe
 
         public RecipeDetailModel Recipe { get; set; } = null!;
 
-        public List<Unit> Units { get; set; } = [..Enum.GetValues<Unit>()];
+        public List<Unit> Units { get; set; } = [.. Enum.GetValues<Unit>()];
         public ObservableCollection<IngredientListModel> Ingredients { get; set; } = [];
         public RecipeDetailIngredientModel? IngredientNew { get; private set; }
 
-        public override async Task OnAppearingAsync()
+        protected override async Task LoadDataAsync()
         {
-            await base.OnAppearingAsync();
+            await base.LoadDataAsync();
 
             if (IsRefreshRequested)
             {
@@ -42,8 +42,7 @@ namespace CookBook.Maui.ViewModels.Recipe
         }
 
         private RecipeDetailIngredientModel GetNewIngredient()
-            => new()
-            {
+            => new() {
                 Id = Guid.NewGuid(),
                 Ingredient = Ingredients.FirstOrDefault()
             };

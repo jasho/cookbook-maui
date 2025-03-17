@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 
@@ -12,17 +13,27 @@ public partial class IngredientDetailViewModel(
 {
     public Guid Id { get; set; } = Guid.Empty;
 
-    public IngredientDetailModel? Ingredient { get; set; }
+    [ObservableProperty]
+    public partial IngredientDetailModel? Ingredient { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
-        Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
+        await base.LoadDataAsync();
+
+        if (Id != Guid.Empty)
+        {
+            Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
+        }
     }
 
     [RelayCommand]
     private async Task DeleteAsync()
     {
-        await ingredientsClient.DeleteIngredientAsync(Id);
+        if (Ingredient?.Id is not null)
+        {
+            await ingredientsClient.DeleteIngredientAsync(Ingredient.Id.Value);
+        }
+
         Shell.Current.SendBackButtonPressed();
     }
 
@@ -31,9 +42,9 @@ public partial class IngredientDetailViewModel(
     {
         Dictionary<string, object> navigationParameters = [];
 
-        if (Ingredient is not null)
+        if (Ingredient?.Id is not null)
         {
-            navigationParameters.Add(nameof(IngredientEditViewModel.Ingredient), Ingredient);
+            navigationParameters.Add(nameof(IngredientEditViewModel.Id), Ingredient.Id.Value);
         }
 
         await Shell.Current.GoToAsync("/edit", navigationParameters);

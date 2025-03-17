@@ -1,20 +1,55 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Models;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
-[QueryProperty(nameof(Ingredient), nameof(Ingredient))]
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class IngredientEditViewModel(IIngredientsClient ingredientsClient)
     : ViewModelBase
 {
     public FileResult? ImageFileResult { get; set; }
-    public IngredientDetailModel? Ingredient { get; init; }
+    public Guid Id { get; set; } = Guid.Empty;
+
+    [ObservableProperty]
+    public partial IngredientDetailModel? Ingredient { get; set; }
+
+    protected override async Task LoadDataAsync()
+    {
+        await base.LoadDataAsync();
+
+        if (Id == Guid.Empty)
+        {
+            Ingredient = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = string.Empty,
+                Description = string.Empty,
+                ImageUrl = null
+            };
+        }
+        else
+        {
+            Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
+        }
+    }
 
     [RelayCommand]
     private async Task SaveAsync()
     {
-        await ingredientsClient.CreateIngredientAsync(Ingredient);
+        if (Ingredient is not null)
+        {
+            if (Id == Guid.Empty)
+            {
+                await ingredientsClient.CreateIngredientAsync(Ingredient);
+            }
+            else
+            {
+                await ingredientsClient.UpdateIngredientAsync(Ingredient);
+            }
+        }
+
         Shell.Current.SendBackButtonPressed();
     }
 

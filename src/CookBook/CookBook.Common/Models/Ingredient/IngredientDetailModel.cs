@@ -3,10 +3,10 @@
 namespace CookBook.Common.Models;
 
 [JsonSchemaFlatten]
-public class IngredientDetailModel(Guid? id, string name, string description, string? imageUrl = null) : ModelBase
+public class IngredientDetailModel : ModelBase
 {
-    public Guid? Id { get; set; } = id;
-    public string Name { get; set; } = name;
-    public string Description { get; set; } = description;
-    public string? ImageUrl { get; set; } = imageUrl;
+    public Guid? Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string? ImageUrl { get; set; }
 }

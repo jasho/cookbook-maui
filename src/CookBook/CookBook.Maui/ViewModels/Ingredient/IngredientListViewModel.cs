@@ -14,9 +14,9 @@ public partial class IngredientListViewModel(
     [ObservableProperty]
     public partial ICollection<IngredientListModel>? Items { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
-        await base.OnAppearingAsync();
+        await base.LoadDataAsync();
 
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }
@@ -25,7 +25,8 @@ public partial class IngredientListViewModel(
     private async Task GoToDetailAsync(Guid id)
     {
         var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync(route, new Dictionary<string, object> {
+        await Shell.Current.GoToAsync(route, new Dictionary<string, object>
+        {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
     }

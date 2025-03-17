@@ -84,14 +84,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Converters\" />
-	  <Folder Include="Models\" />
-	  <Folder Include="Options\" />
-	  <Folder Include="Services\" />
-	  <Folder Include="ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Pages\Ingredient\IngredientDetailPageDesktop.xaml.cs">
 	    <DependentUpon>IngredientDetailPageDesktop.xaml</DependentUpon>
 	  </Compile>

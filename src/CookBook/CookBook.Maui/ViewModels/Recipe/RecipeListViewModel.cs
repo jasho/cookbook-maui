@@ -14,9 +14,9 @@ public partial class RecipeListViewModel(
     [ObservableProperty]
     public partial ICollection<RecipeListModel>? Items { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
-        await base.OnAppearingAsync();
+        await base.LoadDataAsync();
 
         Items = await recipesClient.GetRecipesAllAsync();
     }
