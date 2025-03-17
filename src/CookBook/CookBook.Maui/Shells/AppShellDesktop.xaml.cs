@@ -1,8 +1,6 @@
 using CommunityToolkit.Mvvm.Input;
+using CookBook.Maui.Services;
 using CookBook.Maui.Services.Interfaces;
-using CookBook.Maui.ViewModels;
-using CookBook.Maui.ViewModels.Ingredient;
-using CookBook.Maui.ViewModels.Recipe;
 
 namespace CookBook.Maui.Shells;
 
@@ -19,22 +17,19 @@ public partial class AppShellDesktop
     [RelayCommand]
     private async Task GoToRecipesAsync()
     {
-        var route = routingService.GetRouteByViewModel<RecipeListViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await Shell.Current.GoToAsync(RoutingService.RecipeListRouteAbsolute);
     }
 
     [RelayCommand]
     private async Task GoToIngredientsAsync()
     {
-        var route = routingService.GetRouteByViewModel<IngredientListViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await Shell.Current.GoToAsync(RoutingService.IngredientListRouteAbsolute);
     }
 
     [RelayCommand]
     private async Task GoToSettingsAsync()
     {
-        var route = routingService.GetRouteByViewModel<SettingsViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await Shell.Current.GoToAsync(RoutingService.SettingsRouteAbsolute);
     }
 
     [RelayCommand]

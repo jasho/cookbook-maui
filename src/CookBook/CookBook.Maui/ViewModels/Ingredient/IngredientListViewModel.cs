@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
 using CookBook.Maui.Messages;
+using CookBook.Maui.Services;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Mobile.Api;
 
@@ -36,8 +37,7 @@ public partial class IngredientListViewModel
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        var route = routingService.GetRouteByViewModel<IngredientDetailViewModel>();
-        await Shell.Current.GoToAsync(route, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(RoutingService.IngredientDetailRouteRelative, new Dictionary<string, object>
         {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
@@ -46,15 +46,17 @@ public partial class IngredientListViewModel
     [RelayCommand]
     private async Task GoToCreateAsync()
     {
-        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
-        await Shell.Current.GoToAsync(route);
+        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative);
     }
 
     [RelayCommand]
     private async Task GoToEditAsync(Guid id)
     {
-        var route = routingService.GetRouteByViewModel<IngredientEditViewModel>();
-        await Shell.Current.GoToAsync($"{route}?id={id}");
+        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative,
+            new Dictionary<string, object>
+            {
+                [nameof(IngredientEditViewModel.Id)] = id
+            });
     }
 
     public void Receive(IngredientCreatedMessage message)

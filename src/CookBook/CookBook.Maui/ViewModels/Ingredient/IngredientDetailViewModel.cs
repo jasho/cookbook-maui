@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
 using CookBook.Maui.Messages;
+using CookBook.Maui.Services;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
@@ -60,7 +61,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
             navigationParameters.Add(nameof(IngredientEditViewModel.Id), Ingredient.Id.Value);
         }
 
-        await Shell.Current.GoToAsync("/edit", navigationParameters);
+        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative, navigationParameters);
     }
 
     [RelayCommand]

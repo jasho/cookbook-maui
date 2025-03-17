@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
 using CookBook.Maui.Messages;
+using CookBook.Maui.Services;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
@@ -35,10 +36,11 @@ public partial class RecipeEditViewModel(
     {
         if (Recipe?.Id is not null)
         {
-            await Shell.Current.GoToAsync("/ingredients", new Dictionary<string, object>
-            {
-                [nameof(RecipeIngredientsEditViewModel.RecipeId)] = Recipe.Id
-            });
+            await Shell.Current.GoToAsync(RoutingService.RecipeIngredientsEditRouteRelative,
+                new Dictionary<string, object>
+                {
+                    [nameof(RecipeIngredientsEditViewModel.RecipeId)] = Recipe.Id
+                });
         }
     }
 

@@ -3,12 +3,14 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
 using CookBook.Maui.Messages;
+using CookBook.Maui.Services;
 using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
-[QueryProperty(nameof(Id), "id")]
-public partial class RecipeDetailViewModel : ViewModelBase, IRecipient<RecipeUpdatedMessage>
+[QueryProperty(nameof(Id), nameof(Id))]
+public partial class RecipeDetailViewModel
+    : ViewModelBase, IRecipient<RecipeUpdatedMessage>
 {
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
@@ -54,7 +56,7 @@ public partial class RecipeDetailViewModel : ViewModelBase, IRecipient<RecipeUpd
     {
         if (Recipe?.Id is not null)
         {
-            await Shell.Current.GoToAsync("/edit", new Dictionary<string, object>
+            await Shell.Current.GoToAsync(RoutingService.RecipeEditRouteRelative, new Dictionary<string, object>
             {
                 [nameof(RecipeEditViewModel.Id)] = Recipe.Id
             });
