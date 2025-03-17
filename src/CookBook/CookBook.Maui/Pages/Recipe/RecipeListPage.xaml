@@ -134,7 +134,7 @@
                 IsVisible="{OnIdiom Phone=False,
                                     Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"/>
+                Text="{x:Static texts:RecipeListViewTexts.Add_Button_Text_Desktop}"/>
 
         <Button WidthRequest="65"
                 HorizontalOptions="End"

@@ -61,6 +61,15 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add recipe.
+        /// </summary>
+        public static string Add_Button_Text_Desktop {
+            get {
+                return ResourceManager.GetString("Add_Button_Text_Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CookBook.
         /// </summary>
         public static string Page_Title {
