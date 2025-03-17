@@ -6,7 +6,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
                       x:DataType="vm:IngredientEditViewModel"
-                      Title="{OnIdiom Phone={x:Static texts:IngredientEditViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:IngredientEditPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="Auto, Auto, *"
@@ -14,7 +14,7 @@
         <VerticalStackLayout Spacing="5">
             <Label FontSize="14"
                    Style="{StaticResource RegularLabelStyle}"
-                   Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}"/>
+                   Text="{x:Static texts:IngredientEditPageTexts.Name_Label_Text}"/>
 
             <Border Padding="10,0"
                     BackgroundColor="{DynamicResource FormEntryBackgroundColor}"
@@ -49,7 +49,7 @@
                         Margin="0,0,0,10"
                         CornerRadius="5"
                         Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{x:Static texts:IngredientEditViewTexts.SelectImage_Button_Text}"/>
+                        Text="{x:Static texts:IngredientEditPageTexts.SelectImage_Button_Text}"/>
             </Grid>
         </Border>
 
@@ -59,7 +59,7 @@
             <Label Grid.Row="0"
                    FontSize="14"
                    Style="{StaticResource RegularLabelStyle}"
-                   Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}"/>
+                   Text="{x:Static texts:IngredientEditPageTexts.Description_Label_Text}"/>
 
             <Border Grid.Row="1"
                     Padding="10,0"

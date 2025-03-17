@@ -127,35 +127,35 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>FoodTypeTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\IngredientDetailViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\IngredientDetailPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>IngredientDetailViewTexts.resx</DependentUpon>
+	    <DependentUpon>IngredientDetailPageTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\IngredientEditViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\IngredientEditPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>IngredientEditViewTexts.resx</DependentUpon>
+	    <DependentUpon>IngredientEditPageTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\IngredientListViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\IngredientListPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>IngredientListViewTexts.resx</DependentUpon>
+	    <DependentUpon>IngredientListPageTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\RecipeDetailViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\RecipeDetailPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>RecipeDetailViewTexts.resx</DependentUpon>
+	    <DependentUpon>RecipeDetailPageTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\RecipeListViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\RecipeListPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>RecipeListViewTexts.resx</DependentUpon>
+	    <DependentUpon>RecipeListPageTexts.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Texts\SettingsViewTexts.Designer.cs">
+	  <Compile Update="Resources\Texts\SettingsPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>SettingsViewTexts.resx</DependentUpon>
+	    <DependentUpon>SettingsPageTexts.resx</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Texts\UnitTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
@@ -173,29 +173,29 @@
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\IngredientDetailPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>IngredientDetailPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\IngredientEditPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>IngredientEditPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\IngredientListPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>IngredientListPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\RecipeDetailViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\RecipeDetailPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>RecipeDetailViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>RecipeDetailPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\RecipeListPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>RecipeListViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>RecipeListPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Texts\SettingsViewTexts.resx">
+	  <EmbeddedResource Update="Resources\Texts\SettingsPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>SettingsViewTexts.Designer.cs</LastGenOutput>
+	    <LastGenOutput>SettingsPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Texts\UnitTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>

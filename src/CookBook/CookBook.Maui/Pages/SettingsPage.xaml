@@ -6,7 +6,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="vm:RecipeListViewModel"
-                      Title="{OnIdiom Phone={x:Static texts:SettingsViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:SettingsPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Label HorizontalOptions="Center"

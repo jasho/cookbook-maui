@@ -9,7 +9,7 @@
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="vm:RecipeListViewModel"
                       x:Name="Root"
-                      Title="{OnIdiom Phone={x:Static texts:RecipeListViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:RecipeListPageTexts.Page_Title},
                                       Desktop=''}"
                       MinimumHeightRequest="{OnIdiom Desktop=500}"
                       Style="{StaticResource ContentPageStyle}">
@@ -33,7 +33,7 @@
             <Label Grid.Row="0"
                    FontSize="24"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{x:Static texts:RecipeListViewTexts.Title_Label}"/>
+                   Text="{x:Static texts:RecipeListPageTexts.Title_Label}"/>
 
             <CollectionView Grid.Row="1"
                             VerticalOptions="FillAndExpand"
@@ -134,7 +134,7 @@
                 IsVisible="{OnIdiom Phone=False,
                                     Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:RecipeListViewTexts.Add_Button_Text_Desktop}"/>
+                Text="{x:Static texts:RecipeListPageTexts.Add_Button_Text_Desktop}"/>
 
         <Button WidthRequest="65"
                 HorizontalOptions="End"

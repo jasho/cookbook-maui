@@ -8,7 +8,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"
-                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <base:ContentPageBase.ToolbarItems>
@@ -142,7 +142,7 @@
             <Label Grid.Row="3"
                    FontSize="18"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{x:Static texts:RecipeDetailViewTexts.Ingredients_Label_Text}"/>
+                   Text="{x:Static texts:RecipeDetailPageTexts.Ingredients_Label_Text}"/>
 
             <CollectionView Grid.Row="4"
                             ItemsSource="{Binding Recipe.IngredientAmounts}"
@@ -200,7 +200,7 @@
             <Label Grid.Row="5"
                    FontSize="18"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"/>
+                   Text="{x:Static texts:RecipeDetailPageTexts.Description_Label_Text}"/>
 
             <Label Grid.Row="6"
                    FontSize="14"

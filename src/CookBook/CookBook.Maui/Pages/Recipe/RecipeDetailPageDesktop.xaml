@@ -7,7 +7,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"
-                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="70, *">
@@ -28,7 +28,7 @@
                 <Label VerticalOptions="Center"
                        FontSize="14"
                        Style="{StaticResource MediumLabelStyle}"
-                       Text="{x:Static texts:RecipeDetailViewTexts.Back_Button_Text_Desktop}"/>
+                       Text="{x:Static texts:RecipeDetailPageTexts.Back_Button_Text_Desktop}"/>
             </StackLayout>
 
             <Button Grid.Column="2"
@@ -37,7 +37,7 @@
                     BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}"
                     CornerRadius="5"
-                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text_Desktop}"/>
+                    Text="{x:Static texts:RecipeDetailPageTexts.Edit_Button_Text_Desktop}"/>
         </Grid>
 
         <Grid Grid.Row="1"
@@ -131,7 +131,7 @@
                     <Label Grid.Row="2"
                            FontSize="16"
                            Style="{StaticResource BoldLabelStyle}"
-                           Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"/>
+                           Text="{x:Static texts:RecipeDetailPageTexts.Description_Label_Text}"/>
 
                     <Label Grid.Row="3"
                            FontSize="14"

@@ -6,7 +6,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
                       x:DataType="vm:IngredientDetailViewModel"
-                      Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:IngredientDetailPageTexts.Page_Title},
                                       Desktop=''}"
                       NavigationPage.HasBackButton="False"
                       Style="{StaticResource ContentPageStyle}">
@@ -19,12 +19,12 @@
             <Button BackgroundColor="{StaticResource ErrorColor}"
                     Command="{Binding DeleteCommand}"
                     CornerRadius="5"
-                    Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text_Desktop}"/>
+                    Text="{x:Static texts:IngredientDetailPageTexts.Delete_Button_Text_Desktop}"/>
 
             <Button BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}"
                     CornerRadius="5"
-                    Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text_Desktop}"/>
+                    Text="{x:Static texts:IngredientDetailPageTexts.Edit_Button_Text_Desktop}"/>
         </StackLayout>
 
         <Grid HorizontalOptions="Center"

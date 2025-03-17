@@ -7,7 +7,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
                       x:DataType="vm:IngredientDetailViewModel"
-                      Title="{OnIdiom Phone={x:Static texts:IngredientDetailViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:IngredientDetailPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <base:ContentPageBase.ToolbarItems>

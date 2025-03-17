@@ -22,14 +22,14 @@ namespace CookBook.Maui.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class IngredientListViewTexts {
+    public class RecipeListPageTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal IngredientListViewTexts() {
+        internal RecipeListPageTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Maui.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.IngredientListViewTexts", typeof(IngredientListViewTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.RecipeListPageTexts", typeof(RecipeListPageTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Ingredient.
+        ///   Looks up a localized string similar to Add recipe.
         /// </summary>
         public static string Add_Button_Text_Desktop {
             get {
                 return ResourceManager.GetString("Add_Button_Text_Desktop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to +.
-        /// </summary>
-        public static string Add_Button_Text_Phone {
-            get {
-                return ResourceManager.GetString("Add_Button_Text_Phone", resourceCulture);
             }
         }
         
@@ -88,7 +79,7 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ingredients.
+        ///   Looks up a localized string similar to Recipes.
         /// </summary>
         public static string Title_Label {
             get {

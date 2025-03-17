@@ -22,14 +22,14 @@ namespace CookBook.Maui.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class IngredientDetailViewTexts {
+    public class SettingsPageTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal IngredientDetailViewTexts() {
+        internal SettingsPageTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Maui.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.IngredientDetailViewTexts", typeof(IngredientDetailViewTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.SettingsPageTexts", typeof(SettingsPageTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,34 +61,7 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back.
-        /// </summary>
-        public static string Back_Button_Text_Desktop {
-            get {
-                return ResourceManager.GetString("Back_Button_Text_Desktop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delete.
-        /// </summary>
-        public static string Delete_Button_Text_Desktop {
-            get {
-                return ResourceManager.GetString("Delete_Button_Text_Desktop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit.
-        /// </summary>
-        public static string Edit_Button_Text_Desktop {
-            get {
-                return ResourceManager.GetString("Edit_Button_Text_Desktop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ingredient.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Page_Title {
             get {

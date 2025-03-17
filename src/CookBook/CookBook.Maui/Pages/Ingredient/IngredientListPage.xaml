@@ -9,7 +9,7 @@
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
                       x:DataType="vm:IngredientListViewModel"
                       x:Name="Root"
-                      Title="{OnIdiom Phone={x:Static texts:IngredientListViewTexts.Page_Title},
+                      Title="{OnIdiom Phone={x:Static texts:IngredientListPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <base:ContentPageBase.Resources>
@@ -121,7 +121,7 @@
         <Label Grid.Row="0"
                FontSize="24"
                Style="{StaticResource BoldLabelStyle}"
-               Text="{x:Static texts:IngredientListViewTexts.Title_Label}"/>
+               Text="{x:Static texts:IngredientListPageTexts.Title_Label}"/>
 
         <Button Grid.Row="0"
                 HorizontalOptions="End"
@@ -134,7 +134,7 @@
                 IsVisible="{OnIdiom Phone=False,
                                     Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Desktop}"/>
+                Text="{x:Static texts:IngredientListPageTexts.Add_Button_Text_Desktop}"/>
 
         <CollectionView Grid.Row="1"
                         ItemTemplate="{OnIdiom Phone={StaticResource ItemTemplatePhone},
@@ -157,6 +157,6 @@
                 IsVisible="{OnIdiom Phone=True,
                                     Desktop=False}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:IngredientListViewTexts.Add_Button_Text_Phone}"/>
+                Text="{x:Static texts:IngredientListPageTexts.Add_Button_Text_Phone}"/>
     </Grid>
 </base:ContentPageBase>
