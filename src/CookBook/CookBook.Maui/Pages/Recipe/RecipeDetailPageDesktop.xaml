@@ -6,6 +6,7 @@
                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      xmlns:enums="clr-namespace:CookBook.Common.Enums;assembly=CookBook.Common"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"
                       Title="{OnIdiom Phone={x:Static texts:RecipeDetailPageTexts.Page_Title},
                                       Desktop=''}"
@@ -49,13 +50,13 @@
                     <Label Grid.Row="0"
                            FontSize="20"
                            Style="{StaticResource BoldLabelStyle}"
-                           Text="{Binding Recipe.Name}"
+                           Text="{Binding Recipe.Name, FallbackValue=''}"
                            TextColor="{StaticResource PrimaryLabelTextColor}"/>
 
                     <Border Grid.Row="1"
                             HeightRequest="100"
                             Padding="0"
-                            BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
+                            BackgroundColor="{Binding Recipe.FoodType, FallbackValue={x:Static enums:FoodType.Unknown}, Converter={StaticResource FoodTypeToColorConverter}}">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
@@ -72,7 +73,7 @@
                                    VerticalOptions="End"
                                    FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                    FontSize="15"
-                                   Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
+                                   Text="{Binding Recipe.FoodType, FallbackValue={x:Static enums:FoodType.Unknown}, Converter={StaticResource FoodTypeToIconConverter}}"
                                    TextColor="White"/>
 
                             <Label Grid.Row="1"
@@ -81,7 +82,7 @@
                                    VerticalOptions="Start"
                                    FontSize="11"
                                    Style="{StaticResource MediumLabelStyle}"
-                                   Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                                   Text="{Binding Recipe.FoodType, FallbackValue={x:Static enums:FoodType.Unknown}, Converter={StaticResource FoodTypeToStringConverter}}"
                                    TextColor="White"/>
 
                             <Image Grid.Row="0"
@@ -103,8 +104,14 @@
                                    VerticalOptions="Start"
                                    FontSize="11"
                                    Style="{StaticResource MediumLabelStyle}"
-                                   Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
-                                   TextColor="White"/>
+                                   TextColor="White">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{x:Static texts:RecipeDetailPageTexts.Duration_Label_StringFormat}">
+                                        <Binding Path="Recipe.Duration"
+                                                 FallbackValue="0"/>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
 
                             <Image Grid.Row="0"
                                    Grid.Column="2"
@@ -125,8 +132,14 @@
                                    VerticalOptions="Start"
                                    FontSize="11"
                                    Style="{StaticResource MediumLabelStyle}"
-                                   Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
-                                   TextColor="White"/>
+                                   TextColor="White">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{x:Static texts:RecipeDetailPageTexts.IngredientsAmount_Label_StringFormat}">
+                                        <Binding Path="Recipe.IngredientAmounts.Count"
+                                                 FallbackValue="0"/>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
                         </Grid>
                     </Border>
 
@@ -138,7 +151,7 @@
                     <Label Grid.Row="3"
                            FontSize="14"
                            Style="{StaticResource RegularLabelStyle}"
-                           Text="{Binding Recipe.Description}"/>
+                           Text="{Binding Recipe.Description, FallbackValue=''}"/>
                 </Grid>
             </ScrollView>
 
@@ -154,7 +167,7 @@
                     </Border.StrokeShape>
 
                     <Image WidthRequest="300"
-                           Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
+                           Source="{Binding Recipe.ImageUrl, FallbackValue='', TargetNullValue='recipe_placeholder.jpg'}"/>
                 </Border>
             </Grid>
         </Grid>

@@ -21,12 +21,12 @@ public class RoutingService : IRoutingService
     public const string SettingsRouteAbsolute = "//settings";
 
 
-    private static readonly ICollection<RouteModel> routesCommon = new List<RouteModel>
-    {
+    private static readonly ICollection<RouteModel> routesCommon =
+    [
         new(RecipeListRouteAbsolute, typeof(RecipeListPage), typeof(RecipeListViewModel)),
         new(IngredientListRouteAbsolute, typeof(IngredientListPage), typeof(IngredientListViewModel)),
-        new(SettingsRouteAbsolute, typeof(SettingsPage), typeof(SettingsViewModel)),
-    };
+        new(SettingsRouteAbsolute, typeof(SettingsPage), typeof(SettingsViewModel))
+    ];
 
     private static readonly IEnumerable<RouteModel> routesPhone = new List<RouteModel>
     {

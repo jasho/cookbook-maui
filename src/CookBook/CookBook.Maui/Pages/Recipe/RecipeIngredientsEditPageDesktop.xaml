@@ -6,6 +6,7 @@
                       xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      xmlns:texts="using:CookBook.Maui.Resources.Texts"
                       x:DataType="{x:Type vm:RecipeIngredientsEditViewModel}"
                       x:Name="RecipeIngredientsEditViewDesktopRoot"
                       Title="RecipeIngredientsEditViewDesktop"
@@ -27,17 +28,16 @@
                 </Border.StrokeShape>
 
                 <Image Aspect="AspectFill"
-                       Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
+                       Source="{Binding Recipe.ImageUrl, FallbackValue='recipe_placeholder.jpg', TargetNullValue='recipe_placeholder.jpg'}"/>
             </Border>
 
             <Label VerticalOptions="Center"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{Binding Recipe.Name}"/>
+                   Text="{Binding Recipe.Name, FallbackValue=''}"/>
         </StackLayout>
 
-
         <Label Grid.Row="1"
-               Text="Ingredience"/>
+               Text="{x:Static texts:RecipeIngredientsEditPageTexts.Ingredients_Label_Text}"/>
 
         <Grid Grid.Row="2"
               ColumnDefinitions="Auto, Auto, Auto, *"
@@ -46,15 +46,15 @@
               RowSpacing="10">
             <Label Grid.Row="0"
                    Grid.Column="0"
-                   Text="Množství"/>
+                   Text="{x:Static texts:RecipeIngredientsEditPageTexts.Ingredient_Amount_Label_Text}"/>
 
             <Entry Grid.Row="1"
                    Grid.Column="0"
-                   Text="{Binding IngredientNew.Amount}"/>
+                   Text="{Binding IngredientNew.Amount, FallbackValue=0}"/>
 
             <Label Grid.Row="0"
                    Grid.Column="1"
-                   Text="Jednotka"/>
+                   Text="{x:Static texts:RecipeIngredientsEditPageTexts.Ingredient_Unit_Label_Text}"/>
 
             <Picker Grid.Row="1"
                     Grid.Column="1"
@@ -64,7 +64,7 @@
 
             <Label Grid.Row="0"
                    Grid.Column="2"
-                   Text="Název"/>
+                   Text="{x:Static texts:RecipeIngredientsEditPageTexts.Ingredient_Name_Label_Text}"/>
 
             <Picker Grid.Row="1"
                     Grid.Column="2"
@@ -77,7 +77,7 @@
                     HorizontalOptions="Start"
                     Command="{Binding AddNewIngredientToRecipeCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Text="Přidat"/>
+                    Text="{x:Static texts:RecipeIngredientsEditPageTexts.Ingredient_Add_Button_Text}"/>
         </Grid>
 
         <CollectionView Grid.Row="3"
@@ -97,7 +97,7 @@
                             <Image HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
                                    Aspect="AspectFill"
-                                   Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
+                                   Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg', TargetNullValue='ingredient_placeholder.jpg'}"/>
                         </Border>
 
                         <Entry Grid.Column="1"
@@ -132,7 +132,7 @@
                                 Command="{Binding Source={x:Reference RecipeIngredientsEditViewDesktopRoot}, Path=BindingContext.RemoveIngredientCommand}"
                                 CommandParameter="{Binding .}"
                                 Style="{StaticResource ErrorButtonStyle}"
-                                Text="Odstranit"/>
+                                Text="{x:Static texts:RecipeIngredientsEditPageTexts.Remove_Button_Text}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

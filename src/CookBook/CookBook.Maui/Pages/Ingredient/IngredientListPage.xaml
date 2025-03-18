@@ -52,7 +52,7 @@
 
                     <Image HeightRequest="34"
                            Aspect="AspectFill"
-                           Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
+                           Source="{Binding ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
                 </Border>
 
                 <Label Grid.Column="1"

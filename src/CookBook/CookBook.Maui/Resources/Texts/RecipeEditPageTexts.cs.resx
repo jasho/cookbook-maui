@@ -117,25 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ingredients_Label_Text" xml:space="preserve">
-    <value>Ingredients</value>
-  </data>
-  <data name="Page_Title" xml:space="preserve">
-    <value>Recipe</value>
+  <data name="Delete_Button_Text" xml:space="preserve">
+    <value>Smazat</value>
   </data>
   <data name="Description_Label_Text" xml:space="preserve">
-    <value>Description</value>
+    <value>Popis</value>
   </data>
-  <data name="Edit_Button_Text_Desktop" xml:space="preserve">
-    <value>Edit</value>
+  <data name="Duration_Label_Text" xml:space="preserve">
+    <value>Čas přípravy</value>
   </data>
-  <data name="Back_Button_Text_Desktop" xml:space="preserve">
-    <value>Back</value>
+  <data name="EditIngredients_Button_Text" xml:space="preserve">
+    <value>Upravit ingredience</value>
   </data>
-  <data name="IngredientsAmount_Label_StringFormat" xml:space="preserve">
-    <value>{0} ingredients</value>
+  <data name="FoodType_Label_Text" xml:space="preserve">
+    <value>Typ jídla</value>
   </data>
-  <data name="Duration_Label_StringFormat" xml:space="preserve">
-    <value>{0} min</value>
+  <data name="ImageUpload_Button_Text" xml:space="preserve">
+    <value>Nahrát obrázek</value>
+  </data>
+  <data name="ImageUrl_Label_Text" xml:space="preserve">
+    <value>URL obrázku</value>
+  </data>
+  <data name="Ingredients_Label_Text" xml:space="preserve">
+    <value>Ingredience</value>
+  </data>
+  <data name="Name_Label_Text" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Save_Button_Text" xml:space="preserve">
+    <value>Uložit</value>
   </data>
 </root>

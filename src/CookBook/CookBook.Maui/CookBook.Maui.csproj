@@ -147,6 +147,16 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>RecipeDetailPageTexts.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeEditPageTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RecipeEditPageTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeIngredientsEditPageTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RecipeIngredientsEditPageTexts.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="Resources\Texts\RecipeListPageTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -188,6 +198,14 @@
 	  <EmbeddedResource Update="Resources\Texts\RecipeDetailPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>RecipeDetailPageTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeEditPageTexts.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RecipeEditPageTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeIngredientsEditPageTexts.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RecipeIngredientsEditPageTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Texts\RecipeListPageTexts.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>

@@ -22,14 +22,14 @@ namespace CookBook.Maui.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class RecipeDetailPageTexts {
+    public class RecipeEditPageTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RecipeDetailPageTexts() {
+        internal RecipeEditPageTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Maui.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.RecipeDetailPageTexts", typeof(RecipeDetailPageTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.RecipeEditPageTexts", typeof(RecipeEditPageTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
-        public static string Back_Button_Text_Desktop {
+        public static string Delete_Button_Text {
             get {
-                return ResourceManager.GetString("Back_Button_Text_Desktop", resourceCulture);
+                return ResourceManager.GetString("Delete_Button_Text", resourceCulture);
             }
         }
         
@@ -79,20 +79,47 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} min.
+        ///   Looks up a localized string similar to Duration.
         /// </summary>
-        public static string Duration_Label_StringFormat {
+        public static string Duration_Label_Text {
             get {
-                return ResourceManager.GetString("Duration_Label_StringFormat", resourceCulture);
+                return ResourceManager.GetString("Duration_Label_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to Edit ingredients.
         /// </summary>
-        public static string Edit_Button_Text_Desktop {
+        public static string EditIngredients_Button_Text {
             get {
-                return ResourceManager.GetString("Edit_Button_Text_Desktop", resourceCulture);
+                return ResourceManager.GetString("EditIngredients_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Food type.
+        /// </summary>
+        public static string FoodType_Label_Text {
+            get {
+                return ResourceManager.GetString("FoodType_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload image.
+        /// </summary>
+        public static string ImageUpload_Button_Text {
+            get {
+                return ResourceManager.GetString("ImageUpload_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image URL.
+        /// </summary>
+        public static string ImageUrl_Label_Text {
+            get {
+                return ResourceManager.GetString("ImageUrl_Label_Text", resourceCulture);
             }
         }
         
@@ -106,20 +133,20 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} ingredients.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string IngredientsAmount_Label_StringFormat {
+        public static string Name_Label_Text {
             get {
-                return ResourceManager.GetString("IngredientsAmount_Label_StringFormat", resourceCulture);
+                return ResourceManager.GetString("Name_Label_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recipe.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string Page_Title {
+        public static string Save_Button_Text {
             get {
-                return ResourceManager.GetString("Page_Title", resourceCulture);
+                return ResourceManager.GetString("Save_Button_Text", resourceCulture);
             }
         }
     }

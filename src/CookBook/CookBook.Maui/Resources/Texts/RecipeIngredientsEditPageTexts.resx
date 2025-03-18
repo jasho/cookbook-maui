@@ -120,22 +120,19 @@
   <data name="Ingredients_Label_Text" xml:space="preserve">
     <value>Ingredients</value>
   </data>
-  <data name="Page_Title" xml:space="preserve">
-    <value>Recipe</value>
+  <data name="Ingredient_Add_Button_Text" xml:space="preserve">
+    <value>Add</value>
   </data>
-  <data name="Description_Label_Text" xml:space="preserve">
-    <value>Description</value>
+  <data name="Ingredient_Amount_Label_Text" xml:space="preserve">
+    <value>Amount</value>
   </data>
-  <data name="Edit_Button_Text_Desktop" xml:space="preserve">
-    <value>Edit</value>
+  <data name="Ingredient_Name_Label_Text" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="Back_Button_Text_Desktop" xml:space="preserve">
-    <value>Back</value>
+  <data name="Ingredient_Unit_Label_Text" xml:space="preserve">
+    <value>Unit</value>
   </data>
-  <data name="IngredientsAmount_Label_StringFormat" xml:space="preserve">
-    <value>{0} ingredients</value>
-  </data>
-  <data name="Duration_Label_StringFormat" xml:space="preserve">
-    <value>{0} min</value>
+  <data name="Remove_Button_Text" xml:space="preserve">
+    <value>Remove</value>
   </data>
 </root>

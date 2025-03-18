@@ -26,7 +26,7 @@
     </base:ContentPageBase.Resources>
 
     <Grid>
-        <Grid HorizontalOptions="FillAndExpand"
+        <Grid HorizontalOptions="Fill"
               Margin="{OnIdiom Phone='10, 0'}"
               RowDefinitions="Auto, *"
               RowSpacing="20">
@@ -36,7 +36,7 @@
                    Text="{x:Static texts:RecipeListPageTexts.Title_Label}"/>
 
             <CollectionView Grid.Row="1"
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="Fill"
                             ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone},
                                                   Desktop={StaticResource ItemsLayoutDesktop},
                                                   Default={StaticResource ItemsLayoutDesktop}}"

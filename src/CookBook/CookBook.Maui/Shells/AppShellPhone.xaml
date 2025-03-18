@@ -15,7 +15,7 @@
             <Image HeightRequest="50"
                    HorizontalOptions="Start"
                    Margin="0,10,0,0"
-                   Source="/Images/logo_text.png"/>
+                   Source="menu_logo.png"/>
         </Grid>
     </Shell.FlyoutHeader>
     <Shell.ItemTemplate>

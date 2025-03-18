@@ -44,7 +44,7 @@
                     <Image WidthRequest="170"
                            HeightRequest="170"
                            Aspect="AspectFill"
-                           Source="{Binding Ingredient.ImageUrl}"/>
+                           Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg', TargetNullValue='ingredient_placeholder.jpg'}"/>
 
                     <Button HorizontalOptions="Center"
                             VerticalOptions="End"
@@ -67,7 +67,7 @@
 
                 <Entry HorizontalOptions="Fill"
                        Style="{StaticResource FormEntryStyle}"
-                       Text="{Binding Ingredient.Name}"/>
+                       Text="{Binding Ingredient.Name, FallbackValue=''}"/>
 
                 <Label Style="{StaticResource RegularLabelStyle}"
                        Text="{x:Static texts:IngredientEditPageTexts.Description_Label_Text}"
@@ -75,7 +75,7 @@
 
                 <Entry HorizontalOptions="Fill"
                        Style="{StaticResource FormEntryStyle}"
-                       Text="{Binding Ingredient.Description}"/>
+                       Text="{Binding Ingredient.Description, FallbackValue=''}"/>
             </StackLayout>
         </Grid>
     </Grid>

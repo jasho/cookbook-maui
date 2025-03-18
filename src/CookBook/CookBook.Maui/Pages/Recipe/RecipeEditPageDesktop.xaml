@@ -5,6 +5,7 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
+                      xmlns:texts="using:CookBook.Maui.Resources.Texts"
                       x:DataType="{x:Type vm:RecipeEditViewModel}"
                       Title="RecipeEditViewDesktop"
                       Style="{StaticResource ContentPageStyle}">
@@ -20,10 +21,10 @@
                 <StackLayout Grid.Row="0"
                              Orientation="Vertical"
                              Spacing="10">
-                    <Label Text="Název"/>
+                    <Label Text="{x:Static texts:RecipeEditPageTexts.Name_Label_Text}"/>
 
                     <Entry HorizontalOptions="Fill"
-                           Text="{Binding Recipe.Name}"/>
+                           Text="{Binding Recipe.Name, FallbackValue=''}"/>
                 </StackLayout>
 
                 <Grid Grid.Row="1"
@@ -33,7 +34,8 @@
                       RowSpacing="10">
                     <Label Grid.Row="0"
                            Grid.Column="0"
-                           Text="Typ jídla"/>
+                           Text="{x:Static texts:RecipeEditPageTexts.FoodType_Label_Text}"/>
+
                     <Picker Grid.Row="1"
                             Grid.Column="0"
                             HorizontalOptions="Fill"
@@ -43,19 +45,20 @@
 
                     <Label Grid.Row="0"
                            Grid.Column="1"
-                           Text="Čas přípravy"/>
+                           Text="{x:Static texts:RecipeEditPageTexts.Duration_Label_Text}"/>
+
                     <TimePicker Grid.Row="1"
                                 Grid.Column="1"
                                 Format="HH:mm"
-                                Time="{Binding Recipe.Duration}"/>
+                                Time="{Binding Recipe.Duration, FallbackValue='00:00:00'}"/>
                 </Grid>
 
                 <StackLayout Grid.Row="2"
                              Orientation="Vertical"
                              Spacing="10">
-                    <Label Text="URL obrázku"/>
+                    <Label Text="{x:Static texts:RecipeEditPageTexts.ImageUrl_Label_Text}"/>
 
-                    <Entry Text="{Binding Recipe.ImageUrl}"/>
+                    <Entry Text="{Binding Recipe.ImageUrl, FallbackValue='recipe_placeholder.jpg'}"/>
                 </StackLayout>
             </Grid>
 
@@ -71,14 +74,14 @@
 
                 <Grid>
                     <Image Aspect="AspectFill"
-                           Source="{Binding Recipe.ImageUrl, TargetNullValue='recipe_placeholder.jpg'}"/>
+                           Source="{Binding Recipe.ImageUrl, FallbackValue='recipe_placeholder.jpg', TargetNullValue='recipe_placeholder.jpg'}"/>
 
                     <Button HorizontalOptions="Center"
                             VerticalOptions="End"
                             Margin="0,0,0,10"
                             CornerRadius="5"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="Nahrát obrázek"/>
+                            Text="{x:Static texts:RecipeEditPageTexts.ImageUpload_Button_Text}"/>
                 </Grid>
             </Border>
         </Grid>
@@ -97,11 +100,11 @@
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
-                           Text="Postup"/>
+                           Text="{x:Static texts:RecipeEditPageTexts.Description_Label_Text}"/>
 
                     <Editor Grid.Row="1"
                             VerticalOptions="Fill"
-                            Text="{Binding Recipe.Description}"/>
+                            Text="{Binding Recipe.Description, FallbackValue=''}"/>
                 </Grid>
             </Border>
 
@@ -116,7 +119,7 @@
                 <Grid RowDefinitions="Auto, *"
                       RowSpacing="30">
                     <Label Grid.Row="0"
-                           Text="Ingredience"/>
+                           Text="{x:Static texts:RecipeEditPageTexts.Ingredients_Label_Text}"/>
 
                     <CollectionView Grid.Row="1"
                                     ItemsSource="{Binding Recipe.IngredientAmounts}">
@@ -135,7 +138,7 @@
                                         <Image HorizontalOptions="Fill"
                                                VerticalOptions="Fill"
                                                Aspect="AspectFill"
-                                               Source="{Binding Ingredient.ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
+                                               Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg', TargetNullValue='ingredient_placeholder.jpg'}"/>
                                     </Border>
 
                                     <Label VerticalOptions="Center">
@@ -145,7 +148,7 @@
                                                 <Span Text=" "/>
                                                 <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}"/>
                                                 <Span Text=" "/>
-                                                <Span Text="{Binding Ingredient.Name}"/>
+                                                <Span Text="{Binding Ingredient.Name, FallbackValue=''}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
@@ -159,7 +162,7 @@
                             VerticalOptions="Start"
                             Command="{Binding GoToRecipeIngredientEditCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="Upravit ingredience"/>
+                            Text="{x:Static texts:RecipeEditPageTexts.EditIngredients_Button_Text}"/>
                 </Grid>
             </Border>
         </Grid>
@@ -170,11 +173,11 @@
                      Spacing="20">
             <Button Command="{Binding DeleteCommand}"
                     Style="{StaticResource ErrorButtonStyle}"
-                    Text="Smazat"/>
+                    Text="{x:Static texts:RecipeEditPageTexts.Delete_Button_Text}"/>
 
             <Button Command="{Binding SaveCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Text="Uložit"/>
+                    Text="{x:Static texts:RecipeEditPageTexts.Save_Button_Text}"/>
         </StackLayout>
     </Grid>
 </base:ContentPageBase>

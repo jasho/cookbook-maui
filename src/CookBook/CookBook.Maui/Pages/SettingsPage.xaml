@@ -9,7 +9,4 @@
                       Title="{OnIdiom Phone={x:Static texts:SettingsPageTexts.Page_Title},
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
-    <Label HorizontalOptions="Center"
-           VerticalOptions="Center"
-           Text="Settings"/>
 </base:ContentPageBase>

@@ -16,11 +16,11 @@ namespace CookBook.Maui.ViewModels.Recipe
         public Guid RecipeId { get; init; }
 
         [ObservableProperty]
-        public partial RecipeDetailModel? Recipe { get; set; }
+        public partial RecipeDetailModel Recipe { get; set; } = new();
 
         public List<Unit> Units { get; set; } = [.. Enum.GetValues<Unit>()];
         public ObservableCollection<IngredientListModel> Ingredients { get; set; } = [];
-        public RecipeDetailIngredientModel? IngredientNew { get; private set; }
+        public RecipeDetailIngredientModel IngredientNew { get; private set; } = new();
 
         protected override async Task LoadDataAsync()
         {
@@ -51,8 +51,7 @@ namespace CookBook.Maui.ViewModels.Recipe
         [RelayCommand]
         private async Task AddNewIngredientToRecipeAsync()
         {
-            if (Recipe is not null
-                && IngredientNew is not null)
+            if (Recipe.Id is not null)
             {
                 Recipe.IngredientAmounts?.Add(IngredientNew);
 
@@ -66,7 +65,7 @@ namespace CookBook.Maui.ViewModels.Recipe
         private async Task UpdateIngredientAsync(RecipeDetailIngredientModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
-            if (Recipe is not null)
+            if (Recipe.Id is not null)
             {
                 await recipesClient.UpdateRecipeAsync(Recipe);
             }
@@ -76,9 +75,9 @@ namespace CookBook.Maui.ViewModels.Recipe
         private async Task RemoveIngredientAsync(RecipeDetailIngredientModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
-            Recipe?.IngredientAmounts?.Remove(ingredient);
+            Recipe.IngredientAmounts?.Remove(ingredient);
 
-            if (Recipe is not null)
+            if (Recipe.Id is not null)
             {
                 await recipesClient.UpdateRecipeAsync(Recipe);
             }

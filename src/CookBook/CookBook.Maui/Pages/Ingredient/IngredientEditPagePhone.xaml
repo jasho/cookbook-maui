@@ -25,7 +25,7 @@
 
                 <Entry VerticalOptions="Start"
                        Style="{StaticResource FormEntryStyle}"
-                       Text="{Binding Ingredient.Name}"/>
+                       Text="{Binding Ingredient.Name, FallbackValue=''}"/>
             </Border>
         </VerticalStackLayout>
 
@@ -42,7 +42,7 @@
                 <Image WidthRequest="170"
                        HeightRequest="170"
                        Aspect="AspectFill"
-                       Source="{Binding Ingredient.ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
+                       Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg', TargetNullValue='ingredient_placeholder.jpg'}"/>
 
                 <Button HorizontalOptions="Center"
                         VerticalOptions="End"
@@ -70,7 +70,7 @@
 
                 <Editor HorizontalOptions="Fill"
                         Style="{StaticResource FormEditorStyle}"
-                        Text="{Binding Ingredient.Description}"/>
+                        Text="{Binding Ingredient.Description, FallbackValue=''}"/>
             </Border>
         </Grid>
     </Grid>

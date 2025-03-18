@@ -27,6 +27,6 @@ public class RecipeDetailModel : ModelBase
     public string? Description { get; set; }
     public TimeSpan Duration { get; set; }
     public FoodType FoodType { get; set; }
-    public ObservableCollection<RecipeDetailIngredientModel>? IngredientAmounts { get; set; }
+    public IList<RecipeDetailIngredientModel>? IngredientAmounts { get; set; } = new ObservableCollection<RecipeDetailIngredientModel>();
     public string? ImageUrl { get; set; }
 }

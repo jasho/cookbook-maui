@@ -18,7 +18,7 @@ public partial class RecipeEditViewModel(
     public Guid Id { get; init; } = Guid.Empty;
 
     [ObservableProperty]
-    public partial RecipeDetailModel? Recipe { get; set; }
+    public partial RecipeDetailModel Recipe { get; set; } = new();
 
     public List<FoodType> FoodTypes { get; set; } = [.. Enum.GetValues<FoodType>()];
 
@@ -26,15 +26,16 @@ public partial class RecipeEditViewModel(
     {
         await base.LoadDataAsync();
 
-        Recipe = Id == Guid.Empty
-            ? new RecipeDetailModel()
-            : await recipesClient.GetRecipeByIdAsync(Id);
+        if (Id != Guid.Empty)
+        {
+            Recipe = await recipesClient.GetRecipeByIdAsync(Id);
+        }
     }
 
     [RelayCommand]
     private async Task GoToRecipeIngredientEditAsync()
     {
-        if (Recipe?.Id is not null)
+        if (Recipe.Id is not null)
         {
             await Shell.Current.GoToAsync(RoutingService.RecipeIngredientsEditRouteRelative,
                 new Dictionary<string, object>
@@ -47,7 +48,7 @@ public partial class RecipeEditViewModel(
     [RelayCommand]
     private async Task DeleteAsync()
     {
-        if (Recipe?.Id is not null)
+        if (Recipe.Id is not null)
         {
             await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
         }
@@ -58,7 +59,7 @@ public partial class RecipeEditViewModel(
     [RelayCommand]
     private async Task SaveAsync()
     {
-        if (Recipe?.Id is not null)
+        if (Recipe.Id is not null)
         {
             if (Id == Guid.Empty)
             {

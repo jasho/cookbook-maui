@@ -53,18 +53,18 @@
 
                 <Image HeightRequest="200"
                        Aspect="AspectFill"
-                       Source="{Binding Recipe.ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}"/>
+                       Source="{Binding Recipe.ImageUrl, FallbackValue='recipe_placeholder.jpg', TargetNullValue='recipe_placeholder.jpg'}"/>
             </Border>
 
             <Label Grid.Row="1"
                    FontSize="20"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{Binding Recipe.Name}"/>
+                   Text="{Binding Recipe.Name, FallbackValue=''}"/>
 
             <Border Grid.Row="2"
                     HeightRequest="100"
                     Padding="0"
-                    BackgroundColor="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToColorConverter}}">
+                    BackgroundColor="{Binding Recipe.FoodType, FallbackValue='', Converter={StaticResource FoodTypeToColorConverter}}">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10"/>
                 </Border.StrokeShape>
@@ -92,7 +92,7 @@
                            VerticalOptions="Start"
                            FontSize="11"
                            Style="{StaticResource MediumLabelStyle}"
-                           Text="{Binding Recipe.FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                           Text="{Binding Recipe.FoodType, FallbackValue='', Converter={StaticResource FoodTypeToStringConverter}}"
                            TextColor="White"/>
 
                     <Image Grid.Row="0"
@@ -113,9 +113,14 @@
                            VerticalOptions="Start"
                            FontSize="11"
                            Style="{StaticResource MediumLabelStyle}"
-                           Text="{Binding Recipe.Duration, StringFormat='{0} min'}"
-                           TextColor="White"/>
-
+                           TextColor="White">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{x:Static texts:RecipeDetailPageTexts.Duration_Label_StringFormat}">
+                                <Binding Path="Recipe.Duration"
+                                         FallbackValue="00:00:00"/>
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
                     <Image Grid.Row="0"
                            Grid.Column="2"
                            HorizontalOptions="Center"
@@ -134,8 +139,14 @@
                            VerticalOptions="Start"
                            FontSize="11"
                            Style="{StaticResource MediumLabelStyle}"
-                           Text="{Binding Recipe.IngredientAmounts.Count, StringFormat='{0} ingredience'}"
-                           TextColor="White"/>
+                           TextColor="White">
+                        <Label.Text>
+                            <MultiBinding StringFormat="{x:Static texts:RecipeDetailPageTexts.IngredientsAmount_Label_StringFormat}">
+                                <Binding Path="Recipe.IngredientAmounts.Count"
+                                         FallbackValue="0"/>
+                            </MultiBinding>
+                        </Label.Text>
+                    </Label>
                 </Grid>
             </Border>
 
@@ -145,7 +156,7 @@
                    Text="{x:Static texts:RecipeDetailPageTexts.Ingredients_Label_Text}"/>
 
             <CollectionView Grid.Row="4"
-                            ItemsSource="{Binding Recipe.IngredientAmounts}"
+                            ItemsSource="{Binding Recipe.IngredientAmounts, FallbackValue=0}"
                             VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5"
@@ -169,14 +180,14 @@
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
                                        Aspect="AspectFill"
-                                       Source="{Binding Ingredient.ImageUrl, FallbackValue='/Images/ingredient_placeholder.jpg'}"/>
+                                       Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg'}"/>
                             </Border>
 
                             <Label Grid.Column="1"
                                    VerticalOptions="Center"
                                    FontSize="16"
                                    Style="{StaticResource MediumLabelStyle}"
-                                   Text="{Binding Ingredient.Name}"/>
+                                   Text="{Binding Ingredient.Name, FallbackValue=''}"/>
 
                             <Label Grid.Column="2"
                                    VerticalOptions="Center"
@@ -205,7 +216,7 @@
             <Label Grid.Row="6"
                    FontSize="14"
                    Style="{StaticResource MediumLabelStyle}"
-                   Text="{Binding Recipe.Description}"/>
+                   Text="{Binding Recipe.Description, FallbackValue=''}"/>
         </Grid>
     </ScrollView>
 </base:ContentPageBase>
