@@ -2,24 +2,21 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Facades;
 using CookBook.Maui.Messages;
 using CookBook.Maui.Services;
-using CookBook.Maui.Services.Interfaces;
-using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 public partial class IngredientListViewModel
     : ViewModelBase, IRecipient<IngredientCreatedMessage>, IRecipient<IngredientUpdatedMessage>
 {
-    private readonly IRoutingService routingService;
-    private readonly IIngredientsClient ingredientsClient;
+    private readonly IIngredientsFacade ingredientsFacade;
 
-    public IngredientListViewModel(IRoutingService routingService,
-        IIngredientsClient ingredientsClient)
+    public IngredientListViewModel(
+        IIngredientsFacade ingredientsFacade)
     {
-        this.routingService = routingService;
-        this.ingredientsClient = ingredientsClient;
+        this.ingredientsFacade = ingredientsFacade;
 
         IsActive = true;
     }
@@ -31,7 +28,7 @@ public partial class IngredientListViewModel
     {
         await base.LoadDataAsync();
 
-        Items = await ingredientsClient.GetIngredientsAllAsync();
+        Items = await ingredientsFacade.GetIngredientsAllAsync();
     }
 
     [RelayCommand]

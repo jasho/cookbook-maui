@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Messaging;
+using CookBook.Maui.Facades;
+using CookBook.Maui.Mappers;
 using CookBook.Maui.Options;
 using CookBook.Maui.Pages;
 using CookBook.Maui.Resources.Fonts;
@@ -41,6 +43,9 @@ public static class MauiProgram
 
         ConfigureServices(builder.Services);
         ConfigureApiClients(builder.Services);
+
+        ConfigureMappers(builder.Services);
+        ConfigureFacades(builder.Services);
 
         //ConfigureCustomHandlers(builder);
 
@@ -114,6 +119,8 @@ public static class MauiProgram
         services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
         services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
 
+        services.AddSingleton<IConnectivity>(Connectivity.Current);
+
         services.AddSingleton(Preferences.Default);
         services.AddSingleton<IPreferencesService, PreferencesService>();
 
@@ -142,15 +149,15 @@ public static class MauiProgram
         });
     }
 
-    //        private static void ConfigureCustomHandlers(MauiAppBuilder builder)
-    //        {
-    //            builder.ConfigureMauiHandlers(handlers =>
-    //            {
-    //#if __ANDROID__
-    //                handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
-    //#endif
-    //            });
-    //        }
+    private static void ConfigureMappers(IServiceCollection services)
+    {
+        services.AddSingleton<IngredientMapper>();
+    }
+
+    private static void ConfigureFacades(IServiceCollection services)
+    {
+        services.AddSingleton<IIngredientsFacade, IngredientsFacade>();
+    }
 
     private static void RegisterRoutes(MauiApp app)
     {
