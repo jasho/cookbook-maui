@@ -1,4 +1,6 @@
-﻿using CookBook.Maui.Enums;
+﻿using CookBook.Maui.Entities;
+using CookBook.Maui.Enums;
+using CookBook.Maui.Extensions;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Maui.Shells;
 
@@ -18,6 +20,28 @@ namespace CookBook.Maui
             var themeSelectorService = serviceProvider.GetRequiredService<IThemeSelectorService>();
             var languageSelectorService = serviceProvider.GetRequiredService<ILanguageSelectorService>();
             ApplyPreferences(preferencesService, themeSelectorService, languageSelectorService);
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            Task.Run(async () =>
+            {
+                var secureStorageService = serviceProvider.GetRequiredService<ISecureStorageService>();
+                var isFirstRun = await secureStorageService.GetIsFirstRunAsync();
+                if (isFirstRun)
+                {
+                    var databaseService = serviceProvider.GetRequiredService<IDatabaseService>();
+                    await databaseService.CreateDatabaseAsync();
+
+                    await secureStorageService.SetIsFirstRunAsync(false);
+                }
+            })
+            .SafeFirendForget(exception =>
+            {
+                // Log the exception
+            });
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

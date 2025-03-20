@@ -115,9 +115,12 @@ public static class MauiProgram
         services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
 
         services.AddSingleton(Preferences.Default);
-        services.AddSingleton(SecureStorage.Default);
-        services.AddSingleton<IDatabaseService, DatabaseService>();
         services.AddSingleton<IPreferencesService, PreferencesService>();
+
+        services.AddSingleton(SecureStorage.Default);
+        services.AddSingleton<ISecureStorageService, SecureStorageService>();
+
+        services.AddSingleton<IDatabaseService, DatabaseService>();
 
         services.AddSingleton<ILanguageSelectorService, LanguageSelectorService>();
         services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
