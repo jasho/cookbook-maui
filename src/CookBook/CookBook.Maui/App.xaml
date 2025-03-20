@@ -13,6 +13,7 @@
                 <styles:EntryStyle/>
                 <styles:LabelStyle/>
                 <styles:DarkTheme/>
+                <styles:PickerStyle/>
             </ResourceDictionary.MergedDictionaries>
 
             <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter"/>

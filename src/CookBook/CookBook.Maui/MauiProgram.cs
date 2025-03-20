@@ -113,6 +113,11 @@ public static class MauiProgram
         services.AddSingleton<IShare>(_ => Share.Default);
         services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
         services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
+        services.AddSingleton(Preferences.Default);
+        services.AddSingleton<IPreferencesService, PreferencesService>();
+
+        services.AddSingleton<ILanguageSelectorService, LanguageSelectorService>();
+        services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
         //services.AddSingleton<IGlobalExceptionServiceInitializer, GlobalExceptionServiceInitializer>();
     }
 
