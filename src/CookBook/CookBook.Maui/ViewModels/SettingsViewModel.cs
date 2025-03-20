@@ -28,20 +28,20 @@ public partial class SettingsViewModel(
     {
         await base.LoadDataAsync();
 
-        SelectedTheme = preferencesService.GetAppTheme();
-        SelectedLanguage = preferencesService.GetAppLanguage();
+        SelectedTheme = preferencesService.AppTheme;
+        SelectedLanguage = preferencesService.AppLanguage;
     }
 
     [RelayCommand]
     private void Save()
     {
         themeSelectorService.SelectTheme(SelectedTheme);
-        preferencesService.SetAppTheme(SelectedTheme);
+        preferencesService.AppTheme = SelectedTheme;
 
         if (SelectedLanguage is not null)
         {
             languageSelectorService.SelectLanguage(SelectedLanguage);
-            preferencesService.SetAppLanguage(SelectedLanguage);
+            preferencesService.AppLanguage = SelectedLanguage;
         }
 
         Shell.Current.SendBackButtonPressed();

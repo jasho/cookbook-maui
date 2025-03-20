@@ -40,15 +40,14 @@ namespace CookBook.Maui
             IThemeSelectorService themeSelectorService,
             ILanguageSelectorService languageSelectorService)
         {
-            var theme = preferencesService.GetAppTheme();
+            var theme = preferencesService.AppTheme;
             if (theme == Theme.System)
             {
                 theme = ResolveSystemTheme();
             }
             themeSelectorService.SelectTheme(theme);
 
-            var appLanguage = preferencesService.GetAppLanguage();
-            languageSelectorService.SelectLanguage(appLanguage);
+            languageSelectorService.SelectLanguage(preferencesService.AppLanguage);
         }
 
         private Theme ResolveSystemTheme()

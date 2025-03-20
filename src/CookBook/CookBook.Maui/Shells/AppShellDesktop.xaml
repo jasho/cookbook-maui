@@ -24,7 +24,7 @@
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"
                                  Size="10"
-                                 Color="{DynamicResource NavigationBarTextColor}"/>
+                                 Color="{DynamicResource FlyoutItemTextColor}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </Shell.ToolbarItems>

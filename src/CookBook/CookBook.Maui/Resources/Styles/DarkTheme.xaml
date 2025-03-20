@@ -11,6 +11,7 @@
 
     <Color x:Key="PrimaryLabelTextColor">#FFFFFF</Color>
     <Color x:Key="ListItemBackgroundColor">#3A3A3A</Color>
+    <Color x:Key="FlyoutItemTextColor">#FFFFFF</Color>
 
     <Color x:Key="PrimaryButtonTextColor">#FFFFFF</Color>
 

@@ -10,24 +10,20 @@ public class PreferencesService(IPreferences preferences)
     public const string ThemeKey = "Theme";
     public const string LanguageKey = "Language";
 
-    public Theme GetAppTheme()
+    public Theme AppTheme
     {
-        return (Theme)preferences.Get(ThemeKey, (int)Theme.System);
+        get => (Theme)preferences.Get(ThemeKey, (int)Theme.System);
+        set => preferences.Set(ThemeKey, (int)value);
     }
 
-    public void SetAppTheme(Theme theme)
+    public CultureInfo AppLanguage
     {
-        preferences.Set(ThemeKey, (int)theme);
-    }
+        get
+        {
+            var language = preferences.Get(LanguageKey, Thread.CurrentThread.CurrentCulture.IetfLanguageTag.Split('-')[0]);
+            return new CultureInfo(language);
+        }
 
-    public CultureInfo GetAppLanguage()
-    {
-        var language = preferences.Get(LanguageKey, Thread.CurrentThread.CurrentCulture.IetfLanguageTag.Split('-')[0]);
-        return new CultureInfo(language);
-    }
-
-    public void SetAppLanguage(CultureInfo cultureInfo)
-    {
-        preferences.Set(LanguageKey, cultureInfo.TwoLetterISOLanguageName);
+        set => preferences.Set(LanguageKey, value.TwoLetterISOLanguageName);
     }
 }

@@ -10,6 +10,7 @@
 
     <Color x:Key="PrimaryLabelTextColor">#000000</Color>
     <Color x:Key="ListItemBackgroundColor">#F8F8F8</Color>
+    <Color x:Key="FlyoutItemTextColor">#FFFFFF</Color>
 
     <Color x:Key="PrimaryButtonTextColor">#FFFFFF</Color>
 

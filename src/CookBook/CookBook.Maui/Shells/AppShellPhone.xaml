@@ -29,7 +29,7 @@
                 <Label Grid.Column="1"
                        VerticalOptions="Center"
                        Text="{Binding Title}"
-                       TextColor="{DynamicResource PrimaryLabelTextColor}"/>
+                       TextColor="{DynamicResource FlyoutItemTextColor}"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
