@@ -30,13 +30,16 @@ namespace CookBook.Maui
             {
                 var secureStorageService = serviceProvider.GetRequiredService<ISecureStorageService>();
                 var isFirstRun = await secureStorageService.GetIsFirstRunAsync();
-                if (isFirstRun)
-                {
-                    var databaseService = serviceProvider.GetRequiredService<IDatabaseService>();
-                    await databaseService.CreateDatabaseAsync();
+                
+                var databaseService = serviceProvider.GetRequiredService<IDatabaseService>();
 
-                    await secureStorageService.SetIsFirstRunAsync(false);
+                if (isFirstRun is false)
+                {
+                    await databaseService.DropDatabaseAsync();
                 }
+
+                await databaseService.CreateDatabaseAsync();
+                await secureStorageService.SetIsFirstRunAsync(false);
             })
             .SafeFirendForget(exception =>
             {

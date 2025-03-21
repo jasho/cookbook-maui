@@ -14,4 +14,6 @@ public interface IDatabaseService
         where T : EntityBase, new();
 
     Task CreateDatabaseAsync();
+
+    Task DropDatabaseAsync();
 }
