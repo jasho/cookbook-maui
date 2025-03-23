@@ -1,6 +1,7 @@
-﻿namespace CookBook.Maui.Facades.Interfaces;
+﻿using CookBook.Common.Models;
 
-public interface IRecipesFacade
+namespace CookBook.Maui.Facades.Interfaces;
+
+public interface IRecipesFacade : IFacade<RecipeListModel, RecipeDetailModel>
 {
-
 }

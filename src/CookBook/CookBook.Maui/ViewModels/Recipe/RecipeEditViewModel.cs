@@ -71,7 +71,7 @@ public partial class RecipeEditViewModel(
             {
                 await recipesClient.UpdateRecipeAsync(Recipe);
 
-                messenger.Send(new RecipeUpdatedMessage
+                messenger.Send(new RecipeCreatedOrUpdatedMessage
                 {
                     RecipeId = Recipe.Id.Value
                 });

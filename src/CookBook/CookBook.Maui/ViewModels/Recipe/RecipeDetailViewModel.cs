@@ -10,7 +10,7 @@ namespace CookBook.Maui.ViewModels.Recipe;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class RecipeDetailViewModel
-    : ViewModelBase, IRecipient<RecipeUpdatedMessage>
+    : ViewModelBase, IRecipient<RecipeCreatedOrUpdatedMessage>
 {
     private readonly IRecipesClient recipesClient;
     private readonly IShare share;
@@ -82,7 +82,7 @@ public partial class RecipeDetailViewModel
         }
     }
 
-    public void Receive(RecipeUpdatedMessage message)
+    public void Receive(RecipeCreatedOrUpdatedMessage message)
     {
         if (message.RecipeId == Recipe?.Id)
         {

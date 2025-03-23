@@ -33,22 +33,22 @@ public class IngredientsFacade(
         return ingredientMapper.EntityToDetailModel(ingredientEntity);
     }
 
-    protected override async Task<Guid> CreateOrUpdateOnlineAsync(IngredientDetailModel item)
+    protected override async Task<Guid> CreateOrUpdateOnlineAsync(IngredientDetailModel detailModel)
     {
-        if(item.Id is null)
+        if(detailModel.Id is null)
         {
-            return await ingredientsClient.CreateIngredientAsync(item);
+            return await ingredientsClient.CreateIngredientAsync(detailModel);
         }
         else
         {
-            var existingIngredient = ingredientsClient.GetIngredientByIdAsync(item.Id.Value);
+            var existingIngredient = ingredientsClient.GetIngredientByIdAsync(detailModel.Id.Value);
             if(existingIngredient is null)
             {
-                return await ingredientsClient.CreateIngredientAsync(item);
+                return await ingredientsClient.CreateIngredientAsync(detailModel);
             }
             else
             {
-                return (await ingredientsClient.UpdateIngredientAsync(item)) ?? item.Id.Value;
+                return (await ingredientsClient.UpdateIngredientAsync(detailModel)) ?? detailModel.Id.Value;
             }
         }
     }
