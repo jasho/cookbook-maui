@@ -45,8 +45,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
     {
         if (Ingredient?.Id is not null)
         {
-            // TODO: Implement DeleteAsync in IngredientsFacade
-            //await ingredientsClient.DeleteIngredientAsync(Ingredient.Id.Value);
+            await ingredientsFacade.DeleteAsync(Ingredient.Id.Value);
         }
 
         Shell.Current.SendBackButtonPressed();

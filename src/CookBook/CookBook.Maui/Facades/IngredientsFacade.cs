@@ -58,4 +58,12 @@ public class IngredientsFacade(
         var ingredientEntity = ingredientMapper.DetailModelToEntity(detailModel);
         return await databaseService.CreateOrUpdateAsync(ingredientEntity);
     }
+
+    protected override async Task DeleteOnlineAsync(Guid id)
+        => await ingredientsClient.DeleteIngredientAsync(id);
+
+    protected override async Task DeleteLocalAsync(Guid id)
+    {
+        await databaseService.DeleteAsync<IngredientEntity>(id);
+    }
 }

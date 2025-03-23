@@ -9,4 +9,5 @@ public interface IFacade<TListModel, TDetailModel>
     Task<IList<TListModel>> GetAllItemsAsync();
     Task<TDetailModel?> GetByIdAsync(Guid id);
     Task<Guid> CreateOrUpdateAsync(TDetailModel detailModel);
+    Task DeleteAsync(Guid id);
 }

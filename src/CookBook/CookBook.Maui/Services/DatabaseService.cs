@@ -79,6 +79,13 @@ public class DatabaseService : IDatabaseService
         return entity.Id;
     }
 
+    public async Task DeleteAsync<T>(Guid id)
+    {
+        var connection = new SQLiteAsyncConnection(databasePath);
+        await connection.DeleteAsync<T>(id);
+        await connection.CloseAsync();
+    }
+
     public async Task DropDatabaseAsync()
     {
         await DropTableAsync<IngredientEntity>();

@@ -13,6 +13,8 @@ public interface IDatabaseService
     Task<Guid> CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new();
 
+    Task DeleteAsync<T>(Guid id);
+
     Task CreateDatabaseAsync();
 
     Task DropDatabaseAsync();

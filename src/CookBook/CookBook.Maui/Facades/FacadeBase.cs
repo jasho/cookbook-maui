@@ -1,7 +1,6 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Maui.Facades.Interfaces;
 using CookBook.Mobile.Api;
-using System.Linq;
 
 namespace CookBook.Maui.Facades;
 
@@ -83,6 +82,32 @@ public abstract class FacadeBase<TListModel, TDetailModel>
         return ingredientId;
     }
 
+    public async Task DeleteAsync(Guid id)
+    {
+        var onlineDeletionSucceeded = false;
+        
+        if(connectivity.NetworkAccess == NetworkAccess.Internet)
+        {
+            try
+            {
+                await DeleteOnlineAsync(id);
+                onlineDeletionSucceeded = true;
+            }
+            catch (ApiException)
+            {
+            }
+        }
+
+        if (onlineDeletionSucceeded)
+        {
+            await DeleteLocalAsync(id);
+        }
+        else
+        {
+            throw new Exception("Network error, cannot delete when offline!");
+        }
+    }
+
     protected abstract Task<ICollection<TListModel>> GetAllItemsOnlineAsync();
     protected abstract Task<ICollection<TListModel>> GetAllItemsLocalAsync();
 
@@ -91,6 +116,9 @@ public abstract class FacadeBase<TListModel, TDetailModel>
 
     protected abstract Task<Guid> CreateOrUpdateOnlineAsync(TDetailModel detailModel);
     protected abstract Task<Guid> CreateOrUpdateLocalAsync(TDetailModel detailModel);
+
+    protected abstract Task DeleteOnlineAsync(Guid id);
+    protected abstract Task DeleteLocalAsync(Guid id);
 
 
     public class Dependencies(IConnectivity connectivity)
