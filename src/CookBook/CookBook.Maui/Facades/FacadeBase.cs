@@ -64,7 +64,7 @@ public abstract class FacadeBase<TListModel, TDetailModel>
         return await GetByIdLocalAsync(id);
     }
 
-    public async Task<Guid> CreateOrUpdateAsync(TDetailModel detailModel)
+    public virtual async Task<Guid> CreateOrUpdateAsync(TDetailModel detailModel)
     {
         var ingredientId = await CreateOrUpdateLocalAsync(detailModel);
 
