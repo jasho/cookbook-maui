@@ -40,10 +40,10 @@ public class DatabaseService : IDatabaseService
         var connection = new SQLiteAsyncConnection(databasePath);
         var result = await connection.Table<T>().ToListAsync();
         await connection.CloseAsync();
-        return result;
+        return result ?? [];
     }
 
-    public async Task<T> GetByIdAsync<T>(Guid id)
+    public async Task<T?> GetByIdAsync<T>(Guid id)
         where T : EntityBase, new()
     {
         var connection = new SQLiteAsyncConnection(databasePath);
@@ -52,7 +52,7 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public async Task SetAsync<T>(T entity)
+    public async Task CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new()
     {
         var connection = new SQLiteAsyncConnection(databasePath);
@@ -63,7 +63,15 @@ public class DatabaseService : IDatabaseService
         }
         else
         {
-            await connection.UpdateAsync(entity);
+            var existingEntity = await GetByIdAsync<T>(entity.Id);
+            if(existingEntity is null)
+            {
+                await connection.InsertAsync(entity);
+            }
+            else
+            {
+                await connection.UpdateAsync(entity);
+            }
         }
 
         await connection.CloseAsync();
@@ -86,7 +94,7 @@ public class DatabaseService : IDatabaseService
 
     private async Task SeedIngredientsAsync()
     {
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Vejce",
@@ -95,7 +103,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "ingredient_egg.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Cibule",
@@ -104,7 +112,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "ingredient_onion.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Slanina",
@@ -112,7 +120,7 @@ public class DatabaseService : IDatabaseService
                 "Slanina nebo také špek je označení pro solené či uzené vepřové sádlo. Vyrábí se převážně z vepřového bůčku, kýty nebo hřbetu. Samotná slanina se vyrábí naložením do soli na několik týdnů a případně pozdějším vyuzením.\r\n\r\nVýraz se také používá jako zkrácený název pro anglickou slaninu, která kromě sádla obsahuje i maso."
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Rajče",
@@ -120,7 +128,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "ingredient_tomato.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Mléko",
@@ -131,7 +139,7 @@ public class DatabaseService : IDatabaseService
 
     private async Task SeedRecipesAsync()
     {
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Míchaná vejce",
@@ -141,7 +149,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "recipe_scrambled_eggs.jpg"
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Miso polévka",
@@ -151,7 +159,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "recipe_miso_soup.jpg",
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Vykoštěné kuře s citronem a bylinkami",
@@ -161,7 +169,7 @@ public class DatabaseService : IDatabaseService
             ImageUrl = "recipe_chicken_with_lemon_and_herbs.jpg",
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Citronový sorbet",

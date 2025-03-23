@@ -21,31 +21,42 @@ public class IngredientsFacade(
     protected override async Task<ICollection<IngredientListModel>> GetAllItemsLocalAsync()
     {
         var ingredientEntities = await databaseService.GetAllAsync<IngredientEntity>();
-        return ingredientMapper.IngredientsToIngredientListModels(ingredientEntities);
+        return ingredientMapper.EntitiesToListModels(ingredientEntities);
     }
 
-    public async Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id)
+    protected override async Task<IngredientDetailModel?> GetByIdOnlineAsync(Guid id)
+        => await ingredientsClient.GetIngredientByIdAsync(id);
+
+    protected override async Task<IngredientDetailModel?> GetByIdLocalAsync(Guid id)
     {
-        if (connectivity.NetworkAccess == NetworkAccess.Internet)
+        var ingredientEntity = await databaseService.GetByIdAsync<IngredientEntity>(id);
+        return ingredientMapper.EntityToDetailModel(ingredientEntity);
+    }
+
+    protected override async Task CreateOrUpdateOnlineAsync(IngredientDetailModel item)
+    {
+        if(item.Id is null)
         {
-            try
-            {
-                return await ingredientsClient.GetIngredientByIdAsync(id);
-            }
-            catch (ApiException e) when(e.StatusCode == (int) HttpStatusCode.OK)
-            {
-                return await GetLocalIngredientByIdAsync(id);
-            }
+            await ingredientsClient.CreateIngredientAsync(item);
         }
         else
         {
-            return await GetLocalIngredientByIdAsync(id);
+            var existingIngredient = ingredientsClient.GetIngredientByIdAsync(item.Id.Value);
+            if(existingIngredient is null)
+            {
+                await ingredientsClient.CreateIngredientAsync(item);
+            }
+            else
+            {
+                await ingredientsClient.UpdateIngredientAsync(item);
+            }
         }
     }
 
-    private async Task<IngredientDetailModel?> GetLocalIngredientByIdAsync(Guid id)
+    protected override async Task CreateOrUpdateLocalAsync(IngredientDetailModel item)
     {
-        var ingredientEntity = await databaseService.GetByIdAsync<IngredientEntity>(id);
-        return ingredientMapper.IngredientToIngredientDetailModel(ingredientEntity);
+        var ingredientEntity = ingredientMapper.DetailModelToEntity(item);
+        
+        await databaseService.CreateOrUpdateAsync(ingredientEntity);
     }
 }

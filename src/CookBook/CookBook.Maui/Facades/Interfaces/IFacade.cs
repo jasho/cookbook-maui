@@ -7,4 +7,5 @@ public interface IFacade<TListModel, TDetailModel>
     where TDetailModel : ModelBase
 {
     Task<IList<TListModel>> GetAllItemsAsync();
+    Task<TDetailModel?> GetByIdAsync(Guid id);
 }

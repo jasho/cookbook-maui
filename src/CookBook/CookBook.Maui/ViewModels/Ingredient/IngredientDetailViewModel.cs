@@ -36,7 +36,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
 
         if (Id != Guid.Empty)
         {
-            Ingredient = await ingredientsFacade.GetIngredientByIdAsync(Id);
+            Ingredient = await ingredientsFacade.GetByIdAsync(Id);
         }
     }
 
