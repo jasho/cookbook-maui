@@ -1,10 +1,10 @@
 ﻿using CookBook.Common.Models;
+using CookBook.Maui.Facades.Interfaces;
 
-namespace CookBook.Maui.Facades
+namespace CookBook.Maui.Facades;
+
+public interface IIngredientsFacade : IFacade<IngredientListModel, IngredientDetailModel>
 {
-    public interface IIngredientsFacade
-    {
-        Task<ICollection<IngredientListModel>> GetIngredientsAllAsync();
-        Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id);
-    }
+
+    Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id);
 }

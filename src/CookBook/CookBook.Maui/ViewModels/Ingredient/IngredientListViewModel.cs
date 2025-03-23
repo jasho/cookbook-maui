@@ -28,7 +28,7 @@ public partial class IngredientListViewModel
     {
         await base.LoadDataAsync();
 
-        Items = await ingredientsFacade.GetIngredientsAllAsync();
+        Items = await ingredientsFacade.GetAllItemsAsync();
     }
 
     [RelayCommand]

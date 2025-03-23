@@ -11,21 +11,17 @@ public class IngredientsFacade(
     IDatabaseService databaseService,
     IIngredientsClient ingredientsClient,
     IConnectivity connectivity,
-    IngredientMapper ingredientMapper)
-    : IIngredientsFacade
+    IngredientMapper ingredientMapper,
+    FacadeBase<IngredientListModel, IngredientDetailModel>.Dependencies dependencies)
+    : FacadeBase<IngredientListModel, IngredientDetailModel>(dependencies), IIngredientsFacade
 {
-    public async Task<ICollection<IngredientListModel>> GetIngredientsAllAsync()
+    protected override async Task<ICollection<IngredientListModel>> GetAllItemsOnlineAsync()
+        => await ingredientsClient.GetIngredientsAllAsync();
+
+    protected override async Task<ICollection<IngredientListModel>> GetAllItemsLocalAsync()
     {
         var ingredientEntities = await databaseService.GetAllAsync<IngredientEntity>();
-        var ingredients = ingredientMapper.IngredientsToIngredientListModels(ingredientEntities);
-
-        if (connectivity.NetworkAccess == NetworkAccess.Internet)
-        {
-            var ingredientsRemote = await ingredientsClient.GetIngredientsAllAsync();
-            ingredients.AddRange(ingredientsRemote);
-        }
-
-        return ingredients;
+        return ingredientMapper.IngredientsToIngredientListModels(ingredientEntities);
     }
 
     public async Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id)

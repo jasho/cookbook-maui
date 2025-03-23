@@ -156,6 +156,7 @@ public static class MauiProgram
 
     private static void ConfigureFacades(IServiceCollection services)
     {
+        services.AddTransient(typeof(FacadeBase<,>.Dependencies));
         services.AddSingleton<IIngredientsFacade, IngredientsFacade>();
     }
 

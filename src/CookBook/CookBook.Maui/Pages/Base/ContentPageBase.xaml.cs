@@ -29,4 +29,14 @@ public abstract partial class ContentPageBase
             globalExceptionService.HandleException(e);
         }
     }
+
+    public class Dependencies
+    {
+        public IGlobalExceptionService GlobalExceptionService { get; }
+
+        public Dependencies(IGlobalExceptionService globalExceptionService)
+        {
+            GlobalExceptionService = globalExceptionService;
+        }
+    }
 }
