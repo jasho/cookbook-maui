@@ -54,7 +54,7 @@ public class RecipeFacade(
 
     private static RecipeDetailModel MergeIngredientAmounts(RecipeDetailModel recipe)
     {
-        var result = new List<RecipeDetailIngredientModel>();
+        var result = new List<IngredientAmountModel>();
         var ingredientAmountGroups = recipe.IngredientAmounts?.GroupBy(t => $"{t.Ingredient?.Id}-{t.Unit}");
 
         if (ingredientAmountGroups is not null)
@@ -63,7 +63,7 @@ public class RecipeFacade(
             {
                 var ingredientAmountFirst = ingredientAmountGroup.First();
                 var totalAmount = ingredientAmountGroup.Sum(t => t.Amount);
-                var ingredientAmount = new RecipeDetailIngredientModel()
+                var ingredientAmount = new IngredientAmountModel()
                 {
                     Id = ingredientAmountFirst.Id,
                     Amount = totalAmount,

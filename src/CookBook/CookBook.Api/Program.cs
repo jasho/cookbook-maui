@@ -51,9 +51,10 @@ void UseEndpoints(WebApplication app)
         return Task.CompletedTask;
     });
 
+    app.UseImageEndpoints();
+    app.UseIngredientAmountEndpoints();
     app.UseIngredientEndpoints();
     app.UseRecipeEndpoints();
-    app.UseImageEndpoints();
 }
 
 void UseOpenApi(IApplicationBuilder app)

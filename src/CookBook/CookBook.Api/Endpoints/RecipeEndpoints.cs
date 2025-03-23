@@ -5,30 +5,31 @@ namespace CookBook.Api.Endpoints;
 
 public static class RecipeEndpoints
 {
+    const string BasePath = "/api/recipes";
+    const string BaseName = "Recipe";
+
     public static void UseRecipeEndpoints(this WebApplication app)
     {
-        const string RecipeBasePath = "/api/recipes";
-        const string RecipeBaseName = "Recipe";
-        var RecipesTag = $"{RecipeBaseName}s";
+        var RecipesTag = $"{BaseName}s";
 
-        app.MapGet($"{RecipeBasePath}", (IRecipeFacade recipeFacade) => recipeFacade.GetAll())
+        app.MapGet($"{BasePath}", (IRecipeFacade recipeFacade) => recipeFacade.GetAll())
             .WithTags(RecipesTag)
-            .WithName($"Get{RecipeBaseName}sAll");
+            .WithName($"Get{BaseName}sAll");
 
-        app.MapGet($"{RecipeBasePath}/{{id:guid}}", (Guid id, IRecipeFacade recipeFacade) => recipeFacade.GetById(id))
+        app.MapGet($"{BasePath}/{{id:guid}}", (Guid id, IRecipeFacade recipeFacade) => recipeFacade.GetById(id))
             .WithTags(RecipesTag)
-            .WithName($"Get{RecipeBaseName}ById");
+            .WithName($"Get{BaseName}ById");
 
-        app.MapPost($"{RecipeBasePath}", (RecipeDetailModel recipe, IRecipeFacade recipeFacade) => recipeFacade.Create(recipe))
+        app.MapPost($"{BasePath}", (RecipeDetailModel recipe, IRecipeFacade recipeFacade) => recipeFacade.Create(recipe))
             .WithTags(RecipesTag)
-            .WithName($"Create{RecipeBaseName}");
+            .WithName($"Create{BaseName}");
 
-        app.MapPut($"{RecipeBasePath}", (RecipeDetailModel recipe, IRecipeFacade recipeFacade) => recipeFacade.Update(recipe))
+        app.MapPut($"{BasePath}", (RecipeDetailModel recipe, IRecipeFacade recipeFacade) => recipeFacade.Update(recipe))
             .WithTags(RecipesTag)
-            .WithName($"Update{RecipeBaseName}");
+            .WithName($"Update{BaseName}");
 
-        app.MapDelete($"{RecipeBasePath}/{{id:guid}}", (Guid id, IRecipeFacade recipeFacade) => recipeFacade.Delete(id))
+        app.MapDelete($"{BasePath}/{{id:guid}}", (Guid id, IRecipeFacade recipeFacade) => recipeFacade.Delete(id))
             .WithTags(RecipesTag)
-            .WithName($"Delete{RecipeBaseName}");
+            .WithName($"Delete{BaseName}");
     }
 }

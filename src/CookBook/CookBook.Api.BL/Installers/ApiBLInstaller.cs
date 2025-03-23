@@ -9,11 +9,13 @@ public class ApiBLInstaller
 {
     public void Install(IServiceCollection services)
     {
+		services.AddSingleton<IImageFacade, ImageFacade>();
+		services.AddSingleton<IIngredientAmountFacade, IngredientAmountFacade>();
         services.AddSingleton<IIngredientFacade, IngredientFacade>();
         services.AddSingleton<IRecipeFacade, RecipeFacade>();
-		services.AddSingleton<IImageFacade, ImageFacade>();
 
         services.AddSingleton<ImageMapper>();
+        services.AddSingleton<IngredientAmountMapper>();
         services.AddSingleton<IngredientMapper>();
         services.AddSingleton<RecipeMapper>();
     }

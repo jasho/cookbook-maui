@@ -5,30 +5,31 @@ namespace CookBook.Api.Endpoints;
 
 public static class IngredientEndpoints
 {
+    const string BasePath = "/api/ingredients";
+    const string BaseName = "Ingredient";
+
     public static void UseIngredientEndpoints(this WebApplication app)
     {
-        const string IngredientsBasePath = "/api/ingredients";
-        const string IngredientBaseName = "Ingredient";
-        var IngredientsTag = $"{IngredientBaseName}s";
+        var IngredientsTag = $"{BaseName}s";
 
-        app.MapGet($"{IngredientsBasePath}", (IIngredientFacade ingredientFacade) => ingredientFacade.GetAll())
+        app.MapGet($"{BasePath}", (IIngredientFacade ingredientFacade) => ingredientFacade.GetAll())
             .WithTags(IngredientsTag)
-            .WithName($"Get{IngredientBaseName}sAll");
+            .WithName($"Get{BaseName}sAll");
 
-        app.MapGet($"{IngredientsBasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.GetById(id))
+        app.MapGet($"{BasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.GetById(id))
             .WithTags(IngredientsTag)
-            .WithName($"Get{IngredientBaseName}ById");
+            .WithName($"Get{BaseName}ById");
 
-        app.MapPost($"{IngredientsBasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Create(ingredient))
+        app.MapPost($"{BasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Create(ingredient))
             .WithTags(IngredientsTag)
-            .WithName($"Create{IngredientBaseName}");
+            .WithName($"Create{BaseName}");
 
-        app.MapPut($"{IngredientsBasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Update(ingredient))
+        app.MapPut($"{BasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Update(ingredient))
             .WithTags(IngredientsTag)
-            .WithName($"Update{IngredientBaseName}");
+            .WithName($"Update{BaseName}");
 
-        app.MapDelete($"{IngredientsBasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.Delete(id))
+        app.MapDelete($"{BasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.Delete(id))
             .WithTags(IngredientsTag)
-            .WithName($"Delete{IngredientBaseName}");
+            .WithName($"Delete{BaseName}");
     }
 }

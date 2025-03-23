@@ -83,7 +83,7 @@
         <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Recipe.IngredientAmounts}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="{x:Type m:RecipeDetailIngredientModel}">
+                <DataTemplate x:DataType="{x:Type m:IngredientAmountModel}">
                     <Grid ColumnDefinitions="Auto, Auto, Auto, Auto, *"
                           ColumnSpacing="10">
                         <Border Grid.Column="0"

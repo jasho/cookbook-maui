@@ -164,7 +164,7 @@
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:RecipeDetailIngredientModel}">
+                    <DataTemplate x:DataType="{x:Type models:IngredientAmountModel}">
                         <Grid ColumnDefinitions="Auto, *, Auto"
                               ColumnSpacing="15">
                             <Border Grid.Column="0"
