@@ -1,4 +1,3 @@
-using AutoMapper;
 using CookBook.Api.BL.Installers;
 using CookBook.Api.DAL.Installers;
 using CookBook.Api.Endpoints;
@@ -11,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigureOpenApiDocuments(builder.Services);
 new ApiDALInstaller().Install(builder.Services);
 new ApiBLInstaller().Install(builder.Services);
-builder.Services.AddAutoMapper(typeof(ApiBLInstaller));
 builder.Services.Configure<JsonOptions>(options =>
 {
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -23,7 +21,6 @@ builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
 
 var application = builder.Build();
 
-ValidateAutoMapperConfiguration(application.Services);
 UseSecurityFeatures(application);
 UseEndpoints(application);
 UseOpenApi(application);
@@ -39,12 +36,6 @@ void ConfigureOpenApiDocuments(IServiceCollection services)
         document.Title = "CookBook API";
         document.DocumentName = "cookbook-api";
     });
-}
-
-void ValidateAutoMapperConfiguration(IServiceProvider serviceProvider)
-{
-    var mapper = serviceProvider.GetRequiredService<IMapper>();
-    mapper.ConfigurationProvider.AssertConfigurationIsValid();
 }
 
 void UseSecurityFeatures(IApplicationBuilder app)

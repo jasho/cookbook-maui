@@ -1,39 +1,32 @@
-﻿using AutoMapper;
-using CookBook.Api.BL.Facades.Interfaces;
-using CookBook.Api.DAL.Entities;
+﻿using CookBook.Api.BL.Facades.Interfaces;
+using CookBook.Api.BL.Mappers;
 using CookBook.Api.DAL.Repositories.Interfaces;
 using CookBook.Common.Models;
 
 namespace CookBook.Api.BL.Facades;
 
-public class ImageFacade : IImageFacade
+public class ImageFacade(
+    IImageRepository imageRepository,
+    ImageMapper imageMapper)
+    : IImageFacade
 {
-    private readonly IImageRepository imageRepository;
-    private readonly IMapper mapper;
-
-    public ImageFacade(
-        IImageRepository imageRepository,
-        IMapper mapper)
-    {
-        this.imageRepository = imageRepository;
-        this.mapper = mapper;
-    }
-
     public ImageModel? GetById(Guid id)
     {
         var imageEntity = imageRepository.GetById(id);
-        return mapper.Map<ImageModel>(imageEntity);
+        return imageEntity is null
+            ? null
+            : imageMapper.EntityToModel(imageEntity);
     }
 
     public Guid Create(ImageModel imageModel)
     {
-        var imageEntity = mapper.Map<ImageEntity>(imageModel);
+        var imageEntity = imageMapper.ModelToEntity(imageModel);
         return imageRepository.Insert(imageEntity);
     }
 
     public Guid? Update(ImageModel imageModel)
     {
-        var imageEntity = mapper.Map<ImageEntity>(imageModel);
+        var imageEntity = imageMapper.ModelToEntity(imageModel);
         return imageRepository.Update(imageEntity);
     }
 

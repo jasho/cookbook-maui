@@ -1,22 +1,14 @@
-﻿using AutoMapper;
-using CookBook.Api.DAL.Entities;
+﻿using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Mappers;
 using CookBook.Api.DAL.Repositories.Interfaces;
 
 namespace CookBook.Api.DAL.Repositories;
 
-public class RecipeRepository : IRecipeRepository
+public class RecipeRepository(
+    RecipeMapper recipeMapper,
+    IStorage storage)
+    : IRecipeRepository
 {
-    private readonly IMapper mapper;
-    private readonly IStorage storage;
-
-    public RecipeRepository(
-        IMapper mapper,
-        IStorage storage)
-    {
-        this.mapper = mapper;
-        this.storage = storage;
-    }
-
     public IList<RecipeEntity> GetAll()
     {
         return storage.Recipes;
@@ -53,14 +45,14 @@ public class RecipeRepository : IRecipeRepository
 
     public Guid? Update(RecipeEntity entity)
     {
-        var recipeEntityExisting = storage.Recipes.SingleOrDefault(recipeEntity => recipeEntity.Id == entity.Id);
+        var entityExisting = storage.Recipes.SingleOrDefault(recipeEntity => recipeEntity.Id == entity.Id);
 
-        if (recipeEntityExisting is not null)
+        if (entityExisting is not null)
         {
-            mapper.Map(entity, recipeEntityExisting);
-            recipeEntityExisting.IngredientAmounts = GetIngredientAmountsByRecipeId(entity.Id);
+            recipeMapper.EntityToEntity(entity, entityExisting);
+            entityExisting.IngredientAmounts = GetIngredientAmountsByRecipeId(entity.Id);
             //TODO: update ingredient amounts for existing recipe
-            return recipeEntityExisting.Id;
+            return entityExisting.Id;
         }
         else
         {
