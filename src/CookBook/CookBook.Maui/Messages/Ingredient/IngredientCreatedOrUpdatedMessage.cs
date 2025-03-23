@@ -1,6 +1,6 @@
 ﻿namespace CookBook.Maui.Messages
 {
-    public class IngredientUpdatedMessage
+    public class IngredientCreatedOrUpdatedMessage
     {
         public Guid IngredientId { get; set; }
     }

@@ -52,7 +52,7 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public async Task CreateOrUpdateAsync<T>(T entity)
+    public async Task<Guid> CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new()
     {
         var connection = new SQLiteAsyncConnection(databasePath);
@@ -75,6 +75,8 @@ public class DatabaseService : IDatabaseService
         }
 
         await connection.CloseAsync();
+
+        return entity.Id;
     }
 
     public async Task DropDatabaseAsync()

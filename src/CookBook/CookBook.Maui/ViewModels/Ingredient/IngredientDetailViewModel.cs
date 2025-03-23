@@ -9,7 +9,7 @@ using CookBook.Maui.Services;
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<IngredientUpdatedMessage>
+public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<IngredientCreatedOrUpdatedMessage>
 {
     private readonly IIngredientsFacade ingredientsFacade;
     private readonly IShare share;
@@ -84,7 +84,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
         }
     }
 
-    public void Receive(IngredientUpdatedMessage message)
+    public void Receive(IngredientCreatedOrUpdatedMessage message)
     {
         if (message.IngredientId == Id)
         {

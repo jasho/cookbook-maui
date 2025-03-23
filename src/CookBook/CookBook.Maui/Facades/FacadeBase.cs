@@ -50,7 +50,6 @@ public abstract class FacadeBase<TListModel, TDetailModel>
                 if(itemOnline is not null)
                 {
                     await CreateOrUpdateLocalAsync(itemOnline);
-
                     return itemOnline;
                 }
                 else
@@ -66,14 +65,32 @@ public abstract class FacadeBase<TListModel, TDetailModel>
         return await GetByIdLocalAsync(id);
     }
 
+    public async Task<Guid> CreateOrUpdateAsync(TDetailModel detailModel)
+    {
+        var ingredientId = await CreateOrUpdateLocalAsync(detailModel);
+
+        if(connectivity.NetworkAccess == NetworkAccess.Internet)
+        {
+            try
+            {
+                ingredientId = await CreateOrUpdateOnlineAsync(detailModel);
+            }
+            catch (ApiException)
+            {
+            }
+        }
+
+        return ingredientId;
+    }
+
     protected abstract Task<ICollection<TListModel>> GetAllItemsOnlineAsync();
     protected abstract Task<ICollection<TListModel>> GetAllItemsLocalAsync();
 
     protected abstract Task<TDetailModel?> GetByIdOnlineAsync(Guid id);
     protected abstract Task<TDetailModel?> GetByIdLocalAsync(Guid id);
 
-    protected abstract Task CreateOrUpdateOnlineAsync(TDetailModel item);
-    protected abstract Task CreateOrUpdateLocalAsync(TDetailModel item);
+    protected abstract Task<Guid> CreateOrUpdateOnlineAsync(TDetailModel detailModel);
+    protected abstract Task<Guid> CreateOrUpdateLocalAsync(TDetailModel detailModel);
 
 
     public class Dependencies(IConnectivity connectivity)

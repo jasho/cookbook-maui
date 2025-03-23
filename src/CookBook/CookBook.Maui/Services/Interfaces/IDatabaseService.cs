@@ -10,7 +10,7 @@ public interface IDatabaseService
     Task<T?> GetByIdAsync<T>(Guid id)
         where T : EntityBase, new();
 
-    Task CreateOrUpdateAsync<T>(T entity)
+    Task<Guid> CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new();
 
     Task CreateDatabaseAsync();
