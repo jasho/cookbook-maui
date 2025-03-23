@@ -2,9 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Facades.Interfaces;
 using CookBook.Maui.Messages;
 using CookBook.Maui.Services;
-using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
@@ -12,14 +12,14 @@ namespace CookBook.Maui.ViewModels.Recipe;
 public partial class RecipeDetailViewModel
     : ViewModelBase, IRecipient<RecipeCreatedOrUpdatedMessage>
 {
-    private readonly IRecipesClient recipesClient;
+    private readonly IRecipesFacade recipesFacade;
     private readonly IShare share;
 
     public RecipeDetailViewModel(
-        IRecipesClient recipesClient,
+        IRecipesFacade recipesFacade,
         IShare share)
     {
-        this.recipesClient = recipesClient;
+        this.recipesFacade = recipesFacade;
         this.share = share;
 
         IsActive = true;
@@ -36,7 +36,7 @@ public partial class RecipeDetailViewModel
 
         if (Id != Guid.Empty)
         {
-            Recipe = await recipesClient.GetRecipeByIdAsync(Id);
+            Recipe = await recipesFacade.GetByIdAsync(Id);
         }
     }
 
@@ -45,7 +45,7 @@ public partial class RecipeDetailViewModel
     {
         if (Recipe?.Id is not null)
         {
-            await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
+            await recipesFacade.DeleteAsync(Recipe.Id.Value);
         }
 
         Shell.Current.SendBackButtonPressed();
