@@ -26,25 +26,8 @@ namespace CookBook.Maui
         {
             base.OnStart();
 
-            Task.Run(async () =>
-            {
-                var secureStorageService = serviceProvider.GetRequiredService<ISecureStorageService>();
-                var isFirstRun = await secureStorageService.GetIsFirstRunAsync();
-                
-                var databaseService = serviceProvider.GetRequiredService<IDatabaseService>();
-
-                if (isFirstRun is false)
-                {
-                    await databaseService.DropDatabaseAsync();
-                }
-
-                await databaseService.CreateDatabaseAsync();
-                await secureStorageService.SetIsFirstRunAsync(false);
-            })
-            .SafeFirendForget(exception =>
-            {
-                // Log the exception
-            });
+            var databaseService = serviceProvider.GetRequiredService<IDatabaseService>();
+            databaseService.InitializeDatabase();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

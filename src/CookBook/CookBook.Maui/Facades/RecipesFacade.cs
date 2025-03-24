@@ -1,5 +1,6 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Maui.Entities;
+using CookBook.Maui.Facades.Interfaces;
 using CookBook.Maui.Mappers;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Mobile.Api;
@@ -11,7 +12,7 @@ public class RecipesFacade(
     IDatabaseService databaseService,
     RecipeMapper recipeMapper,
     FacadeBase<RecipeListModel, RecipeDetailModel>.Dependencies dependencies)
-    : FacadeBase<RecipeListModel, RecipeDetailModel>(dependencies)
+    : FacadeBase<RecipeListModel, RecipeDetailModel>(dependencies), IRecipesFacade
 {
     protected override async Task<Guid> CreateOrUpdateLocalAsync(RecipeDetailModel detailModel)
     {

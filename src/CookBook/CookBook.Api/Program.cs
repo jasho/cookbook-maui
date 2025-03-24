@@ -21,7 +21,15 @@ builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
 
 var application = builder.Build();
 
-UseSecurityFeatures(application);
+if(builder.Environment.IsDevelopment())
+{
+    application.UseDeveloperExceptionPage();
+}
+else
+{
+    UseSecurityFeatures(application);
+}
+
 UseEndpoints(application);
 UseOpenApi(application);
 

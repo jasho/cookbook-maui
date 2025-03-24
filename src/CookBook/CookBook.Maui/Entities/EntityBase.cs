@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SQLite;
 
 namespace CookBook.Maui.Entities;
 
 public record EntityBase
 {
-    [Key]
+    [PrimaryKey]
     public Guid Id { get; set; }
 }

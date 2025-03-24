@@ -15,7 +15,5 @@ public interface IDatabaseService
 
     Task DeleteAsync<T>(Guid id);
 
-    Task CreateDatabaseAsync();
-
-    Task DropDatabaseAsync();
+    void InitializeDatabase();
 }

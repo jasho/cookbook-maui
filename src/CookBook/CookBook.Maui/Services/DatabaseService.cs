@@ -1,5 +1,6 @@
 ﻿using CookBook.Common.Enums;
 using CookBook.Maui.Entities;
+using CookBook.Maui.Extensions;
 using CookBook.Maui.Services.Interfaces;
 using SQLite;
 
@@ -8,12 +9,17 @@ namespace CookBook.Maui.Services;
 public class DatabaseService : IDatabaseService
 {
     public const string DatabaseName = "database.db3";
-
     private readonly string databasePath;
 
-    public DatabaseService()
+    private readonly ISecureStorageService secureStorageService;
+    private Task? initializationTask;
+    private readonly Lock initializationLock = new();
+
+    public DatabaseService(
+        ISecureStorageService secureStorageService)
     {
         databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabaseName);
+        this.secureStorageService = secureStorageService;
     }
 
     private async Task<CreateTableResult> CreateTableAsync<T>()
@@ -37,6 +43,8 @@ public class DatabaseService : IDatabaseService
     public async Task<List<T>> GetAllAsync<T>()
         where T : new()
     {
+        await EnsureInitializationFinishedAsync();
+        
         var connection = new SQLiteAsyncConnection(databasePath);
         var result = await connection.Table<T>().ToListAsync();
         await connection.CloseAsync();
@@ -46,6 +54,8 @@ public class DatabaseService : IDatabaseService
     public async Task<T?> GetByIdAsync<T>(Guid id)
         where T : EntityBase, new()
     {
+        await EnsureInitializationFinishedAsync();
+
         var connection = new SQLiteAsyncConnection(databasePath);
         var result = await connection.Table<T>().Where(model => model.Id == id).FirstOrDefaultAsync();
         await connection.CloseAsync();
@@ -86,19 +96,39 @@ public class DatabaseService : IDatabaseService
         await connection.CloseAsync();
     }
 
-    public async Task DropDatabaseAsync()
+    public void InitializeDatabase()
     {
-        await DropTableAsync<IngredientEntity>();
-        await DropTableAsync<RecipeEntity>();
+        initializationTask = Task.Run(async () =>
+        {
+            var isFirstRun = await secureStorageService.GetIsFirstRunAsync();
+            if (isFirstRun is false)
+            {
+                await DropTableAsync<IngredientEntity>();
+                await DropTableAsync<RecipeEntity>();
+            }
+
+            await CreateTableAsync<IngredientEntity>();
+            await CreateTableAsync<RecipeEntity>();
+
+            await SeedIngredientsAsync();
+            await SeedRecipesAsync();
+
+            await secureStorageService.SetIsFirstRunAsync(false);
+        });
     }
 
-    public async Task CreateDatabaseAsync()
+    private async Task EnsureInitializationFinishedAsync()
     {
-        await CreateTableAsync<IngredientEntity>();
-        await CreateTableAsync<RecipeEntity>();
+        Task? initializationTask;
+        lock (initializationLock)
+        {
+            initializationTask = this.initializationTask;
+        }
 
-        await SeedIngredientsAsync();
-        await SeedRecipesAsync();
+        if (initializationTask is not null)
+        {
+            await initializationTask;
+        }
     }
 
     private async Task SeedIngredientsAsync()

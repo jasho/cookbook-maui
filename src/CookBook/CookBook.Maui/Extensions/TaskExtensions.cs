@@ -2,7 +2,7 @@
 
 public static class TaskExtensions
 {
-    public static async void SafeFirendForget(this Task task, Action<Exception>? onException = null)
+    public static async void SafeFireAndForget(this Task task, Action<Exception>? onException = null)
     {
         try
         {
