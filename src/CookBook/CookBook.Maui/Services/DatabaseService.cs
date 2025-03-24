@@ -1,5 +1,6 @@
 ﻿using CookBook.Common.Enums;
 using CookBook.Maui.Entities;
+using CookBook.Maui.Extensions;
 using CookBook.Maui.Services.Interfaces;
 using SQLite;
 
@@ -8,12 +9,17 @@ namespace CookBook.Maui.Services;
 public class DatabaseService : IDatabaseService
 {
     public const string DatabaseName = "database.db3";
-
     private readonly string databasePath;
 
-    public DatabaseService()
+    private readonly ISecureStorageService secureStorageService;
+    private Task? initializationTask;
+    private readonly Lock initializationLock = new();
+
+    public DatabaseService(
+        ISecureStorageService secureStorageService)
     {
         databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabaseName);
+        this.secureStorageService = secureStorageService;
     }
 
     private async Task<CreateTableResult> CreateTableAsync<T>()
@@ -25,25 +31,38 @@ public class DatabaseService : IDatabaseService
         return result;
     }
 
-    public async Task<List<T>> GetAllAsync<T>()
-        where T : new()
+    private async Task<int> DropTableAsync<T>()
+        where T: EntityBase, new()
     {
         var connection = new SQLiteAsyncConnection(databasePath);
-        var result = await connection.Table<T>().ToListAsync();
+        var result = await connection.DropTableAsync<T>();
         await connection.CloseAsync();
         return result;
     }
 
-    public async Task<T> GetByIdAsync<T>(Guid id)
+    public async Task<List<T>> GetAllAsync<T>()
+        where T : new()
+    {
+        await EnsureInitializationFinishedAsync();
+        
+        var connection = new SQLiteAsyncConnection(databasePath);
+        var result = await connection.Table<T>().ToListAsync();
+        await connection.CloseAsync();
+        return result ?? [];
+    }
+
+    public async Task<T?> GetByIdAsync<T>(Guid id)
         where T : EntityBase, new()
     {
+        await EnsureInitializationFinishedAsync();
+
         var connection = new SQLiteAsyncConnection(databasePath);
         var result = await connection.Table<T>().Where(model => model.Id == id).FirstOrDefaultAsync();
         await connection.CloseAsync();
         return result;
     }
 
-    public async Task SetAsync<T>(T entity)
+    public async Task<Guid> CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new()
     {
         var connection = new SQLiteAsyncConnection(databasePath);
@@ -54,41 +73,85 @@ public class DatabaseService : IDatabaseService
         }
         else
         {
-            await connection.UpdateAsync(entity);
+            var existingEntity = await GetByIdAsync<T>(entity.Id);
+            if(existingEntity is null)
+            {
+                await connection.InsertAsync(entity);
+            }
+            else
+            {
+                await connection.UpdateAsync(entity);
+            }
         }
+
+        await connection.CloseAsync();
+
+        return entity.Id;
+    }
+
+    public async Task DeleteAsync<T>(Guid id)
+    {
+        var connection = new SQLiteAsyncConnection(databasePath);
+        await connection.DeleteAsync<T>(id);
         await connection.CloseAsync();
     }
 
-    public async Task CreateDatabaseAsync()
+    public void InitializeDatabase()
     {
-        await CreateTableAsync<IngredientEntity>();
-        await CreateTableAsync<RecipeEntity>();
+        initializationTask = Task.Run(async () =>
+        {
+            var isFirstRun = await secureStorageService.GetIsFirstRunAsync();
+            if (isFirstRun is false)
+            {
+                await DropTableAsync<IngredientEntity>();
+                await DropTableAsync<RecipeEntity>();
+            }
 
-        await SeedIngredientsAsync();
-        await SeedRecipesAsync();
+            await CreateTableAsync<IngredientEntity>();
+            await CreateTableAsync<RecipeEntity>();
+
+            await SeedIngredientsAsync();
+            await SeedRecipesAsync();
+
+            await secureStorageService.SetIsFirstRunAsync(false);
+        });
+    }
+
+    private async Task EnsureInitializationFinishedAsync()
+    {
+        Task? initializationTask;
+        lock (initializationLock)
+        {
+            initializationTask = this.initializationTask;
+        }
+
+        if (initializationTask is not null)
+        {
+            await initializationTask;
+        }
     }
 
     private async Task SeedIngredientsAsync()
     {
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Vejce",
             Description =
                 "Základní význam vajec domácí drůbeže je v první řadě biologický, tj. zajistit reprodukci daného druhu. Protože k vývoji nového jedince dochází mimo tělo matky, obsahuje vejce všechny důležité výživné složky nezbytné pro vývoj nového organismu. Zatímco vejce krůt, kachen a hus jsou produkována hlavně pro účely reprodukční, tj. slouží jako vejce násadová, slepičí vejce slouží také jako vejce konzumní a mohou být součástí lidské výživy. Vejce mají vysoký obsah plnohodnotných bílkovin (obsahují všechny aminokyseliny pro člověka nezbytné a to v poměru, který je nejpříznivější ze všech běžných potravin). Vejce dále obsahují tuky, vitamíny a minerální látky. Avšak obsahují i vysoké množství cholesterolu, takže konzumace 3 a více vajec denně prokazatelně zvyšuje riziko onemocnění a smrti.[1]",
-            ImageUrl = "https://i.ibb.co/d7mZWGN/image.jpg"
+            ImageUrl = "ingredient_egg.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Cibule",
             Description =
                 "Jedná se o dvouletou až vytrvalou (spíše jen teoreticky[zdroj?!]) rostlinu, na bázi s velkou cibulí. Stonek je dosti robustní, dole až 3 cm v průměru, je dutý. Listy jsou jednoduché, přisedlé, s listovými pochvami. Čepele jsou celokrajné, polooblé se souběžnou žilnatinou. Květy jsou oboupohlavní, ve vrcholovém květenství, jedná se o hlávkovitě stažený zdánlivý okolík, ve skutečnosti to je stažené vrcholičnaté květenství zvané šroubel. Květenství je podepřeno toulcem. Pacibulky jsou v květenství přítomny jen někdy. Okvětí se skládá ze 6 okvětních lístků bílé až narůžovělé barvy, se středním zeleným pruhem. Tyčinek je 6. Gyneceum je složeno ze 3 plodolistů, je synkarpní, semeník je svrchní. Plodem je tobolka.",
-            ImageUrl = "https://i.ibb.co/sbXC0rS/480px-Onion-on-White.jpg"
+            ImageUrl = "ingredient_onion.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Slanina",
@@ -96,56 +159,56 @@ public class DatabaseService : IDatabaseService
                 "Slanina nebo také špek je označení pro solené či uzené vepřové sádlo. Vyrábí se převážně z vepřového bůčku, kýty nebo hřbetu. Samotná slanina se vyrábí naložením do soli na několik týdnů a případně pozdějším vyuzením.\r\n\r\nVýraz se také používá jako zkrácený název pro anglickou slaninu, která kromě sádla obsahuje i maso."
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Rajče",
             Description = "Rajče jedlé, též lilek rajče (Solanum lycopersicum) je trvalka bylinného charakteru pěstovaná jako jednoletka. Patří do čeledi lilkovitých. Pochází ze Střední a Jižní Ameriky. Plodem je bobule zvaná rajče, původně rajské jablko, proto se rajče řadí mezi plodovou zeleninu, ale jsou spekulace o tom, že rajče je ovoce.",
-            ImageUrl = "https://i.ibb.co/1TzsF6B/ingredient-7.jpg"
+            ImageUrl = "ingredient_tomato.jpg"
         });
 
-        await SetAsync(new IngredientEntity
+        await CreateOrUpdateAsync(new IngredientEntity
         {
             Id = Guid.Empty,
             Name = "Mléko",
             Description = "Mlíko je atypický způsob čepování piva. Oblíbily si ho především ženy, díky výsledné jemnější a mírně nasládlé chuti.[zdroj?]",
-            ImageUrl = "https://i.ibb.co/BB3gVxr/ingredient-2.jpg"
+            ImageUrl = "ingredient_milk.jpg"
         });
     }
 
     private async Task SeedRecipesAsync()
     {
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Míchaná vejce",
             Description = "Popis míchaných vajec",
             Duration = TimeSpan.FromMinutes(15),
             FoodType = FoodType.MainDish,
-            ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
+            ImageUrl = "recipe_scrambled_eggs.jpg"
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Miso polévka",
             Description = "Popis miso polévky",
             Duration = TimeSpan.FromMinutes(30),
             FoodType = FoodType.Soup,
-            ImageUrl = "https://i.ibb.co/RY1XKmL/recipe-2.jpg",
+            ImageUrl = "recipe_miso_soup.jpg",
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Vykoštěné kuře s citronem a bylinkami",
             Description = "Popis kuřete",
             Duration = TimeSpan.FromHours(1),
             FoodType = FoodType.MainDish,
-            ImageUrl = "https://i.ibb.co/QJF2ZxX/recipe-1.jpg",
+            ImageUrl = "recipe_chicken_with_lemon_and_herbs.jpg",
         });
 
-        await SetAsync(new RecipeEntity
+        await CreateOrUpdateAsync(new RecipeEntity
         {
             Id = Guid.Empty,
             Name = "Citronový sorbet",

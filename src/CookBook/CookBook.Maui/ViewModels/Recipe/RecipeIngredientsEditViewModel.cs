@@ -20,7 +20,7 @@ namespace CookBook.Maui.ViewModels.Recipe
 
         public List<Unit> Units { get; set; } = [.. Enum.GetValues<Unit>()];
         public ObservableCollection<IngredientListModel> Ingredients { get; set; } = [];
-        public RecipeDetailIngredientModel IngredientNew { get; private set; } = new();
+        public IngredientAmountModel IngredientNew { get; private set; } = new();
 
         protected override async Task LoadDataAsync()
         {
@@ -41,7 +41,7 @@ namespace CookBook.Maui.ViewModels.Recipe
             IngredientNew = GetNewIngredient();
         }
 
-        private RecipeDetailIngredientModel GetNewIngredient()
+        private IngredientAmountModel GetNewIngredient()
             => new()
             {
                 Id = Guid.NewGuid(),
@@ -62,7 +62,7 @@ namespace CookBook.Maui.ViewModels.Recipe
         }
 
         [RelayCommand]
-        private async Task UpdateIngredientAsync(RecipeDetailIngredientModel ingredient)
+        private async Task UpdateIngredientAsync(IngredientAmountModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
             if (Recipe.Id is not null)
@@ -72,7 +72,7 @@ namespace CookBook.Maui.ViewModels.Recipe
         }
 
         [RelayCommand]
-        private async Task RemoveIngredientAsync(RecipeDetailIngredientModel ingredient)
+        private async Task RemoveIngredientAsync(IngredientAmountModel ingredient)
         {
             // TODO: update individual item here instead of the whole recipe
             Recipe.IngredientAmounts?.Remove(ingredient);

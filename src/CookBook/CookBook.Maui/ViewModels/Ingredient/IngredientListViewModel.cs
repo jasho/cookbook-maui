@@ -9,7 +9,7 @@ using CookBook.Maui.Services;
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 public partial class IngredientListViewModel
-    : ViewModelBase, IRecipient<IngredientCreatedMessage>, IRecipient<IngredientUpdatedMessage>
+    : ViewModelBase, IRecipient<IngredientCreatedOrUpdatedMessage>
 {
     private readonly IIngredientsFacade ingredientsFacade;
 
@@ -28,7 +28,7 @@ public partial class IngredientListViewModel
     {
         await base.LoadDataAsync();
 
-        Items = await ingredientsFacade.GetIngredientsAllAsync();
+        Items = await ingredientsFacade.GetAllItemsAsync();
     }
 
     [RelayCommand]
@@ -56,12 +56,7 @@ public partial class IngredientListViewModel
             });
     }
 
-    public void Receive(IngredientCreatedMessage message)
-    {
-        ForceDataRefresh = true;
-    }
-
-    public void Receive(IngredientUpdatedMessage message)
+    public void Receive(IngredientCreatedOrUpdatedMessage message)
     {
         ForceDataRefresh = true;
     }

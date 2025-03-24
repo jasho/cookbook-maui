@@ -1,44 +1,37 @@
-﻿using AutoMapper;
-using CookBook.Api.BL.Facades.Interfaces;
-using CookBook.Api.DAL.Entities;
+﻿using CookBook.Api.BL.Facades.Interfaces;
 using CookBook.Api.DAL.Repositories.Interfaces;
 using CookBook.Common.Models;
 
 namespace CookBook.Api.BL.Facades;
 
-public class IngredientFacade : IIngredientFacade
+public class IngredientFacade(
+    IIngredientRepository ingredientRepository,
+    IngredientMapper ingredientMapper)
+    : IIngredientFacade
 {
-    private readonly IIngredientRepository ingredientRepository;
-    private readonly IMapper mapper;
-
-    public IngredientFacade(
-        IIngredientRepository ingredientRepository,
-        IMapper mapper)
-    {
-        this.ingredientRepository = ingredientRepository;
-        this.mapper = mapper;
-    }
-
     public List<IngredientListModel> GetAll()
     {
-        return mapper.Map<List<IngredientListModel>>(ingredientRepository.GetAll());
+        var ingredientEntities = ingredientRepository.GetAll();
+        return ingredientMapper.EntitiesToListModels(ingredientEntities);
     }
 
     public IngredientDetailModel? GetById(Guid id)
     {
         var ingredientEntity = ingredientRepository.GetById(id);
-        return mapper.Map<IngredientDetailModel>(ingredientEntity);
+        return ingredientEntity is null
+            ? null
+            : ingredientMapper.EntityToDetailModel(ingredientEntity);
     }
 
     public Guid Create(IngredientDetailModel ingredientModel)
     {
-        var ingredientEntity = mapper.Map<IngredientEntity>(ingredientModel);
+        var ingredientEntity = ingredientMapper.DetailModelToEntity(ingredientModel);
         return ingredientRepository.Insert(ingredientEntity);
     }
 
     public Guid? Update(IngredientDetailModel ingredientModel)
     {
-        var ingredientEntity = mapper.Map<IngredientEntity>(ingredientModel);
+        var ingredientEntity = ingredientMapper.DetailModelToEntity(ingredientModel);
         return ingredientRepository.Update(ingredientEntity);
     }
 

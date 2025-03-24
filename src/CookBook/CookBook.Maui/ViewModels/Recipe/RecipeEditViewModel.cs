@@ -3,15 +3,15 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
+using CookBook.Maui.Facades.Interfaces;
 using CookBook.Maui.Messages;
 using CookBook.Maui.Services;
-using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class RecipeEditViewModel(
-    IRecipesClient recipesClient,
+    IRecipesFacade recipesFacade,
     IMessenger messenger)
     : ViewModelBase
 {
@@ -28,7 +28,11 @@ public partial class RecipeEditViewModel(
 
         if (Id != Guid.Empty)
         {
-            Recipe = await recipesClient.GetRecipeByIdAsync(Id);
+            var recipe = await recipesFacade.GetByIdAsync(Id);
+            if(recipe is not null)
+            {
+                Recipe = recipe;
+            }
         }
     }
 
@@ -50,7 +54,7 @@ public partial class RecipeEditViewModel(
     {
         if (Recipe.Id is not null)
         {
-            await recipesClient.DeleteRecipeAsync(Recipe.Id.Value);
+            await recipesFacade.DeleteAsync(Recipe.Id.Value);
         }
 
         Shell.Current.SendBackButtonPressed();
@@ -61,21 +65,12 @@ public partial class RecipeEditViewModel(
     {
         if (Recipe.Id is not null)
         {
-            if (Id == Guid.Empty)
-            {
-                await recipesClient.CreateRecipeAsync(Recipe);
+            await recipesFacade.CreateOrUpdateAsync(Recipe);
 
-                messenger.Send<RecipeCreatedMessage>();
-            }
-            else
+            messenger.Send(new RecipeCreatedOrUpdatedMessage
             {
-                await recipesClient.UpdateRecipeAsync(Recipe);
-
-                messenger.Send(new RecipeUpdatedMessage
-                {
-                    RecipeId = Recipe.Id.Value
-                });
-            }
+                RecipeId = Recipe.Id.Value
+            });
         }
 
         Shell.Current.SendBackButtonPressed();

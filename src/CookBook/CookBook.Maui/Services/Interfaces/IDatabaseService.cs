@@ -7,11 +7,13 @@ public interface IDatabaseService
     Task<List<T>> GetAllAsync<T>()
         where T : new();
 
-    Task<T> GetByIdAsync<T>(Guid id)
+    Task<T?> GetByIdAsync<T>(Guid id)
         where T : EntityBase, new();
 
-    Task SetAsync<T>(T entity)
+    Task<Guid> CreateOrUpdateAsync<T>(T entity)
         where T : EntityBase, new();
 
-    Task CreateDatabaseAsync();
+    Task DeleteAsync<T>(Guid id);
+
+    void InitializeDatabase();
 }

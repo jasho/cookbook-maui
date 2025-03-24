@@ -5,8 +5,8 @@ namespace CookBook.Api.DAL;
 
 public class Storage : IStorage
 {
-    private readonly IList<Guid> ingredientGuids = new List<Guid>
-    {
+    private readonly List<Guid> ingredientGuids =
+    [
         new("df935095-8709-4040-a2bb-b6f97cb416dc"),
         new("23b3902d-7d4f-4213-9cf0-112348f56238"),
         new("7f251cd6-3ac4-49be-b3e7-d1f9f7cfdd3a"),
@@ -16,26 +16,26 @@ public class Storage : IStorage
         new("e79f129f-3153-41df-8e84-8bcd7a077648"),
         new("a62a2fb6-2b80-45b1-8f82-1401a6834abe"),
         new("78c2a34b-1e84-40c8-bc59-49510478679d"),
-    };
+    ];
 
-    private readonly IList<Guid> ingredientAmountGuids = new List<Guid>
-    {
+    private readonly List<Guid> ingredientAmountGuids =
+    [
         new("0d4fa150-ad80-4d46-a511-4c666166ec5e"),
         new("87833e66-05ba-4d6b-900b-fe5ace88dbd8"),
-    };
+    ];
 
-    private readonly IList<Guid> recipeGuids = new List<Guid>
-    {
+    private readonly List<Guid> recipeGuids =
+    [
         new("fabde0cd-eefe-443f-baf6-3d96cc2cbf2e"),
         new("a8ee7ce8-9903-4f42-afb4-b2c34dfb7ccf"),
         new("c3542130-589c-4302-a441-a110fcadd45a"),
         new("2caa29d8-61f0-4c1d-850d-4d70003e6aef"),
-    };
+    ];
 
-    public IList<IngredientEntity> Ingredients { get; } = new List<IngredientEntity>();
-    public IList<IngredientAmountEntity> IngredientAmounts { get; } = new List<IngredientAmountEntity>();
-    public IList<RecipeEntity> Recipes { get; } = new List<RecipeEntity>();
-    public IList<ImageEntity> Images { get; } = new List<ImageEntity>();
+    public List<IngredientEntity> Ingredients { get; } = [];
+    public List<IngredientAmountEntity> IngredientAmounts { get; } = [];
+    public List<RecipeEntity> Recipes { get; } = [];
+    public List<ImageEntity> Images { get; } = [];
 
     public Storage(bool seedData = true)
     {

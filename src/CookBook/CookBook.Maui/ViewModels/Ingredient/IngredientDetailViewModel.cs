@@ -9,7 +9,7 @@ using CookBook.Maui.Services;
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<IngredientUpdatedMessage>
+public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<IngredientCreatedOrUpdatedMessage>
 {
     private readonly IIngredientsFacade ingredientsFacade;
     private readonly IShare share;
@@ -36,7 +36,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
 
         if (Id != Guid.Empty)
         {
-            Ingredient = await ingredientsFacade.GetIngredientByIdAsync(Id);
+            Ingredient = await ingredientsFacade.GetByIdAsync(Id);
         }
     }
 
@@ -45,8 +45,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
     {
         if (Ingredient?.Id is not null)
         {
-            // TODO: Implement DeleteAsync in IngredientsFacade
-            //await ingredientsClient.DeleteIngredientAsync(Ingredient.Id.Value);
+            await ingredientsFacade.DeleteAsync(Ingredient.Id.Value);
         }
 
         Shell.Current.SendBackButtonPressed();
@@ -84,7 +83,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
         }
     }
 
-    public void Receive(IngredientUpdatedMessage message)
+    public void Receive(IngredientCreatedOrUpdatedMessage message)
     {
         if (message.IngredientId == Id)
         {

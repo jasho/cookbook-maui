@@ -4,8 +4,8 @@ namespace CookBook.Api.DAL;
 
 public interface IStorage
 {
-    IList<IngredientEntity> Ingredients { get; }
-    IList<IngredientAmountEntity> IngredientAmounts { get; }
-    IList<RecipeEntity> Recipes { get; }
-    IList<ImageEntity> Images { get; }
+    List<IngredientEntity> Ingredients { get; }
+    List<IngredientAmountEntity> IngredientAmounts { get; }
+    List<RecipeEntity> Recipes { get; }
+    List<ImageEntity> Images { get; }
 }

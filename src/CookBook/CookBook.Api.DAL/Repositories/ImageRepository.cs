@@ -1,22 +1,14 @@
-﻿using AutoMapper;
-using CookBook.Api.DAL.Entities;
+﻿using CookBook.Api.DAL.Entities;
+using CookBook.Api.DAL.Mappers;
 using CookBook.Api.DAL.Repositories.Interfaces;
 
 namespace CookBook.Api.DAL.Repositories;
 
-public class ImageRepository : IImageRepository
+public class ImageRepository(
+    ImageMapper imageMapper,
+    IStorage storage)
+    : IImageRepository
 {
-    private readonly IStorage storage;
-    private readonly IMapper mapper;
-
-    public ImageRepository(
-        IStorage storage,
-        IMapper mapper)
-    {
-        this.storage = storage;
-        this.mapper = mapper;
-    }
-
     public IList<ImageEntity> GetAll()
     {
         return storage.Images;
@@ -35,14 +27,14 @@ public class ImageRepository : IImageRepository
 
     public Guid? Update(ImageEntity entity)
     {
-        var imageExisting = storage.Images.SingleOrDefault(imageInStorage =>
+        var entityExisting = storage.Images.SingleOrDefault(imageInStorage =>
             imageInStorage.Id == entity.Id);
-        if (imageExisting != null)
+        if (entityExisting != null)
         {
-            mapper.Map(entity, imageExisting);
+            imageMapper.EntityToEntity(entity, entityExisting);
         }
 
-        return imageExisting?.Id;
+        return entityExisting?.Id;
     }
 
     public void Remove(Guid id)

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Maui.Facades;
+using CookBook.Maui.Facades.Interfaces;
 using CookBook.Maui.Mappers;
 using CookBook.Maui.Options;
 using CookBook.Maui.Pages;
@@ -152,11 +153,14 @@ public static class MauiProgram
     private static void ConfigureMappers(IServiceCollection services)
     {
         services.AddSingleton<IngredientMapper>();
+        services.AddSingleton<RecipeMapper>();
     }
 
     private static void ConfigureFacades(IServiceCollection services)
     {
+        services.AddTransient(typeof(FacadeBase<,>.Dependencies));
         services.AddSingleton<IIngredientsFacade, IngredientsFacade>();
+        services.AddSingleton<IRecipesFacade, RecipesFacade>();
     }
 
     private static void RegisterRoutes(MauiApp app)

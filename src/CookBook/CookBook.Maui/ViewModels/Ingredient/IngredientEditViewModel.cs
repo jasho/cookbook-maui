@@ -2,14 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using CookBook.Common.Models;
+using CookBook.Maui.Facades;
 using CookBook.Maui.Messages;
-using CookBook.Mobile.Api;
 
 namespace CookBook.Maui.ViewModels.Ingredient;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class IngredientEditViewModel(
-    IIngredientsClient ingredientsClient,
+    IIngredientsFacade ingredientsFacade,
     IMessenger messenger)
     : ViewModelBase
 {
@@ -35,30 +35,20 @@ public partial class IngredientEditViewModel(
         }
         else
         {
-            Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
+            Ingredient = await ingredientsFacade.GetByIdAsync(Id);
         }
     }
 
     [RelayCommand]
     private async Task SaveAsync()
     {
-        if (Ingredient?.Id is not null)
+        if (Ingredient is not null)
         {
-            if (Id == Guid.Empty)
+            var ingredientId = await ingredientsFacade.CreateOrUpdateAsync(Ingredient);
+            messenger.Send(new IngredientCreatedOrUpdatedMessage
             {
-                await ingredientsClient.CreateIngredientAsync(Ingredient);
-
-                messenger.Send<IngredientCreatedMessage>();
-            }
-            else
-            {
-                await ingredientsClient.UpdateIngredientAsync(Ingredient);
-
-                messenger.Send(new IngredientUpdatedMessage
-                {
-                    IngredientId = Ingredient.Id.Value
-                });
-            }
+                IngredientId = ingredientId
+            });
         }
 
         Shell.Current.SendBackButtonPressed();

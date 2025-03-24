@@ -1,4 +1,5 @@
-﻿using CookBook.Api.DAL.Repositories;
+﻿using CookBook.Api.DAL.Mappers;
+using CookBook.Api.DAL.Repositories;
 using CookBook.Api.DAL.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,5 +13,9 @@ public class ApiDALInstaller
         services.AddSingleton<IIngredientRepository, IngredientRepository>();
         services.AddSingleton<IRecipeRepository, RecipeRepository>();
 		services.AddSingleton<IImageRepository, ImageRepository>();
+
+        services.AddSingleton<ImageMapper>();
+        services.AddSingleton<IngredientMapper>();
+        services.AddSingleton<RecipeMapper>();
     }
 }

@@ -11,45 +11,59 @@ public class IngredientsFacade(
     IDatabaseService databaseService,
     IIngredientsClient ingredientsClient,
     IConnectivity connectivity,
-    IngredientMapper ingredientMapper)
-    : IIngredientsFacade
+    IngredientMapper ingredientMapper,
+    FacadeBase<IngredientListModel, IngredientDetailModel>.Dependencies dependencies)
+    : FacadeBase<IngredientListModel, IngredientDetailModel>(dependencies), IIngredientsFacade
 {
-    public async Task<ICollection<IngredientListModel>> GetIngredientsAllAsync()
+    protected override async Task<ICollection<IngredientListModel>> GetAllItemsOnlineAsync()
+        => await ingredientsClient.GetIngredientsAllAsync();
+
+    protected override async Task<ICollection<IngredientListModel>> GetAllItemsLocalAsync()
     {
         var ingredientEntities = await databaseService.GetAllAsync<IngredientEntity>();
-        var ingredients = ingredientMapper.IngredientsToIngredientListModels(ingredientEntities);
-
-        if (connectivity.NetworkAccess == NetworkAccess.Internet)
-        {
-            var ingredientsRemote = await ingredientsClient.GetIngredientsAllAsync();
-            ingredients.AddRange(ingredientsRemote);
-        }
-
-        return ingredients;
+        return ingredientMapper.EntitiesToListModels(ingredientEntities);
     }
 
-    public async Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id)
+    protected override async Task<IngredientDetailModel?> GetByIdOnlineAsync(Guid id)
+        => await ingredientsClient.GetIngredientByIdAsync(id);
+
+    protected override async Task<IngredientDetailModel?> GetByIdLocalAsync(Guid id)
     {
-        if (connectivity.NetworkAccess == NetworkAccess.Internet)
+        var ingredientEntity = await databaseService.GetByIdAsync<IngredientEntity>(id);
+        return ingredientMapper.EntityToDetailModel(ingredientEntity);
+    }
+
+    protected override async Task<Guid> CreateOrUpdateOnlineAsync(IngredientDetailModel detailModel)
+    {
+        if(detailModel.Id is null)
         {
-            try
-            {
-                return await ingredientsClient.GetIngredientByIdAsync(id);
-            }
-            catch (ApiException e) when(e.StatusCode == (int) HttpStatusCode.OK)
-            {
-                return await GetLocalIngredientByIdAsync(id);
-            }
+            return await ingredientsClient.CreateIngredientAsync(detailModel);
         }
         else
         {
-            return await GetLocalIngredientByIdAsync(id);
+            var existingIngredient = ingredientsClient.GetIngredientByIdAsync(detailModel.Id.Value);
+            if(existingIngredient is null)
+            {
+                return await ingredientsClient.CreateIngredientAsync(detailModel);
+            }
+            else
+            {
+                return (await ingredientsClient.UpdateIngredientAsync(detailModel)) ?? detailModel.Id.Value;
+            }
         }
     }
 
-    private async Task<IngredientDetailModel?> GetLocalIngredientByIdAsync(Guid id)
+    protected override async Task<Guid> CreateOrUpdateLocalAsync(IngredientDetailModel detailModel)
     {
-        var ingredientEntity = await databaseService.GetByIdAsync<IngredientEntity>(id);
-        return ingredientMapper.IngredientToIngredientDetailModel(ingredientEntity);
+        var ingredientEntity = ingredientMapper.DetailModelToEntity(detailModel);
+        return await databaseService.CreateOrUpdateAsync(ingredientEntity);
+    }
+
+    protected override async Task DeleteOnlineAsync(Guid id)
+        => await ingredientsClient.DeleteIngredientAsync(id);
+
+    protected override async Task DeleteLocalAsync(Guid id)
+    {
+        await databaseService.DeleteAsync<IngredientEntity>(id);
     }
 }
