@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Maui", "CookBook.Maui\CookBook.Maui.csproj", "{65B4ADE4-E3B6-457A-B6F3-F4C058F40179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Maui", "CookBook.Maui\CookBook.Maui\CookBook.Maui.csproj", "{65B4ADE4-E3B6-457A-B6F3-F4C058F40179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
