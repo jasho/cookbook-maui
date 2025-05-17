@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "API + MAUI",
+    "Projects": [
+      {
+        "Path": "CookBook.Api\\CookBook.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "CookBook.Maui\\CookBook.Maui.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
