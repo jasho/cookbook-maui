@@ -1,0 +1,25 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug Desktop" />
+    <BuildType Name="Debug Phone" />
+    <BuildType Name="Release Desktop" />
+    <BuildType Name="Release Phone" />
+  </Configurations>
+  <Folder Name="/Api/">
+    <Project Path="CookBook.Api.BL/CookBook.Api.BL.csproj" />
+    <Project Path="CookBook.Api.DAL/CookBook.Api.DAL.csproj" />
+    <Project Path="CookBook.Api/CookBook.Api.csproj" />
+  </Folder>
+  <Folder Name="/Common/">
+    <Project Path="CookBook.Common/CookBook.Common.csproj" />
+  </Folder>
+  <Folder Name="/Maui/">
+    <Project Path="CookBook.Maui/CookBook.Maui/CookBook.Maui.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+</Solution>
