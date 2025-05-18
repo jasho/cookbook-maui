@@ -3,7 +3,7 @@ using CookBook.Maui.Entities;
 using CookBook.Maui.Facades.Interfaces;
 using CookBook.Maui.Mappers;
 using CookBook.Maui.Services.Interfaces;
-using CookBook.Mobile.Api;
+using CookBook.Maui.Api;
 
 namespace CookBook.Maui.Facades;
 

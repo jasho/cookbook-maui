@@ -12,7 +12,7 @@ using CookBook.Maui.Shells;
 using CookBook.Maui.ViewModels;
 using CookBook.Maui.ViewModels.Ingredient;
 using CookBook.Maui.ViewModels.Recipe;
-using CookBook.Mobile.Api;
+using CookBook.Maui.Api;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;

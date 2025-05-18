@@ -1,6 +1,6 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Maui.Facades.Interfaces;
-using CookBook.Mobile.Api;
+using CookBook.Maui.Api;
 
 namespace CookBook.Maui.Facades;
 
