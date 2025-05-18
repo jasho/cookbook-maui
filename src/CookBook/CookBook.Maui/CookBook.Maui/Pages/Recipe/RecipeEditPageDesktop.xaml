@@ -2,7 +2,7 @@
 <base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeEditPageDesktop"
                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base"
+                      xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
                       xmlns:texts="using:CookBook.Maui.Resources.Texts"

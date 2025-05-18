@@ -14,6 +14,7 @@
     <Project Path="CookBook.Common/CookBook.Common.csproj" />
   </Folder>
   <Folder Name="/Maui/">
+    <Project Path="CookBook.Maui/CookBook.Maui.Common/CookBook.Maui.Common.csproj" />
     <Project Path="CookBook.Maui/CookBook.Maui/CookBook.Maui.csproj">
       <Deploy />
     </Project>

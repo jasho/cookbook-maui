@@ -32,12 +32,15 @@ namespace CookBook.Maui
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            Shell? appShell = null;
-#if PHONE
-            appShell = serviceProvider.GetRequiredService<AppShellPhone>();
-#elif DESKTOP
-            appShell = serviceProvider.GetRequiredService<AppShellDesktop>();
-#endif
+            Shell appShell;
+            if (DeviceInfo.Idiom == DeviceIdiom.Phone)
+            {
+                appShell = serviceProvider.GetRequiredService<AppShellPhone>();
+            }
+            else
+            {
+                appShell = serviceProvider.GetRequiredService<AppShellDesktop>();
+            }
 
             return new Window(appShell);
         }

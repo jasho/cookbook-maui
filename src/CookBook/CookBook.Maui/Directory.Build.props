@@ -1,0 +1,18 @@
+<Project>
+	<PropertyGroup>
+		<Configurations>Debug Desktop; Debug Phone</Configurations>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>preview</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(Configuration.Contains('Desktop'))">
+		<DefineConstants>$(DefineConstants);DESKTOP</DefineConstants>
+		<ConfigurationIdiom>Desktop</ConfigurationIdiom>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(Configuration.Contains('Phone'))">
+		<DefineConstants>$(DefineConstants);PHONE</DefineConstants>
+		<ConfigurationIdiom>Phone</ConfigurationIdiom>
+	</PropertyGroup>
+</Project>
