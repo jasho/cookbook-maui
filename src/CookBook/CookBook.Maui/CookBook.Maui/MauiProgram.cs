@@ -81,14 +81,11 @@ public static class MauiProgram
 
     private static void ConfigureShell(IServiceCollection services)
     {
-        if (DeviceInfo.Idiom == DeviceIdiom.Phone)
-        {
-            services.AddSingleton<AppShellPhone>();
-        }
-        else
-        {
-            services.AddSingleton<AppShellDesktop>();
-        }
+#if PHONE
+        services.AddSingleton<AppShellPhone>();
+#elif DESKTOP
+        services.AddSingleton<AppShellDesktop>();
+#endif
     }
 
     private static void ConfigureViews(IServiceCollection services)
@@ -115,7 +112,9 @@ public static class MauiProgram
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<IRoutingService, RoutingService>();
+        //services.AddSingleton<IRoutingService, RoutingService1>();
+        services.AddSingleton<IRoutingService, RoutingService2>();
+
         services.AddSingleton<IShare>(_ => Share.Default);
         services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
         services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);

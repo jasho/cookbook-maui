@@ -4,7 +4,7 @@ using CookBook.Maui.Services.Interfaces;
 
 namespace CookBook.Maui.Services;
 
-public class RoutingService : IRoutingService
+public abstract class RoutingService : IRoutingService
 {
     public const string RecipeListRouteAbsolute = "//recipes";
     public const string RecipeDetailRouteRelative = "/detail";
@@ -17,41 +17,12 @@ public class RoutingService : IRoutingService
 
     public const string SettingsRouteAbsolute = "//settings";
 
-
-    private static readonly ICollection<RouteModel> routesCommon =
+    protected static readonly ICollection<RouteModel> RoutesCommon =
     [
         new(RecipeListRouteAbsolute, typeof(RecipeListPage)),
         new(IngredientListRouteAbsolute, typeof(IngredientListPage)),
         new(SettingsRouteAbsolute, typeof(SettingsPage))
     ];
 
-    private static readonly IEnumerable<RouteModel> routesPhone = new List<RouteModel>
-    {
-        new(IngredientListRouteAbsolute + IngredientDetailRouteRelative, typeof(IngredientDetailPagePhone)),
-
-        new(IngredientListRouteAbsolute + IngredientEditRouteRelative, typeof(IngredientEditPagePhone)),
-        new(IngredientListRouteAbsolute + IngredientDetailRouteRelative + IngredientEditRouteRelative , typeof(IngredientEditPagePhone)),
-
-        new(RecipeListRouteAbsolute + RecipeDetailRouteRelative, typeof(RecipeDetailPagePhone)),
-
-    }.Concat(routesCommon);
-
-    private static readonly IEnumerable<RouteModel> routesDesktop = new List<RouteModel>
-    {
-        new(IngredientListRouteAbsolute + IngredientDetailRouteRelative, typeof(IngredientDetailPageDesktop)),
-        new(IngredientListRouteAbsolute + IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
-        new(IngredientListRouteAbsolute + IngredientDetailRouteRelative + IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
-
-        new(RecipeListRouteAbsolute + RecipeDetailRouteRelative, typeof(RecipeDetailPageDesktop)),
-        new(RecipeListRouteAbsolute + RecipeEditRouteRelative, typeof(RecipeEditPageDesktop)),
-
-        new(RecipeListRouteAbsolute + RecipeDetailRouteRelative + RecipeEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
-        new(RecipeListRouteAbsolute + RecipeEditRouteRelative + RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
-        new(RecipeListRouteAbsolute + RecipeDetailRouteRelative + RecipeEditRouteRelative + RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
-    }.Concat(routesCommon);
-
-    public IEnumerable<RouteModel> Routes
-        => DeviceInfo.Idiom == DeviceIdiom.Phone
-            ? routesPhone
-            : routesDesktop;
+    public abstract IEnumerable<RouteModel> Routes { get; }
 }

@@ -46,6 +46,16 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
+		<MauiXaml Remove="**\*Phone.xaml" />
+		<Compile Remove="**\*Phone.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
+		<MauiXaml Remove="**\*Desktop.xaml" />
+		<Compile Remove="**\*Desktop.xaml.cs" />
+	</ItemGroup>
+
 	<ItemGroup>
 	  <None Remove="Configuration\appsettings.json" />
 	</ItemGroup>
