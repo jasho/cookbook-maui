@@ -34,7 +34,7 @@ public partial class IngredientListViewModel
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        await Shell.Current.GoToAsync(RoutingService.IngredientDetailRouteRelative, new Dictionary<string, object>
+        await Shell.Current.GoToAsync(RoutingConstants.IngredientDetailRouteRelative, new Dictionary<string, object>
         {
             [nameof(IngredientDetailViewModel.Id)] = id
         });
@@ -43,13 +43,13 @@ public partial class IngredientListViewModel
     [RelayCommand]
     private async Task GoToCreateAsync()
     {
-        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative);
+        await Shell.Current.GoToAsync(RoutingConstants.IngredientEditRouteRelative);
     }
 
     [RelayCommand]
     private async Task GoToEditAsync(Guid id)
     {
-        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative,
+        await Shell.Current.GoToAsync(RoutingConstants.IngredientEditRouteRelative,
             new Dictionary<string, object>
             {
                 [nameof(IngredientEditViewModel.Id)] = id

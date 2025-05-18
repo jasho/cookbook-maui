@@ -9,29 +9,29 @@
 //        RoutesCommon.Concat(
 //            new List<RouteModel>
 //        {
-//            new(IngredientListRouteAbsolute + IngredientDetailRouteRelative, typeof(IngredientDetailPagePhone)),
+//            new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientDetailRouteRelative, typeof(IngredientDetailPagePhone)),
 
-//            new(IngredientListRouteAbsolute + IngredientEditRouteRelative, typeof(IngredientEditPagePhone)),
-//            new(IngredientListRouteAbsolute + IngredientDetailRouteRelative + IngredientEditRouteRelative , typeof(IngredientEditPagePhone)),
+//            new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientEditRouteRelative, typeof(IngredientEditPagePhone)),
+//            new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientDetailRouteRelative + RoutingConstants.IngredientEditRouteRelative , typeof(IngredientEditPagePhone)),
 
-//            new(RecipeListRouteAbsolute + RecipeDetailRouteRelative, typeof(RecipeDetailPagePhone)),
+//            new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeDetailRouteRelative, typeof(RecipeDetailPagePhone)),
 
 //        });
 
-//    private static readonly IEnumerable<RouteModel> routesDesktop = 
+//    private static readonly IEnumerable<RouteModel> routesDesktop =
 //        RoutesCommon.Concat(
-//            new List<RouteModel> 
+//            new List<RouteModel>
 //            {
-//                new(IngredientListRouteAbsolute + IngredientDetailRouteRelative, typeof(IngredientDetailPageDesktop)),
-//                new(IngredientListRouteAbsolute + IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
-//                new(IngredientListRouteAbsolute + IngredientDetailRouteRelative + IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
+//                new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientDetailRouteRelative, typeof(IngredientDetailPageDesktop)),
+//                new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
+//                new(RoutingConstants.IngredientListRouteAbsolute + RoutingConstants.IngredientDetailRouteRelative + RoutingConstants.IngredientEditRouteRelative, typeof(IngredientEditPageDesktop)),
 
-//                new(RecipeListRouteAbsolute + RecipeDetailRouteRelative, typeof(RecipeDetailPageDesktop)),
-//                new(RecipeListRouteAbsolute + RecipeEditRouteRelative, typeof(RecipeEditPageDesktop)),
+//                new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeDetailRouteRelative, typeof(RecipeDetailPageDesktop)),
+//                new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeEditRouteRelative, typeof(RecipeEditPageDesktop)),
 
-//                new(RecipeListRouteAbsolute + RecipeDetailRouteRelative + RecipeEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
-//                new(RecipeListRouteAbsolute + RecipeEditRouteRelative + RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
-//                new(RecipeListRouteAbsolute + RecipeDetailRouteRelative + RecipeEditRouteRelative + RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
+//                new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeDetailRouteRelative + RoutingConstants.RecipeEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
+//                new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeEditRouteRelative + RoutingConstants.RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
+//                new(RoutingConstants.RecipeListRouteAbsolute + RoutingConstants.RecipeDetailRouteRelative + RoutingConstants.RecipeEditRouteRelative + RoutingConstants.RecipeIngredientsEditRouteRelative, typeof(RecipeIngredientsEditPageDesktop)),
 //            });
 
 //    public override IEnumerable<RouteModel> Routes

@@ -61,7 +61,7 @@ public partial class IngredientDetailViewModel : ViewModelBase, IRecipient<Ingre
             navigationParameters.Add(nameof(IngredientEditViewModel.Id), Ingredient.Id.Value);
         }
 
-        await Shell.Current.GoToAsync(RoutingService.IngredientEditRouteRelative, navigationParameters);
+        await Shell.Current.GoToAsync(RoutingConstants.IngredientEditRouteRelative, navigationParameters);
     }
 
     [RelayCommand]

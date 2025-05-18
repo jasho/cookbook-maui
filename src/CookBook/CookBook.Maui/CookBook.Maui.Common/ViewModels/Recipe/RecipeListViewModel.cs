@@ -33,7 +33,7 @@ public partial class RecipeListViewModel
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
-        await Shell.Current.GoToAsync(RoutingService.RecipeDetailRouteRelative,
+        await Shell.Current.GoToAsync(RoutingConstants.RecipeDetailRouteRelative,
             new Dictionary<string, object>
             {
                 [nameof(RecipeDetailViewModel.Id)] = id
@@ -43,7 +43,7 @@ public partial class RecipeListViewModel
     [RelayCommand]
     private async Task GoToCreateAsync()
     {
-        await Shell.Current.GoToAsync(RoutingService.RecipeEditRouteRelative);
+        await Shell.Current.GoToAsync(RoutingConstants.RecipeEditRouteRelative);
     }
 
     public void Receive(RecipeCreatedOrUpdatedMessage message)

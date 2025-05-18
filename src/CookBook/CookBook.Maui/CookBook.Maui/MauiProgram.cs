@@ -90,12 +90,16 @@ public static class MauiProgram
 
     private static void ConfigureViews(IServiceCollection services)
     {
-        services.TryAddTransient<IngredientDetailPagePhone>();
-        services.TryAddTransient<IngredientEditPagePhone>();
         services.TryAddTransient<IngredientListPage>();
-        services.TryAddTransient<RecipeDetailPagePhone>();
         services.TryAddTransient<RecipeListPage>();
         services.TryAddTransient<SettingsPage>();
+
+#if PHONE
+        services.TryAddTransient<IngredientDetailPagePhone>();
+        services.TryAddTransient<IngredientEditPagePhone>();
+        services.TryAddTransient<RecipeDetailPagePhone>();
+#elif DESKTOP
+#endif
     }
 
     private static void ConfigureViewModels(IServiceCollection services)

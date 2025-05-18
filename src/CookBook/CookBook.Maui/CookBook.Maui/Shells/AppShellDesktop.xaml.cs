@@ -17,19 +17,19 @@ public partial class AppShellDesktop
     [RelayCommand]
     private async Task GoToRecipesAsync()
     {
-        await Shell.Current.GoToAsync(RoutingService.RecipeListRouteAbsolute);
+        await Shell.Current.GoToAsync(RoutingConstants.RecipeListRouteAbsolute);
     }
 
     [RelayCommand]
     private async Task GoToIngredientsAsync()
     {
-        await Shell.Current.GoToAsync(RoutingService.IngredientListRouteAbsolute);
+        await Shell.Current.GoToAsync(RoutingConstants.IngredientListRouteAbsolute);
     }
 
     [RelayCommand]
     private async Task GoToSettingsAsync()
     {
-        await Shell.Current.GoToAsync(RoutingService.SettingsRouteAbsolute);
+        await Shell.Current.GoToAsync(RoutingConstants.SettingsRouteAbsolute);
     }
 
     [RelayCommand]

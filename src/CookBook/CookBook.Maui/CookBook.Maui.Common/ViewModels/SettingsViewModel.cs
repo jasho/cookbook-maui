@@ -12,9 +12,11 @@ public partial class SettingsViewModel(
     ILanguageSelectorService languageSelectorService)
     : ViewModelBase
 {
-    [ObservableProperty] public partial Theme SelectedTheme { get; set; }
+    [ObservableProperty]
+    public partial Theme SelectedTheme { get; set; }
 
-    [ObservableProperty] public partial CultureInfo? SelectedLanguage { get; set; }
+    [ObservableProperty]
+    public partial CultureInfo? SelectedLanguage { get; set; }
 
     public IEnumerable<Theme> AvailableThemes { get; } = (Theme[])typeof(Theme).GetEnumValues();
 

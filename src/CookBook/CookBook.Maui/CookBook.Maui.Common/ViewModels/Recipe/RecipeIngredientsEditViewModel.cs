@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CookBook.Common.Enums;
 using CookBook.Common.Models;
-using CookBook.Mobile.Api;
+using CookBook.Maui.Api;
 using System.Collections.ObjectModel;
 
 namespace CookBook.Maui.ViewModels.Recipe

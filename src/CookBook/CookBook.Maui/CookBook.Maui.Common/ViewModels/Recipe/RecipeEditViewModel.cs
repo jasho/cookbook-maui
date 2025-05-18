@@ -41,7 +41,7 @@ public partial class RecipeEditViewModel(
     {
         if (Recipe.Id is not null)
         {
-            await Shell.Current.GoToAsync(RoutingService.RecipeIngredientsEditRouteRelative,
+            await Shell.Current.GoToAsync(RoutingConstants.RecipeIngredientsEditRouteRelative,
                 new Dictionary<string, object>
                 {
                     [nameof(RecipeIngredientsEditViewModel.RecipeId)] = Recipe.Id
