@@ -1,6 +1,4 @@
-﻿using CookBook.Maui.Entities;
-using CookBook.Maui.Enums;
-using CookBook.Maui.Extensions;
+﻿using CookBook.Maui.Enums;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Maui.Shells;
 
@@ -32,15 +30,7 @@ namespace CookBook.Maui
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            Shell? appShell = null;
-
-#if PHONE
-            appShell = serviceProvider.GetRequiredService<AppShellPhone>();
-#elif DESKTOP
-            appShell = serviceProvider.GetRequiredService<AppShellDesktop>();
-#endif
-
-            return new Window(appShell);
+            return new Window(serviceProvider.GetRequiredService<AppShell>());
         }
 
         private void ApplyPreferences(

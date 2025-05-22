@@ -5,9 +5,10 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient;assembly=CookBook.Maui.Common"
+                      xmlns:extensions="clr-namespace:CookBook.Maui.Extensions;assembly=CookBook.Maui.Common"
                       x:DataType="vm:IngredientEditViewModel"
-                      Title="{OnIdiom Phone={x:Static texts:IngredientEditPageTexts.Page_Title},
-                                      Desktop=''}"
+                      Title="{extensions:IdiomObject Phone={x:Static texts:IngredientEditPageTexts.Page_Title},
+                                                     Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="70, *">
 

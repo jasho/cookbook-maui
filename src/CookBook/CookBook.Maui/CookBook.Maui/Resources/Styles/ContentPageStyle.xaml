@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary x:Class="CookBook.Maui.Resources.Styles.ContentPageStyle"
                     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:extensions="clr-namespace:CookBook.Maui.Extensions;assembly=CookBook.Maui.Common">
     <Style x:Key="ContentPageStyle"
            TargetType="ContentPage">
-        <Setter Property="Padding" Value="{OnIdiom Phone='30, 30, 30, 0', Desktop='30'}"/>
+        <Setter Property="Padding" Value="{extensions:IdiomObject Phone='30, 30, 30, 0', Desktop='30'}"/>
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
     </Style>
 </ResourceDictionary>

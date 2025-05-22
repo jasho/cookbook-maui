@@ -4,11 +4,11 @@ using CookBook.Maui.Services.Interfaces;
 
 namespace CookBook.Maui.Shells;
 
-public partial class AppShellDesktop
+public partial class AppShell
 {
     private readonly IRoutingService routingService;
 
-    public AppShellDesktop(IRoutingService routingService)
+    public AppShell(IRoutingService routingService)
     {
         this.routingService = routingService;
         InitializeComponent();

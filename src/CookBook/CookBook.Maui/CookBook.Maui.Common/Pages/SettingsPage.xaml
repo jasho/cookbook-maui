@@ -5,22 +5,23 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels;assembly=CookBook.Maui.Common"
+                      xmlns:extensions="clr-namespace:CookBook.Maui.Extensions"
                       x:DataType="{x:Type vm:SettingsViewModel}"
-                      Title="{OnIdiom Phone={x:Static texts:SettingsPageTexts.Page_Title},
-                                      Desktop=''}"
+                      Title="{extensions:IdiomObject Phone={x:Static texts:SettingsPageTexts.Page_Title},
+                                                     Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="Auto, Auto, *, Auto">
         <VerticalStackLayout>
             <Label Text="{x:Static texts:SettingsPageTexts.Page_Title}"
                    FontSize="36"
                    Margin="0, 0, 0, 16"
-                   IsVisible="{OnIdiom Phone=False, Default=True}"/>
+                   IsVisible="{extensions:IdiomObject Phone=False, Desktop=True}"/>
 
             <Grid RowDefinitions="Auto, Auto, 16, Auto"
                   ColumnSpacing="16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{OnIdiom Phone=100, Default=200}"/>
+                    <ColumnDefinition Width="{extensions:IdiomObject Phone=100, Desktop=200}"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="{x:Static texts:SettingsPageTexts.Theme_Title}"
@@ -35,7 +36,7 @@
                 <Picker Grid.Column="1"
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
-                        WidthRequest="{OnIdiom Phone=100, Default=200}"
+                        WidthRequest="{extensions:IdiomObject Phone=100, Desktop=200}"
                         ItemsSource="{Binding AvailableThemes}"
                         SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
                         Style="{StaticResource PrimaryPickerStyle}">
@@ -54,7 +55,7 @@
                   ColumnSpacing="16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{OnIdiom Phone=100, Default=200}"/>
+                    <ColumnDefinition Width="{extensions:IdiomObject Phone=100, Desktop=200}"/>
                 </Grid.ColumnDefinitions>
 
                 <Label Text="{x:Static texts:SettingsPageTexts.Language_Title}"
@@ -69,7 +70,7 @@
                 <Picker Grid.Column="1"
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
-                        WidthRequest="{OnIdiom Phone=100, Default=200}"
+                        WidthRequest="{extensions:IdiomObject Phone=100, Desktop=200}"
                         ItemsSource="{Binding AvailableLanguages}"
                         SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
                         Style="{StaticResource PrimaryPickerStyle}">

@@ -1,8 +1,8 @@
 namespace CookBook.Maui.Shells;
 
-public partial class AppShellPhone
+public partial class AppShell
 {
-	public AppShellPhone()
+	public AppShell()
 	{
 		InitializeComponent();
 	}

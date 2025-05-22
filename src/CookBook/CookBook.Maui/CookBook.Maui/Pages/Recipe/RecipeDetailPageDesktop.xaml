@@ -7,9 +7,10 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe;assembly=CookBook.Maui.Common"
                       xmlns:enums="clr-namespace:CookBook.Common.Enums;assembly=CookBook.Common"
+                      xmlns:extensions="clr-namespace:CookBook.Maui.Extensions;assembly=CookBook.Maui.Common"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"
-                      Title="{OnIdiom Phone={x:Static texts:RecipeDetailPageTexts.Page_Title},
-                                      Desktop=''}"
+                      Title="{extensions:IdiomObject Phone={x:Static texts:RecipeDetailPageTexts.Page_Title},
+                                                     Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <Grid RowDefinitions="70, *">
         <Grid Grid.Row="0"

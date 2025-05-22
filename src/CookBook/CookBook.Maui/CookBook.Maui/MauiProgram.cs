@@ -81,11 +81,7 @@ public static class MauiProgram
 
     private static void ConfigureShell(IServiceCollection services)
     {
-#if PHONE
-        services.AddSingleton<AppShellPhone>();
-#elif DESKTOP
-        services.AddSingleton<AppShellDesktop>();
-#endif
+        services.AddSingleton<AppShell>();
     }
 
     private static void ConfigureViews(IServiceCollection services)
