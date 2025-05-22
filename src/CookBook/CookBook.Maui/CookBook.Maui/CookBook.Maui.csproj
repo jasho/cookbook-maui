@@ -66,6 +66,10 @@
 		<ProjectReference Include="..\CookBook.Maui.Desktop\CookBook.Maui.Desktop.csproj" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
+		<ProjectReference Include="..\CookBook.Maui.Phone\CookBook.Maui.Phone.csproj" />
+	</ItemGroup>
+
 	<ItemGroup>
 	  <None Remove="Configuration\appsettings.json" />
 	</ItemGroup>

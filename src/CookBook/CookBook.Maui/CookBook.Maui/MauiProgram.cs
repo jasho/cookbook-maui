@@ -94,11 +94,25 @@ public static class MauiProgram
         services.TryAddTransient<RecipeListPage>();
         services.TryAddTransient<SettingsPage>();
 
+        services.TryAddTransient<IngredientDetailPage>();
+        services.TryAddTransient<IngredientEditPage>();
+
+        services.TryAddTransient<RecipeDetailPage>();
+        services.TryAddTransient<RecipeEditPage>();
+        services.TryAddTransient<RecipeIngredientsEditPage>();
+
 #if PHONE
         services.TryAddTransient<IngredientDetailPagePhone>();
         services.TryAddTransient<IngredientEditPagePhone>();
+
         services.TryAddTransient<RecipeDetailPagePhone>();
 #elif DESKTOP
+        services.TryAddTransient<IngredientDetailPageDesktop>();
+        services.TryAddTransient<IngredientEditPageDesktop>();
+
+        services.TryAddTransient<RecipeDetailPageDesktop>();
+        services.TryAddTransient<RecipeEditPageDesktop>();
+        services.TryAddTransient<RecipeIngredientsEditPageDesktop>();
 #endif
     }
 
