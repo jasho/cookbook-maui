@@ -4,7 +4,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
-                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe;assembly=CookBook.Maui.Common"
                       xmlns:enums="clr-namespace:CookBook.Common.Enums;assembly=CookBook.Common"
                       x:DataType="{x:Type vm:RecipeDetailViewModel}"

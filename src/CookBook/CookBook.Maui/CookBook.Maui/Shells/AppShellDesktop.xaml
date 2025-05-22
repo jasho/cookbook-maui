@@ -4,7 +4,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
        xmlns:pages="clr-namespace:CookBook.Maui.Pages"
-       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
        x:Name="AppShellRoot"
        HeightRequest="{OnIdiom Desktop=1000}"
        FlyoutBehavior="Disabled"

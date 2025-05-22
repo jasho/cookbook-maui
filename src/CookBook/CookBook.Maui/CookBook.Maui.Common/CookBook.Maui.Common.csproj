@@ -13,6 +13,19 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Resources\Fonts\FluentUI.cs" />
+	  <Compile Remove="Resources\Fonts\FontAwesomeIcons.cs" />
+	  <Compile Remove="Resources\Fonts\Fonts.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiFont Include="Resources\Fonts\FluentUI.cs" />
+	  <MauiFont Include="Resources\Fonts\FontAwesome-Solid.ttf" />
+	  <MauiFont Include="Resources\Fonts\FontAwesomeIcons.cs" />
+	  <MauiFont Include="Resources\Fonts\Fonts.cs" />
+	  <MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <MauiFont Include="Resources\Fonts\OpenSans-Semibold.ttf" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
@@ -23,5 +36,110 @@
 	
 	<ItemGroup>
 	  <ProjectReference Include="..\..\CookBook.Common\CookBook.Common.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Update="Resources\Texts\AppShellTexts.Designer.cs">
+	    <DependentUpon>AppShellTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\FoodTypeTexts.Designer.cs">
+	    <DependentUpon>FoodTypeTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\IngredientDetailPageTexts.Designer.cs">
+	    <DependentUpon>IngredientDetailPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\IngredientEditPageTexts.Designer.cs">
+	    <DependentUpon>IngredientEditPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\IngredientListPageTexts.Designer.cs">
+	    <DependentUpon>IngredientListPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeDetailPageTexts.Designer.cs">
+	    <DependentUpon>RecipeDetailPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeEditPageTexts.Designer.cs">
+	    <DependentUpon>RecipeEditPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeIngredientsEditPageTexts.Designer.cs">
+	    <DependentUpon>RecipeIngredientsEditPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeListPageTexts.Designer.cs">
+	    <DependentUpon>RecipeListPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\SettingsPageTexts.Designer.cs">
+	    <DependentUpon>SettingsPageTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Resources\Texts\UnitTexts.Designer.cs">
+	    <DependentUpon>UnitTexts.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Texts\AppShellTexts.resx">
+	    <LastGenOutput>AppShellTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\FoodTypeTexts.resx">
+	    <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\IngredientDetailPageTexts.resx">
+	    <LastGenOutput>IngredientDetailPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\IngredientEditPageTexts.resx">
+	    <LastGenOutput>IngredientEditPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\IngredientListPageTexts.resx">
+	    <LastGenOutput>IngredientListPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeDetailPageTexts.resx">
+	    <LastGenOutput>RecipeDetailPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeEditPageTexts.resx">
+	    <LastGenOutput>RecipeEditPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeIngredientsEditPageTexts.resx">
+	    <LastGenOutput>RecipeIngredientsEditPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeListPageTexts.resx">
+	    <LastGenOutput>RecipeListPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\SettingsPageTexts.resx">
+	    <LastGenOutput>SettingsPageTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\UnitTexts.resx">
+	    <LastGenOutput>UnitTexts.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

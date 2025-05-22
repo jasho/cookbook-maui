@@ -5,7 +5,7 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe;assembly=CookBook.Maui.Common"
-                      xmlns:texts="using:CookBook.Maui.Resources.Texts"
+                      xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       x:DataType="{x:Type vm:RecipeEditViewModel}"
                       Title="RecipeEditViewDesktop"
                       Style="{StaticResource ContentPageStyle}">
@@ -17,7 +17,6 @@
             <Grid Grid.Column="0"
                   RowDefinitions="Auto, Auto, Auto"
                   RowSpacing="20">
-
                 <StackLayout Grid.Row="0"
                              Orientation="Vertical"
                              Spacing="10">
