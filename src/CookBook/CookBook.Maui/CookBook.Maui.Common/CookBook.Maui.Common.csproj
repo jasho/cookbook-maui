@@ -14,15 +14,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Remove="Resources\Fonts\FluentUI.cs" />
-	  <Compile Remove="Resources\Fonts\FontAwesomeIcons.cs" />
-	  <Compile Remove="Resources\Fonts\Fonts.cs" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiFont Include="Resources\Fonts\FluentUI.cs" />
 	  <MauiFont Include="Resources\Fonts\FontAwesome-Solid.ttf" />
-	  <MauiFont Include="Resources\Fonts\FontAwesomeIcons.cs" />
-	  <MauiFont Include="Resources\Fonts\Fonts.cs" />
 	  <MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
 	  <MauiFont Include="Resources\Fonts\OpenSans-Semibold.ttf" />
 	</ItemGroup>

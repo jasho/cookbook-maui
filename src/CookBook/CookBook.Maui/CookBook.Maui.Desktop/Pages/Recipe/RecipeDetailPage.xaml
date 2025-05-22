@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeDetailPageDesktop"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeDetailPage"
                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
@@ -22,6 +22,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
                 </StackLayout.GestureRecognizers>
+
                 <Label VerticalOptions="Center"
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                        FontSize="14"

@@ -16,6 +16,8 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+
+		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,7 +25,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\Ingredient\IngredientEditPage.xaml.cs">
+	    <DependentUpon>IngredientEditPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeDetailPage.xaml.cs">
+	    <DependentUpon>RecipeDetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeEditPage.xaml.cs">
+	    <DependentUpon>RecipeEditPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Recipe\RecipeIngredientsEditPage.xaml.cs">
+	    <DependentUpon>RecipeIngredientsEditPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\Ingredient\IngredientDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Ingredient\IngredientEditPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Recipe\RecipeDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Recipe\RecipeEditPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Recipe\RecipeIngredientsEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

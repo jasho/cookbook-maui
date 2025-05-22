@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeIngredientsEditPageDesktop"
+<base:ContentPageBase x:Class="CookBook.Maui.Pages.RecipeIngredientsEditPage"
                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
-                      xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                       xmlns:m="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe;assembly=CookBook.Maui.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
@@ -101,25 +100,13 @@
 
                         <Entry Grid.Column="1"
                                VerticalOptions="Center"
-                               Text="{Binding Amount}">
-                            <Entry.Behaviors>
-                                <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference RecipeIngredientsEditPageDesktopRoot}, Path=BindingContext.UpdateIngredientCommand}"
-                                                                  CommandParameter="{Binding .}"
-                                                                  EventName="TextChanged"/>
-                            </Entry.Behaviors>
-                        </Entry>
+                               Text="{Binding Amount}"/>
 
                         <Picker Grid.Column="2"
                                 VerticalOptions="Center"
                                 ItemDisplayBinding="{Binding ., Converter={StaticResource UnitToStringConverter}}"
                                 ItemsSource="{Binding Source={x:Reference RecipeIngredientsEditPageDesktopRoot}, Path=BindingContext.Units}"
-                                SelectedItem="{Binding Unit}">
-                            <Picker.Behaviors>
-                                <behaviors:EventToCommandBehavior Command="{Binding Source={x:Reference RecipeIngredientsEditPageDesktopRoot}, Path=BindingContext.UpdateIngredientCommand}"
-                                                                  CommandParameter="{Binding .}"
-                                                                  EventName="SelectedIndexChanged"/>
-                            </Picker.Behaviors>
-                        </Picker>
+                                SelectedItem="{Binding Unit}" />
 
                         <Label Grid.Column="3"
                                VerticalOptions="Center"

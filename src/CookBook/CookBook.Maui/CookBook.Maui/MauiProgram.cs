@@ -117,7 +117,8 @@ public static class MauiProgram
     private static void ConfigureServices(IServiceCollection services)
     {
         //services.AddSingleton<IRoutingService, RoutingService1>();
-        services.AddSingleton<IRoutingService, RoutingService2>();
+        //services.AddSingleton<IRoutingService, RoutingService2>();
+        services.AddSingleton<IRoutingService, RoutingService3>();
 
         services.AddSingleton<IShare>(_ => Share.Default);
         services.AddSingleton<IGlobalExceptionService, GlobalExceptionService>();
