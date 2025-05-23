@@ -5,7 +5,6 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient;assembly=CookBook.Maui.Common"
-                      xmlns:extensions="using:CookBook.Maui.Extensions"
                       x:DataType="vm:IngredientDetailViewModel"
                       Title="{OnIdiom Phone={x:Static texts:IngredientDetailPageTexts.Page_Title},
                                                      Desktop=''}"

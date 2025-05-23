@@ -15,15 +15,11 @@
             <Label Text="{x:Static texts:SettingsPageTexts.Page_Title}"
                    FontSize="36"
                    Margin="0, 0, 0, 16"
-                   IsVisible="{extensions:IdiomObject Phone=False, Desktop=True}"/>
+                   IsVisible="{extensions:IdiomBool Phone=False, Desktop=True}"/>
 
             <Grid RowDefinitions="Auto, Auto, 16, Auto"
+                  ColumnDefinitions="*, Auto"
                   ColumnSpacing="16">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{extensions:IdiomObject Phone=100, Desktop=200}"/>
-                </Grid.ColumnDefinitions>
-
                 <Label Text="{x:Static texts:SettingsPageTexts.Theme_Title}"
                        FontSize="26"
                        Margin="0, 0, 0, 8"/>
@@ -36,7 +32,7 @@
                 <Picker Grid.Column="1"
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
-                        WidthRequest="{extensions:IdiomObject Phone=100, Desktop=200}"
+                        WidthRequest="{extensions:IdiomDouble Phone=100, Desktop=200}"
                         ItemsSource="{Binding AvailableThemes}"
                         SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
                         Style="{StaticResource PrimaryPickerStyle}">
@@ -51,13 +47,9 @@
             </Grid>
 
             <Grid RowDefinitions="Auto, Auto, 16, Auto"
+                  ColumnDefinitions="*, Auto"
                   Margin="0, 16, 0, 0"
                   ColumnSpacing="16">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="{extensions:IdiomObject Phone=100, Desktop=200}"/>
-                </Grid.ColumnDefinitions>
-
                 <Label Text="{x:Static texts:SettingsPageTexts.Language_Title}"
                        FontSize="26"
                        Margin="0, 0, 0, 8" />
@@ -70,7 +62,7 @@
                 <Picker Grid.Column="1"
                         Grid.RowSpan="2"
                         VerticalOptions="Center"
-                        WidthRequest="{extensions:IdiomObject Phone=100, Desktop=200}"
+                        WidthRequest="{extensions:IdiomDouble Phone=100, Desktop=200}"
                         ItemsSource="{Binding AvailableLanguages}"
                         SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
                         Style="{StaticResource PrimaryPickerStyle}">

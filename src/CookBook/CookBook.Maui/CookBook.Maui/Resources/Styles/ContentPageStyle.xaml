@@ -5,7 +5,7 @@
                     xmlns:extensions="clr-namespace:CookBook.Maui.Extensions;assembly=CookBook.Maui.Common">
     <Style x:Key="ContentPageStyle"
            TargetType="ContentPage">
-        <Setter Property="Padding" Value="{extensions:IdiomObject Phone='30, 30, 30, 0', Desktop='30'}"/>
+        <Setter Property="Padding" Value="{extensions:IdiomThickness Phone='30, 30, 30, 0', Desktop='30'}"/>
         <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
     </Style>
 </ResourceDictionary>

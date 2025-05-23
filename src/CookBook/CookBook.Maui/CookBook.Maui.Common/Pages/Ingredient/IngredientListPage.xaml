@@ -132,8 +132,7 @@
                 CornerRadius="5"
                 FontFamily="MontserratMedium"
                 FontSize="14"
-                IsVisible="{extensions:IdiomObject Phone=False,
-                                                   Desktop=True}"
+                IsVisible="{extensions:IdiomBool Phone=False, Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static texts:IngredientListPageTexts.Add_Button_Text_Desktop}"/>
 
@@ -154,8 +153,7 @@
                 CornerRadius="60"
                 FontFamily="MontserratRegular"
                 FontSize="50"
-                IsVisible="{extensions:IdiomObject Phone=True,
-                                                   Desktop=False}"
+                IsVisible="{extensions:IdiomBool Phone=True, Desktop=False}"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static texts:IngredientListPageTexts.Add_Button_Text_Phone}"/>
     </Grid>
