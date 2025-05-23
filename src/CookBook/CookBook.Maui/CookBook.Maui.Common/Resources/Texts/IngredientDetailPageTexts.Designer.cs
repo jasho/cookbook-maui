@@ -72,6 +72,42 @@ namespace CookBook.Maui.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
+        public static string Delete_Button_ConfirmationAcceptButtonText {
+            get {
+                return ResourceManager.GetString("Delete_Button_ConfirmationAcceptButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Delete_Button_ConfirmationCancelButtonText {
+            get {
+                return ResourceManager.GetString("Delete_Button_ConfirmationCancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this ingredient?.
+        /// </summary>
+        public static string Delete_Button_ConfirmationMessage {
+            get {
+                return ResourceManager.GetString("Delete_Button_ConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Really delete.
+        /// </summary>
+        public static string Delete_Button_ConfirmationTitle {
+            get {
+                return ResourceManager.GetString("Delete_Button_ConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
         public static string Delete_Button_Text_Desktop {
             get {
                 return ResourceManager.GetString("Delete_Button_Text_Desktop", resourceCulture);

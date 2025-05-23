@@ -56,6 +56,14 @@ public partial class IngredientListViewModel
             });
     }
 
+    [RelayCommand]
+    private async Task DeleteAsync(Guid id)
+    {
+        await ingredientsFacade.DeleteAsync(id);
+        
+        await LoadDataAsync();
+    }
+
     public void Receive(IngredientCreatedOrUpdatedMessage message)
     {
         ForceDataRefresh = true;

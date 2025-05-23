@@ -48,6 +48,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Controls\**" />
+	  <AndroidResource Remove="Platforms\Android\Controls\**" />
+	  <Compile Remove="Controls\**" />
+	  <Compile Remove="Platforms\Android\Controls\**" />
+	  <EmbeddedResource Remove="Controls\**" />
+	  <EmbeddedResource Remove="Platforms\Android\Controls\**" />
+	  <MauiCss Remove="Controls\**" />
+	  <MauiCss Remove="Platforms\Android\Controls\**" />
+	  <MauiXaml Remove="Controls\**" />
+	  <MauiXaml Remove="Platforms\Android\Controls\**" />
+	  <None Remove="Controls\**" />
+	  <None Remove="Platforms\Android\Controls\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\ingredient_placeholder_desktop.jpg" />
 	  <MauiImage Remove="Resources\Images\ingredient_placeholder_phone.jpg" />
 	</ItemGroup>

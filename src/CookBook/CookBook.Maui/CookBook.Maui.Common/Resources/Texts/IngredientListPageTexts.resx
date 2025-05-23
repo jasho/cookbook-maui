@@ -123,6 +123,18 @@
   <data name="Add_Button_Text_Phone" xml:space="preserve">
     <value>+</value>
   </data>
+  <data name="Delete_Button_ConfirmationAcceptButtonText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete_Button_ConfirmationCancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Delete_Button_ConfirmationMessage" xml:space="preserve">
+    <value>Do you really want to delete this ingredient?</value>
+  </data>
+  <data name="Delete_Button_ConfirmationTitle" xml:space="preserve">
+    <value>Really delete</value>
+  </data>
   <data name="Page_Title" xml:space="preserve">
     <value>CookBook</value>
   </data>

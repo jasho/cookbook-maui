@@ -8,6 +8,7 @@
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient;assembly=CookBook.Maui.Common"
                       xmlns:extensions="clr-namespace:CookBook.Maui.Extensions"
+                      xmlns:controls="using:CookBook.Maui.Controls"
                       x:DataType="vm:IngredientListViewModel"
                       x:Name="Root"
                       Title="{extensions:IdiomObject Phone={x:Static texts:IngredientListPageTexts.Page_Title},
@@ -28,14 +29,13 @@
                       x:Key="ItemTemplatePhone">
             <Grid HeightRequest="40"
                   BackgroundColor="Transparent"
-                  ColumnDefinitions="Auto, *, Auto"
-                  ColumnSpacing="20">
+                  ColumnDefinitions="Auto, *, Auto, Auto">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                           CommandParameter="{Binding Id}"/>
                 </Grid.GestureRecognizers>
                 <BoxView Grid.Column="0"
-                         Grid.ColumnSpan="3"
+                         Grid.ColumnSpan="4"
                          HorizontalOptions="Fill"
                          VerticalOptions="Fill"
                          CornerRadius="5"
@@ -59,13 +59,14 @@
                 <Label Grid.Column="1"
                        HorizontalOptions="Start"
                        VerticalOptions="Center"
+                       Margin="10, 0, 0, 0"
                        Style="{StaticResource MediumLabelStyle}"
                        Text="{Binding Name}"/>
 
                 <Label Grid.Column="2"
                        HorizontalOptions="End"
                        VerticalOptions="Center"
-                       Margin="0,0,12,0"
+                       Margin="10, 0, 0, 0"
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                        FontSize="20"
                        Text="{x:Static fonts:FontAwesomeIcons.Pen}"
@@ -75,6 +76,20 @@
                                               CommandParameter="{Binding Id}"/>
                     </Label.GestureRecognizers>
                 </Label>
+
+                <controls:ButtonWithConfirmation Grid.Column="3"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Center"
+                                                 Margin="10, 0, 5, 0"
+                                                 Text="{x:Static fonts:FontAwesomeIcons.Trash}"
+                                                 FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                                 ConfirmationCancelButtonText="{x:Static texts:IngredientListPageTexts.Delete_Button_ConfirmationCancelButtonText}"
+                                                 ConfirmationAcceptButtonText="{x:Static texts:IngredientListPageTexts.Delete_Button_ConfirmationAcceptButtonText}"
+                                                 ConfirmationMessage="{x:Static texts:IngredientListPageTexts.Delete_Button_ConfirmationMessage}"
+                                                 ConfirmationTitle="{x:Static texts:IngredientListPageTexts.Delete_Button_ConfirmationTitle}"
+                                                 Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Root}}"
+                                                 CommandParameter="{Binding Id}"
+                                                 Style="{StaticResource ErrorButtonStyle}"/>
             </Grid>
         </DataTemplate>
 

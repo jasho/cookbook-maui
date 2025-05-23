@@ -5,6 +5,7 @@
                       xmlns:base="clr-namespace:CookBook.Maui.Pages.Base;assembly=CookBook.Maui.Common"
                       xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts;assembly=CookBook.Maui.Common"
                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Ingredient;assembly=CookBook.Maui.Common"
+                      xmlns:controls="clr-namespace:CookBook.Maui.Controls;assembly=CookBook.Maui.Common"
                       x:DataType="vm:IngredientDetailViewModel"
                       NavigationPage.HasBackButton="False"
                       Style="{StaticResource ContentPageStyle}">
@@ -14,10 +15,14 @@
                      HorizontalOptions="End"
                      Orientation="Horizontal"
                      Spacing="15">
-            <Button BackgroundColor="{StaticResource ErrorColor}"
-                    Command="{Binding DeleteCommand}"
-                    CornerRadius="5"
-                    Text="{x:Static texts:IngredientDetailPageTexts.Delete_Button_Text_Desktop}"/>
+            <controls:ButtonWithConfirmation BackgroundColor="{StaticResource ErrorColor}"
+                                             Command="{Binding DeleteCommand}"
+                                             CornerRadius="5"
+                                             ConfirmationTitle="{x:Static texts:IngredientDetailPageTexts.Delete_Button_ConfirmationTitle}"
+                                             ConfirmationMessage="{x:Static texts:IngredientDetailPageTexts.Delete_Button_ConfirmationMessage}"
+                                             ConfirmationAcceptButtonText="{x:Static texts:IngredientDetailPageTexts.Delete_Button_ConfirmationAcceptButtonText}"
+                                             ConfirmationCancelButtonText="{x:Static texts:IngredientDetailPageTexts.Delete_Button_ConfirmationCancelButtonText}"
+                                             Text="{x:Static texts:IngredientDetailPageTexts.Delete_Button_Text_Desktop}"/>
 
             <Button BackgroundColor="{StaticResource PrimaryColor}"
                     Command="{Binding GoToEditCommand}"
