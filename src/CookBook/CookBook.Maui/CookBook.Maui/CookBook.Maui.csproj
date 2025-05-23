@@ -47,6 +47,19 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\ingredient_placeholder_desktop.jpg" />
+	  <MauiImage Remove="Resources\Images\ingredient_placeholder_phone.jpg" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
+		<MauiImage Include="Resources\Images\ingredient_placeholder_desktop.jpg" Link="ingredient_placeholder.jpg" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Phone'">
+		<MauiImage Include="Resources\Images\ingredient_placeholder_phone.jpg" Link="ingredient_placeholder.jpg" />
+	</ItemGroup>
+
 	<!--<ItemGroup Condition="'$(ConfigurationIdiom)' == 'Desktop'">
 		<MauiXaml Remove="**\*Phone.xaml" />
 		<Compile Remove="**\*Phone.xaml.cs" />

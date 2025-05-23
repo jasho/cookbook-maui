@@ -47,16 +47,14 @@
                Text="{Binding Ingredient.Name, FallbackValue=''}"/>
 
         <Border Grid.Row="1"
-                WidthRequest="170"
-                HeightRequest="170"
+                WidthRequest="240"
+                HeightRequest="68"
                 HorizontalOptions="Center">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
 
-            <Image WidthRequest="170"
-                   HeightRequest="170"
-                   HorizontalOptions="Center"
+            <Image HorizontalOptions="Center"
                    VerticalOptions="Center"
                    Aspect="AspectFill"
                    Source="{Binding Ingredient.ImageUrl, FallbackValue='ingredient_placeholder.jpg', TargetNullValue='ingredient_placeholder.jpg'}"/>

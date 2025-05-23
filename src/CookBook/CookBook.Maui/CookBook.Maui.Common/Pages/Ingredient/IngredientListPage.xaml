@@ -28,7 +28,7 @@
                       x:Key="ItemTemplatePhone">
             <Grid HeightRequest="40"
                   BackgroundColor="Transparent"
-                  ColumnDefinitions="34, *, Auto"
+                  ColumnDefinitions="Auto, *, Auto"
                   ColumnSpacing="20">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
@@ -42,7 +42,7 @@
                          Color="{DynamicResource ListItemBackgroundColor}"/>
 
                 <Border Grid.Column="0"
-                        WidthRequest="34"
+                        WidthRequest="120"
                         HeightRequest="34"
                         VerticalOptions="Center"
                         Margin="4,0,0,0"
