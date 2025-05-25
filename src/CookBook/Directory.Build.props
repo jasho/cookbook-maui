@@ -3,7 +3,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>preview</LangVersion>
-		<Configurations>Debug Desktop;Debug Phone;Release Desktop;Release Phone</Configurations>
+		<Configurations>Debug Desktop;Debug Phone;Release</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('Desktop'))">
