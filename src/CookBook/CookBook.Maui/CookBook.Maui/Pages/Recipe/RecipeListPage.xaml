@@ -109,19 +109,6 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-
-                <CollectionView.Footer>
-                    <BoxView Color="Transparent">
-                        <BoxView.HeightRequest>
-                            <MultiBinding Converter="{StaticResource MultiMathExpressionConverter}"
-                                          ConverterParameter="x0 + x1 + x2">
-                                <Binding Path="Height" Source="{x:Reference CreateButtonPhone}"/>
-                                <Binding Path="Margin.Top" Source="{x:Reference CreateButtonPhone}"/>
-                                <Binding Path="Margin.Bottom" Source="{x:Reference CreateButtonPhone}"/>
-                            </MultiBinding>
-                        </BoxView.HeightRequest>
-                    </BoxView>
-                </CollectionView.Footer>
             </CollectionView>
         </Grid>
 
@@ -136,21 +123,6 @@
                 IsVisible="{OnIdiom Phone=False,
                                     Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:RecipeListPageTexts.Add_Button_Text_Desktop}"/>
-
-        <Button x:Name="CreateButtonPhone"
-                WidthRequest="65"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0, 0, 14, 9"
-                Padding="0"
-                Command="{Binding GoToCreateCommand}"
-                CornerRadius="60"
-                FontFamily="MontserratRegular"
-                FontSize="50"
-                IsVisible="{OnIdiom Phone=True,
-                                    Desktop=False}"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Text="+"/>
+                Text="{x:Static texts:RecipeListPageTexts.Add_Button_Text_Desktop}" />
     </Grid>
 </base:ContentPageBase>

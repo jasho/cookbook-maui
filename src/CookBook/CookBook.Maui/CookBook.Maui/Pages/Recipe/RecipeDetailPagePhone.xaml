@@ -12,29 +12,11 @@
                                       Desktop=''}"
                       Style="{StaticResource ContentPageStyle}">
     <base:ContentPageBase.ToolbarItems>
-        <ToolbarItem Command="{Binding ShareCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.ShareAlt}"
-                                 Size="15"
-                                 Color="{DynamicResource NavigationBarTextColor}"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-
         <ToolbarItem Command="{Binding DeleteCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Trash}"
                                  Size="15"
-                                 Color="{DynamicResource NavigationBarTextColor}"/>
-            </ToolbarItem.IconImageSource>
-        </ToolbarItem>
-
-        <ToolbarItem Command="{Binding GoToEditCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                 Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
-                                 Size="30"
                                  Color="{DynamicResource NavigationBarTextColor}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
