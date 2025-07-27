@@ -3,7 +3,8 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:CookBook.Maui.Converters"
-             xmlns:styles="clr-namespace:CookBook.Maui.Resources.Styles">
+             xmlns:styles="clr-namespace:CookBook.Maui.Resources.Styles"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,6 +21,8 @@
             <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter"/>
             <converters:FoodTypeToIconConverter x:Key="FoodTypeToIconConverter"/>
             <converters:UnitToStringConverter x:Key="UnitToStringConverter"/>
+            
+            <toolkit:MultiMathExpressionConverter x:Key="MultiMathExpressionConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

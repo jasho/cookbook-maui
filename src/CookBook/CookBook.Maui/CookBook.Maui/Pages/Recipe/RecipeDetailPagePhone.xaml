@@ -34,7 +34,7 @@
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Pen}"
-                                 Size="15"
+                                 Size="30"
                                  Color="{DynamicResource NavigationBarTextColor}"/>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
@@ -73,14 +73,15 @@
                       VerticalOptions="Center"
                       ColumnDefinitions="*, *, *"
                       RowDefinitions="Auto, Auto"
-                      RowSpacing="5">
+                      RowSpacing="5"
+                      ColumnSpacing="5" >
                     <Image Grid.Row="0"
                            Grid.Column="0"
                            HorizontalOptions="Center"
                            VerticalOptions="End">
                         <Image.Source>
                             <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
-                                             Glyph="{x:Static fonts:FontAwesomeIcons.ConciergeBell}"
+                                             Glyph="{Binding Recipe.FoodType, FallbackValue='', Converter={StaticResource FoodTypeToIconConverter}}"
                                              Size="17"
                                              Color="White"/>
                         </Image.Source>
@@ -110,7 +111,7 @@
                     <Label Grid.Row="1"
                            Grid.Column="1"
                            HorizontalOptions="Center"
-                           VerticalOptions="Start"
+                           VerticalOptions="Center"
                            FontSize="11"
                            Style="{StaticResource MediumLabelStyle}"
                            TextColor="White">
@@ -137,16 +138,13 @@
                            Grid.Column="2"
                            HorizontalOptions="Center"
                            VerticalOptions="Start"
+                           VerticalTextAlignment="Center"
                            FontSize="11"
                            Style="{StaticResource MediumLabelStyle}"
-                           TextColor="White">
-                        <Label.Text>
-                            <MultiBinding StringFormat="{x:Static texts:RecipeDetailPageTexts.IngredientsAmount_Label_StringFormat}">
-                                <Binding Path="Recipe.IngredientAmounts.Count"
-                                         FallbackValue="0"/>
-                            </MultiBinding>
-                        </Label.Text>
-                    </Label>
+                           Text="{Binding Recipe.IngredientAmounts.Count,
+                                          FallbackValue=0,
+                                          StringFormat={x:Static texts:RecipeDetailPageTexts.IngredientsAmount_Label_StringFormat}}"
+                           TextColor="White" />
                 </Grid>
             </Border>
 

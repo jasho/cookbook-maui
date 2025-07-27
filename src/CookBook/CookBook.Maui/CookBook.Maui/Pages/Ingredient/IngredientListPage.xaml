@@ -25,7 +25,7 @@
 
         <DataTemplate x:DataType="models:IngredientListModel"
                       x:Key="ItemTemplatePhone">
-            <Grid HeightRequest="40"
+            <Grid MinimumHeightRequest="40"
                   BackgroundColor="Transparent"
                   ColumnDefinitions="34, *, Auto"
                   ColumnSpacing="20">
@@ -35,7 +35,7 @@
                 </Grid.GestureRecognizers>
                 <BoxView Grid.Column="0"
                          Grid.ColumnSpan="3"
-                         HorizontalOptions="Fill"
+                         HorizontalOptions="Fill"  
                          VerticalOptions="Fill"
                          CornerRadius="5"
                          Color="{DynamicResource ListItemBackgroundColor}"/>
@@ -79,8 +79,7 @@
 
         <DataTemplate x:DataType="models:IngredientListModel"
                       x:Key="ItemTemplateDesktop">
-            <Border HeightRequest="200"
-                    Padding="0">
+            <Border Padding="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10"/>
                 </Border.StrokeShape>
@@ -89,22 +88,15 @@
                     <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                                           CommandParameter="{Binding Id}"/>
                 </Border.GestureRecognizers>
-                <Grid RowDefinitions="*, *">
-                    <Image Grid.Row="0"
-                           Grid.RowSpan="2"
-                           WidthRequest="200"
-                           HeightRequest="200"
-                           Aspect="AspectFill"
+                <Grid>
+                    <Image Aspect="AspectFill"
                            Source="{Binding ImageUrl, TargetNullValue='ingredient_placeholder.jpg'}"/>
 
-                    <BoxView Grid.Row="0"
-                             Grid.RowSpan="2"
-                             Opacity="0.25"
+                    <BoxView Opacity="0.25"
                              Color="Black"/>
 
-                    <Label Grid.Row="1"
-                           VerticalOptions="End"
-                           Margin="22,12"
+                    <Label VerticalOptions="End"
+                           Padding="22, 12"
                            FontSize="20"
                            LineBreakMode="WordWrap"
                            Style="{StaticResource BoldLabelStyle}"
@@ -142,13 +134,28 @@
                         ItemsLayout="{OnIdiom Phone={StaticResource ItemsLayoutPhone},
                                               Desktop={StaticResource ItemsLayoutDesktop},
                                               Default={StaticResource ItemsLayoutDesktop}}"
-                        ItemsSource="{Binding Items}"/>
+                        ItemsSource="{Binding Items}"
+                        VerticalScrollBarVisibility="Never">
+            <CollectionView.Footer>
+                <BoxView Color="Transparent">
+                    <BoxView.HeightRequest>
+                        <MultiBinding Converter="{StaticResource MultiMathExpressionConverter}"
+                                      ConverterParameter="x0 + x1 + x2">
+                            <Binding Path="Height" Source="{x:Reference CreateButtonPhone}"/>
+                            <Binding Path="Margin.Top" Source="{x:Reference CreateButtonPhone}"/>
+                            <Binding Path="Margin.Bottom" Source="{x:Reference CreateButtonPhone}"/>
+                        </MultiBinding>
+                    </BoxView.HeightRequest>
+                </BoxView>
+            </CollectionView.Footer>
+        </CollectionView>
 
-        <Button Grid.Row="1"
+        <Button x:Name="CreateButtonPhone"
+                Grid.Row="1"
                 WidthRequest="65"
                 HorizontalOptions="End"
                 VerticalOptions="End"
-                Margin="0,0,14,9"
+                Margin="0, 0, 14, 9"
                 Padding="0"
                 Command="{Binding GoToCreateCommand}"
                 CornerRadius="60"

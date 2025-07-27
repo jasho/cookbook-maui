@@ -1,6 +1,4 @@
-﻿using CookBook.Maui.Entities;
-using CookBook.Maui.Enums;
-using CookBook.Maui.Extensions;
+﻿using CookBook.Maui.Enums;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Maui.Shells;
 
@@ -42,7 +40,10 @@ namespace CookBook.Maui
                 appShell = serviceProvider.GetRequiredService<AppShellDesktop>();
             }
 
-            return new Window(appShell);
+            return new Window(appShell)
+            {
+                MinimumHeight = 500
+            };
         }
 
         private void ApplyPreferences(
