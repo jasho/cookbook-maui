@@ -10,7 +10,8 @@
        FlyoutBehavior="Disabled"
        MinimumHeightRequest="{OnIdiom Desktop=1000}"
        NavigationPage.HasBackButton="False"
-       NavigationPage.HasNavigationBar="False">
+       NavigationPage.HasNavigationBar="False"
+       Title="{x:Static texts:AppShellTexts.Shell_Title}">
     <Shell.TitleView>
         <Grid>
             <Image HeightRequest="24"
@@ -19,7 +20,8 @@
     </Shell.TitleView>
 
     <Shell.ToolbarItems>
-        <ToolbarItem Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToSettingsCommand}">
+        <ToolbarItem Command="{Binding Source={x:Reference AppShellRoot}, Path=GoToSettingsCommand}"
+                     Text="{x:Static texts:AppShellTexts.Settings_ToolbarItem_Text}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                  Glyph="{x:Static fonts:FontAwesomeIcons.Cog}"

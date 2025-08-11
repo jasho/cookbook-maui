@@ -41,7 +41,8 @@
                             ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type models:RecipeListModel}">
-                        <Grid Padding="10, 0">
+                        <Grid Padding="10, 0"
+                              SemanticProperties.Description="{Binding Name}">
                             <Border
                                 WidthRequest="{OnIdiom Phone=-1,
                                                        Desktop=300}"
@@ -86,7 +87,9 @@
                                                 <Label VerticalOptions="Center"
                                                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                        Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
-                                                       TextColor="White" />
+                                                       TextColor="White"
+                                                       AutomationProperties.ExcludedWithChildren="True"
+                                                       SemanticProperties.Description="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}" />
 
                                                 <Label VerticalOptions="Center"
                                                        FontSize="11"

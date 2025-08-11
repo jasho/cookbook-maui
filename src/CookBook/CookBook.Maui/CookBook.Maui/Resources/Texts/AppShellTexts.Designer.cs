@@ -113,5 +113,23 @@ namespace CookBook.Maui.Resources.Texts {
                 return ResourceManager.GetString("Settings_FlyoutItem_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings_ToolbarItem_Text {
+            get {
+                return ResourceManager.GetString("Settings_ToolbarItem_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CookBook.
+        /// </summary>
+        public static string Shell_Title {
+            get {
+                return ResourceManager.GetString("Shell_Title", resourceCulture);
+            }
+        }
     }
 }
