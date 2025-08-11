@@ -88,8 +88,7 @@
                                                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                                        Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
                                                        TextColor="White"
-                                                       AutomationProperties.ExcludedWithChildren="True"
-                                                       SemanticProperties.Description="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}" />
+                                                       AutomationProperties.IsInAccessibleTree="False" />
 
                                                 <Label VerticalOptions="Center"
                                                        FontSize="11"
