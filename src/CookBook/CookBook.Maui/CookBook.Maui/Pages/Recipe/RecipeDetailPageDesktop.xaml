@@ -25,7 +25,9 @@
                 <Label VerticalOptions="Center"
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                        FontSize="14"
-                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"/>
+                       Text="{x:Static fonts:FontAwesomeIcons.ArrowLeft}"
+                       AutomationProperties.IsInAccessibleTree="False" />
+
                 <Label VerticalOptions="Center"
                        FontSize="14"
                        Style="{StaticResource MediumLabelStyle}"
@@ -74,7 +76,8 @@
                                    FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                                    FontSize="15"
                                    Text="{Binding Recipe.FoodType, FallbackValue={x:Static enums:FoodType.Unknown}, Converter={StaticResource FoodTypeToIconConverter}}"
-                                   TextColor="White"/>
+                                   TextColor="White"
+                                   AutomationProperties.IsInAccessibleTree="False" />
 
                             <Label Grid.Row="1"
                                    Grid.Column="0"
