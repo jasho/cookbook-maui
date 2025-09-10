@@ -68,7 +68,8 @@
                        FontFamily="{x:Static fonts:Fonts.FontAwesome}"
                        FontSize="20"
                        Text="{x:Static fonts:FontAwesomeIcons.Pen}"
-                       TextColor="{StaticResource PrimaryColor}">
+                       TextColor="{StaticResource PrimaryColor}"
+                       SemanticProperties.Description="{x:Static texts:IngredientListPageTexts.Edit_Button_SemanticDescription}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
                                               CommandParameter="{Binding Id}"/>

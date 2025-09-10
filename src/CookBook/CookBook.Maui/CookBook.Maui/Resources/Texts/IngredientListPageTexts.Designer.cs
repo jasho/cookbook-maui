@@ -79,6 +79,15 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit_Button_SemanticDescription {
+            get {
+                return ResourceManager.GetString("Edit_Button_SemanticDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CookBook.
         /// </summary>
         public static string Page_Title {

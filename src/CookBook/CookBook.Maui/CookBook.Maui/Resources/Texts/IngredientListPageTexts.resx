@@ -123,6 +123,9 @@
   <data name="Add_Button_Text_Phone" xml:space="preserve">
     <value>+</value>
   </data>
+  <data name="Edit_Button_SemanticDescription" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Page_Title" xml:space="preserve">
     <value>CookBook</value>
   </data>
