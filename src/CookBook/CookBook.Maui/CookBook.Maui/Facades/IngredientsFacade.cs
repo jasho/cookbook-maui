@@ -3,14 +3,12 @@ using CookBook.Maui.Entities;
 using CookBook.Maui.Mappers;
 using CookBook.Maui.Services.Interfaces;
 using CookBook.Mobile.Api;
-using System.Net;
 
 namespace CookBook.Maui.Facades;
 
 public class IngredientsFacade(
     IDatabaseService databaseService,
     IIngredientsClient ingredientsClient,
-    IConnectivity connectivity,
     IngredientMapper ingredientMapper,
     FacadeBase<IngredientListModel, IngredientDetailModel>.Dependencies dependencies)
     : FacadeBase<IngredientListModel, IngredientDetailModel>(dependencies), IIngredientsFacade
@@ -35,14 +33,14 @@ public class IngredientsFacade(
 
     protected override async Task<Guid> CreateOrUpdateOnlineAsync(IngredientDetailModel detailModel)
     {
-        if(detailModel.Id is null)
+        if (detailModel.Id is null)
         {
             return await ingredientsClient.CreateIngredientAsync(detailModel);
         }
         else
         {
             var existingIngredient = ingredientsClient.GetIngredientByIdAsync(detailModel.Id.Value);
-            if(existingIngredient is null)
+            if (existingIngredient is null)
             {
                 return await ingredientsClient.CreateIngredientAsync(detailModel);
             }
