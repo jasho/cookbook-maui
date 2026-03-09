@@ -6,10 +6,7 @@ namespace CookBook.Maui.Services
     {
         public void HandleException(Exception exception, string? source = null)
         {
-            MainThread.InvokeOnMainThreadAsync(() =>
-            {
-                Application.Current?.Windows[0].Page?.DisplayAlert("Something went wrong", exception.Message, "OK");
-            });
+            MainThread.InvokeOnMainThreadAsync(() => Application.Current?.Windows[0].Page?.DisplayAlertAsync("Something went wrong", exception.Message, "OK"));
         }
     }
 }
